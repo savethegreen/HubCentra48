@@ -10,8 +10,50 @@
     <Compile Update="Form\Loading.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Form\Home.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Form\Login.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Form\System_1.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Form\System_2.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Form\System_3.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Form\System_4.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Form\Search.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Form\Report.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Form\LiveCharts.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Form\Home.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Form\Login.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Form\Search.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Form\Report.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Form\LiveCharts.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Style\ButtonStyles.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -31,6 +73,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Style\TextBlockStyles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Form\System_1.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Form\System_2.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Form\System_3.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Form\System_4.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -1,0 +1,97 @@
+﻿<Window x:Class="HubCentra_A1.LiveCharts"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HubCentra_A1"
+        mc:Ignorable="d"
+                  xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+
+          Title="LiveChartsCore" Height="500" Width="1000" Loaded="Window_Loaded">
+
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="100*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="70*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="70*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="60*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="250*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock Grid.Column="0" Text="Low : " Style="{StaticResource LiveCharts_TextBlock_01}"></TextBlock>
+                </Grid>
+                <Grid Grid.Column="2" Margin="0.5" >
+                    <TextBlock Text="{Binding SQL_ETC[0].Chart_Range_Low, StringFormat='{}{0}'}" Style="{StaticResource LiveCharts_TextBlock_02}"></TextBlock>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <TextBlock Grid.Column="0" Text="High : " Style="{StaticResource LiveCharts_TextBlock_01}"></TextBlock>
+                </Grid>
+                <Grid Grid.Column="2" Margin="0.5" >
+                    <TextBlock Text="{Binding SQL_ETC[0].Chart_Range_High, StringFormat='{}{0}'}" Style="{StaticResource LiveCharts_TextBlock_02}"></TextBlock>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock Grid.Column="0" Text="Step : " Style="{StaticResource LiveCharts_TextBlock_01}"></TextBlock>
+                </Grid>
+                <Grid Grid.Column="2" Margin="0.5" >
+                    <TextBlock Text="{Binding SQL_ETC[0].Chart_Step, StringFormat='{}{0}'}" Style="{StaticResource LiveCharts_TextBlock_02}"></TextBlock>
+                </Grid>
+            </Grid>
+
+
+            <Grid Grid.Column="7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Margin="0.5" >
+                    <TextBlock Text="{Binding Chart_Positive_Start, StringFormat='{}index :{0}'}" Style="{StaticResource LiveCharts_TextBlock_01}"></TextBlock>
+                </Grid>
+                <Grid Grid.Column="2" Margin="0.5" >
+                    <TextBlock Text="{Binding PositiveFalgdate, StringFormat='{}Flag :{0}'}" Style="{StaticResource LiveCharts_TextBlock_01}"></TextBlock>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <lvc:CartesianChart Series ="{Binding Series}" Sections="{Binding Sections}" XAxes ="{Binding XAxes}" YAxes="{Binding YAxes}" ZoomMode="ZoomX" >
+
+            </lvc:CartesianChart>
+        </Grid>
+    </Grid>
+
+</Window>

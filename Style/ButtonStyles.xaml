@@ -1,4 +1,252 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+
+
+    <!--#region MainWindow-->
+
+    <Style x:Key="MainWindow_Button_01" TargetType="Button">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Padding" Value="10,5" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Login_ID}" Value="">
+                <Setter Property="Background" Value="White" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <Style x:Key="MainWindow_Button_02"  TargetType="Button">
+        <Setter Property="Background" Value="#45a049"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Padding" Value="10,5"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" 
+                              CornerRadius="5">
+                        <ContentPresenter HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"/>
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Login_ID}" Value="">
+                <Setter Property="Background" Value="White"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="MainWindow_Button_03"  TargetType="Button">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Padding" Value="10,5"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" 
+                            CornerRadius="5">
+                        <ContentPresenter HorizontalAlignment="Center" 
+                                          VerticalAlignment="Center"/>
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Login_ID}" Value="">
+                <Setter Property="Background" Value="#45a049"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <!--#endregion MainWindow-->
+
+    <!--#region Login-->
+
+    <Style x:Key="LoginButton_01"  TargetType="Button">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Padding" Value="10,5"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" 
+                             CornerRadius="5">
+                        <ContentPresenter HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center"/>
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="LoginButton_02" TargetType="{x:Type RepeatButton}">
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Background" Value="#505050"/>
+        <Setter Property="Focusable" Value="false"/>
+        <Setter Property="IsTabStop" Value="false"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Border Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" CornerRadius="2"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ScrollBarThumbVertical" TargetType="{x:Type Thumb}">
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="IsTabStop" Value="false"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Border x:Name="rectangle" Background="lime" Height="{TemplateBinding Height}" SnapsToDevicePixels="True" Width="{TemplateBinding Width}" CornerRadius="2"/>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="rectangle" Value="#FFB9F712"/>
+                        </Trigger>
+                        <Trigger Property="IsDragging" Value="true">
+                            <Setter Property="Background" TargetName="rectangle" Value="#FFB9F712"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion Login-->
+
+    <!--#region Search-->
+    <Style x:Key="Search_Button_01" TargetType="Button">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimation Duration="0" To="#45a049" 
+                                                    Storyboard.TargetName="buttonBorder"
+                                                    Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"/>
+                                        <ColorAnimation Duration="0" To="#45a049"
+                                                    Storyboard.TargetName="buttonBorder"
+                                                    Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Border x:Name="buttonBorder" Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion Search-->
+
+    <!--#region Report-->
+    <ControlTemplate x:Key="Button_Effect_01" TargetType="Button">
+        <Grid>
+            <!--  하단 테두리  -->
+            <Border
+             x:Name="search_border"
+             BorderBrush="#39393c"
+             BorderThickness="0,0,0,1">
+                <Border.Effect>
+                    <DropShadowEffect
+                     BlurRadius="3"
+                     Direction="200"
+                     ShadowDepth="2"
+                     Color="Black" />
+                </Border.Effect>
+            </Border>
+            <!--  상단 테두리  -->
+            <Border BorderBrush="Gray" BorderThickness="0,1,0,0">
+                <Border.Effect>
+                    <DropShadowEffect
+                     BlurRadius="3"
+                     Direction="160"
+                     ShadowDepth="1"
+                     Color="Black" />
+                </Border.Effect>
+            </Border>
+            <!--  좌측 테두리  -->
+            <Border BorderBrush="Gray" BorderThickness="1,0,0,0">
+                <Border.Effect>
+                    <DropShadowEffect
+                     BlurRadius="3"
+                     Direction="130"
+                     ShadowDepth="1"
+                     Color="Black" />
+                </Border.Effect>
+            </Border>
+            <!--  우측 테두리  -->
+            <Border BorderBrush="#39393c" BorderThickness="0,0,1,0">
+                <Border.Effect>
+                    <DropShadowEffect
+                     BlurRadius="2"
+                     Direction="105"
+                     ShadowDepth="2"
+                     Color="Black" />
+                </Border.Effect>
+            </Border>
+            <!--  내용  -->
+            <Border BorderBrush="Transparent" BorderThickness="1">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <!--  마우스를 올렸을 때  -->
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="search_border" Property="Background" Value="orange" />
+                <!--  마우스를 올렸을 때의 배경 색상  -->
+            </Trigger>
+            <!--  버튼이 눌렸을 때  -->
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="search_border" Property="Margin" Value="1,1,0,0" />
+                <!--  버튼이 눌렸을 때 Margin 값을 조정하여 살짝 들어가는 효과  -->
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <!--#endregion Report-->
 </ResourceDictionary>

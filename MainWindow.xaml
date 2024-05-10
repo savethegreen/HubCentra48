@@ -24,7 +24,684 @@
             <RowDefinition Height="115*" />
             <RowDefinition Height="0*" />
         </Grid.RowDefinitions>
-        
-        
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*" />
+                <ColumnDefinition Width="45*" />
+                <ColumnDefinition Width="20*" />
+            </Grid.ColumnDefinitions>
+            
+            <!--#region 이미지-->
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Image
+                  Margin="10"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Source="/Image/Hubcentra84.png"
+                  Stretch="Uniform" />
+            </Grid>
+            <!--#endregion 이미지-->
+
+            <!--#region 로딩_언로딩-->
+            <Grid Grid.Row="0" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="100*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="80*" />
+                        <RowDefinition Height="10*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="40*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="40*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="2">
+                            <Button
+                                    Command="{Binding Command_Calculator_Number}"
+                                    CommandParameter="66"
+                                    Content="Loading">
+                                <Button.Style>
+                                    <Style BasedOn="{StaticResource MainWindow_Button_01}" TargetType="Button" />
+                                </Button.Style>
+                            </Button>
+                        </Grid>
+                        <Grid Grid.Column="4">
+                            <Button
+                                   Command="{Binding Command_Calculator_Number}"
+                                   CommandParameter="66"
+                                   Content="Unloading">
+                                <Button.Style>
+                                    <Style BasedOn="{StaticResource MainWindow_Button_01}" TargetType="Button" />
+                                </Button.Style>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <!--#endregion 로딩_언로딩-->
+
+            <!--#region 로그인-->
+            <Grid Grid.Row="0" Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100*" />
+                    <RowDefinition Height="150*" />
+                    <RowDefinition Height="30*" />
+                </Grid.RowDefinitions>
+
+                <!--#region R0C0-->
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="100*" />
+                        <ColumnDefinition Width="10*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <TextBlock Style="{StaticResource MainWindow_TextBlock_01}" Text="{Binding Login, StringFormat=' {0}'}" />
+                    </Grid>
+
+                </Grid>
+                <!--#endregion R0C0-->
+
+                <!--#region R1C0-->
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20*" />
+                        <ColumnDefinition Width="100*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="100*" />
+                        <ColumnDefinition Width="10*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--#region R0C0-->
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <Button
+                        x:Name="Login"
+                        Margin="8"
+                        Command="{Binding ICommand_MainWindow}"
+                        CommandParameter="8"
+                        Content="Log In">
+                            <Button.Style>
+                                <Style BasedOn="{StaticResource MainWindow_Button_02}" TargetType="Button" />
+                            </Button.Style>
+                        </Button>
+                    </Grid>
+                    <!--#endregion R0C0-->
+
+                    <!--#region R0C2-->
+                    <Grid Grid.Row="0" Grid.Column="3">
+                        <Button
+                        x:Name="Logout"
+                        Margin="8"
+                        Command="{Binding ICommands}"
+                        CommandParameter="1"
+                        Content="Log Out">
+                            <Button.Style>
+                                <Style BasedOn="{StaticResource MainWindow_Button_03}" TargetType="Button" />
+                            </Button.Style>
+                        </Button>
+                    </Grid>
+                    <!--#endregion R0C2-->
+                </Grid>
+                <!--#endregion R1C0-->
+            </Grid>
+            <!--#endregion 로그인-->
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Grid Grid.Row="0" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90*" />
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="11*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="100*" />
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="25*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
+                        <Rectangle
+                       Fill="{StaticResource MainWindow_SolidCColorResources_01}"
+                       RadiusX="15"
+                       RadiusY="15" />
+
+                        <local:Home x:Name="HomeF">
+                            <local:Home.Style>
+                                <Style TargetType="local:Home">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding MainWindow_ButtonFlag}" Value="0">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </local:Home.Style>
+                        </local:Home>
+
+
+                        <local:Search x:Name="SearchF">
+                            <local:Search.Style>
+                                <Style TargetType="local:Search">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding MainWindow_ButtonFlag}" Value="1">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </local:Search.Style>
+                        </local:Search>
+
+                        <local:Report x:Name="ReportF">
+                            <local:Report.Style>
+                                <Style TargetType="local:Report">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding MainWindow_ButtonFlag}" Value="2">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </local:Report.Style>
+                        </local:Report>
+
+                        <local:System_1 x:Name="System_1F">
+                            <local:System_1.Style>
+                                <Style TargetType="local:System_1">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding MainWindow_ButtonFlag}" Value="4">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </local:System_1.Style>
+                        </local:System_1>
+                    </Grid>
+
+                    <Grid Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="10*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="10*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="10*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="10*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2.5*" />
+                            <ColumnDefinition Width="7*" />
+                            <ColumnDefinition Width="2.5*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Row="0" Grid.Column="1">
+                            <Grid.InputBindings>
+                                <MouseBinding
+                  Command="{Binding ICommand_MainWindow}"
+                  CommandParameter="0"
+                  MouseAction="LeftClick" />
+                            </Grid.InputBindings>
+                            
+                            <Rectangle RadiusX="15" RadiusY="15">
+                                <Rectangle.Style>
+                                    <Style TargetType="Rectangle">
+                                        <Setter Property="Fill" Value="{StaticResource MainWindow_LinearGradientBrush_02}" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding MainWindow_ButtonFlag}" Value="0">
+                                                <Setter Property="Fill" Value="{StaticResource MainWindow_LinearGradientBrush_03}" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Rectangle.Style>
+                            </Rectangle>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="3*" />
+                                    <RowDefinition Height="10*" />
+                                    <RowDefinition Height="2*" />
+                                    <RowDefinition Height="4*" />
+                                </Grid.RowDefinitions>
+                                <Image
+                        Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Source="/Image/Home.png"
+                        Stretch="Uniform" />
+                                <TextBlock
+                        Grid.Row="3"
+                        Style="{StaticResource MainWindow_TextBlock_04}"
+                        Text="Home" />
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.Row="2" Grid.Column="1">
+                            <Grid.InputBindings>
+                                <MouseBinding
+                                     Command="{Binding ICommand_MainWindow}"
+                                     CommandParameter="1"
+                                     MouseAction="LeftClick" />
+                            </Grid.InputBindings>
+
+                            <Rectangle RadiusX="15" RadiusY="15">
+                                <Rectangle.Style>
+                                    <Style TargetType="Rectangle">
+                                        <Setter Property="Fill" Value="{StaticResource MainWindow_LinearGradientBrush_02}" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding MainWindow_ButtonFlag}" Value="1">
+                                                <Setter Property="Fill" Value="{StaticResource MainWindow_LinearGradientBrush_03}" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Rectangle.Style>
+                            </Rectangle>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="3*" />
+                                    <RowDefinition Height="10*" />
+                                    <RowDefinition Height="2*" />
+                                    <RowDefinition Height="4*" />
+                                </Grid.RowDefinitions>
+                                <Image
+       Grid.Row="1"
+       HorizontalAlignment="Center"
+       VerticalAlignment="Center"
+       Source="/Image/Search.png"
+       Stretch="Uniform" />
+                                <TextBlock
+       Grid.Row="3"
+       Style="{StaticResource MainWindow_TextBlock_04}"
+       Text="Search" />
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.Row="4" Grid.Column="1">
+                            <Grid.InputBindings>
+                                <MouseBinding
+                              Command="{Binding ICommand_MainWindow}"
+                              CommandParameter="2"
+                              MouseAction="LeftClick" />
+                            </Grid.InputBindings>
+
+                            <Rectangle RadiusX="15" RadiusY="15">
+                                <Rectangle.Style>
+                                    <Style TargetType="Rectangle">
+                                        <Setter Property="Fill" Value="{StaticResource MainWindow_LinearGradientBrush_02}" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding MainWindow_ButtonFlag}" Value="2">
+                                                <Setter Property="Fill" Value="{StaticResource MainWindow_LinearGradientBrush_03}" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Rectangle.Style>
+                            </Rectangle>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="3*" />
+                                    <RowDefinition Height="10*" />
+                                    <RowDefinition Height="2*" />
+                                    <RowDefinition Height="4*" />
+                                </Grid.RowDefinitions>
+                                <Image
+                                        Grid.Row="1"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Source="/Image/Report.png"
+                                        Stretch="Uniform" />
+                                                                        <TextBlock
+                                        Grid.Row="3"
+                                        Style="{StaticResource MainWindow_TextBlock_04}"
+                                        Text="Report" />
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.Row="6" Grid.Column="1">
+                            <Grid.InputBindings>
+                                <MouseBinding
+                              Command="{Binding ICommand_MainWindow}"
+                              CommandParameter="3"
+                              MouseAction="LeftClick" />
+                            </Grid.InputBindings>
+
+                            <Rectangle RadiusX="15" RadiusY="15">
+                                <Rectangle.Style>
+                                    <Style TargetType="Rectangle">
+                                        <Setter Property="Fill" Value="{StaticResource MainWindow_LinearGradientBrush_02}" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding MainWindow_ButtonFlag}" Value="3">
+                                                <Setter Property="Fill" Value="{StaticResource MainWindow_LinearGradientBrush_03}" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Rectangle.Style>
+                            </Rectangle>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="3*" />
+                                    <RowDefinition Height="10*" />
+                                    <RowDefinition Height="2*" />
+                                    <RowDefinition Height="4*" />
+                                </Grid.RowDefinitions>
+                                <Image
+                                    Grid.Row="1"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Source="/Image/Configuration.png"
+                                    Stretch="Uniform" />
+                                                                    <TextBlock
+                                    Grid.Row="3"
+                                    Style="{StaticResource MainWindow_TextBlock_04}"
+                                    Text="Configuration" />
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.Row="8" Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100*" />
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="100*" />
+                                <RowDefinition Height="2*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="100*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Row="0" Grid.Column="0">
+                                <Grid.InputBindings>
+                                    <MouseBinding
+                                     Command="{Binding ICommand_MainWindow}"
+                                     CommandParameter="4"
+                                     MouseAction="LeftClick" />
+                                </Grid.InputBindings>
+                                <Rectangle RadiusX="5" RadiusY="5">
+                                    <Rectangle.Style>
+                                        <Style TargetType="Rectangle">
+                                            <Setter Property="Fill" Value="{StaticResource     MainWindow_LinearGradientBrush_02}" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding MainWindow_ButtonFlag}" Value="4">
+                                                    <Setter Property="Fill" Value="{StaticResource MainWindow_LinearGradientBrush_03}" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding HasPositiveCell}" Value="True">
+                                                    <Setter Property="Fill" Value="Red" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Rectangle.Style>
+                                </Rectangle>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="3*" />
+                                        <RowDefinition Height="10*" />
+                                        <RowDefinition Height="2*" />
+                                        <RowDefinition Height="6*" />
+                                    </Grid.RowDefinitions>
+                                    <Image
+                        Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Source="/Image/Rack.png"
+                        Stretch="Uniform" />
+                                    <TextBlock
+                        Grid.Row="3"
+                        Style="{StaticResource MainWindow_TextBlock_05}"
+                        Text="SYSTEM1" />
+                                </Grid>
+                            </Grid>
+
+                            <Grid Grid.Row="0" Grid.Column="2">
+                                <Grid.InputBindings>
+                                    <MouseBinding
+                                    Command="{Binding ICommand_MainWindow}"
+                                    CommandParameter="5"
+                                    MouseAction="LeftClick" />
+                                </Grid.InputBindings>
+                                <Rectangle RadiusX="5" RadiusY="5">
+                                    <Rectangle.Style>
+                                        <Style TargetType="Rectangle">
+                                            <Setter Property="Fill" Value="{StaticResource     MainWindow_LinearGradientBrush_02}" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding MainWindow_ButtonFlag}" Value="5">
+                                                    <Setter Property="Fill" Value="{StaticResource MainWindow_LinearGradientBrush_03}" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding HasPositiveCell}" Value="True">
+                                                    <Setter Property="Fill" Value="Red" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Rectangle.Style>
+                                </Rectangle>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="3*" />
+                                        <RowDefinition Height="10*" />
+                                        <RowDefinition Height="2*" />
+                                        <RowDefinition Height="6*" />
+                                    </Grid.RowDefinitions>
+                                    <Image
+                       Grid.Row="1"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Source="/Image/Rack.png"
+                       Stretch="Uniform" />
+                                    <TextBlock
+                       Grid.Row="3"
+                       Style="{StaticResource MainWindow_TextBlock_05}"
+                       Text="SYSTEM2" />
+                                </Grid>
+                            </Grid>
+
+                            <Grid Grid.Row="2" Grid.Column="0">
+                                <Grid.InputBindings>
+                                    <MouseBinding
+                                      Command="{Binding ICommand_MainWindow}"
+                                      CommandParameter="6"
+                                      MouseAction="LeftClick" />
+                                </Grid.InputBindings>
+                                <Rectangle RadiusX="5" RadiusY="5">
+                                    <Rectangle.Style>
+                                        <Style TargetType="Rectangle">
+                                            <Setter Property="Fill" Value="{StaticResource     MainWindow_LinearGradientBrush_02}" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding MainWindow_ButtonFlag}" Value="6">
+                                                    <Setter Property="Fill" Value="{StaticResource MainWindow_LinearGradientBrush_03}" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding HasPositiveCell}" Value="True">
+                                                    <Setter Property="Fill" Value="Red" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Rectangle.Style>
+                                </Rectangle>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="3*" />
+                                        <RowDefinition Height="10*" />
+                                        <RowDefinition Height="2*" />
+                                        <RowDefinition Height="6*" />
+                                    </Grid.RowDefinitions>
+                                    <Image
+                                     Grid.Row="1"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"
+                                     Source="/Image/Rack.png"
+                                     Stretch="Uniform" />
+                                                                        <TextBlock
+                                     Grid.Row="3"
+                                     Style="{StaticResource MainWindow_TextBlock_05}"
+                                     Text="SYSTEM3" />
+                                </Grid>
+                            </Grid>
+
+                            <Grid Grid.Row="2" Grid.Column="2">
+                                <Grid.InputBindings>
+                                    <MouseBinding
+             Command="{Binding ICommand_MainWindow}"
+             CommandParameter="7"
+             MouseAction="LeftClick" />
+                                </Grid.InputBindings>
+                                <Rectangle RadiusX="5" RadiusY="5">
+                                    <Rectangle.Style>
+                                        <Style TargetType="Rectangle">
+                                            <Setter Property="Fill" Value="{StaticResource     MainWindow_LinearGradientBrush_02}" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding MainWindow_ButtonFlag}" Value="7">
+                                                    <Setter Property="Fill" Value="{StaticResource MainWindow_LinearGradientBrush_03}" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding HasPositiveCell}" Value="True">
+                                                    <Setter Property="Fill" Value="Red" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Rectangle.Style>
+                                </Rectangle>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="3*" />
+                                        <RowDefinition Height="10*" />
+                                        <RowDefinition Height="2*" />
+                                        <RowDefinition Height="6*" />
+                                    </Grid.RowDefinitions>
+                                    <Image
+                                        Grid.Row="1"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Source="/Image/Rack.png"
+                                        Stretch="Uniform" />
+                                                                            <TextBlock
+                                        Grid.Row="3"
+                                        Style="{StaticResource MainWindow_TextBlock_05}"
+                                        Text="SYSTEM4" />
+                                </Grid>
+                            </Grid>
+
+                        </Grid>
+
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition Width="100*" />
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition Width="50*" />
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition Width="100*" />
+                        <ColumnDefinition Width="4*" />
+                    </Grid.ColumnDefinitions>
+                    <Rectangle
+                Grid.ColumnSpan="8"
+                Fill="{StaticResource  MainWindow_SolidCColorResources_01}"
+                RadiusX="15"
+                RadiusY="15" />
+
+
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100*" />
+                            <ColumnDefinition Width="5*" />
+                            <ColumnDefinition Width="100*" />
+                            <ColumnDefinition Width="5*" />
+                            <ColumnDefinition Width="100*" />
+                            <ColumnDefinition Width="5*" />
+                            <ColumnDefinition Width="100*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100*" />
+                                <RowDefinition Height="5*" />
+                                <RowDefinition Height="40*" />
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100*" />
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="100*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Image
+                                Margin="3,3"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Source="/Image/Temp2.png"
+                                Stretch="Uniform" />
+
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <TextBlock
+                                VerticalAlignment="Center"
+                                Style="{StaticResource MainWindow_TextBlock_06}"
+                                Text="{Binding Tempvalue2, StringFormat='{}{0} °C'}" />
+
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <TextBlock
+                            Margin="36,-8,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Style="{StaticResource MainWindow_TextBlock_07}"
+                            Text="SYSTEM1" />
+
+                            </Grid>
+                        </Grid>
+
+                    </Grid>
+
+                    <Grid Grid.Column="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100*" />
+                            <ColumnDefinition Width="100*" />
+                            <ColumnDefinition Width="100*" />
+                            <ColumnDefinition Width="100*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100*" />
+                                <RowDefinition Height="100*" />
+                                <RowDefinition Height="100*" />
+                            </Grid.RowDefinitions>
+
+                        </Grid>
+                        <Grid Grid.Column="2" Visibility="Hidden">
+                            <TextBox x:Name="txtline" Text="0" />
+                        </Grid>
+                        <Grid Grid.Column="3" Visibility="Hidden">
+                            <TextBox x:Name="txtcell" Text="1" />
+                        </Grid>
+                        <Grid Grid.Column="3">
+                            <TextBlock
+                        Margin="44,0,0,0"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource  MainWindow_TextBlock_06}"
+                        Text="Ver.1.0.0" />
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+        </Grid>
     </Grid>
 </Window>

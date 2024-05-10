@@ -8,11 +8,46 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Image\Chart2.png" />
+    <None Remove="Image\Configuration.png" />
+    <None Remove="Image\csv.png" />
+    <None Remove="Image\Delete.png" />
+    <None Remove="Image\Home.png" />
+    <None Remove="Image\Hubcentra84.png" />
     <None Remove="Image\loadcell.png" />
+    <None Remove="Image\Loding.png" />
+    <None Remove="Image\Rack.png" />
+    <None Remove="Image\Report.png" />
+    <None Remove="Image\Search.png" />
+    <None Remove="Image\Search2.png" />
+    <None Remove="Image\search4.png" />
+    <None Remove="Image\Temp.png" />
+    <None Remove="Image\Temp2.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.0-rc2" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
+    <PackageReference Include="System.IO.Ports" Version="9.0.0-preview.3.24172.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Image\Chart2.png" />
+    <Resource Include="Image\Configuration.png" />
+    <Resource Include="Image\csv.png" />
+    <Resource Include="Image\Delete.png" />
+    <Resource Include="Image\Home.png" />
+    <Resource Include="Image\Hubcentra84.png" />
     <Resource Include="Image\loadcell.png" />
+    <Resource Include="Image\Loding.png" />
+    <Resource Include="Image\Rack.png" />
+    <Resource Include="Image\Report.png" />
+    <Resource Include="Image\Search.png" />
+    <Resource Include="Image\Search2.png" />
+    <Resource Include="Image\search4.png" />
+    <Resource Include="Image\Temp.png" />
+    <Resource Include="Image\Temp2.png" />
   </ItemGroup>
 
 </Project>

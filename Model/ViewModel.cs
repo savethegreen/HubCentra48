@@ -1,9 +1,17 @@
-﻿using System;
+﻿using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore;
+using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using static HubCentra_A1.EnumManager;
+using static HubCentra_A1.Model.View;
 
 namespace HubCentra_A1.Model
 {
@@ -23,8 +31,145 @@ namespace HubCentra_A1.Model
         public ViewModel(View view)
         {
             _view = view;
+            ClassIni();
         }
         #endregion Model
+
+        #region Command
+        public class RelayCommand : ICommand
+        {
+            private readonly Action<object> _execute;
+
+            public event EventHandler CanExecuteChanged
+            {
+                add { CommandManager.RequerySuggested += value; }
+                remove { CommandManager.RequerySuggested -= value; }
+            }
+
+            public RelayCommand(Action<object> execute)
+            {
+                _execute = execute ?? throw new ArgumentNullException(nameof(execute));
+            }
+
+            public bool CanExecute(object parameter)
+            {
+                return true; // 여기서 실행 가능 여부를 항상 참으로 설정하거나, 실제로 실행 가능한 조건을 확인하도록 수정할 수 있습니다.
+            }
+
+            public void Execute(object parameter)
+            {
+                _execute(parameter);
+            }
+        }
+
+
+
+        #region ViewModel->MainWindow
+        private ICommand _ICommand_MainWindow;
+        public ICommand ICommand_MainWindow => _ICommand_MainWindow ??= new RelayCommand(Command_MainWindow_Click);
+
+        private void Command_MainWindow_Click(object parameter)
+        {
+            if (parameter is string paramString && int.TryParse(paramString, out int intValue))
+            {
+                DataTransferEvent_MainWindow((Enum_MainWindow_ButtonEvent)intValue);
+            }
+        }
+
+        public delegate void ViewModelEventHandler_MainWindow(Enum_MainWindow_ButtonEvent DataTransfer);
+        public event ViewModelEventHandler_MainWindow ViewModelDataTransferEvent_MainWindow;
+        public void DataTransferEvent_MainWindow(Enum_MainWindow_ButtonEvent DataTransfer)
+        {
+
+            ViewModelDataTransferEvent_MainWindow?.Invoke(DataTransfer);
+        }
+        #endregion ViewModel->MainWindow
+
+        #region ViewModel->Login
+        private ICommand _ICommand_Login;
+        public ICommand ICommand_Login => _ICommand_Login ??= new RelayCommand(Command_Login_Click);
+        private void Command_Login_Click(object parameter)
+        {
+            if (parameter is string paramString && int.TryParse(paramString, out int intValue))
+            {
+                DataTransferEvent_Login((Enum_Login_ButtonEvent)intValue);
+            }
+        }
+
+        public delegate void ViewModelEventHandler_Login(Enum_Login_ButtonEvent DataTransfer);
+        public event ViewModelEventHandler_Login ViewModelDataTransferEvent_Login;
+        public void DataTransferEvent_Login(Enum_Login_ButtonEvent DataTransfer)
+        {
+
+            ViewModelDataTransferEvent_Login?.Invoke(DataTransfer);
+        }
+        #endregion ViewModel->Login
+
+        #region ViewModel->Search
+        private ICommand _ICommand_Search;
+        public ICommand ICommand_Search => _ICommand_Search ??= new RelayCommand(Command_Search_Click);
+        private void Command_Search_Click(object parameter)
+        {
+            if (parameter is string paramString && int.TryParse(paramString, out int intValue))
+            {
+                DataTransferEvent_Search((Enum_Search_ButtonEvent)intValue);
+            }
+        }
+
+        public delegate void ViewModelEventHandler_Search(Enum_Search_ButtonEvent DataTransfer);
+        public event ViewModelEventHandler_Search ViewModelDataTransferEvent_Search;
+        public void DataTransferEvent_Search(Enum_Search_ButtonEvent DataTransfer)
+        {
+
+            ViewModelDataTransferEvent_Search?.Invoke(DataTransfer);
+        }
+        #endregion ViewModel->Search
+
+        #region ViewModel->Report
+        private ICommand _ICommand_Report;
+        public ICommand ICommand_Report => _ICommand_Report ??= new RelayCommand(Command_Report_Click);
+        private void Command_Report_Click(object parameter)
+        {
+            if (parameter is string paramString && int.TryParse(paramString, out int intValue))
+            {
+                DataTransferEvent_Report((Enum_Report_ButtonEvent)intValue);
+            }
+        }
+
+        public delegate void ViewModelEventHandler_Report(Enum_Report_ButtonEvent DataTransfer);
+        public event ViewModelEventHandler_Report ViewModelDataTransferEvent_Report;
+        public void DataTransferEvent_Report(Enum_Report_ButtonEvent DataTransfer)
+        {
+
+            ViewModelDataTransferEvent_Report?.Invoke(DataTransfer);
+        }
+        #endregion ViewModel->Report
+        #endregion Command
+
+        #region Common
+        public int Common_CellCount
+        {
+            get => _view.Common_CellCount;
+            set
+            {
+                _view.Common_CellCount = value;
+                OnPropertyChanged(nameof(Common_CellCount));
+            }
+        }
+
+        #endregion Common
+
+        #region MainWindow
+        public Enum_MainWindow_ButtonFlag MainWindow_ButtonFlag
+        {
+            get => _view.MainWindow_ButtonFlag;
+            set
+            {
+                _view.MainWindow_ButtonFlag = value;
+                OnPropertyChanged(nameof(MainWindow_ButtonFlag));
+            }
+        }
+        #endregion MainWindow
 
         #region Loading
         #region variable
@@ -52,5 +197,582 @@ namespace HubCentra_A1.Model
 
         #endregion Function
         #endregion Loading
+
+        #region Login
+        public Enum_Login Login
+        {
+            get => _view.Login;
+            set
+            {
+                _view.Login = value;
+                OnPropertyChanged(nameof(Login));
+            }
+        }
+        public string LoginID
+        {
+            get => _view.LoginID;
+            set
+            {
+                _view.LoginID = value;
+                OnPropertyChanged(nameof(LoginID));
+            }
+        }
+        public string Password
+        {
+            get => _view.Password;
+            set
+            {
+                _view.Password = value;
+                OnPropertyChanged(nameof(Password));
+            }
+        }
+        #endregion Login
+
+        #region PCB
+        public SerialPort PCB_SerialPort
+        {
+            get => _view.PCB_SerialPort;
+            set
+            {
+                _view.PCB_SerialPort = value;
+                OnPropertyChanged(nameof(PCB_SerialPort));
+            }
+        }
+        public bool PCB_Connection
+        {
+            get => _view.PCB_Connection;
+            set
+            {
+                _view.PCB_Connection = value;
+                OnPropertyChanged(nameof(PCB_Connection));
+            }
+        }
+
+        public bool PCB_Status
+        {
+            get => _view.PCB_Status;
+            set
+            {
+                _view.PCB_Status = value;
+                OnPropertyChanged(nameof(PCB_Status));
+            }
+        }
+
+        public string PCB_ID
+        {
+            get => _view.PCB_ID;
+            set
+            {
+                _view.PCB_ID = value;
+                OnPropertyChanged(nameof(PCB_ID));
+            }
+        }
+        public List<PCB> PCB_Data
+        {
+            get => _view.PCB_Data;
+            set
+            {
+                if (_view.PCB_Data != value)
+                {
+                    _view.PCB_Data = value;
+                    OnPropertyChanged(nameof(PCB_Data));
+                }
+            }
+        }
+        public Dictionary<int, Dictionary<int, List<List<double>>>> PCB_CellReadings
+        {
+            get => _view.PCB_CellReadings;
+            set
+            {
+                if (_view.PCB_CellReadings != value)
+                {
+                    _view.PCB_CellReadings = value;
+                    OnPropertyChanged(nameof(PCB_CellReadings));
+                }
+            }
+        }
+        public ConcurrentQueue<string> Queue_PCB_Manual
+        {
+            get => _view.Queue_PCB_Manual;
+            set
+            {
+                if (_view.Queue_PCB_Manual != value)
+                {
+                    _view.Queue_PCB_Manual = value;
+                    OnPropertyChanged(nameof(Queue_PCB_Manual));
+                }
+            }
+        }
+        public List<PCB_cell_alive_C> PCB_cell_alive
+        {
+            get => _view.PCB_cell_alive;
+            set
+            {
+                if (_view.PCB_cell_alive != value)
+                {
+                    _view.PCB_cell_alive = value;
+                    OnPropertyChanged(nameof(PCB_cell_alive));
+                }
+            }
+        }
+
+        public List<MatchEquipmentDataWithDB_C> Equipment_DataWithDB_presenceArray
+        {
+            get => _view.Equipment_DataWithDB_presenceArray;
+            set
+            {
+                if (_view.Equipment_DataWithDB_presenceArray != value)
+                {
+                    _view.Equipment_DataWithDB_presenceArray = value;
+                    OnPropertyChanged(nameof(Equipment_DataWithDB_presenceArray));
+                }
+            }
+        }
+        public string teststr
+        {
+            get => _view.teststr;
+            set
+            {
+                _view.teststr = value;
+                OnPropertyChanged(nameof(teststr));
+            }
+        }
+        public int testint
+        {
+            get => _view.testint;
+            set
+            {
+                _view.testint = value;
+                OnPropertyChanged(nameof(testint));
+
+            }
+        }
+
+        public PCB CurrentPCB => PCB_Data.Count > testint ? PCB_Data[testint] : null;
+        #endregion PCB
+
+        #region DatabaseManager
+        public bool DatabaseManager_Connection
+        {
+            get => _view.DatabaseManager_Connection;
+            set
+            {
+                if (_view.DatabaseManager_Connection != value)
+                {
+                    _view.DatabaseManager_Connection = value;
+                    OnPropertyChanged(nameof(DatabaseManager_Connection));
+                }
+            }
+        }
+        public List<DatabaseManager_System> SystemInfo
+        {
+            get => _view.SystemInfo;
+            set
+            {
+                if (_view.SystemInfo != value)
+                {
+                    _view.SystemInfo = value;
+                    OnPropertyChanged(nameof(SystemInfo));
+                }
+            }
+        }
+
+        public List<DatabaseManager_Login> LoginInfo
+        {
+            get => _view.LoginInfo;
+            set
+            {
+                if (_view.LoginInfo != value)
+                {
+                    _view.LoginInfo = value;
+                    OnPropertyChanged(nameof(LoginInfo));
+                }
+            }
+        }
+
+        public List<DatabaseManager_FASTECH_Parameter> FASTECHInfo
+        {
+            get => _view.FASTECHInfo;
+            set
+            {
+                if (_view.FASTECHInfo != value)
+                {
+                    _view.FASTECHInfo = value;
+                    OnPropertyChanged(nameof(FASTECHInfo));
+                }
+            }
+        }
+        public List<DatabaseManager_Equipment> EquipmentInfo
+        {
+            get => _view.EquipmentInfo;
+            set
+            {
+                if (_view.EquipmentInfo != value)
+                {
+                    _view.EquipmentInfo = value;
+                    OnPropertyChanged(nameof(EquipmentInfo));
+                }
+            }
+        }
+
+
+        public double DatabaseManager_CmdPos
+        {
+            get => _view.DatabaseManager_CmdPos;
+            set
+            {
+                _view.DatabaseManager_CmdPos = value;
+
+                OnPropertyChanged(nameof(DatabaseManager_CmdPos));
+            }
+        }
+
+
+
+        public string DatabaseManager_CmdPos_Str
+        {
+            get => _view._DatabaseManager_CmdPos_Str;
+            set
+            {
+                if (_view._DatabaseManager_CmdPos_Str != value)
+                {
+                    _view._DatabaseManager_CmdPos_Str = value;
+                    if (double.TryParse(_view._DatabaseManager_CmdPos_Str, NumberStyles.Any, CultureInfo.InvariantCulture, out double validValue))
+                    {
+                        DatabaseManager_CmdPos = validValue; // 올바른 double 값이면 실제 속성 업데이트
+                    }
+                    OnPropertyChanged(nameof(DatabaseManager_CmdPos_Str));
+                }
+            }
+        }
+        #endregion DatabaseManager
+
+        #region Home
+        public int Home_Available
+        {
+            get => _view.Home_Available;
+            set
+            {
+                _view.Home_Available = value;
+                OnPropertyChanged(nameof(Home_Available));
+            }
+        }
+        public bool Home_Available_Flag
+        {
+            get => _view.Home_Available_Flag;
+            set
+            {
+                _view.Home_Available_Flag = value;
+                OnPropertyChanged(nameof(Home_Available_Flag));
+            }
+        }
+        public int Home_Incubation
+        {
+            get => _view.Home_Incubation;
+            set
+            {
+                _view.Home_Incubation = value;
+                OnPropertyChanged(nameof(Home_Incubation));
+            }
+        }
+        public bool Home_Incubation_Flag
+        {
+            get => _view.Home_Incubation_Flag;
+            set
+            {
+                _view.Home_Incubation_Flag = value;
+                OnPropertyChanged(nameof(Home_Incubation_Flag));
+            }
+        }
+        public int Home_Positive
+        {
+            get => _view.Home_Positive;
+            set
+            {
+                _view.Home_Positive = value;
+                OnPropertyChanged(nameof(Home_Positive));
+            }
+        }
+        public bool Home_Positive_Flag
+        {
+            get => _view.Home_Positive_Flag;
+            set
+            {
+                _view.Home_Positive_Flag = value;
+                OnPropertyChanged(nameof(Home_Positive_Flag));
+            }
+        }
+        public int Home_Negative
+        {
+            get => _view.Home_Negative;
+            set
+            {
+                _view.Home_Negative = value;
+                OnPropertyChanged(nameof(Home_Negative));
+            }
+        }
+        public bool Home_Negative_Flag
+        {
+            get => _view.Home_Negative_Flag;
+            set
+            {
+                _view.Home_Negative_Flag = value;
+                OnPropertyChanged(nameof(Home_Negative_Flag));
+            }
+        }
+        #endregion Home
+
+        #region Config
+        public List<Class_Config> Config
+        {
+            get => _view.Config;
+            set
+            {
+                if (_view.Config != value)
+                {
+                    _view.Config = value;
+                    OnPropertyChanged(nameof(Config));
+                }
+            }
+        }
+        #endregion Config
+
+        #region Search
+        public List<DatabaseManager_Equipment> Search_List
+        {
+            get => _view.Search_List;
+            set
+            {
+                if (_view.Search_List != value)
+                {
+                    _view.Search_List = value;
+                    OnPropertyChanged(nameof(Search_List));
+                }
+            }
+        }
+        #endregion Search
+
+        #region Report
+        public List<DatabaseManager_BarcodeList> Report_List
+        {
+            get => _view.Report_List;
+            set
+            {
+                if (_view.Report_List != value)
+                {
+                    _view.Report_List = value;
+                    OnPropertyChanged(nameof(Report_List));
+                }
+            }
+        }
+        public List<DatabaseManager_EquipmentH> CSV_List
+        {
+            get => _view.CSV_List;
+            set
+            {
+                if (_view.CSV_List != value)
+                {
+                    _view.CSV_List = value;
+                    OnPropertyChanged(nameof(CSV_List));
+                }
+            }
+        }
+
+        public string Report_Barcode
+        {
+            get => _view.Report_Barcode;
+            set
+            {
+                _view.Report_Barcode = value;
+                OnPropertyChanged(nameof(Report_Barcode));
+            }
+        }
+
+
+        public int Report_AverageValue
+        {
+            get => _view.Report_AverageValue;
+            set
+            {
+                _view.Report_AverageValue = value;
+                OnPropertyChanged(nameof(Report_AverageValue));
+            }
+        }
+        public Enum_Report_Model Report_Model
+        {
+            get => _view.Report_Model;
+            set
+            {
+                _view.Report_Model = value;
+                OnPropertyChanged(nameof(Report_Model));
+            }
+        }
+
+        public DateTime Report_DatePicke_Start
+        {
+            get => _view.Report_DatePicke_Start;
+            set
+            {
+                _view.Report_DatePicke_Start = value;
+                OnPropertyChanged(nameof(Report_DatePicke_Start));
+            }
+        }
+        public DateTime Report_DatePicke_End
+        {
+            get => _view.Report_DatePicke_End;
+            set
+            {
+                _view.Report_DatePicke_End = value;
+                OnPropertyChanged(nameof(Report_DatePicke_End));
+            }
+        }
+
+
+        public DateTime MyDatePicke_Start
+        {
+            get => _view.MyDatePicke_Start;
+            set
+            {
+                _view.MyDatePicke_Start = value;
+                OnPropertyChanged(nameof(MyDatePicke_Start));
+            }
+        }
+
+        public DateTime MyDatePicke_End
+        {
+            get => _view.MyDatePicke_End;
+            set
+            {
+                if (_view.MyDatePicke_End.Date != value.Date)
+                {
+                    _view.MyDatePicke_End = new DateTime(value.Year, value.Month, value.Day, 23, 59, 59);
+                    OnPropertyChanged(nameof(MyDatePicke_End));
+                }
+            }
+        }
+        #endregion Report
+
+        #region LiveCharts
+        public List<DatabaseManager_EquipmentH> LiveCharts_List
+        {
+            get => _view.LiveCharts_List;
+            set
+            {
+                if (_view.LiveCharts_List != value)
+                {
+                    _view.LiveCharts_List = value;
+                    OnPropertyChanged(nameof(LiveCharts_List));
+                }
+            }
+        }
+
+        public Dictionary<int, Queue<(DateTime, double)>> LiveCharts_TimeSeries
+        {
+            get => _view.LiveCharts_TimeSeries;
+            set
+            {
+                if (_view.LiveCharts_TimeSeries != value)
+                {
+                    _view.LiveCharts_TimeSeries = value;
+                    OnPropertyChanged(nameof(LiveCharts_TimeSeries));
+                }
+            }
+        }
+        public ISeries[] Series
+        {
+            get => _view.Series;
+            set
+            {
+                if (_view.Series != value)
+                {
+                    _view.Series = value;
+                    OnPropertyChanged(nameof(Series));
+                }
+            }
+        }
+        public RectangularSection[] Sections
+        {
+            get => _view.Sections;
+            set
+            {
+                if (_view.Sections != value)
+                {
+                    _view.Sections = value;
+                    OnPropertyChanged(nameof(Sections));
+                }
+            }
+        }
+        public Axis[] XAxes
+        {
+            get => _view.XAxes;
+            set
+            {
+                _view.XAxes = value;
+                OnPropertyChanged(nameof(XAxes));
+            }
+        }
+
+        public Axis[] YAxes
+        {
+            get => _view.YAxes;
+            set
+            {
+                _view.YAxes = value;
+                OnPropertyChanged(nameof(YAxes));
+            }
+        }
+        public int LiveCharts_Positive_Start
+        {
+            get => _view.LiveCharts_Positive_Start;
+            set
+            {
+                _view.LiveCharts_Positive_Start = value;
+                OnPropertyChanged(nameof(LiveCharts_Positive_Start));
+            }
+        }
+        public int LiveCharts_Positive_End
+        {
+            get => _view.LiveCharts_Positive_End;
+            set
+            {
+                _view.LiveCharts_Positive_End = value;
+                OnPropertyChanged(nameof(LiveCharts_Positive_End));
+            }
+        }
+        public int LiveCharts_Positive_Index
+        {
+            get => _view.LiveCharts_Positive_Index;
+            set
+            {
+                _view.LiveCharts_Positive_Index = value;
+                OnPropertyChanged(nameof(LiveCharts_Positive_Index));
+            }
+        }
+
+        public string LiveCharts_Positive_Time
+        {
+            get => _view.LiveCharts_Positive_Time;
+            set
+            {
+                _view.LiveCharts_Positive_Time = value;
+                OnPropertyChanged(nameof(LiveCharts_Positive_Time));
+            }
+        }
+        #endregion LiveCharts
+
+
+        #region Class
+        public DatabaseManager[] databaseManagercs = new DatabaseManager[20];
+
+        #region For
+        public void ClassIni()
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                databaseManagercs[i] = new DatabaseManager();
+            }
+        }
+        #endregion For
+        #endregion Class
     }
 }

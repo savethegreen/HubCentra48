@@ -24,6 +24,66 @@
 
     <SolidColorBrush x:Key="MainWindow_SolidCColorResources_01" Color="#FF656464"/>
     <!--#endregion MainWindow-->
-    
-    
+
+    <!--#region SystemManager-->
+
+
+    <LinearGradientBrush  x:Key="SystemManager_LinearColorResources_01" EndPoint="0,0" StartPoint="1,1">
+        <GradientStop Color="Transparent" Offset="0"/>
+        <GradientStop Color="Transparent" Offset="0.5"/>
+        <GradientStop Color="Transparent" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush  x:Key="SystemManager_LinearColorResources_02" EndPoint="0,0" StartPoint="1,1">
+        <GradientStop Color="#FFAF9D9D" Offset="0"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush  x:Key="SystemManager_LinearColorResources_03" EndPoint="0,0" StartPoint="1,1">
+        <GradientStop Color="#FF04FF08" Offset="0"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush  x:Key="SystemManager_LinearColorResources_04" EndPoint="0,0" StartPoint="1,1">
+        <GradientStop Color="#FFB8C549" Offset="0"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush  x:Key="SystemManager_LinearColorResources_05" EndPoint="0,0" StartPoint="1,1">
+        <GradientStop Color="#FFFF3407" Offset="0"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush  x:Key="SystemManager_LinearColorResources_07" EndPoint="0,0" StartPoint="1,1">
+        <GradientStop Color="#FF191311" Offset="0"/>
+    </LinearGradientBrush>
+    <!--#endregion SystemManager-->
+
+    <!--#region Search-->
+
+    <LinearGradientBrush  x:Key="Search_LinearColorResources_01" EndPoint="0,0" StartPoint="1,1">
+        <GradientStop Color="Transparent" Offset="0"/>
+        <GradientStop Color="Transparent" Offset="0.5"/>
+        <GradientStop Color="Transparent" Offset="1"/>
+    </LinearGradientBrush>
+
+
+    <LinearGradientBrush  x:Key="Search_LinearColorResources_02" EndPoint="0,0" StartPoint="1,1">
+        <GradientStop Color="#FFFF3407" Offset="0"/>
+    </LinearGradientBrush>
+
+
+    <LinearGradientBrush  x:Key="Search_LinearColorResources_03" EndPoint="0,0" StartPoint="1,1">
+        <GradientStop Color="#FF04FF08" Offset="0"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush  x:Key="Search_LinearColorResources_04" EndPoint="0,0" StartPoint="1,1">
+        <GradientStop Color="#FFF3E86B" Offset="0.0"/>
+        <GradientStop Color="#FFEADD4F" Offset="0.25"/>
+        <GradientStop Color="#FFC7B922" Offset="0.5"/>
+        <GradientStop Color="#FFEADD4F" Offset="0.75"/>
+        <GradientStop Color="#FFF3E86B" Offset="1.0"/>
+    </LinearGradientBrush>
+
+
+    <SolidColorBrush x:Key="Search_SolidCColorResources_01" Color="#FFED1010"/>
+    <SolidColorBrush x:Key="Search_SolidCColorResources_02" Color="Transparent"/>
+    <!--#endregion Search-->
+
 </ResourceDictionary>

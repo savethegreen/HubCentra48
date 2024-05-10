@@ -1,0 +1,180 @@
+﻿<UserControl x:Class="HubCentra_A1.Search"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HubCentra_A1"
+             mc:Ignorable="d" 
+             d:DesignHeight="763" d:DesignWidth="962">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        <!--#region  상단-->
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="100*"/>
+                <RowDefinition Height="30*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row ="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="30*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Row="0" Grid.Column="2">
+                    <Button  Content="Search" Style="{StaticResource  Search_Button_01}" 
+                             Background="LightGray" BorderBrush="DarkGray" BorderThickness="2" 
+                             Command="{Binding ICommand_Search}" CommandParameter="0">
+                    </Button>
+                </Grid>
+            </Grid>
+        </Grid>
+        <!--#endregion 상단-->
+
+        <!--#region  하단-->
+        <Grid Grid.Row="2">
+            <ListView  x:Name="lv" SizeChanged ="lv_SizeChanged"  ItemsSource="{Binding Search_List}" Background="Transparent" Grid.Row="0"  FontSize="15" Foreground="Blue" VirtualizingStackPanel.IsVirtualizing ="True" VirtualizingStackPanel.VirtualizationMode ="Recycling" >
+
+                <ListView.ItemContainerStyle>
+                    <!-- 아이템 관련-->
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="Background" Value="{StaticResource Search_LinearColorResources_01}"/>
+
+                        <Style.Triggers >
+                            <DataTrigger  Binding="{Binding Path=Result }" Value="Positive">
+                                <Setter Property="Background" Value="{StaticResource Search_LinearColorResources_02}"></Setter>
+                            </DataTrigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="{StaticResource Search_LinearColorResources_03}"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{StaticResource Search_LinearColorResources_04}"></Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView >
+                        <GridViewColumn  x:Name="colID">
+                            <GridViewColumn.Header >
+                                <GridViewColumnHeader Background="White" Click="GridViewColumnHeader_Click"  Tag="ID">
+                                    <TextBlock Text="ID" VerticalAlignment="Center" Style="{StaticResource Search_TextBlock_01}"></TextBlock>
+                                </GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate >
+                                    <TextBlock x:Name="ID" Text="{Binding ID}" Style="{StaticResource Search_TextBlock_02}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn  x:Name="colCell">
+                            <GridViewColumn.Header >
+                                <GridViewColumnHeader Background="White" Click="GridViewColumnHeader_Click"  Tag="Cell">
+                                    <TextBlock Text="Cell" VerticalAlignment="Center" Style="{StaticResource Search_TextBlock_01}"></TextBlock>
+                                </GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate >
+                                    <TextBlock x:Name="Cell" Text="{Binding Cell}" Style="{StaticResource Search_TextBlock_02}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn  x:Name="colBarcode"  >
+                            <GridViewColumn.Header >
+                                <GridViewColumnHeader Background="White" Click="GridViewColumnHeader_Click" Tag="Barcode">
+                                    <TextBlock Text="Barcode" Style="{StaticResource Search_TextBlock_01}"></TextBlock>
+                                </GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate >
+                                    <TextBlock x:Name="Barcode" Text="{Binding Barcode}" Style="{StaticResource Search_TextBlock_02}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+
+
+                        <GridViewColumn x:Name="colLoading" Width="80" >
+                            <GridViewColumn.Header >
+                                <GridViewColumnHeader Background="White" Click="GridViewColumnHeader_Click" Tag="Loading">
+                                    <TextBlock Text="Loading" Style="{StaticResource Search_TextBlock_01}"></TextBlock>
+                                </GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate >
+                                    <TextBlock x:Name="Loading" Text="{Binding Loading}" Style="{StaticResource Search_TextBlock_02}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+
+
+                        <GridViewColumn x:Name="colLoadCell" Width="80" >
+                            <GridViewColumn.Header >
+                                <GridViewColumnHeader Background="White" Click="GridViewColumnHeader_Click" Tag="LoadCell">
+                                    <TextBlock Text="LoadCell" Style="{StaticResource Search_TextBlock_01}"></TextBlock>
+                                </GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate >
+                                    <TextBlock x:Name="LoadCell" Text="{Binding LoadCell}" Style="{StaticResource Search_TextBlock_02}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn x:Name="colIncubationTime" Width="80" >
+                            <GridViewColumn.Header >
+                                <GridViewColumnHeader Background="White" Click="GridViewColumnHeader_Click" Tag="IncubationTime">
+                                    <TextBlock Text="IncubationTime" Style="{StaticResource Search_TextBlock_01}"></TextBlock>
+                                </GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate >
+                                    <TextBlock x:Name="IncubationTime" Text="{Binding IncubationTime}" Style="{StaticResource Search_TextBlock_02}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <GridViewColumn x:Name="colResult" Width="80" >
+                            <GridViewColumn.Header >
+                                <GridViewColumnHeader Background="White" Click="GridViewColumnHeader_Click" Tag="Result">
+                                    <TextBlock Text="Result" Style="{StaticResource Search_TextBlock_01}"></TextBlock>
+                                </GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate >
+                                    <TextBlock x:Name="Result" Text="{Binding Result}" Style="{StaticResource Search_TextBlock_02}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+
+
+
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </Grid>
+        <!--#endregion 하단-->
+    </Grid>
+</UserControl>

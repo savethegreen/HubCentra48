@@ -1,0 +1,582 @@
+﻿<UserControl x:Class="HubCentra_A1.Report"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HubCentra_A1"
+             mc:Ignorable="d" 
+             d:DesignHeight="763" d:DesignWidth="962">
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="25*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="100*" />
+            <RowDefinition Height="5*" />
+        </Grid.RowDefinitions>
+
+        <!--#region  상단-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="55*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="45*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1">
+                <!--<Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="100*" />
+                </Grid.RowDefinitions>-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="40*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="100*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="40*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="100*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="100*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="100*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="100*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="100*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="1" Grid.Column="0">
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource Report_TextBlock_01}"
+                            Text="Patient Name : " />
+                    </Grid>
+                    <Grid Grid.Row="3" Grid.Column="0">
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource Report_TextBlock_01}"
+                            Text="Accession ID : " />
+                    </Grid>
+                    <Grid Grid.Row="5" Grid.Column="0">
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource Report_TextBlock_01}"
+                            Text="Bottle Barcode : " />
+                    </Grid>
+                    <Grid Grid.Row="7" Grid.Column="0">
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource Report_TextBlock_01}"
+                            Text="Model : " />
+                    </Grid>
+                    <Grid Grid.Row="9" Grid.Column="0">
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource Report_TextBlock_01}"
+                            Text="Average Value : " />
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Column="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="100*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="100*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="100*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="100*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="100*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="1" Grid.Column="0">
+                        <TextBox Style="{StaticResource Report_TextBox_01}" Text="{Binding TEST1, UpdateSourceTrigger=PropertyChanged}" />
+                    </Grid>
+                    <Grid Grid.Row="3" Grid.Column="0">
+                        <TextBox Style="{StaticResource Report_TextBox_01}" Text="{Binding TEST1, UpdateSourceTrigger=PropertyChanged}" />
+                    </Grid>
+                    <Grid Grid.Row="5" Grid.Column="0">
+                        <TextBox Style="{StaticResource Report_TextBox_01}" Text="{Binding TEST1, UpdateSourceTrigger=PropertyChanged}" />
+                    </Grid>
+                    <Grid Grid.Row="7" Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="80*" />
+                        </Grid.ColumnDefinitions>
+                        <RadioButton
+                            x:Name="raws"
+                            Grid.Column="0"
+                            Checked="RadioButton_Model"
+                            Content="raw"
+                            GroupName="Model"
+                            Style="{StaticResource Report_RadioButton_01}"
+                            Tag="0" />
+                        <RadioButton
+                            Grid.Column="1"
+                            Checked="RadioButton_Model"
+                            Content="Simple Moving Average"
+                            GroupName="Model"
+                            Style="{StaticResource Report_RadioButton_01}"
+                            Tag="1" />
+
+                    </Grid>
+                    <Grid Grid.Row="9" Grid.Column="0" >
+                        <TextBox Style="{StaticResource Report_TextBox_01}" Text="{Binding Report_AverageValue, UpdateSourceTrigger=PropertyChanged}" />
+
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Column="5" VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*" />
+                        <RowDefinition Height="100*" />
+                        <RowDefinition Height="15*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="100*" />
+                        <ColumnDefinition Width="3*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Button
+                            x:Name="search_button"
+                            Grid.Column="3"
+                            Width="100"
+                            Height="100"
+                            Background="Transparent"
+                            Command="{Binding ICommand_Report}"
+                            CommandParameter="0"
+                            Template="{StaticResource Button_Effect_01}">
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20*" />
+                                    <RowDefinition Height="70*" />
+                                    <RowDefinition Height="30*" />
+                                </Grid.RowDefinitions>
+                                <Image
+                                    Grid.Row="1"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Source="/Image/Search4.png"
+                                    Stretch="Uniform" />
+                                <TextBlock
+                                    Grid.Row="2"
+                                    Style="{StaticResource Report_TextBlock_03}"
+                                    Text="Search" />
+                            </Grid>
+                        </Button>
+                    </Grid>
+                </Grid>
+
+            </Grid>
+
+            <Grid Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="30*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="100*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*" />
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="100*" />
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="100*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        Style="{StaticResource Report_TextBlock_01}"
+                        Text="Search date" />
+
+
+
+                    <DatePicker
+                        Name="DatePicke_start"
+                        Grid.Column="2"
+                        Margin="0,2"
+                        VerticalAlignment="Center"
+                        BorderThickness="0"
+                        IsDropDownOpen="False"
+                        SelectedDate="{Binding MyDatePicke_Start}"
+                        SelectedDateFormat="Long">
+                        <DatePicker.Resources>
+                            <Style BasedOn="{StaticResource Report_Calendar_01}" TargetType="Calendar" />
+                        </DatePicker.Resources>
+                    </DatePicker>
+
+                    <TextBlock
+                        Grid.Column="3"
+                        Style="{StaticResource Report_TextBlock_02}"
+                        Text="~" />
+
+                    <DatePicker
+                        Name="DatePicke_end"
+                        Grid.Column="4"
+                        Margin="0,2"
+                        VerticalAlignment="Center"
+                        BorderThickness="0"
+                        IsDropDownOpen="False"
+                        SelectedDate="{Binding MyDatePicke_End}"
+                        SelectedDateFormat="Long">
+                        <DatePicker.Resources>
+                            <Style BasedOn="{StaticResource Report_Calendar_01}" TargetType="Calendar" />
+                        </DatePicker.Resources>
+                    </DatePicker>
+                </Grid>
+
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="100*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="100*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="100*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="100*" />
+                        <ColumnDefinition Width="5*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30*" />
+                        <RowDefinition Height="100*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="1" Grid.Column="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*" />
+                            <ColumnDefinition Width="60*" />
+                            <ColumnDefinition Width="5*" />
+                        </Grid.ColumnDefinitions>
+                        <Button
+                            Grid.Column="1"
+                            Width="80"
+                            Height="70"
+                            Background="Transparent"
+                            Command="{Binding ICommand_Report}"
+                            CommandParameter="3"
+                            Template="{StaticResource Button_Effect_01}">
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="15*" />
+                                    <RowDefinition Height="80*" />
+                                    <RowDefinition Height="30*" />
+                                </Grid.RowDefinitions>
+                                <Image
+                                    Grid.Row="1"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Source="/Image/Delete.png"
+                                    Stretch="Uniform" />
+
+                                <TextBlock
+                                    Grid.Row="2"
+                                    Style="{StaticResource Report_TextBlock_03}"
+                                    Text="Delete" />
+                            </Grid>
+                        </Button>
+                    </Grid>
+
+
+                    <Grid Grid.Row="1" Grid.Column="5">
+                        <Button
+                            Grid.Column="2"
+                            Width="80"
+                            Height="70"
+                            Background="Transparent"
+                            Command="{Binding ICommand_Report}"
+                            CommandParameter="2"
+                            Template="{StaticResource Button_Effect_01}">
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10*" />
+                                    <RowDefinition Height="50*" />
+                                    <RowDefinition Height="30*" />
+                                </Grid.RowDefinitions>
+                                <Image
+                                    Grid.Row="1"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Source="/Image/Chart2.png"
+                                    Stretch="Uniform" />
+
+                                <TextBlock
+                                    Grid.Row="2"
+                                    Style="{StaticResource Report_TextBlock_03}"
+                                    Text="Chart" />
+                            </Grid>
+                        </Button>
+                    </Grid>
+
+
+                    <Grid Grid.Row="1" Grid.Column="7">
+                        <Button
+                            Grid.Column="2"
+                            Width="80"
+                            Height="70"
+                            Background="Transparent"
+                            Command="{Binding ICommand_Report}"
+                            CommandParameter="1"
+                            Template="{StaticResource Button_Effect_01}">
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10*" />
+                                    <RowDefinition Height="50*" />
+                                    <RowDefinition Height="30*" />
+                                </Grid.RowDefinitions>
+                                <Image
+                                    Grid.Row="1"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Source="/Image/csv.png"
+                                    Stretch="Uniform" />
+
+                                <TextBlock
+                                    Grid.Row="2"
+                                    Style="{StaticResource Report_TextBlock_03}"
+                                    Text="CSV" />
+                            </Grid>
+                        </Button>
+                    </Grid>
+
+
+
+                </Grid>
+            </Grid>
+        </Grid>
+        <!--#endregion 상단-->
+
+        <!--#region  하단-->
+        <Grid Grid.Row="4">
+            <ListView
+                x:Name="lv"
+                Grid.Row="0"
+                Background="Transparent"
+                FontSize="15"
+                Foreground="Blue"
+                ItemsSource="{Binding Report_List}"
+                SelectionChanged="lv_SelectionChanged"
+                SizeChanged="lv_SizeChanged"
+                VirtualizingStackPanel.IsVirtualizing="True"
+                VirtualizingStackPanel.VirtualizationMode="Recycling">
+
+                <ListView.ItemContainerStyle>
+                    <!--  아이템 관련  -->
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="Background" Value="{StaticResource Search_LinearColorResources_01}" />
+
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=Result}" Value="Positive">
+                                <Setter Property="Background" Value="{StaticResource Search_LinearColorResources_02}" />
+                            </DataTrigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="{StaticResource Search_LinearColorResources_03}" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{StaticResource Search_LinearColorResources_04}" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn x:Name="colID">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Background="White"
+                                    Click="GridViewColumnHeader_Click"
+                                    Tag="ID">
+                                    <TextBlock
+                                        VerticalAlignment="Center"
+                                        Style="{StaticResource Search_TextBlock_01}"
+                                        Text="ID" />
+                                </GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        x:Name="ID"
+                                        Style="{StaticResource Search_TextBlock_02}"
+                                        Text="{Binding ID}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <GridViewColumn x:Name="colBarcode">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Background="White"
+                                    Click="GridViewColumnHeader_Click"
+                                    Tag="Barcode">
+                                    <TextBlock Style="{StaticResource Search_TextBlock_01}" Text="Barcode" />
+                                </GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        x:Name="Barcode"
+                                        Style="{StaticResource Search_TextBlock_02}"
+                                        Text="{Binding Barcode}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <GridViewColumn x:Name="colLoadCell" Width="80">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Background="White"
+                                    Click="GridViewColumnHeader_Click"
+                                    Tag="LoadCell">
+                                    <TextBlock Style="{StaticResource Search_TextBlock_01}" Text="LoadCell" />
+                                </GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        x:Name="LoadCell"
+                                        Style="{StaticResource Search_TextBlock_02}"
+                                        Text="{Binding LoadCell}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <GridViewColumn x:Name="colLoading" Width="80">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Background="White"
+                                    Click="GridViewColumnHeader_Click"
+                                    Tag="Loading">
+                                    <TextBlock Style="{StaticResource Search_TextBlock_01}" Text="Loading" />
+                                </GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        x:Name="Loading"
+                                        Style="{StaticResource Search_TextBlock_02}"
+                                        Text="{Binding Loading}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+
+
+                        <GridViewColumn x:Name="colUnloading" Width="80">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Background="White"
+                                    Click="GridViewColumnHeader_Click"
+                                    Tag="Unloading">
+                                    <TextBlock Style="{StaticResource Search_TextBlock_01}" Text="Unloading" />
+                                </GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        x:Name="Unloading"
+                                        Style="{StaticResource Search_TextBlock_02}"
+                                        Text="{Binding Unloading}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn x:Name="colIncubationTime" Width="80">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Background="White"
+                                    Click="GridViewColumnHeader_Click"
+                                    Tag="IncubationTime">
+                                    <TextBlock Style="{StaticResource Search_TextBlock_01}" Text="IncubationTime" />
+                                </GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        x:Name="IncubationTime"
+                                        Style="{StaticResource Search_TextBlock_02}"
+                                        Text="{Binding IncubationTime}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <GridViewColumn x:Name="colResult" Width="80">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Background="White"
+                                    Click="GridViewColumnHeader_Click"
+                                    Tag="Result">
+                                    <TextBlock Style="{StaticResource Search_TextBlock_01}" Text="Result" />
+                                </GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        x:Name="Result"
+                                        Style="{StaticResource Search_TextBlock_02}"
+                                        Text="{Binding Result}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <GridViewColumn x:Name="colPositiveTime" Width="80">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Background="White"
+                                    Click="GridViewColumnHeader_Click"
+                                    Tag="PositiveTime">
+                                    <TextBlock Style="{StaticResource Search_TextBlock_01}" Text="PositiveTime" />
+                                </GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        x:Name="PositiveTime"
+                                        Style="{StaticResource Search_TextBlock_02}"
+                                        Text="{Binding PositiveTime}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </Grid>
+        <!--#endregion 하단-->
+    </Grid>
+</UserControl>

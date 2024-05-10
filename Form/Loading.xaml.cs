@@ -75,7 +75,6 @@ namespace HubCentra_A1
         }
         private void Timer_Progress_Tick(object sender, EventArgs e)
         {
-            _viewModel.Loading_formLoadingProgress = 100;
             ProgressBar.Value = _viewModel.Loading_formLoadingProgress;
             if (_viewModel.Loading_formLoadingProgress == 100)
             {
