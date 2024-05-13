@@ -78,7 +78,7 @@ namespace HubCentra_A1
             MainWindow_select_Equipment = 2,
             MainWindow_select_Equipment_Search = 3,
             MainWindow_UpdateFASTECHInfo_int = 4,
-            MainWindow_UpdateConfig_int = 5,
+            MainWindow_UpdateConfig = 5,
             MainWindow_Insert_EquipmentH = 6,
             MainWindow_Result = 7,
             MainWindow_Update_ETC = 8,
@@ -87,9 +87,10 @@ namespace HubCentra_A1
         #endregion DatabaseManager
 
         #region Config
-        public enum EnumM_Config_ButtonEvent
+        public enum Enum_Config_ButtonEvent
         {
             Temp = 0,
+            doorOpenAlarmTrigger = 1,
             MaximumTime = 2,
             UseBuzzer = 3,
             Positive_Wait = 4,

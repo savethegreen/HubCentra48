@@ -124,3 +124,7 @@ D:\HubCentra_A1\obj\Debug\net7.0-windows\refint\HubCentra_A1.dll
 D:\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.pdb
 D:\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.genruntimeconfig.cache
 D:\HubCentra_A1\obj\Debug\net7.0-windows\ref\HubCentra_A1.dll
+D:\HubCentra_A1\obj\Debug\net7.0-windows\Form\Config.g.cs
+D:\HubCentra_A1\obj\Debug\net7.0-windows\Form\Config.baml
+D:\HubCentra_A1\obj\Debug\net7.0-windows\Form\Calculator.g.cs
+D:\HubCentra_A1\obj\Debug\net7.0-windows\Form\Calculator.baml

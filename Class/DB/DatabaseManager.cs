@@ -258,6 +258,7 @@ namespace HubCentra_A1
            $"CREATE TABLE {tableName} (" +
            "ID INT PRIMARY KEY, " +
            "Temp FLOAT NULL, " +
+           "doorOpenAlarmTrigger INT NULL, " +
            "LoadCellMin FLOAT NULL, " +
            "LoadCellMax FLOAT NULL, " +
            "MaximumTime INT NULL, " +
@@ -275,20 +276,19 @@ namespace HubCentra_A1
            "Spare2 VARCHAR(255) NULL, " +
            "Spare3 VARCHAR(255) NULL, " +
            "Spare4 VARCHAR(255) NULL, " +
-           "Spare5 VARCHAR(255) NULL)", // Change data type to BIT for isActive
+           "Spare5 VARCHAR(255) NULL)", 
            connection))
                 {
                     command.ExecuteNonQuery();
                 }
-
-                // Populate the 'id' column with values from 1 to 84
                 using (SqlCommand populateCommand = new SqlCommand(
-                    $"INSERT INTO {tableName} (ID, Temp, LoadCellMin, LoadCellMax, MaximumTime,  UseBuzzer, Positive_Wait, Positive_Low, Positive_High, Analysis_Time_Range, Analysis_Intervals, Threshold, BottleExistenceRange, DataStorageSave, TrashCanFillLevel, Spare1, Spare2, Spare3, Spare4, Spare5)" +
-                    $" VALUES (@ID, @Temp, @LoadCellMin, @LoadCellMax, @MaximumTime,  @UseBuzzer, @Positive_Wait, @Positive_Low, @Positive_High, @Analysis_Time_Range, @Analysis_Intervals, @Threshold, @BottleExistenceRange, @DataStorageSave, @TrashCanFillLevel, @Spare1, @Spare2, @Spare3, @Spare4, @Spare5)",
+                    $"INSERT INTO {tableName} (ID, Temp, doorOpenAlarmTrigger, LoadCellMin, LoadCellMax, MaximumTime,  UseBuzzer, Positive_Wait, Positive_Low, Positive_High, Analysis_Time_Range, Analysis_Intervals, Threshold, BottleExistenceRange, DataStorageSave, TrashCanFillLevel, Spare1, Spare2, Spare3, Spare4, Spare5)" +
+                    $" VALUES (@ID, @Temp, @doorOpenAlarmTrigger, @LoadCellMin, @LoadCellMax, @MaximumTime,  @UseBuzzer, @Positive_Wait, @Positive_Low, @Positive_High, @Analysis_Time_Range, @Analysis_Intervals, @Threshold, @BottleExistenceRange, @DataStorageSave, @TrashCanFillLevel, @Spare1, @Spare2, @Spare3, @Spare4, @Spare5)",
                     connection))
                 {
                     populateCommand.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int));
                     populateCommand.Parameters.Add(new SqlParameter("@Temp", SqlDbType.Float));
+                    populateCommand.Parameters.Add(new SqlParameter("@doorOpenAlarmTrigger", SqlDbType.Int));
                     populateCommand.Parameters.Add(new SqlParameter("@LoadCellMin", SqlDbType.Float));
                     populateCommand.Parameters.Add(new SqlParameter("@LoadCellMax", SqlDbType.Float));
                     populateCommand.Parameters.Add(new SqlParameter("@MaximumTime", SqlDbType.Int));
@@ -315,6 +315,7 @@ namespace HubCentra_A1
                     {
                         populateCommand.Parameters["@ID"].Value = i;
                         populateCommand.Parameters["@Temp"].Value = 36.5;
+                        populateCommand.Parameters["@doorOpenAlarmTrigger"].Value = 10;
                         populateCommand.Parameters["@LoadCellMin"].Value = 20;
                         populateCommand.Parameters["@LoadCellMax"].Value = 200;
                         populateCommand.Parameters["@MaximumTime"].Value = 10;
@@ -961,6 +962,7 @@ namespace HubCentra_A1
                                 {
                                     ID = Convert.ToInt32(reader["ID"]),
                                     Temp = Convert.ToDouble(reader["Temp"]),
+                                    doorOpenAlarmTrigger = Convert.ToInt32(reader["doorOpenAlarmTrigger"]),
                                     LoadCellMin = Convert.ToDouble(reader["LoadCellMin"]),
                                     LoadCellMax = Convert.ToDouble(reader["LoadCellMax"]),
                                     MaximumTime = Convert.ToInt32(reader["MaximumTime"]),
@@ -1596,6 +1598,7 @@ namespace HubCentra_A1
                         using (var command = new SqlCommand($"UPDATE {tableName} SET " +
                                                             "Temp = @Temp, " +
                                                             "MaximumTime = @MaximumTime, " +
+                                                            "doorOpenAlarmTrigger = @doorOpenAlarmTrigger, " +                                                          
                                                             "LoadCellMin = @LoadCellMin, " +
                                                             "LoadCellMax = @LoadCellMax, " +
                                                             "UseBuzzer = @UseBuzzer, " +
@@ -1618,6 +1621,7 @@ namespace HubCentra_A1
                         {
                             command.Parameters.AddWithValue("@ID", item.ID);
                             command.Parameters.AddWithValue("@Temp", item.Temp);
+                            command.Parameters.AddWithValue("@doorOpenAlarmTrigger", item.doorOpenAlarmTrigger);
                             command.Parameters.AddWithValue("@MaximumTime", item.MaximumTime);
                             command.Parameters.AddWithValue("@LoadCellMin", item.LoadCellMin);
                             command.Parameters.AddWithValue("@LoadCellMax", item.LoadCellMax);

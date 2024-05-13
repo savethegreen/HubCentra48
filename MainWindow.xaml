@@ -220,6 +220,19 @@
                             </local:Report.Style>
                         </local:Report>
 
+                        <local:Config x:Name="ConfigF">
+                            <local:Config.Style>
+                                <Style TargetType="local:Config">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding MainWindow_ButtonFlag}" Value="3">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </local:Config.Style>
+                        </local:Config>
+
                         <local:System_1 x:Name="System_1F">
                             <local:System_1.Style>
                                 <Style TargetType="local:System_1">

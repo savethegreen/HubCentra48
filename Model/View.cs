@@ -125,6 +125,12 @@ namespace HubCentra_A1.Model
         public string LiveCharts_Positive_Time { get; set; } = "";
         #endregion LiveCharts
 
+
+        #region Calculator
+        public string Calculator_DisplayTextBlock { get; set; } = "";
+        #endregion  Calculator
+
+
         #region Class
         #region DatabaseManager_System
         public class DatabaseManager_System : INotifyPropertyChanged
@@ -1800,6 +1806,7 @@ namespace HubCentra_A1.Model
             }
             public int _ID;
             public double _Temp;
+            public int _doorOpenAlarmTrigger;
             public double _LoadCellMin;
             public double _LoadCellMax;
             public int _MaximumTime;
@@ -1843,6 +1850,20 @@ namespace HubCentra_A1.Model
                     }
                 }
             }
+            public int doorOpenAlarmTrigger
+            {
+                get => _doorOpenAlarmTrigger;
+                set
+                {
+                    if (_doorOpenAlarmTrigger != value)
+                    {
+                        _doorOpenAlarmTrigger = value;
+                        OnPropertyChanged(nameof(doorOpenAlarmTrigger));
+                    }
+                }
+            }
+
+            
             public double LoadCellMin
             {
                 get => _LoadCellMin;

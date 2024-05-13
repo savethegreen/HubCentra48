@@ -241,6 +241,26 @@
     </Style>
     <!--#endregion SystemManager-->
 
+    <!--#region Config-->
+    <Style x:Key="Config_TextBlock_01" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0,0,0,0"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="Config_TextBlock_02" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0,0,0,0"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    <!--#endregion Config-->
+
     <!--#region Search-->
     <Style x:Key="Search_TextBlock_01" TargetType="TextBlock">
         <Setter Property="FontSize" Value="12"/>
@@ -308,6 +328,16 @@
 
     <!--#endregion LiveCharts-->
 
+    <!--#region Calculator-->
+    <Style x:Key="Calculator_TextBlock_01" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="50"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0,0,0,0"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    <!--#endregion Calculator-->
     <!--#region MainWindow-->
     <!--#endregion MainWindow-->
 

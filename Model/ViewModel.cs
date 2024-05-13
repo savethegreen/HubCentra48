@@ -144,6 +144,26 @@ namespace HubCentra_A1.Model
             ViewModelDataTransferEvent_Report?.Invoke(DataTransfer);
         }
         #endregion ViewModel->Report
+
+        #region ViewModel->Config
+        private ICommand _ICommand_Config;
+        public ICommand ICommand_Config => _ICommand_Config ??= new RelayCommand(Command_Config_Click);
+        private void Command_Config_Click(object parameter)
+        {
+            if (parameter is string paramString && int.TryParse(paramString, out int intValue))
+            {
+                DataTransferEvent_Config((Enum_Config_ButtonEvent)intValue);
+            }
+        }
+
+        public delegate void ViewModelEventHandler_Config(Enum_Config_ButtonEvent DataTransfer);
+        public event ViewModelEventHandler_Config ViewModelDataTransferEvent_Config;
+        public void DataTransferEvent_Config(Enum_Config_ButtonEvent DataTransfer)
+        {
+
+            ViewModelDataTransferEvent_Config?.Invoke(DataTransfer);
+        }
+        #endregion ViewModel->Config
         #endregion Command
 
         #region Common
@@ -760,6 +780,18 @@ namespace HubCentra_A1.Model
         }
         #endregion LiveCharts
 
+        #region Calculator
+
+        public string Calculator_DisplayTextBlock
+        {
+            get => _view.Calculator_DisplayTextBlock;
+            set
+            {
+                _view.Calculator_DisplayTextBlock = value;
+                OnPropertyChanged(nameof(Calculator_DisplayTextBlock));
+            }
+        }
+        #endregion Calculator
 
         #region Class
         public DatabaseManager[] databaseManagercs = new DatabaseManager[20];

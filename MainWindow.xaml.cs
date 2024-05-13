@@ -67,8 +67,10 @@ namespace HubCentra_A1
         #region ViewModel
         public void ViewModel()
         {
+            HomeF.ViewModel(_viewModel);
             SearchF.ViewModel(_viewModel);
             ReportF.ViewModel(_viewModel);
+            ConfigF.ViewModel(_viewModel);
             System_1F.ViewModel(_viewModel);
 
         }
@@ -81,7 +83,7 @@ namespace HubCentra_A1
             _viewModel.ViewModelDataTransferEvent_Login += ViewModel_Login_ButtonEvent_TransferEvent;
             _viewModel.ViewModelDataTransferEvent_Search += ViewModel_Search_ButtonEvent_TransferEvent;
             _viewModel.ViewModelDataTransferEvent_Report += ViewModel_Report_ButtonEvent_TransferEvent;
-
+            _viewModel.ViewModelDataTransferEvent_Config += ViewModel_Config_ButtonEvent_TransferEvent;
 
         }
         #endregion Event
@@ -185,6 +187,54 @@ namespace HubCentra_A1
             }
         }
         #endregion Report
+
+        #region Config
+        private void ViewModel_Config_ButtonEvent_TransferEvent(Enum_Config_ButtonEvent DataTransfer)
+        {
+            switch (DataTransfer)
+            {
+                case Enum_Config_ButtonEvent.Temp:
+                    UpdateConfig_double(DataTransfer, _viewModel.Config[0].Temp);
+                    break;
+                case Enum_Config_ButtonEvent.doorOpenAlarmTrigger:
+                    UpdateConfig_int(DataTransfer, _viewModel.Config[0].doorOpenAlarmTrigger);
+                    break;
+                case Enum_Config_ButtonEvent.MaximumTime:
+                    UpdateConfig_int(DataTransfer, _viewModel.Config[0].MaximumTime);
+                    break;
+                case Enum_Config_ButtonEvent.UseBuzzer:
+                    UpdateConfig_bool(DataTransfer, _viewModel.Config[0].UseBuzzer);
+                    break;
+                case Enum_Config_ButtonEvent.Positive_Wait:
+                    UpdateConfig_int(DataTransfer, _viewModel.Config[0].Positive_Wait);
+                    break;
+                case Enum_Config_ButtonEvent.Positive_Low:
+                    UpdateConfig_int(DataTransfer, _viewModel.Config[0].Positive_Low);
+                    break;
+                case Enum_Config_ButtonEvent.Positive_High:
+                    UpdateConfig_int(DataTransfer, _viewModel.Config[0].Positive_High);
+                    break;
+                case Enum_Config_ButtonEvent.Analysis_Time_Range:
+                    UpdateConfig_int(DataTransfer, _viewModel.Config[0].Analysis_Time_Range);
+                    break;
+                case Enum_Config_ButtonEvent.Analysis_Intervals:
+                    UpdateConfig_int(DataTransfer, _viewModel.Config[0].Analysis_Intervals);
+                    break;
+                case Enum_Config_ButtonEvent.Threshold:
+                    UpdateConfig_double(DataTransfer, _viewModel.Config[0].Threshold);
+                    break;
+                case Enum_Config_ButtonEvent.BottleExistenceRange:
+                    UpdateConfig_int(DataTransfer, _viewModel.Config[0].BottleExistenceRange);
+                    break;
+                case Enum_Config_ButtonEvent.DataStorageSave:
+                    UpdateConfig_int(DataTransfer, _viewModel.Config[0].DataStorageSave);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+        #endregion Config
         #endregion ButtonEvent
 
         #region Thread
@@ -462,11 +512,7 @@ namespace HubCentra_A1
                 _viewModel.Report_List = select_Equipment;
                 DateTime date = _viewModel.MyDatePicke_Start;
                 DateTime date2 = _viewModel.MyDatePicke_End;
-                DateTime now = DateTime.Now; // Current date and time
-                DateTime previousMonth = now.AddMonths(-1); // Subtract 1 month
-                List<DatabaseManager_EquipmentH> Equipment = new List<DatabaseManager_EquipmentH>();
-                Equipment.Add(new DatabaseManager_EquipmentH { ID = 5, Barcode = "TEST1", Qrcode = "", PcbADC = 112, PcbLED = 40, Temperature = 32.3, CreDate = now });
-                _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_select_Equipment_Search].InsertEquipmentH(previousMonth, Equipment);
+    
             }
             catch (Exception ex)
             {
@@ -622,6 +668,105 @@ namespace HubCentra_A1
             }
         }
         #endregion Report
+
+        #region Config
+        private void UpdateConfig_int(Enum_Config_ButtonEvent DataTransfer, double transferValue)
+        {
+            Calculator calculator = new Calculator(_viewModel, transferValue.ToString());
+            calculator.ShowDialog();
+            if (calculator.DialogResult.HasValue && calculator.DialogResult.Value)
+            {
+                if (int.TryParse(_viewModel.Calculator_DisplayTextBlock, out int value))
+                {
+                    switch (DataTransfer)
+                    {
+                        case Enum_Config_ButtonEvent.doorOpenAlarmTrigger:
+                            _viewModel.Config[0].doorOpenAlarmTrigger = value;
+                            break;
+                        case Enum_Config_ButtonEvent.Positive_Wait:
+                            _viewModel.Config[0].Positive_Wait = value;
+                            break;
+                        case Enum_Config_ButtonEvent.Positive_Low:
+                            _viewModel.Config[0].Positive_Low = value;
+                            break;
+                        case Enum_Config_ButtonEvent.Positive_High:
+                            _viewModel.Config[0].Positive_High = value;
+                            break;
+                        case Enum_Config_ButtonEvent.Analysis_Time_Range:
+                            _viewModel.Config[0].Analysis_Time_Range = value;
+                            break;
+                        case Enum_Config_ButtonEvent.Analysis_Intervals:
+                            _viewModel.Config[0].Analysis_Intervals = value;
+                            break;
+                        case Enum_Config_ButtonEvent.BottleExistenceRange:
+                            _viewModel.Config[0].BottleExistenceRange = value;
+                            break;
+                        case Enum_Config_ButtonEvent.DataStorageSave:
+                            _viewModel.Config[0].DataStorageSave = value;
+                            break;
+                        case Enum_Config_ButtonEvent.TrashCanFillLevel:
+                            _viewModel.Config[0].TrashCanFillLevel = value;
+                            break;
+                        case Enum_Config_ButtonEvent.MaximumTime:
+                            _viewModel.Config[0].MaximumTime = value;
+                            break;
+                    }
+                    _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].UpdateConfig(_viewModel.Config);
+                    var select_ConfigInfo = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].Select_Config();
+                    _viewModel.Config = new List<Class_Config>(select_ConfigInfo);
+  
+                }
+                else
+                {
+                }
+            }
+        }
+        private void UpdateConfig_double(Enum_Config_ButtonEvent DataTransfer, double transferValue)
+        {
+            Calculator calculator = new Calculator(_viewModel, transferValue.ToString());
+            calculator.ShowDialog();
+            if (calculator.DialogResult.HasValue && calculator.DialogResult.Value)
+            {
+                if (double.TryParse(_viewModel.Calculator_DisplayTextBlock, out double value))
+                {
+                    switch (DataTransfer)
+                    {
+                        case Enum_Config_ButtonEvent.Temp:
+                            _viewModel.Config[0].Temp = value;
+                            break;
+                        case Enum_Config_ButtonEvent.LoadCellMin:
+                            _viewModel.Config[0].LoadCellMin = value;
+                            break;
+                        case Enum_Config_ButtonEvent.LoadCellMax:
+                            _viewModel.Config[0].LoadCellMax = value;
+                            break;
+                        case Enum_Config_ButtonEvent.Threshold:
+                            _viewModel.Config[0].Threshold = value;
+                            break;
+                    }
+                    _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].UpdateConfig(_viewModel.Config);
+                    var select_ConfigInfo = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].Select_Config();
+                    _viewModel.Config = new List<Class_Config>(select_ConfigInfo);
+                }
+                else
+                {
+                }
+            }
+        }
+        private void UpdateConfig_bool(Enum_Config_ButtonEvent DataTransfer, bool transferValue)
+        {
+            switch (DataTransfer)
+            {
+                case Enum_Config_ButtonEvent.UseBuzzer:
+                    _viewModel.Config[0].UseBuzzer = !transferValue;
+                    break;
+
+            }
+            _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].UpdateConfig(_viewModel.Config);
+            var select_ConfigInfo = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].Select_Config();
+            _viewModel.Config = new List<Class_Config>(select_ConfigInfo);
+        }
+        #endregion Config
 
         #region LiveCharts
         public void LiveCharts()
