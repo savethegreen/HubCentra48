@@ -128,3 +128,5 @@ D:\HubCentra_A1\obj\Debug\net7.0-windows\Form\Config.g.cs
 D:\HubCentra_A1\obj\Debug\net7.0-windows\Form\Config.baml
 D:\HubCentra_A1\obj\Debug\net7.0-windows\Form\Calculator.g.cs
 D:\HubCentra_A1\obj\Debug\net7.0-windows\Form\Calculator.baml
+D:\HubCentra_A1\obj\Debug\net7.0-windows\Form\PopStatus.g.cs
+D:\HubCentra_A1\obj\Debug\net7.0-windows\Form\PopStatus.baml

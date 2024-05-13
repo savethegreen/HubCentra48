@@ -129,5 +129,16 @@ namespace HubCentra_A1
             NLGM
         }
         #endregion Report
+
+        #region PopStatus
+
+        public enum Enum_PopStatus_ButtonEvent
+        {
+            PopStatus_Error_Index = 0,
+            PopStatus_Positive_Index = 1,
+            PopStatus_TrashCan = 2,
+            PopStatus_Positive = 3,
+        }
+        #endregion PopStatus
     }
 }

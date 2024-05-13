@@ -371,6 +371,199 @@ namespace HubCentra_A1.Model
         public PCB CurrentPCB => PCB_Data.Count > testint ? PCB_Data[testint] : null;
         #endregion PCB
 
+        #region Temperature
+        public SerialPort Temperature_SerialPort
+        {
+            get => _view.Temperature_SerialPort;
+            set
+            {
+                _view.Temperature_SerialPort = value;
+                OnPropertyChanged(nameof(Temperature_SerialPort));
+            }
+        }
+        public double Temperature_ProcessValue
+        {
+            get => _view.Temperature_ProcessValue;
+            set
+            {
+                _view.Temperature_ProcessValue = value;
+                OnPropertyChanged(nameof(Temperature_ProcessValue));
+            }
+        }
+        public bool Temperature_Connection
+        {
+            get => _view.Temperature_Connection;
+            set
+            {
+                _view.Temperature_Connection = value;
+                OnPropertyChanged(nameof(Temperature_Connection));
+            }
+        }
+        #endregion Temperature
+
+        #region MainEngine
+
+        public List<MainEngine_StatusList> MainEngine_Statuslist
+        {
+            get => _view.MainEngine_Statuslist;
+            set
+            {
+                if (_view.MainEngine_Statuslist != value)
+                {
+                    _view.MainEngine_Statuslist = value;
+                    OnPropertyChanged(nameof(MainEngine_Statuslist));
+                }
+            }
+        }
+
+        public ConcurrentQueue<int> ConcurrentQueue_MainEngine_Unloading_Positive
+        {
+            get => _view.ConcurrentQueue_MainEngine_Unloading_Positive;
+            set
+            {
+                if (_view.ConcurrentQueue_MainEngine_Unloading_Positive != value)
+                {
+                    _view.ConcurrentQueue_MainEngine_Unloading_Positive = value;
+                    OnPropertyChanged(nameof(ConcurrentQueue_MainEngine_Unloading_Positive));
+                }
+            }
+        }
+        public ConcurrentQueue<int> ConcurrentQueue_MainEngine_Unloading_Negative
+        {
+            get => _view.ConcurrentQueue_MainEngine_Unloading_Negative;
+            set
+            {
+                if (_view.ConcurrentQueue_MainEngine_Unloading_Negative != value)
+                {
+                    _view.ConcurrentQueue_MainEngine_Unloading_Negative = value;
+                    OnPropertyChanged(nameof(ConcurrentQueue_MainEngine_Unloading_Negative));
+                }
+            }
+        }
+        public ConcurrentQueue<int> ConcurrentQueue_MainEngine_Unloading_Incubation
+        {
+            get => _view.ConcurrentQueue_MainEngine_Unloading_Incubation;
+            set
+            {
+                if (_view.ConcurrentQueue_MainEngine_Unloading_Incubation != value)
+                {
+                    _view.ConcurrentQueue_MainEngine_Unloading_Incubation = value;
+                    OnPropertyChanged(nameof(ConcurrentQueue_MainEngine_Unloading_Incubation));
+                }
+            }
+        }
+        public int MainEngine_CurrentNum
+        {
+            get => _view.MainEngine_CurrentNum;
+            set
+            {
+                _view.MainEngine_CurrentNum = value;
+                OnPropertyChanged(nameof(MainEngine_CurrentNum));
+            }
+        }
+        public int MainEngine_index
+        {
+            get => _view.MainEngine_index;
+            set
+            {
+                _view.MainEngine_index = value;
+                OnPropertyChanged(nameof(MainEngine_index));
+            }
+        }
+
+
+        public bool MainEngine_LoadCell_Result
+        {
+            get => _view.MainEngine_LoadCell_Result;
+            set
+            {
+                _view.MainEngine_LoadCell_Result = value;
+                OnPropertyChanged(nameof(MainEngine_LoadCell_Result));
+            }
+        }
+
+        public bool MainEngine_Incubation_Result
+        {
+            get => _view.MainEngine_Incubation_Result;
+            set
+            {
+                _view.MainEngine_Incubation_Result = value;
+                OnPropertyChanged(nameof(MainEngine_Incubation_Result));
+            }
+        }
+        public bool MainEngine_EmptyEnabled
+        {
+            get => _view.MainEngine_EmptyEnabled;
+            set
+            {
+                _view.MainEngine_EmptyEnabled = value;
+                OnPropertyChanged(nameof(MainEngine_EmptyEnabled));
+            }
+        }
+
+        public string MainEngine_Result
+        {
+            get => _view.MainEngine_Result;
+            set
+            {
+                _view.MainEngine_Result = value;
+                OnPropertyChanged(nameof(MainEngine_Result));
+            }
+        }
+
+
+        public bool MainEngine_Positive_Index_Left
+        {
+            get => _view.MainEngine_Positive_Index_Left;
+            set
+            {
+                _view.MainEngine_Positive_Index_Left = value;
+                OnPropertyChanged(nameof(MainEngine_Positive_Index_Left));
+            }
+        }
+        public bool MainEngine_Positive_Index_Right
+        {
+            get => _view.MainEngine_Positive_Index_Right;
+            set
+            {
+                _view.MainEngine_Positive_Index_Right = value;
+                OnPropertyChanged(nameof(MainEngine_Positive_Index_Right));
+            }
+        }
+
+
+        public bool MainEngine_Error_Index_Left
+        {
+            get => _view.MainEngine_Error_Index_Left;
+            set
+            {
+                _view.MainEngine_Error_Index_Left = value;
+                OnPropertyChanged(nameof(MainEngine_Error_Index_Left));
+            }
+        }
+        public bool MainEngine_Error_Index_Right
+        {
+            get => _view.MainEngine_Error_Index_Right;
+            set
+            {
+                _view.MainEngine_Error_Index_Right = value;
+                OnPropertyChanged(nameof(MainEngine_Error_Index_Right));
+            }
+        }
+
+        public double MainEngine_LoadCell_Value
+        {
+            get => _view.MainEngine_LoadCell_Value;
+            set
+            {
+                _view.MainEngine_LoadCell_Value = value;
+                OnPropertyChanged(nameof(MainEngine_LoadCell_Value));
+            }
+        }
+
+
+        #endregion MainEngine
+
         #region DatabaseManager
         public bool DatabaseManager_Connection
         {
@@ -792,6 +985,130 @@ namespace HubCentra_A1.Model
             }
         }
         #endregion Calculator
+
+        #region PopStatus
+
+        public ConcurrentQueue<Tuple<string, string>> PopStatus_Positive
+        {
+            get => _view.PopStatus_Positive;
+            set
+            {
+                if (_view.PopStatus_Positive != value)
+                {
+                    _view.PopStatus_Positive = value;
+                    OnPropertyChanged(nameof(PopStatus_Positive));
+                }
+            }
+        }
+
+        public bool PopStatus_Positive_Flag
+        {
+            get => _view.PopStatus_Positive_Flag;
+            set
+            {
+                _view.PopStatus_Positive_Flag = value;
+                OnPropertyChanged(nameof(PopStatus_Positive_Flag));
+            }
+        }
+
+        public string PopStatus_Positive_Title
+        {
+            get => _view.PopStatus_Positive_Title;
+            set
+            {
+                _view.PopStatus_Positive_Title = value;
+                OnPropertyChanged(nameof(PopStatus_Positive_Title));
+            }
+        }
+
+
+        public string PopStatus_Error_Bottle_Title
+        {
+            get => _view.PopStatus_Error_Bottle_Title;
+            set
+            {
+                _view.PopStatus_Error_Bottle_Title = value;
+                OnPropertyChanged(nameof(PopStatus_Error_Bottle_Title));
+            }
+        }
+        public string PopStatus_Error_Bottle
+        {
+            get => _view.PopStatus_Error_Bottle;
+            set
+            {
+                _view.PopStatus_Error_Bottle = value;
+                OnPropertyChanged(nameof(PopStatus_Error_Bottle));
+            }
+        }
+
+
+        public bool PopStatus_Error_Bottle_Flag
+        {
+            get => _view.PopStatus_Error_Bottle_Flag;
+            set
+            {
+                _view.PopStatus_Error_Bottle_Flag = value;
+                OnPropertyChanged(nameof(PopStatus_Error_Bottle_Flag));
+            }
+        }
+
+
+        public string PopStatus_Positive_Bottle_Title
+        {
+            get => _view.PopStatus_Positive_Bottle_Title;
+            set
+            {
+                _view.PopStatus_Positive_Bottle_Title = value;
+                OnPropertyChanged(nameof(PopStatus_Positive_Bottle_Title));
+            }
+        }
+        public string PopStatus_Positive_Bottle
+        {
+            get => _view.PopStatus_Positive_Bottle;
+            set
+            {
+                _view.PopStatus_Positive_Bottle = value;
+                OnPropertyChanged(nameof(PopStatus_Positive_Bottle));
+            }
+        }
+        public bool PopStatus_Positive_Bottle_Flag
+        {
+            get => _view.PopStatus_Positive_Bottle_Flag;
+            set
+            {
+                _view.PopStatus_Positive_Bottle_Flag = value;
+                OnPropertyChanged(nameof(PopStatus_Positive_Bottle_Flag));
+            }
+        }
+
+        public string PopStatus_TrashCanAlert_Title
+        {
+            get => _view.PopStatus_TrashCanAlert_Title;
+            set
+            {
+                _view.PopStatus_TrashCanAlert_Title = value;
+                OnPropertyChanged(nameof(PopStatus_TrashCanAlert_Title));
+            }
+        }
+        public string PopStatus_TrashCanAlert
+        {
+            get => _view.PopStatus_TrashCanAlert;
+            set
+            {
+                _view.PopStatus_TrashCanAlert = value;
+                OnPropertyChanged(nameof(PopStatus_TrashCanAlert));
+            }
+        }
+        public bool PopStatus_TrashCanAlert_Flag
+        {
+            get => _view.PopStatus_TrashCanAlert_Flag;
+            set
+            {
+                _view.PopStatus_TrashCanAlert_Flag = value;
+                OnPropertyChanged(nameof(PopStatus_TrashCanAlert_Flag));
+            }
+        }
+        #endregion PopStatus
 
         #region Class
         public DatabaseManager[] databaseManagercs = new DatabaseManager[20];

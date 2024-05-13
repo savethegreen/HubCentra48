@@ -43,6 +43,9 @@
     <Compile Update="Form\LiveCharts.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Form\PopStatus.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Form\Calculator.xaml">
@@ -64,6 +67,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Form\LiveCharts.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Form\PopStatus.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Style\ButtonStyles.xaml">

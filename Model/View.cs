@@ -35,6 +35,32 @@ namespace HubCentra_A1.Model
         public Enum_MainWindow_ButtonFlag MainWindow_ButtonFlag { get; set; } =  Enum_MainWindow_ButtonFlag.Home;
         #endregion MainWindow
 
+        #region MainEngine
+        public ConcurrentQueue<int> ConcurrentQueue_MainEngine_Unloading_Positive { get; set; } = new ConcurrentQueue<int>();
+        public ConcurrentQueue<int> ConcurrentQueue_MainEngine_Unloading_Negative { get; set; } = new ConcurrentQueue<int>();
+        public ConcurrentQueue<int> ConcurrentQueue_MainEngine_Unloading_Incubation { get; set; } = new ConcurrentQueue<int>();
+
+        public List<MainEngine_StatusList> MainEngine_Statuslist { get; set; }
+
+        public int MainEngine_CurrentNum { get; set; } = 0;
+        public bool MainEngine_LoadCell_Result { get; set; } = false;
+        public bool MainEngine_Incubation_Result { get; set; } = false;
+        public bool MainEngine_EmptyEnabled { get; set; } = false;
+
+        public string MainEngine_Result { get; set; } = "Incubation";
+
+        public bool MainEngine_Positive_Index_Left { get; set; } = false;
+        public bool MainEngine_Positive_Index_Right { get; set; } = false;
+
+        public bool MainEngine_Error_Index_Left { get; set; } = false;
+        public bool MainEngine_Error_Index_Right { get; set; } = false;
+
+        public int MainEngine_index { get; set; } = 0; //Positive, Error 포지션 인덱스
+
+
+        public double MainEngine_LoadCell_Value { get; set; } = 0; //로드셀 값
+        #endregion MainEngine
+
         #region Login
         public Enum_Login Login { get; set; } = Enum_Login.OPERATOR;
         public string LoginID { get; set; } = "";
@@ -60,6 +86,12 @@ namespace HubCentra_A1.Model
         public string teststr { get; set; } = "444";
 
         #endregion PCB
+
+        #region Temperature
+        public SerialPort Temperature_SerialPort { get; set; }
+        public double Temperature_ProcessValue { get; set; } = 0;
+        public bool Temperature_Connection { get; set; } = false;
+        #endregion Temperature
 
         #region DatabaseManager
         public bool DatabaseManager_Connection { get; set; } = false;
@@ -129,6 +161,28 @@ namespace HubCentra_A1.Model
         #region Calculator
         public string Calculator_DisplayTextBlock { get; set; } = "";
         #endregion  Calculator
+
+        #region PopStatus
+        public ConcurrentQueue<Tuple<string, string>> PopStatus_Positive { get; set; } = new ConcurrentQueue<Tuple<string, string>>();
+        public bool PopStatus_Positive_Flag { get; set; } = false;
+        public string PopStatus_Positive_Title { get; set; } = "Positive 발생!!";
+
+
+
+        public string PopStatus_Error_Bottle_Title { get; set; } = "Error Bottle!!";
+        public string PopStatus_Error_Bottle { get; set; } = "Error Bottle을 제거 해주세요!!";
+        public bool PopStatus_Error_Bottle_Flag { get; set; } = false;
+
+
+        public string PopStatus_Positive_Bottle_Title { get; set; } = "Positive Bottle!!";
+        public string PopStatus_Positive_Bottle { get; set; } = "Positive Bottle을 제거 해주세요!!";
+        public bool PopStatus_Positive_Bottle_Flag { get; set; } = false;
+
+
+        public string PopStatus_TrashCanAlert_Title { get; set; } = "Trash!!";
+        public string PopStatus_TrashCanAlert { get; set; } = "휴지통을 제거 해주세요!!";
+        public bool PopStatus_TrashCanAlert_Flag { get; set; } = false;
+        #endregion PopStatus
 
 
         #region Class

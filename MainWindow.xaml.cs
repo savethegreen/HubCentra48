@@ -289,6 +289,16 @@ namespace HubCentra_A1
                         await Task.Delay(100, token);
                         break;
 
+                    case EnumMStartWorkerThreads.Insert_EquipmentH:
+                        await Insert_EquipmentH();
+                        await Task.Delay(1, token);
+                        break;
+
+                    case EnumMStartWorkerThreads.Result:
+                        await Result();
+                        await Task.Delay(300, token);
+                        break;
+
                     case EnumMStartWorkerThreads.PopStatus:
 
                         await Task.Delay(300, token);
@@ -337,8 +347,7 @@ namespace HubCentra_A1
             _viewModel.DatabaseManager_Connection = true;
         }
 
-
-
+        #region Equipment
         public void select_Equipment()
         {
             try
@@ -381,6 +390,74 @@ namespace HubCentra_A1
             }
         }
 
+        private void UpdateEquipmentAsync(int id, string result)
+        {
+            string query = "UPDATE Equipment SET Result = @Result, switched = @switched WHERE ID = @ID";
+            var parameters = new Dictionary<string, object>
+    {
+        { "@Result", result },
+        { "@switched", true },
+        { "@ID", id }
+    };
+            _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_Result].UpdateEquipment(query, parameters);
+        }
+        #endregion Equipment
+
+
+        #region EquipmentH
+        public async Task Insert_EquipmentH()
+        {
+            try
+            {
+
+                var stopwatch = Stopwatch.StartNew();
+                while (stopwatch.Elapsed.TotalSeconds < _viewModel.Config[0].DataStorageSave * 60)
+                {
+                    await Task.Delay(10);
+                }
+                var select_Equipment = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_Insert_EquipmentH].Select_Equipment_Search();
+                string updateQuery_Equipment = "UPDATE Equipment SET IncubationTime = @IncubationTime WHERE ID = @ID";
+                string updateQuery_Barcode = "UPDATE Barcode SET IncubationTime = @IncubationTime WHERE ID = @ID";
+                for (int i = 0; i < select_Equipment.Count; i++)
+                {
+                    int IncubationTime = select_Equipment[i].IncubationTime + (int)stopwatch.Elapsed.TotalSeconds;
+                    int ID = select_Equipment[i].ID;
+                    string Barcode = select_Equipment[i].Barcode;
+                    string Qrcode = select_Equipment[i].Qrcode;
+                    double PcbADC = _viewModel.PCB_Data[ID - 1].ADC;
+                    double PcbLED = _viewModel.PCB_Data[ID - 1].LED;
+                    double Temperature_ProcessValue = _viewModel.Temperature_ProcessValue;
+                    DateTime now = DateTime.Now;
+
+                    Dictionary<string, object> UpdateEquipment_parameters = new Dictionary<string, object>
+                        {
+                            { "@IncubationTime", IncubationTime },
+                            { "@ID", ID }  // 
+                        };
+                    _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_Insert_EquipmentH].UpdateEquipment(updateQuery_Equipment, UpdateEquipment_parameters);
+
+                    Dictionary<string, object> UpdateEBarcode_parameters = new Dictionary<string, object>
+                        {
+                            { "@IncubationTime", IncubationTime },
+                            { "@ID", ID }  // 
+                        };
+                    _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_Insert_EquipmentH].UpdateBarcode(updateQuery_Equipment, UpdateEquipment_parameters);
+
+
+                    List<DatabaseManager_EquipmentH> Equipment = new List<DatabaseManager_EquipmentH>();
+                    Equipment.Add(new DatabaseManager_EquipmentH { ID = ID, Barcode = Barcode, Qrcode = Qrcode, PcbADC = PcbADC, PcbLED = PcbLED, Temperature = Temperature_ProcessValue, CreDate = now });
+                    _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_Insert_EquipmentH].InsertEquipmentH(now, Equipment);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        #endregion EquipmentH
+
         #region Search
         public void select_Equipment_Search()
         {
@@ -398,6 +475,76 @@ namespace HubCentra_A1
         }
         #endregion Search
         #endregion DatabaseManager
+
+        #region Result
+        public async Task Result()
+        {
+            try
+            {
+                var filteredItems = _viewModel.EquipmentInfo.Where(e => e.isActive && e.isEnable && !e.Switched).ToList();
+                int Positive_Low = _viewModel.Config[0].Positive_Low;
+                int Positive_High = _viewModel.Config[0].Positive_High;
+                int MaximumTime = _viewModel.Config[0].MaximumTime * 60;
+
+                foreach (var item in filteredItems)
+                {
+                    double adc = _viewModel.PCB_Data[item.ID - 1].ADC;
+                    double IncubationTime = item.IncubationTime;
+                    string result = DetermineResult(adc, IncubationTime, Positive_Low, Positive_High, MaximumTime);
+
+                    if (!string.IsNullOrEmpty(result))
+                    {
+                        UpdateEquipmentAsync(item.ID, result);
+                        Enum_MainEngine_Statuslist status = result == "Positive" ? Enum_MainEngine_Statuslist.Positive : Enum_MainEngine_Statuslist.Negative;
+                        _viewModel.MainEngine_Statuslist.Add(new MainEngine_StatusList { ID = item.ID, Result = status });
+                        if (status == Enum_MainEngine_Statuslist.Positive)
+                        {
+
+                            DateTime now = DateTime.Now;
+                            string barcodeID = _viewModel.EquipmentInfo[item.ID - 1].Barcode;
+                            string UpdateBarcode_Query = "UPDATE Barcode SET " +
+                             "PositiveTime = @PositiveTime " +
+                             "WHERE Barcode = @Barcode";
+
+                            Dictionary<string, object> UpdateBarcode_parameters = new Dictionary<string, object>
+                        {
+                            { "@PositiveTime", now},
+                            { "@Barcode", barcodeID },
+                        };
+                            _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_Result].UpdateBarcode(UpdateBarcode_Query, UpdateBarcode_parameters);
+
+                            int cellsPerRack = 28;
+                            int ID = item.ID;
+                            string selectedId = _viewModel.SystemInfo[0].PCB_ID1;
+                            string rackNumber = ((ID - 1) / cellsPerRack + 1).ToString();
+                            string positionInRack = ((ID - 1) % cellsPerRack + 1).ToString();
+
+                            _viewModel.PopStatus_Positive.Enqueue(new Tuple<string, string>(rackNumber, positionInRack));
+
+                        }
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private string DetermineResult(double adc, double incubationTime, int positiveLow, int positiveHigh, int maximumTime)
+        {
+            if (adc >= positiveLow && adc <= positiveHigh)
+            {
+                return "Positive";
+            }
+            else if (incubationTime >= maximumTime)
+            {
+                return "Negative";
+            }
+            return "";
+        }
+        #endregion  Result
 
         #region Login  
         Login login;
