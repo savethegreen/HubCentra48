@@ -371,6 +371,37 @@ namespace HubCentra_A1.Model
         public PCB CurrentPCB => PCB_Data.Count > testint ? PCB_Data[testint] : null;
         #endregion PCB
 
+        #region Barcode
+        public SerialPort Barcode_SerialPort
+        {
+            get => _view.Barcode_SerialPort;
+            set
+            {
+                _view.Barcode_SerialPort = value;
+                OnPropertyChanged(nameof(Barcode_SerialPort));
+            }
+        }
+        public string Barcode_ID
+        {
+            get => _view.Barcode_ID;
+            set
+            {
+                _view.Barcode_ID = value;
+                OnPropertyChanged(nameof(Barcode_ID));
+            }
+        }
+        public bool Barcode_Connection
+        {
+            get => _view.Barcode_Connection;
+            set
+            {
+                _view.Barcode_Connection = value;
+                OnPropertyChanged(nameof(Barcode_Connection));
+            }
+        }
+        #endregion Barcode
+
+
         #region Temperature
         public SerialPort Temperature_SerialPort
         {

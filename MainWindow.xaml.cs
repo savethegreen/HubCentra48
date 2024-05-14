@@ -294,6 +294,24 @@ namespace HubCentra_A1
                         await Task.Delay(1, token);
                         break;
 
+                    case EnumMStartWorkerThreads.Barcode:
+                        if (_viewModel.Barcode_Connection)
+                        {
+                            await Barcode_WriteAsync();
+                        }
+                        await Task.Delay(100, token);
+                        break;
+
+                    case EnumMStartWorkerThreads.Temperature:
+                        if (_viewModel.Temperature_Connection)
+                        {
+                            await Task.Delay(100, token);
+                            await Temperature_WriteAsync();
+                        }
+                        await Task.Delay(10, token);
+                        break;
+
+
                     case EnumMStartWorkerThreads.Result:
                         await Result();
                         await Task.Delay(300, token);
@@ -1429,5 +1447,172 @@ namespace HubCentra_A1
         }
 
         #endregion PCB
+
+        #region Barcode
+        public async Task Barcode_WriteAsync()
+        {
+            ClearSerialPortBuffer_Barcode(_viewModel.Barcode_SerialPort);
+            await Barcode_ReadAsync(2000, (Barcodedata) => _viewModel.Barcode_ID = Barcodedata);
+
+        }
+        public async Task Barcode_ReadAsync(double timeout, Action<string> Barcodedata)
+        {
+            try
+            {
+                if (!_viewModel.Barcode_SerialPort.IsOpen)
+                    return;
+
+
+                var stopwatch = Stopwatch.StartNew();
+                while (stopwatch.ElapsedMilliseconds < timeout)
+                {
+                    if (_viewModel.Barcode_SerialPort.BytesToRead > 10)
+                    {
+                        byte[] response = new byte[_viewModel.Barcode_SerialPort.BytesToRead];
+                        _viewModel.Barcode_SerialPort.Read(response, 0, response.Length);
+                        string asciiResponse = Encoding.ASCII.GetString(response);
+                        string[] barcodes = asciiResponse.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                        foreach (var barcode in barcodes)
+                        {
+                         
+                            if (barcode.Length > 6) 
+                            {
+                                Barcodedata(barcode);                       
+                                ClearSerialPortBuffer_Barcode(_viewModel.Barcode_SerialPort);
+                                return;
+                            }
+                        }
+
+                        return;
+                    }
+                    await Task.Delay(1);
+                }
+      
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void ClearSerialPortBuffer_Barcode(SerialPort serialPort)
+        {
+            if (serialPort.IsOpen)
+            {
+                serialPort.DiscardInBuffer();
+                serialPort.DiscardOutBuffer();
+            }
+        }
+        #endregion Barcode
+
+        #region Temperature
+        public async Task Temperature_WriteAsync()
+        {
+
+            int sv = (int)(_viewModel.Config[0].Temp * 10);
+            byte[] PV_Temp = new byte[8] { 0x01, 0x04, 0x03, 0xE8, 0x00, 0x01, 0xB1, 0xBA };
+            byte[] SV_Temp = GenerateFrame(sv, 1);
+            await Temperature_ReadAsync(PV_Temp, SV_Temp, 500, (temp) => _viewModel.Temperature_ProcessValue = temp);
+            //await LoadCell_ReadAsync("R5", 500, (LoadCelldata) => _viewModel.LoadCell_ProcessValue = LoadCelldata);
+
+        }
+        public async Task Temperature_ReadAsync(byte[] PV, byte[] SV, double timeout, Action<double> updateTempValue)
+        {
+            try
+            {
+                if (!_viewModel.Temperature_SerialPort.IsOpen)
+                    throw new InvalidOperationException("Serial port is not open.");
+
+                _viewModel.Temperature_SerialPort.Write(PV, 0, PV.Length);
+
+                var stopwatch = Stopwatch.StartNew();
+                while (stopwatch.ElapsedMilliseconds < timeout)
+                {
+                    if (_viewModel.Temperature_SerialPort.BytesToRead > 5)
+                    {
+                        byte[] response = new byte[_viewModel.Temperature_SerialPort.BytesToRead];
+                        _viewModel.Temperature_SerialPort.Read(response, 0, response.Length);
+
+                        if (response.Length >= 7 && response[1] == 4 && response[2] == 2)
+                        {
+                            int temperatureRaw = (response[3] << 8) | response[4];
+                            double temperature = temperatureRaw / 10.0;
+                            updateTempValue(temperature);
+                            break;
+                        }
+                    }
+                    await Task.Delay(10); 
+                }
+
+
+                _viewModel.Temperature_SerialPort.Write(SV, 0, SV.Length);
+                var stopwatch2 = Stopwatch.StartNew();
+                while (stopwatch2.ElapsedMilliseconds < timeout)
+                {
+                    if (_viewModel.Temperature_SerialPort.BytesToRead > 5)
+                    {
+                        byte[] response = new byte[_viewModel.Temperature_SerialPort.BytesToRead];
+                        _viewModel.Temperature_SerialPort.Read(response, 0, response.Length);
+
+                        if (response.Length >= 8 && response[0] == 1 && response[1] == 6 && response[2] == 0 && response[3] == 0 && response[4] == 1)
+                        {
+                            break;
+                        }
+                    }
+                    await Task.Delay(10);  
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+        }
+        public byte[] GenerateFrame(int temperature, int deviceAddress)
+        {
+            byte[] frame = new byte[8];
+            frame[0] = (byte)deviceAddress;
+            frame[1] = 0x06;
+            frame[2] = 0x00;
+            frame[3] = 0x00;
+
+
+            frame[4] = (byte)((temperature >> 8) & 0xFF);
+            frame[5] = (byte)(temperature & 0xFF);
+
+
+            ushort crc = CalculateCrc16(frame, 6);
+            frame[6] = (byte)(crc & 0xFF);
+            frame[7] = (byte)((crc >> 8) & 0xFF);
+
+            return frame;
+        }
+
+        private ushort CalculateCrc16(byte[] buffer, int length)
+        {
+            ushort crc = 0xFFFF;
+
+            for (int pos = 0; pos < length; pos++)
+            {
+                crc ^= (ushort)buffer[pos];
+
+                for (int i = 8; i != 0; i--)
+                {
+                    if ((crc & 0x0001) != 0)
+                    {
+                        crc >>= 1;
+                        crc ^= 0xA001;
+                    }
+                    else
+                    {
+                        crc >>= 1;
+                    }
+                }
+            }
+
+            return crc;
+        }
+
+        #endregion Temperature
     }
 }

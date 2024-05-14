@@ -87,11 +87,18 @@ namespace HubCentra_A1.Model
 
         #endregion PCB
 
+        #region Barcode
+        public SerialPort Barcode_SerialPort { get; set; }
+        public string Barcode_ID { get; set; } = "";
+        public bool Barcode_Connection { get; set; } = false;
+        #endregion Barcode
+
         #region Temperature
         public SerialPort Temperature_SerialPort { get; set; }
         public double Temperature_ProcessValue { get; set; } = 0;
         public bool Temperature_Connection { get; set; } = false;
         #endregion Temperature
+
 
         #region DatabaseManager
         public bool DatabaseManager_Connection { get; set; } = false;
