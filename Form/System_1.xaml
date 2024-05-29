@@ -146,6 +146,25 @@
                                                     <DataTrigger Binding="{Binding EquipmentInfo[0].Result}" Value="Block">
                                                         <Setter Property="Background" Value="{StaticResource SystemManager_LinearColorResources_07}" />
                                                     </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding Equipment_DataWithDB_presenceArray[0].alive}" Value="False">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="Equipment_DataWithDB_presenceArray">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                                         AutoReverse="True"
+                                                         RepeatBehavior="Forever"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         From="1"
+                                                         To="0.2"
+                                                         Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="Equipment_DataWithDB_presenceArray" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -1249,8 +1268,21 @@
                                             </Style>
                                         </Border.Style>
                                     </Border>
-                                    <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[18].ADC, StringFormat='V : {0:F0}'}" />
-                                    <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[18].LED, StringFormat='L : {0:F0}'}" />
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="100*" />
+                                            <RowDefinition Height="100*" />
+                                            <RowDefinition Height="2*" />
+                                            <RowDefinition Height="100*" />
+                                            <RowDefinition Height="100*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="1">
+                                            <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[18].ADC, StringFormat='V : {0:F0}'}" />
+                                        </Grid>
+                                        <Grid Grid.Row="3">
+                                            <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[18].LED, StringFormat='L : {0:F0}'}" />
+                                        </Grid>
+                                    </Grid>
                                 </Grid>
                                 <Grid Grid.Row="2">
                                     <TextBlock

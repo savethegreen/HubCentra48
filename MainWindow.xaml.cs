@@ -7,6 +7,8 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -22,6 +24,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using static HubCentra_A1.EnumManager;
 using static HubCentra_A1.Model.View;
+using static SkiaSharp.HarfBuzz.SKShaper;
 
 namespace HubCentra_A1
 {
@@ -45,7 +48,11 @@ namespace HubCentra_A1
             DataTransferEvent();
             ViewModel();
             DatabaseManagerInitialize();
+            FASTECHInitialize();
             PCBInitialize();
+            TimerInitialize();
+            BarcodeInitialize();
+            TemperatureInitialize();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -61,6 +68,11 @@ namespace HubCentra_A1
                 e.Cancel = true;
                 return;
             }
+
+            _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Tiling].Flag = false;
+            Thread.Sleep(1000);
+            FASTECH_Set();
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
         #endregion window
 
@@ -294,6 +306,11 @@ namespace HubCentra_A1
                         await Task.Delay(1, token);
                         break;
 
+                    case EnumMStartWorkerThreads.FASTECH:
+                        FASTECH();
+                        await Task.Delay(1, token);
+                        break;
+
                     case EnumMStartWorkerThreads.Barcode:
                         if (_viewModel.Barcode_Connection)
                         {
@@ -321,6 +338,23 @@ namespace HubCentra_A1
 
                         await Task.Delay(300, token);
                         break;
+                    case EnumMStartWorkerThreads.로딩:
+                        로딩();
+                        Thread.Sleep(100);
+                        break;
+
+                    case EnumMStartWorkerThreads.언로딩:
+                        //언로딩();
+                        Thread.Sleep(100);
+                        break;
+                    case EnumMStartWorkerThreads.Cal_PCB1_Manual:
+                        if (_viewModel.PCB1_targetvalue_test == true)
+                        {
+                            Cal_PCB1();
+                        }
+                        Thread.Sleep(100);
+                        break;
+
                     default:
                         Console.WriteLine($"스레드 {threadName} 작업 중...");
                         await Task.Delay(100, token);
@@ -331,6 +365,56 @@ namespace HubCentra_A1
         }
 
         #endregion Thread
+
+        #region Timer
+        private static Timer BottleLoading_Popup_timer;
+        private static readonly object BottleLoading_Popup_timer_lock = new object();
+        public async void TimerInitialize()
+        {
+            BottleLoading_Popup_timer = new Timer(TimerCallback, null, 0, 1000);
+        }
+
+        #endregion Timer
+
+        #region FASTECH
+        public async void FASTECHInitialize()
+        {
+
+            _viewModel.FASTECH_Set_Output = new List<Class_FASTECH_Output>();
+            for (int i = 0; i < 8; i++)
+            {
+                _viewModel.FASTECH_Set_Output.Add(new Class_FASTECH_Output { Flag = false });
+            }
+            _viewModel.FASTECH_IO_Connection = _viewModel.fastechDeviceManager.Connect_IO(Enum_FASTECH_ID.IO, _viewModel.FASTECH_IO_IP);
+            _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.GreenLamp].Flag = true;
+            Thread.Sleep(100);
+            await 문상태확인및틸팅제어();
+        }
+        public void FASTECH()
+        {
+            FASTECH_Get();
+            FASTECH_Set();
+        }
+
+        public void FASTECH_Get()
+        {
+        
+            if (_viewModel.FASTECH_IO_Connection)
+            {
+                var GetStatus = _viewModel.fastechDeviceManager.Get_Input(Enum_FASTECH_ID.IO);
+                _viewModel.FASTECH_Input = GetStatus;
+                var GetStatus2 = _viewModel.fastechDeviceManager.Get_Output(Enum_FASTECH_ID.IO);
+                _viewModel.FASTECH_Output = GetStatus2;
+            }
+   
+        }
+
+        public void FASTECH_Set()
+        {
+            _viewModel.fastechDeviceManager.Set_Output(Enum_FASTECH_ID.IO, _viewModel.FASTECH_Set_Output);
+        }
+
+        #endregion FASTECH
 
         #region DatabaseManager
         public void DatabaseManagerInitialize()
@@ -1173,7 +1257,7 @@ namespace HubCentra_A1
                 var pcb = new List<PCB>();
                 var cell_alive = new List<PCB_cell_alive_C>();
                 var DataWithDB_presenceArray = new List<MatchEquipmentDataWithDB_C>();
-                for (int i = 0; i < _viewModel.Common_CellCount * 3; i++)
+                for (int i = 0; i < _viewModel.Common_CellCount * 12; i++)
                 {
                     pcb.Add(new PCB { ADC = 0, LED = 0 }); // ADC와 LED 값을 초기화
                     cell_alive.Add(new PCB_cell_alive_C { alive = 0 }); // ADC와 LED 값을 초기화
@@ -1197,7 +1281,7 @@ namespace HubCentra_A1
 
                 _viewModel.PCB_Data = pcb;
                 _viewModel.PCB_cell_alive = cell_alive;
-                _viewModel.Equipment_DataWithDB_presenceArray = DataWithDB_presenceArray;
+                _viewModel.Equipment_DataWithDB = DataWithDB_presenceArray;
             }
             catch (Exception ex)
             {
@@ -1208,11 +1292,11 @@ namespace HubCentra_A1
 
         public void PCBFrame()
         {
-            for (int i = 11; i < 16; i++)
+            for (int i = 0; i < 3; i++)
             {
-                string LAMP = $"$ID1,LINE{i},LAMP,CHALL,ON";
+                string LAMP = $"$ID3,LINE{i},LAMP,CHALL,ON";
                 _viewModel.Queue_PCB_Manual.Enqueue(LAMP);
-                string str = $"$ID1,LINE{i},DIMREAD";
+                string str = $"$ID3,LINE{i},DIMREAD";
                 _viewModel.Queue_PCB_Manual.Enqueue(str);
             }
         }
@@ -1227,7 +1311,7 @@ namespace HubCentra_A1
                 if (!_viewModel.PCB_SerialPort.IsOpen && !_viewModel.PCB_Connection && _viewModel.Queue_PCB_Manual.Count > 0)
                     return;
 
-                for (int i = 11; i < 14; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     var stopwatch = Stopwatch.StartNew();
                     string id =  _viewModel.SystemInfo[0].PCB_ID1;
@@ -1348,10 +1432,11 @@ namespace HubCentra_A1
         private void PCB_Manual_Data(string response, int lineIndex)
         {
             var dataParts = response.Split(',');
-            var values = dataParts.Skip(5).Take(28).Select(val => double.TryParse(val, out double dVal) ? dVal : 0).ToList();
+
             int startIndex = lineIndex * 28;
             if (dataParts.Length == 33)
             {
+                var values = dataParts.Skip(5).Take(28).Select(val => double.TryParse(val, out double dVal) ? dVal : 0).ToList();
                 for (int i = 0; i < values.Count; i++)
                 {
                     int pcbIndex = startIndex + i;
@@ -1363,6 +1448,27 @@ namespace HubCentra_A1
                             _viewModel.PCB_Data[pcbIndex].ADC = values[i] * 1000;
                         }
                         else if (dataParts[4] == "DIMREAD")
+                        {
+                            int reverseIndex = values.Count - 1 - i;
+                            _viewModel.PCB_Data[pcbIndex].LED = values[reverseIndex];
+                        }
+                    }
+                }
+            }
+            else if(dataParts.Length == 31)
+            {
+                var values = dataParts.Skip(3).Take(28).Select(val => double.TryParse(val, out double dVal) ? dVal : 0).ToList();
+                for (int i = 0; i < values.Count; i++)
+                {
+                    int pcbIndex = startIndex + i;
+                    if (pcbIndex < _viewModel.PCB_Data.Count)
+                    {
+                        if (dataParts[2] == "ADCREAD")
+                        {
+                            int reverseIndex = values.Count - 1 - i;
+                            _viewModel.PCB_Data[pcbIndex].ADC = values[i] * 1000;
+                        }
+                        else if (dataParts[2] == "DIMREAD")
                         {
                             int reverseIndex = values.Count - 1 - i;
                             _viewModel.PCB_Data[pcbIndex].LED = values[reverseIndex];
@@ -1385,7 +1491,7 @@ namespace HubCentra_A1
                 }
                 else
                 {
-                    Thread.Sleep(200);
+                    Thread.Sleep(300);
                 }
 
                 var response = new StringBuilder();
@@ -1446,9 +1552,138 @@ namespace HubCentra_A1
             return -1;
         }
 
+
+        public void Cal_PCB1()
+        {
+            try
+            {
+                int value = 0;
+
+
+                for (int i = 1; i < 2; i++)
+                {
+
+                    for (int k = 1; k <= 60; k++)
+                    {
+                        int ini = 0;
+                        int line = (i - 1) / 28;
+                        int channel = (i - 1) % 28 + 1;
+                        //string commandBase = $"$ID2,LINE{line},DIM,CH{channel}";
+                        //string commandBase2 = $"$ID2,LINE{line},ADCREAD";
+                        //string commandBase3 = $"$ID2,LINE{line},DIMREAD";
+
+                        string commandBase_CH = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},DIM,CH{channel}";
+                        string commandBase_ADCREAD = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},ADCREAD";
+                        string commandBase_DIMREAD = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},DIMREAD";
+
+
+                        string command = $"{commandBase_CH},{k}";
+
+                        _viewModel.Queue_PCB_Manual.Enqueue(command);
+                        _viewModel.Queue_PCB_Manual.Enqueue(commandBase_ADCREAD);
+                        _viewModel.Queue_PCB_Manual.Enqueue(commandBase_DIMREAD);
+                        Thread.Sleep(500);
+
+
+                        // Wait until LED value matches (index - 1)
+
+                        int lints = line * 28;
+                        while (_viewModel.PCB_Data[i - 1].LED != k)
+                        {
+                            Thread.Sleep(100); // Adjust the delay as needed
+                            ini++;
+
+                            if (ini > 50)
+                            {
+                                string commands = $"{commandBase_CH},{k}";
+                                string commandBase2_CH = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},DIM,CH{channel}";
+                                string commandBase2_ADCREAD = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},ADCREAD";
+                                string commandBase2_DIMREAD = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},DIMREAD";
+                                string commandf = $"{commandBase2_CH},{k}";
+                                _viewModel.Queue_PCB_Manual.Enqueue(commandf);
+                                _viewModel.Queue_PCB_Manual.Enqueue(commandBase2_ADCREAD);
+                                _viewModel.Queue_PCB_Manual.Enqueue(commandBase2_DIMREAD);
+                                ini = 0;
+                                Thread.Sleep(500);
+                            }
+                        }
+
+                        double averageADC = _viewModel.PCB_Data[i - 1].ADC;
+                        double lowerBound = _viewModel.PCB_targetvalue;
+                        double upperBound = _viewModel.PCB_targetvalue + 0.01;
+
+                        if (averageADC >= lowerBound)
+                        {
+                            break;
+                        }
+                        if (averageADC > upperBound)
+                        {
+                            break;
+                        }
+                    }
+
+                }
+                _viewModel.PCB1_targetvalue_test = false;
+            }
+            catch (Exception ex)
+            {
+                _viewModel.PCB1_targetvalue_test = false;
+            }
+
+
+        }
         #endregion PCB
 
         #region Barcode
+        public void BarcodeInitialize()
+        {
+            try
+            {
+                _viewModel.Barcode_Connection = Barcode_SerialPortOpen(_viewModel.SystemInfo[0].Barcode_Serial);
+                if (_viewModel.Barcode_Connection)
+                {
+                    _viewModel.Barcode_SerialPort.Open();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        public bool Barcode_SerialPortOpen(string portName)
+        {
+            try
+            {
+                _viewModel.Barcode_SerialPort = new SerialPort(portName)
+                {
+                    BaudRate = 9600,
+                    DataBits = 8,
+                    Parity = Parity.None,
+                    StopBits = StopBits.One,
+                    RtsEnable = true,
+                    DtrEnable = true
+                };
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public void Barcode_SerialPortClose()
+        {
+            try
+            {
+                if (_viewModel.Barcode_SerialPort.IsOpen)
+                {
+                    _viewModel.Barcode_SerialPort.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
         public async Task Barcode_WriteAsync()
         {
             ClearSerialPortBuffer_Barcode(_viewModel.Barcode_SerialPort);
@@ -1477,7 +1712,15 @@ namespace HubCentra_A1
                          
                             if (barcode.Length > 6) 
                             {
-                                Barcodedata(barcode);                       
+                                if(!searchBarcodeDuplicates(barcode))
+                                {
+                                    Barcodedata(barcode);
+                                }
+                                else
+                                {
+                                    _viewModel.Alarm_Barcode.Enqueue(new Tuple<string>(barcode));
+                                    _viewModel.Barcode_ID = "";
+                                }
                                 ClearSerialPortBuffer_Barcode(_viewModel.Barcode_SerialPort);
                                 return;
                             }
@@ -1503,15 +1746,81 @@ namespace HubCentra_A1
                 serialPort.DiscardOutBuffer();
             }
         }
+
+        public bool searchBarcodeDuplicates(string barcode)
+        {
+            try
+            {
+                string barcode_id = barcode;
+                bool result = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_searchBarcodeDuplicates].Select_Barcode_Search(barcode_id);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return false;
+
+            }
+        }
         #endregion Barcode
 
         #region Temperature
+        public void TemperatureInitialize()
+        {
+            try
+            {
+                _viewModel.Temperature_Connection = Temperature_SerialPortOpen(_viewModel.SystemInfo[0].Temperature_Serial);
+                if (_viewModel.Temperature_Connection)
+                {
+                    _viewModel.Temperature_SerialPort.Open();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        public bool Temperature_SerialPortOpen(string portName)
+        {
+            try
+            {
+                _viewModel.Temperature_SerialPort = new SerialPort(portName)
+                {
+                    BaudRate = 19200,
+                    DataBits = 8,
+                    Parity = Parity.None,
+                    StopBits = StopBits.One,
+                };
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public void Temperature_SerialPortClose()
+        {
+            try
+            {
+                if (_viewModel.Temperature_SerialPort.IsOpen)
+                {
+                    _viewModel.Temperature_SerialPort.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         public async Task Temperature_WriteAsync()
         {
 
             int sv = (int)(_viewModel.Config[0].Temp * 10);
-            byte[] PV_Temp = new byte[8] { 0x01, 0x04, 0x03, 0xE8, 0x00, 0x01, 0xB1, 0xBA };
-            byte[] SV_Temp = GenerateFrame(sv, 1);
+            //byte[] PV_Temp = new byte[8] { 0x01, 0x04, 0x03, 0xE8, 0x00, 0x01, 0xB1, 0xBA };
+
+
+            byte[] PV_Temp = { 0x02, 0x04, 0x03, 0xE8, 0x00, 0x01, 0xB1, 0x89 };
+            byte[] SV_Temp = GenerateFrame(sv, 2);
             await Temperature_ReadAsync(PV_Temp, SV_Temp, 500, (temp) => _viewModel.Temperature_ProcessValue = temp);
             //await LoadCell_ReadAsync("R5", 500, (LoadCelldata) => _viewModel.LoadCell_ProcessValue = LoadCelldata);
 
@@ -1614,5 +1923,406 @@ namespace HubCentra_A1
         }
 
         #endregion Temperature
+
+        #region 로딩언로딩
+        #region 로딩
+        public void 로딩()
+        {
+            try
+            {
+                var Equipment = _viewModel.EquipmentInfo;
+                for (int i = 0; i < Equipment.Count; i++)
+                {
+                    var equipment = Equipment[i];
+
+                    if (!equipment.isEnable && equipment.isActive)
+                    {
+                        var pcbData = _viewModel.PCB_Data[i];
+                        int limit = _viewModel.Config[0].BottleExistenceRange;
+                        if (i == 17)
+                        {
+
+                        }
+                        if (pcbData.ADC > 0 && pcbData.ADC < limit)
+                        {
+                            if (_viewModel.Barcode_ID != "")
+                            {
+                                DateTime now = DateTime.Now;
+                                string query = "UPDATE Equipment SET barcode = @barcode, Loading = @Loading, Result = @Result,  switched = @switched, isEnable = @isEnable WHERE ID = @ID";
+                                var parameters = new Dictionary<string, object>
+                                        {
+                                            { "@Barcode", _viewModel.Barcode_ID },
+                                            { "@Loading", now },
+                                            { "@Result", "Incubation" },
+                                            { "@switched", true },
+                                            { "@isEnable", true },
+                                            { "@ID", i + 1 }
+                                        };
+                                _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_Result].UpdateEquipment(query, parameters);
+                                Thread.Sleep(50);
+                                if (!_viewModel.Alarm_BottleLoading_Set.Contains(i))
+                                {
+                                    _viewModel.Alarm_BottleLoading_Set.Add(i);
+                                    _viewModel.Alarm_BottleLoading.Enqueue(new Tuple<int>(i));
+                                }
+                            }
+                            else
+                            {
+                                if (!_viewModel.Alarm_BottleLoading_Set.Contains(i))
+                                {
+                                    _viewModel.Alarm_BottleLoading_Set.Add(i);
+                                    _viewModel.Alarm_BottleLoading.Enqueue(new Tuple<int>(i));
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+
+        private  void TimerCallback(object state)
+        {
+            // 타이머 콜백이 호출될 때 수행할 작업을 여기에 작성합니다.
+            lock (BottleLoading_Popup_timer_lock)
+            {
+                if (!_viewModel.BottleLoading_isPopupOpen)
+                {
+                    if (_viewModel.Alarm_BottleLoading.Count > 0)
+                    {
+                        if (_viewModel.Alarm_BottleLoading.TryDequeue(out Tuple<int> command))
+                        {
+                            _viewModel.Alarm_BottleLoading_Set.Remove(0);
+                            int idx = command.Item1;
+                            _viewModel.BottleLoading_isPopupOpen = true;
+                            string sysyem = "1";
+                            string cell = (idx + 1).ToString();
+
+                            if (idx >= 0 && idx <= 83)
+                            {
+                                sysyem = "1";
+                                cell = (idx + 1).ToString();
+                            }
+                            else if (idx >= 84 && idx <= 167)
+                            {
+                                sysyem = "2";
+                                cell = ((idx + 1) - 84).ToString();
+                            }
+                            else if (idx >= 168 && idx <= 251)
+                            {
+                                sysyem = "3";
+                                cell = ((idx + 1) - 168).ToString();
+                            }
+                            else if (idx >= 252 && idx <= 335)
+                            {
+                                sysyem = "4";
+                                cell = ((idx + 1) - 252).ToString();
+                            }
+
+                            if (_viewModel.EquipmentInfo[idx].isActive && _viewModel.EquipmentInfo[idx].isEnable && _viewModel.EquipmentInfo[idx].Switched)
+                            {
+                                _viewModel.BottleLoading_Title = "Bottle Loading";
+                                _viewModel.BottleLoading_Content = "정상적으로 로딩되었습니다." + "\n" +
+                                                    "배양을 시작합니다.";
+
+                                _viewModel.BottleLoading_WhatSystem = "System" + sysyem.ToString();
+                                _viewModel.BottleLoading_Cell_Num = "Cell : " + cell.ToString();
+                                _viewModel.BottleLoading_BarcodeID = "barcode : " + _viewModel.Barcode_ID;
+                                _viewModel.Barcode_ID = "";
+                            }
+                            else
+                            {
+
+                                _viewModel.BottleLoading_Title = "Bottle Loading";
+                                _viewModel.BottleLoading_Content = "바코드 정보가 확인되지 않았습니다." + "\n" + "바코드를 스캔/입력 후 다시 넣어주세요.";
+                                _viewModel.BottleLoading_WhatSystem = "System" + sysyem.ToString();
+                                _viewModel.BottleLoading_Cell_Num = "Cell : " + cell.ToString();
+                                _viewModel.Barcode_ID = "";
+                            }
+                            Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+                            {
+                                BottleLoading popup = new BottleLoading(_viewModel);
+                                popup.ClosedEvent += Popup_Closed;
+                                popup.Show();
+                            }));
+                        }
+                    }
+                }
+            }
+        }
+
+
+ 
+
+        private void Popup_Closed(object sender, bool? result)
+        {
+            if (result == true)
+            {
+                _viewModel.BottleLoading_isPopupOpen = false;
+            }
+            else
+            {
+
+            }
+        }
+        #endregion 로딩
+
+        #region 언로딩
+        public void 언로딩()
+        {
+            try
+            {
+
+
+                int rack = 1;
+                int cell = 1;
+                int id = (rack - 1) * 28 + cell + 1; // 예: (3 - 1) * 28 + 3 + 1 = 86
+                string barcodeID = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_MainEngine].Select_Equipment_Barcode_Search(id);
+                DateTime now = DateTime.Now;
+                string formattedNow = now.ToString("yyyy-MM-dd HH:mm:ss");
+                var item = _viewModel.MainEngine_Statuslist.FirstOrDefault(i => i.ID == id);
+                int IncubationTime = _viewModel.EquipmentInfo[id - 1].IncubationTime;
+
+                if (item != null)
+                {
+                    _viewModel.MainEngine_Result = item.Result.ToString();
+                }
+                else
+                {
+                }
+
+                if (_viewModel.MainEngine_Result == "Negative")
+                {
+
+
+                }
+
+
+                string UpdateBarcode_Query = "UPDATE Barcode SET " +
+                                             "Result = @Result, Unloading = @Unloading, IncubationTime = @IncubationTime " +
+                                             "WHERE Barcode = @Barcode";
+
+
+
+                Dictionary<string, object> UpdateBarcode_parameters = new Dictionary<string, object>
+                        {
+                            { "@Result", _viewModel.MainEngine_Result },
+                            { "@Unloading", now },
+                            { "@IncubationTime", IncubationTime },
+                            { "@Barcode", barcodeID },
+                        };
+                _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_MainEngine].UpdateBarcode(UpdateBarcode_Query, UpdateBarcode_parameters);
+
+                string UpdateEquipment_Query = "UPDATE Equipment SET " +
+                    "Barcode = @Barcode, Qrcode = @Qrcode, Loading = @Loading, CreDate = @CreDate, LoadCell = @LoadCell, Result = @Result, IncubationTime = @IncubationTime, switched = @switched, isEnable = @isEnable " +
+                    "WHERE ID = @ID";
+                Dictionary<string, object> UpdateEquipment_parameters = new Dictionary<string, object>
+                        {
+                            { "@Barcode", null },
+                            { "@Qrcode", null },
+                            { "@Loading", null },
+                            { "@CreDate", null },
+                            { "@LoadCell", null },
+                            { "@Result", "Null" },
+                            { "@IncubationTime", null },
+                            { "@switched", false },
+                            { "@isEnable", false },
+                            { "@ID", id }  // 
+                        };
+                _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_MainEngine].UpdateEquipment(UpdateEquipment_Query, UpdateEquipment_parameters);
+                _viewModel.MainEngine_Statuslist.RemoveAll(item => item.ID == id);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        #endregion 언로딩
+
+
+
+
+        #endregion 로딩언로딩
+
+        #region Tilting
+
+        public async Task 문상태확인및틸팅제어()
+        {
+            try
+            {
+                while (true)
+                {
+                    if (_viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Door].Flag == true)
+                    {
+                        틸팅시작();
+                    }
+                    else
+                    {
+                        var tiltingStopped = await 틸팅중지();
+                        if (!tiltingStopped)
+                        {
+                          
+                        }
+                    }
+                    await Task.Delay(100);
+                }
+            }
+            catch (Exception ex)
+            {
+             
+            }
+        }
+
+
+        public async Task<bool> 틸팅중지()
+        {
+            var stopwatch = Stopwatch.StartNew();
+            int timeout = 5000;
+
+            var cts = new CancellationTokenSource();
+
+            try
+            {
+                var buzzerTask = ToggleBuzzer(cts.Token);
+                var triggerTask = WaitForTrigger(timeout);
+
+                var completedTask = await Task.WhenAny(buzzerTask, triggerTask);
+
+                if (completedTask == triggerTask && await triggerTask)
+                {
+                    _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Tiling].Flag = false;
+                    _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag = false;
+                    cts.Cancel(); 
+                    return true;
+                }
+
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Tiling].Flag = false;
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag = false;
+                cts.Cancel();
+                return false;
+            }
+            catch (Exception ex)
+            {
+               
+                return false;
+            }
+            finally
+            {
+                cts.Dispose();
+            }
+        }
+
+        private async Task ToggleBuzzer(CancellationToken token)
+        {
+            try
+            {
+                while (true)
+                {
+                    if (_viewModel.Config[0].UseBuzzer)
+                    {
+                        _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag = true;
+                    }
+                    await Task.Delay(500, token); 
+
+                  
+                    _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag = false;
+                    await Task.Delay(500, token);
+                }
+            }
+            catch (OperationCanceledException)
+            {
+               
+            }
+            catch (Exception ex)
+            {
+              
+            }
+        }
+
+        private async Task<bool> WaitForTrigger(int timeout)
+        {
+            var stopwatch = Stopwatch.StartNew();
+
+            try
+            {
+                while (stopwatch.ElapsedMilliseconds < timeout)
+                {
+                    if (_viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Trigger].Flag == true)
+                    {
+                        return true;
+                    }
+                    await Task.Delay(1); // 아주 짧은 시간 대기 (센서 실시간 감지)
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                // Handle exception if necessary
+                return false;
+            }
+        }
+
+
+        public void 틸팅시작()
+        {
+            try
+            {
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Tiling].Flag = true;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        //public async Task<bool> 틸팅중지()
+        //{
+        //    try
+        //    {
+
+        //        var stopwatch = Stopwatch.StartNew();
+        //        int timeout = 5000;
+        //        while (stopwatch.ElapsedMilliseconds < timeout)
+        //        {
+        //            if (_viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Trigger].Flag == true)
+        //            {
+        //                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Tiling].Flag = false;
+        //                return true;
+        //            }
+        //            await Task.Delay(1);
+        //        }
+        //        return false;
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return false;
+        //    }
+        //}
+        #endregion Tilting
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+ 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+    
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            _viewModel.PCB1_targetvalue_test = true;
+        }
     }
 }

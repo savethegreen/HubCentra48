@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Form\BottleLoading.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Form\Calculator.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -48,6 +51,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Form\BottleLoading.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Form\Calculator.xaml">
       <SubType>Designer</SubType>
     </Page>

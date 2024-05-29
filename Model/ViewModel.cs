@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using static HubCentra_A1.EnumManager;
 using static HubCentra_A1.Model.View;
+using System.Net;
+using HubCentra_A1.Class.FASTECH;
 
 namespace HubCentra_A1.Model
 {
@@ -248,6 +250,78 @@ namespace HubCentra_A1.Model
         }
         #endregion Login
 
+        #region FASTECH
+        #region Connection
+
+        public IPAddress FASTECH_IO_IP
+        {
+            get => _view.FASTECH_IO_IP;
+            set
+            {
+                if (_view.FASTECH_IO_IP != value)
+                {
+                    _view.FASTECH_IO_IP = value;
+                    OnPropertyChanged(nameof(FASTECH_IO_IP));
+                }
+            }
+        }
+
+
+        public bool FASTECH_IO_Connection
+        {
+            get => _view.FASTECH_IO_Connection;
+            set
+            {
+                _view.FASTECH_IO_Connection = value;
+                OnPropertyChanged(nameof(FASTECH_IO_Connection));
+            }
+        }
+
+        #endregion  Connection
+
+
+
+        #region IO
+        public List<Class_FASTECH_Input> FASTECH_Input
+        {
+            get => _view.FASTECH_Input;
+            set
+            {
+                if (_view.FASTECH_Input != value)
+                {
+                    _view.FASTECH_Input = value;
+                    OnPropertyChanged(nameof(FASTECH_Input));
+                }
+            }
+        }
+        public List<Class_FASTECH_Output> FASTECH_Output
+        {
+            get => _view.FASTECH_Output;
+            set
+            {
+                if (_view.FASTECH_Output != value)
+                {
+                    _view.FASTECH_Output = value;
+                    OnPropertyChanged(nameof(FASTECH_Output));
+                }
+            }
+        }
+
+        public List<Class_FASTECH_Output> FASTECH_Set_Output
+        {
+            get => _view.FASTECH_Set_Output;
+            set
+            {
+                if (_view.FASTECH_Set_Output != value)
+                {
+                    _view.FASTECH_Set_Output = value;
+                    OnPropertyChanged(nameof(FASTECH_Set_Output));
+                }
+            }
+        }
+        #endregion IO
+        #endregion FASTECH
+
         #region PCB
         public SerialPort PCB_SerialPort
         {
@@ -336,15 +410,15 @@ namespace HubCentra_A1.Model
             }
         }
 
-        public List<MatchEquipmentDataWithDB_C> Equipment_DataWithDB_presenceArray
+        public List<MatchEquipmentDataWithDB_C> Equipment_DataWithDB
         {
-            get => _view.Equipment_DataWithDB_presenceArray;
+            get => _view.Equipment_DataWithDB;
             set
             {
-                if (_view.Equipment_DataWithDB_presenceArray != value)
+                if (_view.Equipment_DataWithDB != value)
                 {
-                    _view.Equipment_DataWithDB_presenceArray = value;
-                    OnPropertyChanged(nameof(Equipment_DataWithDB_presenceArray));
+                    _view.Equipment_DataWithDB = value;
+                    OnPropertyChanged(nameof(Equipment_DataWithDB));
                 }
             }
         }
@@ -365,6 +439,25 @@ namespace HubCentra_A1.Model
                 _view.testint = value;
                 OnPropertyChanged(nameof(testint));
 
+            }
+        }
+
+        public double PCB_targetvalue
+        {
+            get => _view.PCB_targetvalue;
+            set
+            {
+                _view.PCB_targetvalue = value;
+                OnPropertyChanged(nameof(PCB_targetvalue));
+            }
+        }
+        public bool PCB1_targetvalue_test
+        {
+            get => _view.PCB1_targetvalue_test;
+            set
+            {
+                _view.PCB1_targetvalue_test = value;
+                OnPropertyChanged(nameof(PCB1_targetvalue_test));
             }
         }
 
@@ -1032,6 +1125,44 @@ namespace HubCentra_A1.Model
             }
         }
 
+        public ConcurrentQueue<Tuple<int>> Alarm_BottleLoading
+        {
+            get => _view.Alarm_BottleLoading;
+            set
+            {
+                if (_view.Alarm_BottleLoading != value)
+                {
+                    _view.Alarm_BottleLoading = value;
+                    OnPropertyChanged(nameof(Alarm_BottleLoading));
+                }
+            }
+        }
+        public HashSet<int> Alarm_BottleLoading_Set
+        {
+            get => _view.Alarm_BottleLoading_Set;
+            set
+            {
+                if (_view.Alarm_BottleLoading_Set != value)
+                {
+                    _view.Alarm_BottleLoading_Set = value;
+                    OnPropertyChanged(nameof(Alarm_BottleLoading_Set));
+                }
+            }
+        }
+
+        public ConcurrentQueue<Tuple<string>> Alarm_Barcode
+        {
+            get => _view.Alarm_Barcode;
+            set
+            {
+                if (_view.Alarm_Barcode != value)
+                {
+                    _view.Alarm_Barcode = value;
+                    OnPropertyChanged(nameof(Alarm_Barcode));
+                }
+            }
+        }
+
         public bool PopStatus_Positive_Flag
         {
             get => _view.PopStatus_Positive_Flag;
@@ -1141,8 +1272,67 @@ namespace HubCentra_A1.Model
         }
         #endregion PopStatus
 
+        #region BottleLoading
+        public bool BottleLoading_isPopupOpen
+        {
+            get => _view.BottleLoading_isPopupOpen;
+            set
+            {
+                _view.BottleLoading_isPopupOpen = value;
+                OnPropertyChanged(nameof(BottleLoading_isPopupOpen));
+            }
+        }
+        public string BottleLoading_BarcodeID
+        {
+            get => _view.BottleLoading_BarcodeID;
+            set
+            {
+                _view.BottleLoading_BarcodeID = value;
+                OnPropertyChanged(nameof(BottleLoading_BarcodeID));
+            }
+        }
+        public string BottleLoading_Title
+        {
+            get => _view.BottleLoading_Title;
+            set
+            {
+                _view.BottleLoading_Title = value;
+                OnPropertyChanged(nameof(BottleLoading_Title));
+            }
+        }
+        public string BottleLoading_Content
+        {
+            get => _view.BottleLoading_Content;
+            set
+            {
+                _view.BottleLoading_Content = value;
+                OnPropertyChanged(nameof(BottleLoading_Content));
+            }
+        }
+
+        public string BottleLoading_WhatSystem
+        {
+            get => _view.BottleLoading_WhatSystem;
+            set
+            {
+                _view.BottleLoading_WhatSystem = value;
+                OnPropertyChanged(nameof(BottleLoading_WhatSystem));
+            }
+        }
+        public string BottleLoading_Cell_Num
+        {
+            get => _view.BottleLoading_Cell_Num;
+            set
+            {
+                _view.BottleLoading_Cell_Num = value;
+                OnPropertyChanged(nameof(BottleLoading_Cell_Num));
+            }
+        }
+        #endregion BottleLoading
+
         #region Class
         public DatabaseManager[] databaseManagercs = new DatabaseManager[20];
+        public FastechDeviceManager fastechDeviceManager = new FastechDeviceManager();
 
         #region For
         public void ClassIni()

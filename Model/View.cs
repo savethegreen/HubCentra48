@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static HubCentra_A1.EnumManager;
+using System.Net;
 
 namespace HubCentra_A1.Model
 {
@@ -67,6 +68,21 @@ namespace HubCentra_A1.Model
         public string Password { get; set; } = "";
         #endregion Login
 
+        #region FASTECH
+        #region Connection
+        public IPAddress FASTECH_IO_IP { get; set; } = new IPAddress(new byte[] { 192, 168, 0, 3 });
+        public bool FASTECH_IO_Connection { get; set; } = false;
+        #endregion Connection
+
+
+        #region IO
+        public List<Class_FASTECH_Input> FASTECH_Input { get; set; }
+        public List<Class_FASTECH_Output> FASTECH_Output { get; set; }
+
+        public List<Class_FASTECH_Output> FASTECH_Set_Output { get; set; }
+        #endregion IO
+        #endregion  FASTECH
+
         #region PCB
         public SerialPort PCB_SerialPort { get; set; }
         public bool PCB_Connection { get; set; } = false;
@@ -79,11 +95,15 @@ namespace HubCentra_A1.Model
 
         public Dictionary<int, Dictionary<int, List<List<double>>>> PCB_CellReadings { get; set; } = new Dictionary<int, Dictionary<int, List<List<double>>>>();
 
-        public List<MatchEquipmentDataWithDB_C> Equipment_DataWithDB_presenceArray { get; set; }//DB 매칭
+
+        public List<MatchEquipmentDataWithDB_C> Equipment_DataWithDB { get; set; }//DB 매칭
 
         public ConcurrentQueue<string> Queue_PCB_Manual { get; set; } = new ConcurrentQueue<string>();
         public int testint { get; set; } = 1;
         public string teststr { get; set; } = "444";
+
+        public bool PCB1_targetvalue_test { get; set; } = false;
+        public double PCB_targetvalue { get; set; } = 900;
 
         #endregion PCB
 
@@ -98,7 +118,6 @@ namespace HubCentra_A1.Model
         public double Temperature_ProcessValue { get; set; } = 0;
         public bool Temperature_Connection { get; set; } = false;
         #endregion Temperature
-
 
         #region DatabaseManager
         public bool DatabaseManager_Connection { get; set; } = false;
@@ -164,13 +183,21 @@ namespace HubCentra_A1.Model
         public string LiveCharts_Positive_Time { get; set; } = "";
         #endregion LiveCharts
 
-
         #region Calculator
         public string Calculator_DisplayTextBlock { get; set; } = "";
         #endregion  Calculator
 
-        #region PopStatus
+        #region Alarm
         public ConcurrentQueue<Tuple<string, string>> PopStatus_Positive { get; set; } = new ConcurrentQueue<Tuple<string, string>>();
+
+        public ConcurrentQueue<Tuple<int>> Alarm_BottleLoading { get; set; } = new ConcurrentQueue<Tuple<int>>();
+        public  HashSet<int> Alarm_BottleLoading_Set = new HashSet<int>();
+        public ConcurrentQueue<Tuple<string>> Alarm_Barcode { get; set; } = new ConcurrentQueue<Tuple<string>>();
+
+
+
+
+
         public bool PopStatus_Positive_Flag { get; set; } = false;
         public string PopStatus_Positive_Title { get; set; } = "Positive 발생!!";
 
@@ -189,8 +216,16 @@ namespace HubCentra_A1.Model
         public string PopStatus_TrashCanAlert_Title { get; set; } = "Trash!!";
         public string PopStatus_TrashCanAlert { get; set; } = "휴지통을 제거 해주세요!!";
         public bool PopStatus_TrashCanAlert_Flag { get; set; } = false;
-        #endregion PopStatus
+        #endregion Alarm
 
+        #region BottleLoading
+        public bool BottleLoading_isPopupOpen { get; set; } = false;
+        public string BottleLoading_BarcodeID { get; set; } = "";
+        public string BottleLoading_Title { get; set; } = "";
+        public string BottleLoading_Content { get; set; } = "";
+        public string BottleLoading_WhatSystem { get; set; } = "";
+        public string BottleLoading_Cell_Num { get; set; } = "";
+        #endregion BottleLoading
 
         #region Class
         #region DatabaseManager_System
@@ -2730,6 +2765,8 @@ namespace HubCentra_A1.Model
             }
         }
         #endregion SystemRack
+
+
 
         public class Cell
         {

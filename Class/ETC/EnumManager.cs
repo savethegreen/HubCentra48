@@ -50,6 +50,10 @@ namespace HubCentra_A1
             LoadCell = 12,
             Result = 13,
             PopStatus = 14,
+            로딩 = 15,
+            언로딩 = 16,
+
+            Cal_PCB1_Manual = 19,
             test1 = 20,
         }
         #endregion Threads
@@ -82,6 +86,7 @@ namespace HubCentra_A1
             MainWindow_Insert_EquipmentH = 6,
             MainWindow_Result = 7,
             MainWindow_Update_ETC = 8,
+            MainWindow_searchBarcodeDuplicates=9,
 
         }
         #endregion DatabaseManager
@@ -140,5 +145,26 @@ namespace HubCentra_A1
             PopStatus_Positive = 3,
         }
         #endregion PopStatus
+
+        #region FASTECH
+        public enum Enum_FASTECH_ID
+        {
+            IO = 1,
+        }
+        public enum Enum_FASTECH_Input
+        {
+            Door = 0,
+            Trigger = 1,
+        }
+
+        public enum Enum_FASTECH_Output
+        {
+            RedLamp = 0,
+            GreenLamp = 1,
+            YellowLamp = 2,
+            Tiling = 3,
+            Buzzer = 4,
+        }
+        #endregion FASTECH
     }
 }

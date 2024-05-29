@@ -51,6 +51,27 @@
                     <ColumnDefinition Width="100*" />
                 </Grid.ColumnDefinitions>
 
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100*" />
+                        <RowDefinition Height="100*" />
+                        <RowDefinition Height="100*" />
+                        <RowDefinition Height="100*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Button  Click="Button_Click"></Button>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Button Click="Button_Click_1"></Button>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Button Click="Button_Click_2"></Button>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <Button Click="Button_Click_3"></Button>
+                    </Grid>
+                </Grid>
+
                 <Grid Grid.Column="2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="100*" />
@@ -666,7 +687,7 @@
                                     <TextBlock
                                 VerticalAlignment="Center"
                                 Style="{StaticResource MainWindow_TextBlock_06}"
-                                Text="{Binding Tempvalue2, StringFormat='{}{0} °C'}" />
+                                Text="{Binding Temperature_ProcessValue, StringFormat='{}{0} °C'}" />
 
                                 </Grid>
                             </Grid>
