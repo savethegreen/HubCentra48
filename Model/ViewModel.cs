@@ -494,7 +494,6 @@ namespace HubCentra_A1.Model
         }
         #endregion Barcode
 
-
         #region Temperature
         public SerialPort Temperature_SerialPort
         {
@@ -1125,43 +1124,7 @@ namespace HubCentra_A1.Model
             }
         }
 
-        public ConcurrentQueue<Tuple<int>> Alarm_BottleLoading
-        {
-            get => _view.Alarm_BottleLoading;
-            set
-            {
-                if (_view.Alarm_BottleLoading != value)
-                {
-                    _view.Alarm_BottleLoading = value;
-                    OnPropertyChanged(nameof(Alarm_BottleLoading));
-                }
-            }
-        }
-        public HashSet<int> Alarm_BottleLoading_Set
-        {
-            get => _view.Alarm_BottleLoading_Set;
-            set
-            {
-                if (_view.Alarm_BottleLoading_Set != value)
-                {
-                    _view.Alarm_BottleLoading_Set = value;
-                    OnPropertyChanged(nameof(Alarm_BottleLoading_Set));
-                }
-            }
-        }
-
-        public ConcurrentQueue<Tuple<string>> Alarm_Barcode
-        {
-            get => _view.Alarm_Barcode;
-            set
-            {
-                if (_view.Alarm_Barcode != value)
-                {
-                    _view.Alarm_Barcode = value;
-                    OnPropertyChanged(nameof(Alarm_Barcode));
-                }
-            }
-        }
+      
 
         public bool PopStatus_Positive_Flag
         {
@@ -1272,7 +1235,41 @@ namespace HubCentra_A1.Model
         }
         #endregion PopStatus
 
+        #region Alarm
         #region BottleLoading
+        public ConcurrentQueue<Tuple<int>> Alarm_BottleLoading
+        {
+            get => _view.Alarm_BottleLoading;
+            set
+            {
+                if (_view.Alarm_BottleLoading != value)
+                {
+                    _view.Alarm_BottleLoading = value;
+                    OnPropertyChanged(nameof(Alarm_BottleLoading));
+                }
+            }
+        }
+        public HashSet<int> Alarm_BottleLoading_Set
+        {
+            get => _view.Alarm_BottleLoading_Set;
+            set
+            {
+                if (_view.Alarm_BottleLoading_Set != value)
+                {
+                    _view.Alarm_BottleLoading_Set = value;
+                    OnPropertyChanged(nameof(Alarm_BottleLoading_Set));
+                }
+            }
+        }
+        public bool BottleLoading_Result
+        {
+            get => _view.BottleLoading_Result;
+            set
+            {
+                _view.BottleLoading_Result = value;
+                OnPropertyChanged(nameof(BottleLoading_Result));
+            }
+        }
         public bool BottleLoading_isPopupOpen
         {
             get => _view.BottleLoading_isPopupOpen;
@@ -1329,6 +1326,50 @@ namespace HubCentra_A1.Model
             }
         }
         #endregion BottleLoading
+
+        #region Barcode
+        public ConcurrentQueue<Tuple<string>> Alarm_Barcode
+        {
+            get => _view.Alarm_Barcode;
+            set
+            {
+                if (_view.Alarm_Barcode != value)
+                {
+                    _view.Alarm_Barcode = value;
+                    OnPropertyChanged(nameof(Alarm_Barcode));
+                }
+            }
+        }
+        public bool Alarm_Barcode_isPopupOpen
+        {
+            get => _view.Alarm_Barcode_isPopupOpen;
+            set
+            {
+                _view.Alarm_Barcode_isPopupOpen = value;
+                OnPropertyChanged(nameof(Alarm_Barcode_isPopupOpen));
+            }
+        }
+        public string Barcode_BarcodeID
+        {
+            get => _view.Barcode_BarcodeID;
+            set
+            {
+                _view.Barcode_BarcodeID = value;
+                OnPropertyChanged(nameof(Barcode_BarcodeID));
+            }
+        }
+        public string Barcode_Content
+        {
+            get => _view.Barcode_Content;
+            set
+            {
+                _view.Barcode_Content = value;
+                OnPropertyChanged(nameof(Barcode_Content));
+            }
+        }
+        #endregion Barcode
+
+        #endregion Alarm
 
         #region Class
         public DatabaseManager[] databaseManagercs = new DatabaseManager[20];

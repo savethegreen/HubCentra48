@@ -278,16 +278,16 @@ namespace HubCentra_A1
                         break;
 
                     case EnumMStartWorkerThreads.PCB:
-                        if (_viewModel.Queue_PCB_Manual.Count > 0 && _viewModel.PCB_Status == false)
+                        if (_viewModel.Queue_PCB_Manual.Count > 0 )
                         {
-                            await Task.Delay(200, token);
+                            Thread.Sleep(200);
                             PCB_PerformDataAcquisition_Manual();
-                            await Task.Delay(200, token);
+                            Thread.Sleep(200);
                         }
                         else
                         {
                             PCB_PerformDataAcquisition();
-                            await Task.Delay(10, token);
+                            Thread.Sleep(100);
                         }
 
                         break;
@@ -367,11 +367,14 @@ namespace HubCentra_A1
         #endregion Thread
 
         #region Timer
-        private static Timer BottleLoading_Popup_timer;
-        private static readonly object BottleLoading_Popup_timer_lock = new object();
+        private  Timer BottleLoading_timer;
+        private Timer Barcode_timer;
+        private  readonly object BottleLoading_timer_lock = new object();
+        private readonly object Barcod_timer_lock = new object();
         public async void TimerInitialize()
         {
-            BottleLoading_Popup_timer = new Timer(TimerCallback, null, 0, 1000);
+            BottleLoading_timer = new Timer(TimerCallback_BottleLoading, null, 0, 1000);
+            Barcode_timer = new Timer(TimerCallback_Barcode, null, 0, 1000);
         }
 
         #endregion Timer
@@ -1226,6 +1229,9 @@ namespace HubCentra_A1
                     DataBits = 8,
                     Parity = Parity.None,
                     StopBits = StopBits.One,
+                    Handshake = Handshake.None,
+                    ReadTimeout = 1000, // 타임아웃 조정
+                    WriteTimeout = 1000, // 타임아웃 조정
                 };
                 return true;
             }
@@ -1294,9 +1300,10 @@ namespace HubCentra_A1
         {
             for (int i = 0; i < 3; i++)
             {
-                string LAMP = $"$ID3,LINE{i},LAMP,CHALL,ON";
+                string id = _viewModel.SystemInfo[0].PCB_ID1;
+                string LAMP = $"${id},LINE{i},LAMP,CHALL,ON";
                 _viewModel.Queue_PCB_Manual.Enqueue(LAMP);
-                string str = $"$ID3,LINE{i},DIMREAD";
+                string str = $"${id},LINE{i},DIMREAD";
                 _viewModel.Queue_PCB_Manual.Enqueue(str);
             }
         }
@@ -1322,7 +1329,7 @@ namespace HubCentra_A1
                     if (response != null)
                     {
                         PCB_Auto_Data(response.ToString());
-                        if (i == 15)
+                        if (i == 2)
                         {
                             _viewModel.PCB_Status = true;
                         }
@@ -1334,7 +1341,7 @@ namespace HubCentra_A1
                     stopwatch.Stop();
 
 
-                    Thread.Sleep(10);
+                    Thread.Sleep(50);
                 }
 
             }
@@ -1370,7 +1377,12 @@ namespace HubCentra_A1
             for (int i = 0; i < 28; i++)
             {
                 if (double.TryParse(dataParts[startIndex + i], out double cellValue))
+                
                 {
+                    if(cellValue < 0.6 && i != 17)
+                    {
+
+                    }
                     _viewModel.PCB_CellReadings[0][lineIndex][i].Add(cellValue);
 
                     if (_viewModel.PCB_CellReadings[0][lineIndex][i].Count == 5)
@@ -1479,51 +1491,68 @@ namespace HubCentra_A1
         }
 
 
-        private string ReadSerialPortResponse(string Line, bool mode)
+            private string ReadSerialPortResponse(string Line, bool mode)
+            {
+                try
+                {
+                    string line = Line;
+                    _viewModel.PCB_SerialPort.Write(line + "\r\n");
+
+                    if (mode)
+                    {
+                        Thread.Sleep(100);
+                    }
+                    else
+                    {
+                        Thread.Sleep(300);
+                    }
+
+                    var response = new StringBuilder();
+                    var stopwatch = Stopwatch.StartNew();
+                    int timeout = 100; // 타임아웃을 3000ms로 늘림
+
+                    while (stopwatch.ElapsedMilliseconds < timeout)
+                    {
+                        if (_viewModel.PCB_SerialPort.BytesToRead > 0)
+                        {
+                            response.Append(_viewModel.PCB_SerialPort.ReadExisting());
+
+                            // 데이터가 충분히 수신되었는지 확인
+                            if (response.Length > 100) // 필요한 경우 이 조건을 조정
+                            {
+                                ClearSerialPortBuffer_PCB(_viewModel.PCB_SerialPort);
+                                return response.ToString();
+                            }
+                        }
+                        Thread.Sleep(20); // CPU 사용을 줄이기 위한 짧은 대기 시간
+                    }
+
+                    ClearSerialPortBuffer_PCB(_viewModel.PCB_SerialPort);
+                    return null;
+                }
+                catch (Exception ex)
+                {
+                    // 예외 처리 로직 추가
+                    return null;
+                }
+            }
+        private void ClearSerialPortBuffer_PCB(SerialPort port)
         {
             try
             {
-                string line = Line;
-                _viewModel.PCB_SerialPort.Write(line + "\r\n");
-                if (mode == true)
+                if (port.IsOpen)
                 {
-                    Thread.Sleep(100);
+                    port.DiscardInBuffer();
+                    port.DiscardOutBuffer();
                 }
-                else
-                {
-                    Thread.Sleep(300);
-                }
-
-                var response = new StringBuilder();
-                var stopwatch = Stopwatch.StartNew();
-                int timeout = 300;
-                while (stopwatch.ElapsedMilliseconds < timeout)
-                {
-                    if (_viewModel.PCB_SerialPort.BytesToRead > 100)
-                    {
-                        response.Append(_viewModel.PCB_SerialPort.ReadExisting());
-                        ClearSerialPortBuffer_PCB(_viewModel.PCB_SerialPort);
-                        return response.ToString();
-                    }
-                }
-                ClearSerialPortBuffer_PCB(_viewModel.PCB_SerialPort);
-                return null;
             }
             catch (Exception ex)
             {
-
-                return null;
+                // 예외 처리 로직 추가 (로그 기록 등)
             }
         }
 
-        private void ClearSerialPortBuffer_PCB(SerialPort serialPort)
-        {
-            if (serialPort.IsOpen)
-            {
-                serialPort.DiscardInBuffer();
-                serialPort.DiscardOutBuffer();
-            }
-        }
+
         private int ExtractLineIndex(string response)
         {
             var lineNumberStart = response.IndexOf("LINE") + "LINE".Length;
@@ -1761,6 +1790,47 @@ namespace HubCentra_A1
 
             }
         }
+
+
+        private void TimerCallback_Barcode(object state)
+        {
+            // 타이머 콜백이 호출될 때 수행할 작업을 여기에 작성합니다.
+            lock (Barcod_timer_lock)
+            {
+                if (!_viewModel.Alarm_Barcode_isPopupOpen)
+                {
+                    if (_viewModel.Alarm_Barcode.Count > 0)
+                    {
+                        if (_viewModel.Alarm_Barcode.TryDequeue(out Tuple<string> command))
+                        {
+                            _viewModel.Alarm_Barcode_isPopupOpen = true;
+                            string item1 = command.Item1;
+                            _viewModel.Barcode_BarcodeID = item1;
+                            _viewModel.Barcode_Content = "Barcode  " + _viewModel.Barcode_BarcodeID + "  already exists.";
+                            Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+                            {
+                                Alarm_Barcode popup = new Alarm_Barcode(_viewModel);
+                                popup.ClosedEvent += Alarm_Barcode_Closed;
+                                popup.Show();
+                            }));
+                        }
+                    }
+                }
+            }
+        }
+
+        private void Alarm_Barcode_Closed(object sender, bool? result)
+        {
+            if (result == true)
+            {
+                _viewModel.Alarm_Barcode_isPopupOpen = false;
+            }
+            else
+            {
+
+            }
+        }
+
         #endregion Barcode
 
         #region Temperature
@@ -1930,6 +2000,7 @@ namespace HubCentra_A1
         {
             try
             {
+                _viewModel.BottleLoading_Result = false;
                 var Equipment = _viewModel.EquipmentInfo;
                 for (int i = 0; i < Equipment.Count; i++)
                 {
@@ -1968,6 +2039,7 @@ namespace HubCentra_A1
                             }
                             else
                             {
+                                _viewModel.BottleLoading_Result = true;
                                 if (!_viewModel.Alarm_BottleLoading_Set.Contains(i))
                                 {
                                     _viewModel.Alarm_BottleLoading_Set.Add(i);
@@ -1976,8 +2048,14 @@ namespace HubCentra_A1
                             }
 
                         }
+                        else
+                        {
+
+                        }
                     }
                 }
+
+
             }
             catch (Exception ex)
             {
@@ -1986,10 +2064,10 @@ namespace HubCentra_A1
         }
 
 
-        private  void TimerCallback(object state)
+        private  void TimerCallback_BottleLoading(object state)
         {
             // 타이머 콜백이 호출될 때 수행할 작업을 여기에 작성합니다.
-            lock (BottleLoading_Popup_timer_lock)
+            lock (BottleLoading_timer_lock)
             {
                 if (!_viewModel.BottleLoading_isPopupOpen)
                 {
@@ -1997,34 +2075,34 @@ namespace HubCentra_A1
                     {
                         if (_viewModel.Alarm_BottleLoading.TryDequeue(out Tuple<int> command))
                         {
-                            _viewModel.Alarm_BottleLoading_Set.Remove(0);
-                            int idx = command.Item1;
                             _viewModel.BottleLoading_isPopupOpen = true;
+                            int item1 = command.Item1;
+                            _viewModel.Alarm_BottleLoading_Set.Remove(item1);
                             string sysyem = "1";
-                            string cell = (idx + 1).ToString();
+                            string cell = (item1 + 1).ToString();
 
-                            if (idx >= 0 && idx <= 83)
+                            if (item1 >= 0 && item1 <= 83)
                             {
                                 sysyem = "1";
-                                cell = (idx + 1).ToString();
+                                cell = (item1 + 1).ToString();
                             }
-                            else if (idx >= 84 && idx <= 167)
+                            else if (item1 >= 84 && item1 <= 167)
                             {
                                 sysyem = "2";
-                                cell = ((idx + 1) - 84).ToString();
+                                cell = ((item1 + 1) - 84).ToString();
                             }
-                            else if (idx >= 168 && idx <= 251)
+                            else if (item1 >= 168 && item1 <= 251)
                             {
                                 sysyem = "3";
-                                cell = ((idx + 1) - 168).ToString();
+                                cell = ((item1 + 1) - 168).ToString();
                             }
-                            else if (idx >= 252 && idx <= 335)
+                            else if (item1 >= 252 && item1 <= 335)
                             {
                                 sysyem = "4";
-                                cell = ((idx + 1) - 252).ToString();
+                                cell = ((item1 + 1) - 252).ToString();
                             }
 
-                            if (_viewModel.EquipmentInfo[idx].isActive && _viewModel.EquipmentInfo[idx].isEnable && _viewModel.EquipmentInfo[idx].Switched)
+                            if (_viewModel.EquipmentInfo[item1].isActive && _viewModel.EquipmentInfo[item1].isEnable && _viewModel.EquipmentInfo[item1].Switched)
                             {
                                 _viewModel.BottleLoading_Title = "Bottle Loading";
                                 _viewModel.BottleLoading_Content = "정상적으로 로딩되었습니다." + "\n" +
@@ -2047,10 +2125,14 @@ namespace HubCentra_A1
                             Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                             {
                                 BottleLoading popup = new BottleLoading(_viewModel);
-                                popup.ClosedEvent += Popup_Closed;
+                                popup.ClosedEvent += BottleLoading_Closed;
                                 popup.Show();
                             }));
                         }
+                    }
+                    else
+                    {
+
                     }
                 }
             }
@@ -2059,7 +2141,7 @@ namespace HubCentra_A1
 
  
 
-        private void Popup_Closed(object sender, bool? result)
+        private void BottleLoading_Closed(object sender, bool? result)
         {
             if (result == true)
             {

@@ -248,3 +248,5 @@ D:\Auto\HubCentra_A1\obj\Debug\net7.0-windows\refint\HubCentra_A1.dll
 D:\Auto\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.pdb
 D:\Auto\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.genruntimeconfig.cache
 D:\Auto\HubCentra_A1\obj\Debug\net7.0-windows\ref\HubCentra_A1.dll
+D:\Auto\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Barcode.g.cs
+D:\Auto\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Barcode.baml

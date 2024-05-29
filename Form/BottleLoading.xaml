@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        Title="Loading" Height="270" Width="430" Loaded="Window_Loaded">
+        Title="Loading" Height="270" Width="420" Loaded="Window_Loaded">
 
 
     <Grid Background="Transparent">

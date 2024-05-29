@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using static HubCentra_A1.EnumManager;
 
 namespace HubCentra_A1
@@ -38,7 +40,7 @@ namespace HubCentra_A1
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            func();
+            TimerInitialize();
         }
         private void BottleLoading_Closed(object sender, EventArgs e)
         {
@@ -60,33 +62,33 @@ namespace HubCentra_A1
         #region Model
         #endregion Model
 
-        public void func()
+        #region Timer
+        private Timer _timer;
+        private readonly object _timer_lock = new object();
+        public async void TimerInitialize()
         {
-            //try
-            //{
-            //    if (txt_title != null)
-            //    {
-            //        txt_title.Text = Title;
-
-            //    }
-            //    if (txt_system != null)
-            //    {
-            //        txt_system.Text = System;
-            //    }
-            //    if (txt_content != null)
-            //    {
-            //        txt_content.Text = Content;
-            //    }
-            //    if (txt_cell != null)
-            //    {
-            //        txt_cell.Text = Cell;
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-
-            //}
+            _timer = new Timer(TimerCallbacks, null, 0, 100);
         }
+        private void TimerCallbacks(object state)
+        {
+            // 타이머 콜백이 호출될 때 수행할 작업을 여기에 작성합니다.
+            lock (_timer_lock)
+            {
+                if (!_viewModel.BottleLoading_Result)
+                {
+                    Dispatcher.Invoke(() =>
+                    {
+                        this.Close();
+                    });
+
+                    // 타이머 중지
+                    _timer.Change(Timeout.Infinite, Timeout.Infinite);
+                    _timer.Dispose();
+                }
+            }
+        }
+        #endregion Timer
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

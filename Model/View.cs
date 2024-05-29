@@ -188,11 +188,32 @@ namespace HubCentra_A1.Model
         #endregion  Calculator
 
         #region Alarm
+        #region BottleLoading
+        public ConcurrentQueue<Tuple<int>> Alarm_BottleLoading { get; set; } = new ConcurrentQueue<Tuple<int>>();
+
+
+        public HashSet<int> Alarm_BottleLoading_Set = new HashSet<int>();
+
+        public bool BottleLoading_Result { get; set; } = false;
+        public bool BottleLoading_isPopupOpen { get; set; } = false;
+        public string BottleLoading_BarcodeID { get; set; } = "";
+        public string BottleLoading_Title { get; set; } = "";
+        public string BottleLoading_Content { get; set; } = "";
+        public string BottleLoading_WhatSystem { get; set; } = "";
+        public string BottleLoading_Cell_Num { get; set; } = "";
+        #endregion BottleLoading
+
+
+        #region Barcode
+        public ConcurrentQueue<Tuple<string>> Alarm_Barcode { get; set; } = new ConcurrentQueue<Tuple<string>>();
+        public bool Alarm_Barcode_isPopupOpen { get; set; } = false;
+        public string Barcode_BarcodeID { get; set; } = "";
+        public string Barcode_Content { get; set; } = "";
+        #endregion Barcode
         public ConcurrentQueue<Tuple<string, string>> PopStatus_Positive { get; set; } = new ConcurrentQueue<Tuple<string, string>>();
 
-        public ConcurrentQueue<Tuple<int>> Alarm_BottleLoading { get; set; } = new ConcurrentQueue<Tuple<int>>();
-        public  HashSet<int> Alarm_BottleLoading_Set = new HashSet<int>();
-        public ConcurrentQueue<Tuple<string>> Alarm_Barcode { get; set; } = new ConcurrentQueue<Tuple<string>>();
+
+
 
 
 
@@ -218,14 +239,6 @@ namespace HubCentra_A1.Model
         public bool PopStatus_TrashCanAlert_Flag { get; set; } = false;
         #endregion Alarm
 
-        #region BottleLoading
-        public bool BottleLoading_isPopupOpen { get; set; } = false;
-        public string BottleLoading_BarcodeID { get; set; } = "";
-        public string BottleLoading_Title { get; set; } = "";
-        public string BottleLoading_Content { get; set; } = "";
-        public string BottleLoading_WhatSystem { get; set; } = "";
-        public string BottleLoading_Cell_Num { get; set; } = "";
-        #endregion BottleLoading
 
         #region Class
         #region DatabaseManager_System
