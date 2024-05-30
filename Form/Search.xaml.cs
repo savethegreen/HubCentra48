@@ -59,8 +59,7 @@ namespace HubCentra_A1
 
                 colBarcode.Width = totalAvailableWidth * 0.2; //
                 colLoading.Width = totalAvailableWidth * 0.2;// 
-                colLoadCell.Width = totalAvailableWidth * 0.15;// 
-                colIncubationTime.Width = totalAvailableWidth * 0.15;//                
+                colIncubationTime.Width = totalAvailableWidth * 0.2;//                
                 colResult.Width = totalAvailableWidth * 0.1;//
             }
         }

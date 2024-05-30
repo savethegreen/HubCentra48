@@ -87,6 +87,8 @@ namespace HubCentra_A1
             MainWindow_Result = 7,
             MainWindow_Update_ETC = 8,
             MainWindow_searchBarcodeDuplicates=9,
+            로딩 =10,
+            언로딩 = 11,
 
         }
         #endregion DatabaseManager

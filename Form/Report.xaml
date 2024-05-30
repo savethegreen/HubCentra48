@@ -449,24 +449,6 @@
                         </GridViewColumn>
 
 
-                        <GridViewColumn x:Name="colLoadCell" Width="80">
-                            <GridViewColumn.Header>
-                                <GridViewColumnHeader
-                                    Background="White"
-                                    Click="GridViewColumnHeader_Click"
-                                    Tag="LoadCell">
-                                    <TextBlock Style="{StaticResource Search_TextBlock_01}" Text="LoadCell" />
-                                </GridViewColumnHeader>
-                            </GridViewColumn.Header>
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock
-                                        x:Name="LoadCell"
-                                        Style="{StaticResource Search_TextBlock_02}"
-                                        Text="{Binding LoadCell}" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
 
 
                         <GridViewColumn x:Name="colLoading" Width="80">
@@ -555,8 +537,8 @@
                                 <GridViewColumnHeader
                                     Background="White"
                                     Click="GridViewColumnHeader_Click"
-                                    Tag="PositiveTime">
-                                    <TextBlock Style="{StaticResource Search_TextBlock_01}" Text="PositiveTime" />
+                                    Tag="Result Time">
+                                    <TextBlock Style="{StaticResource Search_TextBlock_01}" Text="Result Time" />
                                 </GridViewColumnHeader>
                             </GridViewColumn.Header>
                             <GridViewColumn.CellTemplate>

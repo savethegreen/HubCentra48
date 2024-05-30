@@ -33,7 +33,7 @@
                     </Style>
                 </Grid.Style>
 
-    
+
             </Grid>
 
         </Grid>
@@ -147,7 +147,7 @@
                                                         <Setter Property="Background" Value="{StaticResource SystemManager_LinearColorResources_07}" />
                                                     </DataTrigger>
 
-                                                    <DataTrigger Binding="{Binding Equipment_DataWithDB_presenceArray[0].alive}" Value="False">
+                                                    <DataTrigger Binding="{Binding Equipment_DataWithDB_presenceArray[0].alive}" Value="True">
                                                         <DataTrigger.EnterActions>
                                                             <BeginStoryboard Name="Equipment_DataWithDB_presenceArray">
                                                                 <Storyboard>
@@ -226,6 +226,26 @@
                                                     <DataTrigger Binding="{Binding EquipmentInfo[1].Result}" Value="Block">
                                                         <Setter Property="Background" Value="{StaticResource SystemManager_LinearColorResources_07}" />
                                                     </DataTrigger>
+
+
+                                                    <DataTrigger Binding="{Binding Equipment_DataWithDB_presenceArray[1].alive}" Value="True">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="Equipment_DataWithDB_presenceArray">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                                         AutoReverse="True"
+                                                         RepeatBehavior="Forever"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         From="1"
+                                                         To="0.2"
+                                                         Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="Equipment_DataWithDB_presenceArray" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -286,6 +306,25 @@
                                                     </DataTrigger>
                                                     <DataTrigger Binding="{Binding EquipmentInfo[2].Result}" Value="Block">
                                                         <Setter Property="Background" Value="{StaticResource SystemManager_LinearColorResources_07}" />
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding Equipment_DataWithDB_presenceArray[2].alive}" Value="True">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="Equipment_DataWithDB_presenceArray">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                                         AutoReverse="True"
+                                                         RepeatBehavior="Forever"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         From="1"
+                                                         To="0.2"
+                                                         Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="Equipment_DataWithDB_presenceArray" />
+                                                        </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
@@ -1007,7 +1046,7 @@
                                     <RowDefinition Height="1*" />
                                 </Grid.RowDefinitions>
                                 <Grid Grid.Row="1" Margin="2,2">
-                               
+
                                     <Border
                        VerticalAlignment="Center"
                        BorderThickness="2"

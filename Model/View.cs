@@ -25,6 +25,8 @@ namespace HubCentra_A1.Model
 
         #region Common
         public int Common_CellCount { get; set; } = 28;
+        public int Common_SystemCellCount { get; set; } = 84;
+        public int Common_TotalSystemCellCount { get; set; } = 336;
         #endregion Common
 
         #region Loading
@@ -96,7 +98,7 @@ namespace HubCentra_A1.Model
         public Dictionary<int, Dictionary<int, List<List<double>>>> PCB_CellReadings { get; set; } = new Dictionary<int, Dictionary<int, List<List<double>>>>();
 
 
-        public List<MatchEquipmentDataWithDB_C> Equipment_DataWithDB { get; set; }//DB 매칭
+        public List<MatchEquipmentDataWithDB_C> Equipment_DataWithDB_presenceArray { get; set; }//DB 매칭
 
         public ConcurrentQueue<string> Queue_PCB_Manual { get; set; } = new ConcurrentQueue<string>();
         public int testint { get; set; } = 1;
@@ -194,7 +196,7 @@ namespace HubCentra_A1.Model
 
         public HashSet<int> Alarm_BottleLoading_Set = new HashSet<int>();
 
-        public bool BottleLoading_Result { get; set; } = false;
+        public bool[] BottleLoading_Result { get; set; } = new bool[336];
         public bool BottleLoading_isPopupOpen { get; set; } = false;
         public string BottleLoading_BarcodeID { get; set; } = "";
         public string BottleLoading_Title { get; set; } = "";
@@ -2778,8 +2780,6 @@ namespace HubCentra_A1.Model
             }
         }
         #endregion SystemRack
-
-
 
         public class Cell
         {

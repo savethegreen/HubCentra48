@@ -125,18 +125,7 @@
 
 
 
-                        <GridViewColumn x:Name="colLoadCell" Width="80" >
-                            <GridViewColumn.Header >
-                                <GridViewColumnHeader Background="White" Click="GridViewColumnHeader_Click" Tag="LoadCell">
-                                    <TextBlock Text="LoadCell" Style="{StaticResource Search_TextBlock_01}"></TextBlock>
-                                </GridViewColumnHeader>
-                            </GridViewColumn.Header>
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate >
-                                    <TextBlock x:Name="LoadCell" Text="{Binding LoadCell}" Style="{StaticResource Search_TextBlock_02}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
+      
 
                         <GridViewColumn x:Name="colIncubationTime" Width="80" >
                             <GridViewColumn.Header >

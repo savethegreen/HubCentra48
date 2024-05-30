@@ -25,8 +25,11 @@ namespace HubCentra_A1
     {
         #region window
         private ViewModel _viewModel;
-        public event EventHandler<bool?> ClosedEvent;
-        public BottleLoading(ViewModel model )
+        //public event EventHandler<bool?, int> ClosedEvent;
+        public delegate void ClosedEventHandler(object sender, bool? result, int idx);
+        public event ClosedEventHandler ClosedEvent;
+        public int IDX = 0;
+        public BottleLoading(ViewModel model , int idx)
         {
             InitializeComponent();
             if (model == null)
@@ -35,17 +38,14 @@ namespace HubCentra_A1
             }
             _viewModel = model;
             DataContext = _viewModel;
-            this.Closed += BottleLoading_Closed;
+            IDX = idx;
 
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             TimerInitialize();
         }
-        private void BottleLoading_Closed(object sender, EventArgs e)
-        {
-            ClosedEvent?.Invoke(this, true); // or false based on your logic
-        }
+
         #endregion window
 
         #region Initialize
@@ -63,35 +63,43 @@ namespace HubCentra_A1
         #endregion Model
 
         #region Timer
-        private Timer _timer;
-        private readonly object _timer_lock = new object();
+        private DispatcherTimer timer = new DispatcherTimer();
+
+
+
         public async void TimerInitialize()
         {
-            _timer = new Timer(TimerCallbacks, null, 0, 100);
+            timer.Tick += TimerCallbacks;
+            timer.Interval = TimeSpan.FromMicroseconds(1000);
+            timer.Start();
         }
-        private void TimerCallbacks(object state)
-        {
-            // 타이머 콜백이 호출될 때 수행할 작업을 여기에 작성합니다.
-            lock (_timer_lock)
-            {
-                if (!_viewModel.BottleLoading_Result)
-                {
-                    Dispatcher.Invoke(() =>
-                    {
-                        this.Close();
-                    });
 
-                    // 타이머 중지
-                    _timer.Change(Timeout.Infinite, Timeout.Infinite);
-                    _timer.Dispose();
-                }
+        public void Timer_Stop()
+        {
+            if (timer.IsEnabled)
+            {
+                timer.Stop();
+            }
+        }
+        private void TimerCallbacks(object sender, EventArgs e)
+        {
+            if(!_viewModel.BottleLoading_Result[IDX])
+                {
+                _viewModel.BottleLoading_isPopupOpen = false;
+
+                Dispatcher.Invoke(() =>
+                {
+                    this.Close();
+                });
+                Timer_Stop();
             }
         }
         #endregion Timer
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            //this.Close();
+            _viewModel.BottleLoading_Result[IDX] = false;
         }
 
         private void btn_Popup_Alarm_Click(object sender, RoutedEventArgs e)

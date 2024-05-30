@@ -178,7 +178,25 @@ namespace HubCentra_A1.Model
                 OnPropertyChanged(nameof(Common_CellCount));
             }
         }
+        public int Common_SystemCellCount
+        {
+            get => _view.Common_SystemCellCount;
+            set
+            {
+                _view.Common_SystemCellCount = value;
+                OnPropertyChanged(nameof(Common_SystemCellCount));
+            }
+        }
 
+        public int Common_TotalSystemCellCount
+        {
+            get => _view.Common_TotalSystemCellCount;
+            set
+            {
+                _view.Common_TotalSystemCellCount = value;
+                OnPropertyChanged(nameof(Common_TotalSystemCellCount));
+            }
+        }
         #endregion Common
 
         #region MainWindow
@@ -410,15 +428,15 @@ namespace HubCentra_A1.Model
             }
         }
 
-        public List<MatchEquipmentDataWithDB_C> Equipment_DataWithDB
+        public List<MatchEquipmentDataWithDB_C> Equipment_DataWithDB_presenceArray
         {
-            get => _view.Equipment_DataWithDB;
+            get => _view.Equipment_DataWithDB_presenceArray;
             set
             {
-                if (_view.Equipment_DataWithDB != value)
+                if (_view.Equipment_DataWithDB_presenceArray != value)
                 {
-                    _view.Equipment_DataWithDB = value;
-                    OnPropertyChanged(nameof(Equipment_DataWithDB));
+                    _view.Equipment_DataWithDB_presenceArray = value;
+                    OnPropertyChanged(nameof(Equipment_DataWithDB_presenceArray));
                 }
             }
         }
@@ -1261,7 +1279,7 @@ namespace HubCentra_A1.Model
                 }
             }
         }
-        public bool BottleLoading_Result
+        public bool[] BottleLoading_Result
         {
             get => _view.BottleLoading_Result;
             set
