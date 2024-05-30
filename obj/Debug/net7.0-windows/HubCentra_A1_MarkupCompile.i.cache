@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 D:\Auto\HubCentra_A1\App.xaml
-21782910839
+22-1009923815
 
-27-752181427
+281194576746
 235-409327862
-Form\Alarm_Barcode.xaml;Form\BottleLoading.xaml;Form\Calculator.xaml;Form\Config.xaml;Form\Home.xaml;Form\LiveCharts.xaml;Form\Loading.xaml;Form\Login.xaml;Form\PopStatus.xaml;Form\Report.xaml;Form\Search.xaml;Form\System_1.xaml;Form\System_2.xaml;Form\System_3.xaml;Form\System_4.xaml;MainWindow.xaml;Style\ButtonStyles.xaml;Style\ColorResourcesStyle.xaml;Style\EtcStyle.xaml;Style\Gradient.xaml;Style\TextBlockStyles.xaml;
+Form\Alarm_Barcode.xaml;Form\Alarm_Incubation.xaml;Form\BottleLoading.xaml;Form\Calculator.xaml;Form\Config.xaml;Form\Home.xaml;Form\LiveCharts.xaml;Form\Loading.xaml;Form\Login.xaml;Form\PopStatus.xaml;Form\Report.xaml;Form\Search.xaml;Form\System_1.xaml;Form\System_2.xaml;Form\System_3.xaml;Form\System_4.xaml;MainWindow.xaml;Style\ButtonStyles.xaml;Style\ColorResourcesStyle.xaml;Style\EtcStyle.xaml;Style\Gradient.xaml;Style\TextBlockStyles.xaml;
 
-True
+False
 

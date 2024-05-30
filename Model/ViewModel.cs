@@ -440,6 +440,18 @@ namespace HubCentra_A1.Model
                 }
             }
         }
+
+        public int[] PositiveDelay
+        {
+            get => _view.PositiveDelay;
+            set
+            {
+                _view.PositiveDelay = value;
+                OnPropertyChanged(nameof(PositiveDelay));
+            }
+        }
+
+
         public string teststr
         {
             get => _view.teststr;

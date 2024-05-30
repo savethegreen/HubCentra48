@@ -250,3 +250,5 @@ D:\Auto\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.genruntimeconfig.cach
 D:\Auto\HubCentra_A1\obj\Debug\net7.0-windows\ref\HubCentra_A1.dll
 D:\Auto\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Barcode.g.cs
 D:\Auto\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Barcode.baml
+D:\Auto\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Incubation.g.cs
+D:\Auto\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Incubation.baml

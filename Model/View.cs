@@ -98,7 +98,9 @@ namespace HubCentra_A1.Model
         public Dictionary<int, Dictionary<int, List<List<double>>>> PCB_CellReadings { get; set; } = new Dictionary<int, Dictionary<int, List<List<double>>>>();
 
 
-        public List<MatchEquipmentDataWithDB_C> Equipment_DataWithDB_presenceArray { get; set; }//DB 매칭
+        public List<MatchEquipmentDataWithDB_C> Equipment_DataWithDB_presenceArray { get; set; }
+
+        public int[] PositiveDelay { get; set; } = new int[336];
 
         public ConcurrentQueue<string> Queue_PCB_Manual { get; set; } = new ConcurrentQueue<string>();
         public int testint { get; set; } = 1;
@@ -212,6 +214,11 @@ namespace HubCentra_A1.Model
         public string Barcode_BarcodeID { get; set; } = "";
         public string Barcode_Content { get; set; } = "";
         #endregion Barcode
+
+        #region Incubation
+        public string Incubation_Title { get; set; } = "";
+        public string Incubation_Content { get; set; } = "";
+        #endregion Incubation
         public ConcurrentQueue<Tuple<string, string>> PopStatus_Positive { get; set; } = new ConcurrentQueue<Tuple<string, string>>();
 
 
@@ -240,7 +247,6 @@ namespace HubCentra_A1.Model
         public string PopStatus_TrashCanAlert { get; set; } = "휴지통을 제거 해주세요!!";
         public bool PopStatus_TrashCanAlert_Flag { get; set; } = false;
         #endregion Alarm
-
 
         #region Class
         #region DatabaseManager_System

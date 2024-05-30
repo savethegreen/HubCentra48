@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Form\Alarm_Incubation.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Form\Alarm_Barcode.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -54,6 +57,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Form\Alarm_Incubation.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Form\Alarm_Barcode.xaml">
       <SubType>Designer</SubType>
     </Page>

@@ -52,7 +52,7 @@ namespace HubCentra_A1
             PopStatus = 14,
             로딩 = 15,
             언로딩 = 16,
-
+            PositiveDelay = 17,
             Cal_PCB1_Manual = 19,
             test1 = 20,
         }

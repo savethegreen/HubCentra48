@@ -12,10 +12,12 @@ using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -348,6 +350,12 @@ namespace HubCentra_A1
                         언로딩();
                         Thread.Sleep(100);
                         break;
+                    case EnumMStartWorkerThreads.PositiveDelay:
+                        PositiveDelay();
+                        Thread.Sleep(1000);
+                        break;
+
+                       
                     case EnumMStartWorkerThreads.Cal_PCB1_Manual:
                         if (_viewModel.PCB1_targetvalue_test == true)
                         {
@@ -368,15 +376,21 @@ namespace HubCentra_A1
         #endregion Thread
 
         #region Timer
-        private  Timer BottleLoading_timer;
-        private Timer Barcode_timer;
-        private  readonly object BottleLoading_timer_lock = new object();
-        private readonly object Barcod_timer_lock = new object();
+        private DispatcherTimer BottleLoading_timer = new DispatcherTimer();
+        private DispatcherTimer Barcode_timer = new DispatcherTimer();
+
         public async void TimerInitialize()
         {
-            BottleLoading_timer = new Timer(TimerCallback_BottleLoading, null, 0, 1000);
-            Barcode_timer = new Timer(TimerCallback_Barcode, null, 0, 1000);
+            BottleLoading_timer.Tick += TimerCallback_BottleLoading;
+            BottleLoading_timer.Interval = TimeSpan.FromMicroseconds(1000);
+            BottleLoading_timer.Start();
+
+            Barcode_timer.Tick += TimerCallback_Barcode;
+            Barcode_timer.Interval = TimeSpan.FromMicroseconds(1000);
+            Barcode_timer.Start();
+
         }
+
 
         #endregion Timer
 
@@ -588,15 +602,14 @@ namespace HubCentra_A1
             try
             {
                 var filteredItems = _viewModel.EquipmentInfo.Where(e => e.isActive && e.isEnable && e.Switched).ToList();
-                int Positive_Low = _viewModel.Config[0].Positive_Low;
-                int Positive_High = _viewModel.Config[0].Positive_High;
+
                 int MaximumTime = _viewModel.Config[0].MaximumTime * 60;
 
                 foreach (var item in filteredItems)
                 {
-                    double adc = _viewModel.PCB_Data[item.ID - 1].ADC;
+
                     double IncubationTime = item.IncubationTime;
-                    string result = DetermineResult(adc, IncubationTime, Positive_Low, Positive_High, MaximumTime);
+                    string result = DetermineResult(item.ID - 1, IncubationTime, MaximumTime);
 
                     if (!string.IsNullOrEmpty(result))
                     {
@@ -661,9 +674,10 @@ namespace HubCentra_A1
             }
         }
 
-        private string DetermineResult(double adc, double incubationTime, int positiveLow, int positiveHigh, int maximumTime)
+        private string DetermineResult(int idx, double incubationTime, int maximumTime)
         {
-            if (adc >= positiveLow && adc <= positiveHigh)
+            int Positive_Delay = _viewModel.Config[0].Positive_Wait;
+            if (_viewModel.PositiveDelay[idx] > Positive_Delay)
             {
                 return "Positive";
             }
@@ -911,7 +925,7 @@ namespace HubCentra_A1
 
                 var select_Equipment = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_select_Equipment_Search].Select_Barcode(_viewModel.MyDatePicke_Start, _viewModel.MyDatePicke_End);
 
-                if (select_Equipment.Count > 0 && (select_Equipment[0].Result == "Positive" || select_Equipment[0].Result == "Negative"))
+                if (select_Equipment.Count > 0 && (select_Equipment[0].Result == "Positive" || select_Equipment[0].Result == "Negative" || select_Equipment[0].Result == "Incubation"))
                 {
                     _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_select_Equipment_Search].DeleteRecords(BacodeID, start, end);
                     string UpdateEquipment_Query = "UPDATE Equipment SET " +
@@ -1292,6 +1306,7 @@ namespace HubCentra_A1
                     pcb.Add(new PCB { ADC = 0, LED = 0 }); // ADC와 LED 값을 초기화
                     cell_alive.Add(new PCB_cell_alive_C { alive = 0 }); // ADC와 LED 값을 초기화
                     DataWithDB_presenceArray.Add(new MatchEquipmentDataWithDB_C { alive = true });
+                    _viewModel.PositiveDelay[i] = 0;
                 }
 
 
@@ -1685,6 +1700,30 @@ namespace HubCentra_A1
 
 
         }
+
+        public void PositiveDelay()
+        {
+            try
+            {
+                var filteredItems = _viewModel.EquipmentInfo.Where(e => e.isActive && e.isEnable && e.Switched).ToList();
+                int Positive_Low = _viewModel.Config[0].Positive_Low;
+                int Positive_High = _viewModel.Config[0].Positive_High;
+
+                foreach (var item in filteredItems)
+                {
+                    double adc = _viewModel.PCB_Data[item.ID - 1].ADC;
+                    if (adc >= Positive_Low && adc <= Positive_High)
+                    {
+                        _viewModel.PositiveDelay[item.ID - 1] += 1;
+                    }
+                }
+        
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
         #endregion PCB
 
         #region Barcode
@@ -1816,11 +1855,10 @@ namespace HubCentra_A1
         }
 
 
-        private void TimerCallback_Barcode(object state)
+        private void TimerCallback_Barcode(object sender, EventArgs e)
         {
             // 타이머 콜백이 호출될 때 수행할 작업을 여기에 작성합니다.
-            lock (Barcod_timer_lock)
-            {
+
                 if (!_viewModel.Alarm_Barcode_isPopupOpen)
                 {
                     if (_viewModel.Alarm_Barcode.Count > 0)
@@ -1840,7 +1878,7 @@ namespace HubCentra_A1
                         }
                     }
                 }
-            }
+            
         }
 
         private void Alarm_Barcode_Closed(object sender, bool? result)
@@ -2101,11 +2139,9 @@ namespace HubCentra_A1
         }
 
 
-        private  void TimerCallback_BottleLoading(object state)
+        private  void TimerCallback_BottleLoading(object sender, EventArgs e)
         {
             // 타이머 콜백이 호출될 때 수행할 작업을 여기에 작성합니다.
-            lock (BottleLoading_timer_lock)
-            {
                 if (!_viewModel.BottleLoading_isPopupOpen)
                 {
                     if (_viewModel.Alarm_BottleLoading.Count > 0)
@@ -2172,7 +2208,7 @@ namespace HubCentra_A1
 
                     }
                 }
-            }
+            
         }
 
 
@@ -2183,41 +2219,82 @@ namespace HubCentra_A1
         {
             try
             {
-                var Equipment = _viewModel.EquipmentInfo.Where(equipment => equipment.isEnable && equipment.isActive && !equipment.Switched).ToList();
+
+                var Equipment = _viewModel.EquipmentInfo.Where(equipment => equipment.isEnable && equipment.isActive ).ToList();
+  
                 foreach (var equipments in Equipment)
                 {
                     var equipment = equipments;
-                    int i = equipment.ID - 1;
-                    var pcbData = _viewModel.PCB_Data[i];
+                    int idx = equipment.ID - 1;
+                    var pcbData = _viewModel.PCB_Data[idx];
                     int limit = _viewModel.Config[0].BottleExistenceRange;
                     string barcodeID = equipment.Barcode;
                     int IncubationTime = equipment.IncubationTime;
                     string Result = equipment.Result;
                     if (pcbData.ADC > 0 && pcbData.ADC > limit)
                     {
-                        DateTime now = DateTime.Now;
-                        string FormattedNow = now.ToString("yyyy-MM-dd HH:mm:ss");
+                        언로딩팝업(idx, IncubationTime, equipment.ID, barcodeID);
+                    }
+                }
 
 
-                        string UpdateBarcode_Query = "UPDATE Barcode SET " +
-                                          "Unloading = @Unloading, IncubationTime = @IncubationTime " +
-                                          "WHERE Barcode = @Barcode";
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private Alarm_Incubation popup;
+        public void 언로딩팝업(int idx, int IncubationTime, int ID, string barcodeID)
+        {
+            try
+            {
+                if (popup != null && popup.IsVisible)
+                {
+                    return; // 팝업이 열려 있으면 아무것도 하지 않음
+                }
+                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+                {
+                     popup = new Alarm_Incubation(_viewModel, idx);
+                    popup.OKClicked += (s, e) => Popup_OKClicked(s, e, idx, IncubationTime, ID, barcodeID);
+                    popup.CancelClicked += (s, e) => Popup_CancelClicked(s, e, idx, IncubationTime, ID, barcodeID);
+                    popup.Show();
+                }));
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+        private void Popup_OKClicked(object sender, PopupEventArgs e, int idx, int incubationTime, int id, string barcodeID)
+        {
+            int IDX = idx;
+            int IncubationTime = incubationTime;
+            int ID = id;
+            string BarcodeID = barcodeID;
+            DateTime now = DateTime.Now;
+            string FormattedNow = now.ToString("yyyy-MM-dd HH:mm:ss");
+
+
+            string UpdateBarcode_Query = "UPDATE Barcode SET " +
+                              "Unloading = @Unloading, IncubationTime = @IncubationTime " +
+                              "WHERE Barcode = @Barcode";
 
 
 
-                        Dictionary<string, object> UpdateBarcode_parameters = new Dictionary<string, object>
+            Dictionary<string, object> UpdateBarcode_parameters = new Dictionary<string, object>
                         {
 
                             { "@Unloading", now },
                             { "@IncubationTime", IncubationTime },
-                            { "@Barcode", barcodeID },
+                            { "@Barcode", BarcodeID },
                         };
-                        _viewModel.databaseManagercs[(int)Enum_DatabaseManager.언로딩].UpdateBarcode(UpdateBarcode_Query, UpdateBarcode_parameters);
+            _viewModel.databaseManagercs[(int)Enum_DatabaseManager.언로딩].UpdateBarcode(UpdateBarcode_Query, UpdateBarcode_parameters);
 
-                        string UpdateEquipment_Query = "UPDATE Equipment SET " +
-                                                         "Barcode = @Barcode, Qrcode = @Qrcode, Loading = @Loading, CreDate = @CreDate, LoadCell = @LoadCell, Result = @Result, IncubationTime = @IncubationTime, switched = @switched, isEnable = @isEnable " +
-                                                         "WHERE ID = @ID";
-                        Dictionary<string, object> UpdateEquipment_parameters = new Dictionary<string, object>
+            string UpdateEquipment_Query = "UPDATE Equipment SET " +
+                                             "Barcode = @Barcode, Qrcode = @Qrcode, Loading = @Loading, CreDate = @CreDate, LoadCell = @LoadCell, Result = @Result, IncubationTime = @IncubationTime, switched = @switched, isEnable = @isEnable " +
+                                             "WHERE ID = @ID";
+            Dictionary<string, object> UpdateEquipment_parameters = new Dictionary<string, object>
                         {
                             { "@Barcode", null },
                             { "@Qrcode", null },
@@ -2228,21 +2305,16 @@ namespace HubCentra_A1
                             { "@IncubationTime", null },
                             { "@switched", false },
                             { "@isEnable", false },
-                            { "@ID", equipment.ID }  // 
+                            { "@ID", ID }  // 
                         };
-                        _viewModel.databaseManagercs[(int)Enum_DatabaseManager.언로딩].UpdateEquipment(UpdateEquipment_Query, UpdateEquipment_parameters);
+            _viewModel.databaseManagercs[(int)Enum_DatabaseManager.언로딩].UpdateEquipment(UpdateEquipment_Query, UpdateEquipment_parameters);
+            _viewModel.PositiveDelay[IDX] = 0;
+        }
 
-                    }
-
-                }
-
-
-               
-            }
-            catch (Exception ex)
-            {
-
-            }
+        private void Popup_CancelClicked(object sender, PopupEventArgs e, int idx, int IncubationTime, int ID, string barcodeI)
+        {
+            // Cancel 버튼 클릭 시 처리할 로직
+            // e.Idx 또는 idx 사용 가능
         }
         #endregion 언로딩
 
