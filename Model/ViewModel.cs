@@ -166,6 +166,26 @@ namespace HubCentra_A1.Model
             ViewModelDataTransferEvent_Config?.Invoke(DataTransfer);
         }
         #endregion ViewModel->Config
+
+        #region ViewModel->WriteBarcode
+        private ICommand _ICommand_WriteBarcode;
+        public ICommand ICommand_WriteBarcode => _ICommand_WriteBarcode ??= new RelayCommand(Command_WriteBarcode_Click);
+        private void Command_WriteBarcode_Click(object parameter)
+        {
+            if (parameter is string paramString && int.TryParse(paramString, out int intValue))
+            {
+                DataTransferEvent_WriteBarcode((Enum_WriteBarcode_ButtonEvent)intValue);
+            }
+        }
+
+        public delegate void ViewModelEventHandler_WriteBarcode(Enum_WriteBarcode_ButtonEvent DataTransfer);
+        public event ViewModelEventHandler_WriteBarcode ViewModelDataTransferEvent_WriteBarcode;
+        public void DataTransferEvent_WriteBarcode(Enum_WriteBarcode_ButtonEvent DataTransfer)
+        {
+
+            ViewModelDataTransferEvent_WriteBarcode?.Invoke(DataTransfer);
+        }
+        #endregion ViewModel->WriteBarcode
         #endregion Command
 
         #region Common
@@ -504,6 +524,15 @@ namespace HubCentra_A1.Model
                 OnPropertyChanged(nameof(Barcode_SerialPort));
             }
         }
+        public string Barcode_ID_Loading
+        {
+            get => _view.Barcode_ID_Loading;
+            set
+            {
+                _view.Barcode_ID_Loading = value;
+                OnPropertyChanged(nameof(Barcode_ID_Loading));
+            }
+        }
         public string Barcode_ID
         {
             get => _view.Barcode_ID;
@@ -513,6 +542,17 @@ namespace HubCentra_A1.Model
                 OnPropertyChanged(nameof(Barcode_ID));
             }
         }
+        public string Patient_ID
+        {
+            get => _view.Patient_ID;
+            set
+            {
+                _view.Patient_ID = value;
+                OnPropertyChanged(nameof(Patient_ID));
+            }
+        }
+
+        
         public bool Barcode_Connection
         {
             get => _view.Barcode_Connection;
@@ -1139,22 +1179,84 @@ namespace HubCentra_A1.Model
         }
         #endregion Calculator
 
-        #region PopStatus
-
-        public ConcurrentQueue<Tuple<string, string>> PopStatus_Positive
+        #region System
+        public List<PositiveFirst_C> System_PositiveFirst
         {
-            get => _view.PopStatus_Positive;
+            get => _view.System_PositiveFirst;
             set
             {
-                if (_view.PopStatus_Positive != value)
-                {
-                    _view.PopStatus_Positive = value;
-                    OnPropertyChanged(nameof(PopStatus_Positive));
-                }
+                _view.System_PositiveFirst = value;
+                OnPropertyChanged(nameof(System_PositiveFirst));
             }
         }
 
-      
+        #region System1
+
+
+        public bool System1_HasPositive
+        {
+            get => _view.System1_HasPositive;
+            set
+            {
+                _view.System1_HasPositive = value;
+                OnPropertyChanged(nameof(System1_HasPositive));
+            }
+        }
+        public string System1_Positive_Warning
+        {
+            get => _view.System1_Positive_Warning;
+            set
+            {
+                _view.System1_Positive_Warning = value;
+                OnPropertyChanged(nameof(System1_Positive_Warning));
+            }
+        }
+        public string System1_Positive_Cel
+        {
+            get => _view.System1_Positive_Cel;
+            set
+            {
+                _view.System1_Positive_Cel = value;
+                OnPropertyChanged(nameof(System1_Positive_Cel));
+            }
+        }
+        #endregion System1
+
+        #region System2
+        #endregion System2
+
+        #region System3
+        #endregion System3
+
+        #region System4
+        #endregion System4
+        #endregion System
+
+
+        #region WriteBarcode
+        public string WriteBarcode_ID
+        {
+            get => _view.WriteBarcode_ID;
+            set
+            {
+                _view.WriteBarcode_ID = value;
+                OnPropertyChanged(nameof(WriteBarcode_ID));
+            }
+        }
+        public string WritePatient_ID
+        {
+            get => _view.WritePatient_ID;
+            set
+            {
+                _view.WritePatient_ID = value;
+                OnPropertyChanged(nameof(WritePatient_ID));
+            }
+        }
+        #endregion WriteBarcode
+
+        #region PopStatus
+
+
 
         public bool PopStatus_Positive_Flag
         {
@@ -1398,6 +1500,151 @@ namespace HubCentra_A1.Model
             }
         }
         #endregion Barcode
+
+        #region Incubation
+        public string Alarm_Incubation_BarcodeID
+        {
+            get => _view.Alarm_Incubation_BarcodeID;
+            set
+            {
+                _view.Alarm_Incubation_BarcodeID = value;
+                OnPropertyChanged(nameof(Alarm_Incubation_BarcodeID));
+            }
+        }
+        public string Alarm_Incubation_Title
+        {
+            get => _view.Alarm_Incubation_Title;
+            set
+            {
+                _view.Alarm_Incubation_Title = value;
+                OnPropertyChanged(nameof(Alarm_Incubation_Title));
+            }
+        }
+        public string Alarm_Incubation_whatSystem
+        {
+            get => _view.Alarm_Incubation_whatSystem;
+            set
+            {
+                _view.Alarm_Incubation_whatSystem = value;
+                OnPropertyChanged(nameof(Alarm_Incubation_whatSystem));
+            }
+        }
+        public string Alarm_Incubation_Cell
+        {
+            get => _view.Alarm_Incubation_Cell;
+            set
+            {
+                _view.Alarm_Incubation_Cell = value;
+                OnPropertyChanged(nameof(Alarm_Incubation_Cell));
+            }
+        }
+        public string Alarm_Incubation_Content
+        {
+            get => _view.Alarm_Incubation_Content;
+            set
+            {
+                _view.Alarm_Incubation_Content = value;
+                OnPropertyChanged(nameof(Alarm_Incubation_Content));
+            }
+        }
+        #endregion Incubation
+
+        #region Positive
+
+        public ConcurrentQueue<Tuple<int>> Alarm_Positive
+        {
+            get => _view.Alarm_Positive;
+            set
+            {
+                if (_view.Alarm_Positive != value)
+                {
+                    _view.Alarm_Positive = value;
+                    OnPropertyChanged(nameof(Alarm_Positive));
+                }
+            }
+        }
+        public string Alarm_Positive_whatSystem
+        {
+            get => _view.Alarm_Positive_whatSystem;
+            set
+            {
+                _view.Alarm_Positive_whatSystem = value;
+                OnPropertyChanged(nameof(Alarm_Positive_whatSystem));
+            }
+        }
+
+        public string Alarm_Positive_Warning
+        {
+            get => _view.Alarm_Positive_Warning;
+            set
+            {
+                _view.Alarm_Positive_Warning = value;
+                OnPropertyChanged(nameof(Alarm_Positive_Warning));
+            }
+        }
+
+        public string Alarm_Positive_Cell
+        {
+            get => _view.Alarm_Positive_Cell;
+            set
+            {
+                _view.Alarm_Positive_Cell = value;
+                OnPropertyChanged(nameof(Alarm_Positive_Cell));
+            }
+        }
+        #endregion Positive
+
+        #region Positive_Unloading
+
+
+        public string Alarm_Positive_Unloading_Title
+        {
+            get => _view.Alarm_Positive_Unloading_Title;
+            set
+            {
+                _view.Alarm_Positive_Unloading_Title = value;
+                OnPropertyChanged(nameof(Alarm_Positive_Unloading_Title));
+            }
+        }
+
+        public string Alarm_Positive_Unloading_whatSystem
+        {
+            get => _view.Alarm_Positive_Unloading_whatSystem;
+            set
+            {
+                _view.Alarm_Positive_Unloading_whatSystem = value;
+                OnPropertyChanged(nameof(Alarm_Positive_Unloading_whatSystem));
+            }
+        }
+
+        public string Alarm_Positive_Unloading_Cell
+        {
+            get => _view.Alarm_Positive_Unloading_Cell;
+            set
+            {
+                _view.Alarm_Positive_Unloading_Cell = value;
+                OnPropertyChanged(nameof(Alarm_Positive_Unloading_Cell));
+            }
+        }
+        public string Alarm_Positive_Unloading_BarcodeID
+        {
+            get => _view.Alarm_Positive_Unloading_BarcodeID;
+            set
+            {
+                _view.Alarm_Positive_Unloading_BarcodeID = value;
+                OnPropertyChanged(nameof(Alarm_Positive_Unloading_BarcodeID));
+            }
+        }
+        public string Alarm_Positive_Unloading_Warning
+        {
+            get => _view.Alarm_Positive_Unloading_Warning;
+            set
+            {
+                _view.Alarm_Positive_Unloading_Warning = value;
+                OnPropertyChanged(nameof(Alarm_Positive_Unloading_Warning));
+            }
+        }
+        #endregion Positive_Unloading
 
         #endregion Alarm
 

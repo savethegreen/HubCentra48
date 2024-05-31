@@ -432,19 +432,21 @@
                     <ColumnDefinition Width="300*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="1">
+                    <TextBlock Grid.Column="0" Text="SYSTEM" Style="{StaticResource Config_TextBlock_01}"></TextBlock>
+
                 </Grid>
                 <Grid Grid.Column="3">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100*"/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="100*"/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0">
-
-                    </Grid>
+                    <CheckBox Grid.Column="0" Content="SYSTEM 1" IsChecked="True" IsEnabled="False" Style="{StaticResource  System_CheckBoxStyle_01}"/>
+                    <CheckBox Grid.Column="1" Content="SYSTEM 2" Style="{StaticResource System_CheckBoxStyle_01}"/>
+                    <CheckBox Grid.Column="2" Content="SYSTEM 3" Style="{StaticResource System_CheckBoxStyle_01}"/>
+                    <CheckBox Grid.Column="3" Content="SYSTEM 4" Style="{StaticResource System_CheckBoxStyle_01}"/>
                 </Grid>
             </Grid>
             <!--#endregion DataStorageSave-->

@@ -16,7 +16,7 @@ namespace HubCentra_A1
             Report = 2,
             Conguration = 3,
             SystemRack1 = 4, SystemRack2 = 5, SystemRack3 = 6, SystemRack4 = 7,
-            Login = 8, Logout = 9,
+            Login = 8, Logout = 9, Loading =10, Unloading =11
         }
         public enum Enum_MainWindow_ButtonFlag
         {
@@ -136,6 +136,15 @@ namespace HubCentra_A1
             NLGM
         }
         #endregion Report
+
+        #region WriteBarcode
+        public enum Enum_WriteBarcode_ButtonEvent
+        {
+            OK = 0,
+            CANCEL = 1,
+
+        }
+        #endregion WriteBarcode
 
         #region PopStatus
 

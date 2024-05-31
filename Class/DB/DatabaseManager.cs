@@ -453,7 +453,7 @@ namespace HubCentra_A1
            "Qrcode VARCHAR(255) NULL, " +
            "Loading DATETIME2 NULL, " +
            "CreDate DATETIME2 NULL, " +
-           "LoadCell FLOAT NULL, " +
+           "PositiveTime DATETIME2 NULL, " +
            "IncubationTime INT NULL, " +
            "Result VARCHAR(255) NULL, " +
            "switched BIT NULL, " +
@@ -1174,7 +1174,7 @@ namespace HubCentra_A1
                                     Qrcode = reader.IsDBNull(reader.GetOrdinal("Qrcode")) ? null : reader.GetString(reader.GetOrdinal("Qrcode")),
                                     Loading = reader.IsDBNull(reader.GetOrdinal("Loading")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("Loading")),
                                     CreDate = reader.IsDBNull(reader.GetOrdinal("CreDate")) ? (DateTime?)null : Convert.ToDateTime(reader["CreDate"]),
-                                    LoadCell = reader["LoadCell"] != DBNull.Value ? Convert.ToDouble(reader["LoadCell"]) : 0,
+                                    PositiveTime = reader.IsDBNull(reader.GetOrdinal("PositiveTime")) ? (DateTime?)null : Convert.ToDateTime(reader["PositiveTime"]),
                                     Result = reader.IsDBNull(reader.GetOrdinal("Result")) ? null : reader.GetString(reader.GetOrdinal("Result")),
                                     IncubationTime = reader["IncubationTime"] != DBNull.Value ? Convert.ToInt32(reader["IncubationTime"]) : 0,
                                     Switched = reader.IsDBNull(reader.GetOrdinal("Switched")) ? false : reader.GetBoolean(reader.GetOrdinal("Switched")),
@@ -1251,7 +1251,7 @@ namespace HubCentra_A1
                                     Qrcode = reader.IsDBNull(reader.GetOrdinal("Qrcode")) ? null : reader.GetString(reader.GetOrdinal("Qrcode")),
                                     Loading = reader.IsDBNull(reader.GetOrdinal("Loading")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("Loading")),
                                     CreDate = reader.IsDBNull(reader.GetOrdinal("CreDate")) ? (DateTime?)null : Convert.ToDateTime(reader["CreDate"]),
-                                    LoadCell = reader["LoadCell"] != DBNull.Value ? Convert.ToDouble(reader["LoadCell"]) : 0,
+                                    PositiveTime = reader.IsDBNull(reader.GetOrdinal("PositiveTime")) ? (DateTime?)null : Convert.ToDateTime(reader["PositiveTime"]),
                                     Result = reader.IsDBNull(reader.GetOrdinal("Result")) ? null : reader.GetString(reader.GetOrdinal("Result")),
                                     IncubationTime = reader["IncubationTime"] != DBNull.Value ? Convert.ToInt32(reader["IncubationTime"]) : 0,
                                     isEnable = reader.IsDBNull(reader.GetOrdinal("isEnable")) ? false : reader.GetBoolean(reader.GetOrdinal("isEnable")),

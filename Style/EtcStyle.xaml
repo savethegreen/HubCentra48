@@ -132,4 +132,24 @@
     </Style>
     <!--#endregion Report-->
 
+    <!--#region System-->
+    <Style x:Key="System_Border_01" TargetType="Border">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="White" />
+    </Style>
+
+
+    <Style x:Key="System_CheckBoxStyle_01" TargetType="CheckBox">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Background" Value="LightYellow"/>
+        <Setter Property="BorderBrush" Value="DarkGray"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+    <!--#endregion System-->
 </ResourceDictionary>

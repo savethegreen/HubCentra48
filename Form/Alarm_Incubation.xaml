@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Alarm_Incubation"  WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        Height="270" Width="420" Loaded="Window_Loaded">
+        Height="280" Width="420" Loaded="Window_Loaded">
     <Grid Background="Transparent">
         <Border
                    Background="{StaticResource SolidColorBrush_08}"
@@ -26,7 +26,7 @@
                                FontSize="23"
                                FontWeight="Bold"
                                Foreground="White"
-                               Text="{Binding Incubation_Title}"
+                               Text="{Binding Alarm_Incubation_Title}"
                                TextAlignment="Center" />
                 </Grid>
 
@@ -51,7 +51,7 @@
                                    VerticalAlignment="Center"
                                    FontSize="18"
                                    FontStyle="Italic"
-                                   Text="{Binding BottleLoading_WhatSystem}"
+                                   Text="{Binding Alarm_Incubation_whatSystem}"
                                    TextAlignment="Center" />
 
                         <TextBlock
@@ -59,7 +59,7 @@
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
                                    FontSize="20"
-                                   Text="{Binding Incubation_Content}"
+                                   Text="{Binding Alarm_Incubation_Content}"
                                    TextAlignment="Center" />
                         <TextBlock
                                    Grid.Row="1"
@@ -67,7 +67,7 @@
                                    VerticalAlignment="Top"
                                    FontSize="26"
                                    FontWeight="Bold"
-                                   Text="{Binding BottleLoading_Cell_Num}"
+                                   Text="{Binding Alarm_Incubation_Cell}"
                                    TextAlignment="Center">
                             <TextBlock.Style>
                                 <Style>
@@ -87,7 +87,7 @@
                 VerticalAlignment="Top"
                 FontSize="26"
                 FontWeight="Bold"
-                Text="{Binding BottleLoading_BarcodeID}"
+                Text="{Binding Alarm_Incubation_BarcodeID}"
                 TextAlignment="Center">
                             <TextBlock.Style>
                                 <Style>

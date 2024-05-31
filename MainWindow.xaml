@@ -90,8 +90,8 @@
 
                         <Grid Grid.Column="2">
                             <Button
-                                    Command="{Binding Command_Calculator_Number}"
-                                    CommandParameter="66"
+                                    Command="{Binding ICommand_MainWindow}"
+                                    CommandParameter="10"
                                     Content="Loading">
                                 <Button.Style>
                                     <Style BasedOn="{StaticResource MainWindow_Button_01}" TargetType="Button" />
@@ -100,8 +100,8 @@
                         </Grid>
                         <Grid Grid.Column="4">
                             <Button
-                                   Command="{Binding Command_Calculator_Number}"
-                                   CommandParameter="66"
+                                   Command="{Binding ICommand_MainWindow}"
+                                   CommandParameter="11"
                                    Content="Unloading">
                                 <Button.Style>
                                     <Style BasedOn="{StaticResource MainWindow_Button_01}" TargetType="Button" />
@@ -165,9 +165,9 @@
                         <Button
                         x:Name="Logout"
                         Margin="8"
-                        Command="{Binding ICommands}"
-                        CommandParameter="1"
-                        Content="Log Out">
+                        Command="{Binding ICommand_MainWindow}"
+                        CommandParameter="9"
+                        Content="Log Out" Cursor="Hand">
                             <Button.Style>
                                 <Style BasedOn="{StaticResource MainWindow_Button_03}" TargetType="Button" />
                             </Button.Style>
@@ -706,26 +706,59 @@
 
                     <Grid Grid.Column="5">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100*" />
-                            <ColumnDefinition Width="100*" />
-                            <ColumnDefinition Width="100*" />
+                            <ColumnDefinition Width="300*" />
                             <ColumnDefinition Width="100*" />
                         </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="1">
+                        <Grid Grid.Column="0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="100*" />
                                 <RowDefinition Height="100*" />
                                 <RowDefinition Height="100*" />
                             </Grid.RowDefinitions>
-
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50*" />
+                                    <ColumnDefinition Width="100*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <TextBlock 
+                                        HorizontalAlignment="Right"
+                                        Style="{StaticResource  MainWindow_TextBlock_06}"
+                                        Text="Barcode ID : ">
+                                        
+                                    </TextBlock>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <TextBlock 
+                                       HorizontalAlignment="Left"
+                                       Style="{StaticResource  MainWindow_TextBlock_06}"
+                                       Text="{Binding Barcode_ID}">
+                                    </TextBlock>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50*" />
+                                    <ColumnDefinition Width="100*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <TextBlock 
+                                       HorizontalAlignment="Right"
+                                       Style="{StaticResource  MainWindow_TextBlock_06}"
+                                       Text="Patient ID : ">
+                                    </TextBlock>            
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <TextBlock 
+                                        HorizontalAlignment="Left"
+                                        Style="{StaticResource  MainWindow_TextBlock_06}"
+                                        Text="{Binding Patient_ID}">
+                                    </TextBlock>
+                                </Grid>
+                            </Grid>
                         </Grid>
-                        <Grid Grid.Column="2" Visibility="Hidden">
-                            <TextBox x:Name="txtline" Text="0" />
-                        </Grid>
-                        <Grid Grid.Column="3" Visibility="Hidden">
-                            <TextBox x:Name="txtcell" Text="1" />
-                        </Grid>
-                        <Grid Grid.Column="3">
+                    
+                        <Grid Grid.Column="1">
                             <TextBlock
                         Margin="44,0,0,0"
                         HorizontalAlignment="Left"

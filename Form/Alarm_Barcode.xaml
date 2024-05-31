@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        Title="Alarm_Barcode" Height="270" Width="430" Loaded="Window_Loaded">
+        Title="Alarm_Barcode" Height="280" Width="430" Loaded="Window_Loaded">
 
     <Grid Background="Transparent">
         <Border

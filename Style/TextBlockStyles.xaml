@@ -338,8 +338,7 @@
         <Setter Property="FontWeight" Value="Bold"/>
     </Style>
     <!--#endregion Calculator-->
-    <!--#region MainWindow-->
-    <!--#endregion MainWindow-->
+
 
     <!--#region MainWindow-->
     <!--#endregion MainWindow-->

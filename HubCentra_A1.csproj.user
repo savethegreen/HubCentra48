@@ -7,6 +7,12 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Form\Alarm_Positive_Unloading.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Form\Alarm_Positive.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Form\Alarm_Incubation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -55,8 +61,17 @@
     <Compile Update="Form\PopStatus.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Form\WriteBarcode.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Form\Alarm_Positive_Unloading.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Form\Alarm_Positive.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Form\Alarm_Incubation.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -121,6 +136,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Form\System_4.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Form\WriteBarcode.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

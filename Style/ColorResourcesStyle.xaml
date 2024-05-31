@@ -86,4 +86,14 @@
     <SolidColorBrush x:Key="Search_SolidCColorResources_02" Color="Transparent"/>
     <!--#endregion Search-->
 
+
+
+
+    <!--#region System-->
+    <LinearGradientBrush x:Key="SystemLinearColorResources_01" StartPoint="1,1" EndPoint="0,0">
+        <GradientStop Offset="0" Color="Transparent" />
+        <GradientStop Offset="0.5" Color="Transparent" />
+        <GradientStop Offset="1" Color="Transparent" />
+    </LinearGradientBrush>
+    <!--#endregion System-->
 </ResourceDictionary>

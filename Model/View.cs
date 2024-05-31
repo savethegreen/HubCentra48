@@ -113,7 +113,11 @@ namespace HubCentra_A1.Model
 
         #region Barcode
         public SerialPort Barcode_SerialPort { get; set; }
+        public string Barcode_ID_Loading { get; set; } = "";
         public string Barcode_ID { get; set; } = "";
+        public string Patient_ID { get; set; } = "";
+
+        
         public bool Barcode_Connection { get; set; } = false;
         #endregion Barcode
 
@@ -191,6 +195,30 @@ namespace HubCentra_A1.Model
         public string Calculator_DisplayTextBlock { get; set; } = "";
         #endregion  Calculator
 
+        #region System
+
+        #region System1
+        public List<PositiveFirst_C> System_PositiveFirst { get; set; }
+        public bool System1_HasPositive { get; set; } = false;
+        public string System1_Positive_Warning { get; set; } = "";
+        public string System1_Positive_Cel { get; set; } = "";
+        #endregion System1
+
+        #region System2
+        #endregion System2
+
+        #region System3
+        #endregion System3
+
+        #region System4
+        #endregion System4
+        #endregion System
+
+        #region WriteBarcode
+        public string WriteBarcode_ID { get; set; } = "";
+        public string WritePatient_ID { get; set; } = "";
+        #endregion WriteBarcode
+
         #region Alarm
         #region BottleLoading
         public ConcurrentQueue<Tuple<int>> Alarm_BottleLoading { get; set; } = new ConcurrentQueue<Tuple<int>>();
@@ -207,7 +235,6 @@ namespace HubCentra_A1.Model
         public string BottleLoading_Cell_Num { get; set; } = "";
         #endregion BottleLoading
 
-
         #region Barcode
         public ConcurrentQueue<Tuple<string>> Alarm_Barcode { get; set; } = new ConcurrentQueue<Tuple<string>>();
         public bool Alarm_Barcode_isPopupOpen { get; set; } = false;
@@ -216,16 +243,29 @@ namespace HubCentra_A1.Model
         #endregion Barcode
 
         #region Incubation
-        public string Incubation_Title { get; set; } = "";
-        public string Incubation_Content { get; set; } = "";
+        public string Alarm_Incubation_BarcodeID { get; set; } = "";
+        public string Alarm_Incubation_Title { get; set; } = "Bottle Unloading";
+        public string Alarm_Incubation_whatSystem { get; set; } = "";
+        public string Alarm_Incubation_Cell { get; set; } = "";
+
+        public string Alarm_Incubation_Content { get; set; } = "배양이 종료되지 않았습니다." + "\n" +
+                                                    "정말로 제거하시겠습니까?";
         #endregion Incubation
-        public ConcurrentQueue<Tuple<string, string>> PopStatus_Positive { get; set; } = new ConcurrentQueue<Tuple<string, string>>();
 
+        #region Positive
+        public ConcurrentQueue<Tuple<int>> Alarm_Positive { get; set; } = new ConcurrentQueue<Tuple<int>>();
+        public string Alarm_Positive_whatSystem { get; set; } = "";
+        public string Alarm_Positive_Warning { get; set; } = "";
+        public string Alarm_Positive_Cell { get; set; } = "";
+        #endregion Positive
 
-
-
-
-
+        #region Positive_Unloading
+        public string Alarm_Positive_Unloading_Title { get; set; } = "Bottle Unloading";
+        public string Alarm_Positive_Unloading_whatSystem { get; set; } = "";
+        public string Alarm_Positive_Unloading_Cell { get; set; } = "";
+        public string Alarm_Positive_Unloading_BarcodeID { get; set; } = "";
+        public string Alarm_Positive_Unloading_Warning { get; set; } = "Bottle Unloading";
+        #endregion Positive_Unloading
 
 
         public bool PopStatus_Positive_Flag { get; set; } = false;
@@ -829,7 +869,7 @@ namespace HubCentra_A1.Model
             public string _Qrcode;
             public DateTime? _Loading;
             public DateTime? _CreDate;
-            public double _LoadCell;
+            public DateTime? _PositiveTime;
             public string _Result;
             public int _IncubationTime;
             public bool _Switched;
@@ -908,15 +948,15 @@ namespace HubCentra_A1.Model
                     }
                 }
             }
-            public double LoadCell
+            public DateTime? PositiveTime
             {
-                get => _LoadCell;
+                get => _PositiveTime;
                 set
                 {
-                    if (_LoadCell != value)
+                    if (_PositiveTime != value)
                     {
-                        _LoadCell = value;
-                        OnPropertyChanged(nameof(LoadCell));
+                        _PositiveTime = value;
+                        OnPropertyChanged(nameof(PositiveTime));
                     }
                 }
             }
@@ -2202,6 +2242,33 @@ namespace HubCentra_A1.Model
         }
         #endregion Config
 
+        #region System
+        public class PositiveFirst_C : INotifyPropertyChanged
+        {
+            private bool _alive;
+            public bool alive
+            {
+                get => _alive;
+                set
+                {
+                    if (_alive != value)
+                    {
+                        _alive = value;
+                        OnPropertyChanged(nameof(alive));
+                    }
+                }
+            }
+
+
+
+            public event PropertyChangedEventHandler PropertyChanged;
+            protected virtual void OnPropertyChanged(string propertyName)
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+        #endregion System
+
         #region ModbusTCP
         public class ModbusTCP_Get_Flag : INotifyPropertyChanged
         {
@@ -2758,6 +2825,7 @@ namespace HubCentra_A1.Model
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
         #endregion PCB
 
         #region SystemRack

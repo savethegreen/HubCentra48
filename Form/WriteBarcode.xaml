@@ -1,0 +1,152 @@
+﻿<Window x:Class="HubCentra_A1.WriteBarcode"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HubCentra_A1"
+        mc:Ignorable="d"   Title="Write Barcode"  WindowStyle="None"
+        WindowStartupLocation="CenterScreen"  Width="430" Height="270" Loaded="Window_Loaded">
+    <Grid
+                Background="Transparent">
+        <Border
+                    Background="{StaticResource SolidColorBrush_08}"
+                    BorderThickness="0"
+                    CornerRadius="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="15*" />
+                    <RowDefinition Height="100*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="23"
+                                Foreground="White"
+                                Text="Loading Process"
+                                TextAlignment="Center" />
+                </Grid>
+
+                <Grid
+                            Grid.Row="1"
+                            Margin="5,5"
+                            Background="#e8e5da">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100*" />
+                            <RowDefinition Height="20*" />
+                            <RowDefinition Height="5*" />
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30*" />
+                                <RowDefinition Height="20*" />
+                                <RowDefinition Height="5*" />
+                                <RowDefinition Height="20*" />
+                                <RowDefinition Height="30*" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*" />
+                                    <ColumnDefinition Width="30*" />
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="50*" />
+
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="1">
+                                    <TextBlock
+                                      HorizontalAlignment="Right"
+                                      VerticalAlignment="Center"
+                                      FontSize="20"
+                                      Text="Barcode ID: "
+                                      TextAlignment="Center" />
+                                </Grid>
+                                <Grid Grid.Column="3">
+                                    <TextBox
+                                      Text="{Binding WriteBarcode_ID, UpdateSourceTrigger=PropertyChanged}"
+                                      Width="200"
+                                      HorizontalAlignment="Left"
+                                      VerticalAlignment="Center"
+                                      FontSize="20"
+                                      TextAlignment="Left" />
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*" />
+                                    <ColumnDefinition Width="30*" />
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="50*" />
+
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="1">
+                                    <TextBlock
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Center"
+                                       FontSize="20"
+                                       Text="Patient ID: "
+                                       TextAlignment="Center" />                
+                                </Grid>
+                                <Grid Grid.Column="3">
+                                    <TextBox
+                                       Text="{Binding WritePatient_ID, UpdateSourceTrigger=PropertyChanged}"
+                                       Width="200"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       FontSize="20"
+                                       TextAlignment="Left" />      
+                                </Grid>
+                            </Grid>
+
+                        </Grid>
+
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50*" />
+                                <ColumnDefinition Width="50*" />
+                            </Grid.ColumnDefinitions>
+      
+                            <Button
+                                        x:Name="btn_OK"
+                                        Width="67"
+                                        Height="35"
+                                        Margin="0,0,0,0"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Background="#f27200"
+                                        BorderThickness="0"
+                                        Click="btn_OK_Click"
+                                        Content="확인"
+                                        FontSize="20"
+                                        Foreground="White">
+                                <Button.Effect>
+                                    <DropShadowEffect ShadowDepth="2" />
+                                </Button.Effect>
+                            </Button>
+                            <Button
+                                        x:Name="btn_Cancel"
+                                        Grid.Column="1"
+                                        Width="67"
+                                        Height="35"
+                                        Margin="0,0,0,0"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Background="#f27200"
+                                        BorderThickness="0"
+                                        Click="btn_Cancel_Click"
+                                        Content="취소"
+                                        FontSize="20"
+                                        Foreground="White">
+                                <Button.Effect>
+                                    <DropShadowEffect ShadowDepth="2" />
+                                </Button.Effect>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
