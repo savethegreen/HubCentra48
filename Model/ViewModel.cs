@@ -1220,6 +1220,15 @@ namespace HubCentra_A1.Model
                 OnPropertyChanged(nameof(System1_Positive_Cel));
             }
         }
+        public int System_PositiveFirstint
+        {
+            get => _view.System_PositiveFirstint;
+            set
+            {
+                _view.System_PositiveFirstint = value;
+                OnPropertyChanged(nameof(System_PositiveFirstint));
+            }
+        }
         #endregion System1
 
         #region System2

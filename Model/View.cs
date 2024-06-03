@@ -202,6 +202,7 @@ namespace HubCentra_A1.Model
         public bool System1_HasPositive { get; set; } = false;
         public string System1_Positive_Warning { get; set; } = "";
         public string System1_Positive_Cel { get; set; } = "";
+        public int System_PositiveFirstint { get; set; } = -1;
         #endregion System1
 
         #region System2

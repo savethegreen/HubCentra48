@@ -2333,15 +2333,17 @@ namespace HubCentra_A1
                     _viewModel.System1_Positive_Warning = "Positive가 감지되었습니다." + " (발생 시간 : " + oldestPositiveEquipment.PositiveTime.ToString() + ")";
                     _viewModel.System1_Positive_Cel = cellidx(fitst - 1);
                     _viewModel.System1_HasPositive = true;
-                    _viewModel.System_PositiveFirst[fitst - 1].alive = true;
+                    //_viewModel.System_PositiveFirst[fitst - 1].alive = true;
+                    _viewModel.System_PositiveFirstint = fitst - 1;
                 }
                 else
                 {
                     _viewModel.System1_HasPositive = false;
-                    for (int i = 0; i < _viewModel.System_PositiveFirst.Count; i++)
-                    {
-                        _viewModel.System_PositiveFirst[i].alive = false;
-                    }
+                    _viewModel.System_PositiveFirstint = -1;
+                    //for (int i = 0; i < _viewModel.System_PositiveFirst.Count; i++)
+                    //{
+                    //    _viewModel.System_PositiveFirst[i].alive = false;
+                    //}
                 }
 
                 foreach (var equipments in Equipment)
@@ -2846,7 +2848,7 @@ namespace HubCentra_A1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
- 
+            _viewModel.System_PositiveFirstint = 2;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
