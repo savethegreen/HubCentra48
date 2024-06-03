@@ -703,17 +703,17 @@
                                                     <DataTrigger Binding="{Binding EquipmentInfo[5].Result}" Value="Block">
                                                         <Setter Property="Background" Value="{StaticResource SystemManager_LinearColorResources_07}" />
                                                     </DataTrigger>
-                                                    <DataTrigger Binding="{Binding System_PositiveFirstint}" Value="5">
+                                                    <DataTrigger Binding="{Binding Equipment_DataWithDB_presenceArray[5].alive}" Value="True">
                                                         <DataTrigger.EnterActions>
                                                             <BeginStoryboard Name="Equipment_DataWithDB_presenceArray">
                                                                 <Storyboard>
                                                                     <DoubleAnimation
-                                                         AutoReverse="True"
-                                                         RepeatBehavior="Forever"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         From="1"
-                                                         To="0.2"
-                                                         Duration="0:0:0.500" />
+                                 AutoReverse="True"
+                                 RepeatBehavior="Forever"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="1"
+                                 To="0.2"
+                                 Duration="0:0:0.500" />
                                                                 </Storyboard>
                                                             </BeginStoryboard>
                                                         </DataTrigger.EnterActions>
@@ -722,17 +722,17 @@
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
 
-                                                    <DataTrigger Binding="{Binding System_PositiveFirst[5].alive}" Value="True">
+                                                    <DataTrigger Binding="{Binding System_PositiveFirstint}" Value="5">
                                                         <DataTrigger.EnterActions>
                                                             <BeginStoryboard Name="PositiveFirst">
                                                                 <Storyboard>
                                                                     <DoubleAnimation
-                        AutoReverse="True"
-                        RepeatBehavior="Forever"
-                        Storyboard.TargetProperty="Opacity"
-                        From="1"
-                        To="0.2"
-                        Duration="0:0:0.500" />
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
                                                                 </Storyboard>
                                                             </BeginStoryboard>
                                                         </DataTrigger.EnterActions>
@@ -801,17 +801,17 @@
                                                     <DataTrigger Binding="{Binding EquipmentInfo[6].Result}" Value="Block">
                                                         <Setter Property="Background" Value="{StaticResource SystemManager_LinearColorResources_07}" />
                                                     </DataTrigger>
-                                                    <DataTrigger Binding="{Binding System_PositiveFirstint}" Value="6">
+                                                    <DataTrigger Binding="{Binding Equipment_DataWithDB_presenceArray[6].alive}" Value="True">
                                                         <DataTrigger.EnterActions>
                                                             <BeginStoryboard Name="Equipment_DataWithDB_presenceArray">
                                                                 <Storyboard>
                                                                     <DoubleAnimation
-                                                         AutoReverse="True"
-                                                         RepeatBehavior="Forever"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         From="1"
-                                                         To="0.2"
-                                                         Duration="0:0:0.500" />
+                                 AutoReverse="True"
+                                 RepeatBehavior="Forever"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="1"
+                                 To="0.2"
+                                 Duration="0:0:0.500" />
                                                                 </Storyboard>
                                                             </BeginStoryboard>
                                                         </DataTrigger.EnterActions>
@@ -820,17 +820,17 @@
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
 
-                                                    <DataTrigger Binding="{Binding System_PositiveFirst[6].alive}" Value="True">
+                                                    <DataTrigger Binding="{Binding System_PositiveFirstint}" Value="6">
                                                         <DataTrigger.EnterActions>
                                                             <BeginStoryboard Name="PositiveFirst">
                                                                 <Storyboard>
                                                                     <DoubleAnimation
-                        AutoReverse="True"
-                        RepeatBehavior="Forever"
-                        Storyboard.TargetProperty="Opacity"
-                        From="1"
-                        To="0.2"
-                        Duration="0:0:0.500" />
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
                                                                 </Storyboard>
                                                             </BeginStoryboard>
                                                         </DataTrigger.EnterActions>

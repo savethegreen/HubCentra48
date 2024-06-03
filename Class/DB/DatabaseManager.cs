@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static HubCentra_A1.Model.View;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace HubCentra_A1
 {
@@ -770,7 +771,7 @@ namespace HubCentra_A1
         #endregion Table Initialize
 
         #region Insert
-        #region  Equipment
+        #region  EquipmentH
         public void InsertEquipmentH(DateTime CreateTableTime, IEnumerable<DatabaseManager_EquipmentH> lst)
         {
             try
@@ -809,7 +810,7 @@ namespace HubCentra_A1
             }
         }
 
-        #endregion Equipment
+        #endregion EquipmentH
 
         #region Barcode
         public void InsertBarcode(IEnumerable<DatabaseManager_Barcode> lst)
@@ -1345,7 +1346,7 @@ namespace HubCentra_A1
         #endregion EquipmentH
 
         #region Barcode
-        public List<DatabaseManager_BarcodeList> Select_Barcode(DateTime startDate, DateTime endDate)
+        public List<DatabaseManager_BarcodeList> Select_Barcode(DateTime startDate, DateTime endDate, string test1)
         {
             string tableName = "Barcode";
             var configurations = new List<DatabaseManager_BarcodeList>();
@@ -1353,12 +1354,27 @@ namespace HubCentra_A1
             {
                 using (var connection = new SqlConnection(connectionString))
                 {
-                    string sqlQuery = $"SELECT * FROM {tableName} WHERE Loading BETWEEN @StartDate AND @EndDate ORDER BY Loading ASC";
+
+                    string sqlQuery = $"SELECT * FROM {tableName} WHERE Loading BETWEEN @StartDate AND @EndDate";
+
+                    if (!string.IsNullOrEmpty(test1))
+                    {
+                        sqlQuery += " AND Barcode LIKE @Barcode";
+                    }
+
+                    sqlQuery += " ORDER BY Loading ASC";
+
+
+
                     connection.Open();
                     using (var command = new SqlCommand(sqlQuery, connection))
                     {
                         command.Parameters.AddWithValue("@StartDate", startDate);
                         command.Parameters.AddWithValue("@EndDate", endDate);
+                        if (!string.IsNullOrEmpty(test1))
+                        {
+                            command.Parameters.AddWithValue("@Barcode", "%" + test1 + "%");
+                        }
                         using (var reader = command.ExecuteReader())
                         {
                             while (reader.Read())

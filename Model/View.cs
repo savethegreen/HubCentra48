@@ -27,6 +27,10 @@ namespace HubCentra_A1.Model
         public int Common_CellCount { get; set; } = 28;
         public int Common_SystemCellCount { get; set; } = 84;
         public int Common_TotalSystemCellCount { get; set; } = 336;
+
+        public int Common_Minute { get; set; } = 60;
+        public int Common_Hour { get; set; } = 3600;
+        public int Common_Day { get; set; } = 86400;
         #endregion Common
 
         #region Loading
@@ -113,7 +117,9 @@ namespace HubCentra_A1.Model
 
         #region Barcode
         public SerialPort Barcode_SerialPort { get; set; }
+
         public string Barcode_ID_Loading { get; set; } = "";
+        public string Patient_ID_Loading { get; set; } = "";
         public string Barcode_ID { get; set; } = "";
         public string Patient_ID { get; set; } = "";
 
@@ -140,6 +146,11 @@ namespace HubCentra_A1.Model
         public string _DatabaseManager_CmdPos_Str { get; set; } = "";
         #endregion  DatabaseManager
 
+        #region  Result
+        public Dictionary<int, Queue<(DateTime, double)>> Result_PositiveTime;
+        public bool Result_Timer{ get; set; } = false;
+        #endregion Result
+
         #region Home
         public int Home_Available { get; set; } = 0;
         public bool Home_Available_Flag { get; set; } = false;
@@ -164,6 +175,9 @@ namespace HubCentra_A1.Model
         public List<DatabaseManager_EquipmentH> CSV_List { get; set; }
 
         public Enum_Report_Model Report_Model { get; set; } = Enum_Report_Model.raw;
+
+        public string Report_Find_Barcode { get; set; } = "";
+
 
         public string Report_Barcode { get; set; } = "";
 
@@ -203,6 +217,8 @@ namespace HubCentra_A1.Model
         public string System1_Positive_Warning { get; set; } = "";
         public string System1_Positive_Cel { get; set; } = "";
         public int System_PositiveFirstint { get; set; } = -1;
+
+        public int System1_Result { get; set; } = 0;
         #endregion System1
 
         #region System2
@@ -219,6 +235,10 @@ namespace HubCentra_A1.Model
         public string WriteBarcode_ID { get; set; } = "";
         public string WritePatient_ID { get; set; } = "";
         #endregion WriteBarcode
+
+        #region Buzzer
+        public bool Buzzer { get; set; } = false;
+        #endregion Buzzer
 
         #region Alarm
         #region BottleLoading
@@ -267,6 +287,15 @@ namespace HubCentra_A1.Model
         public string Alarm_Positive_Unloading_BarcodeID { get; set; } = "";
         public string Alarm_Positive_Unloading_Warning { get; set; } = "Bottle Unloading";
         #endregion Positive_Unloading
+
+        #region Negative_Unloading
+        public string Alarm_Negative_Unloading_BarcodeID { get; set; } = "";
+        public string Alarm_Negative_Unloading_Title { get; set; } = "Bottle Unloading";
+        public string Alarm_Negative_Unloading_whatSystem { get; set; } = "";
+        public string Alarm_Negative_Unloading_Cell { get; set; } = "";
+
+        public string Alarm_Negative_Unloading_Content { get; set; } = "배양이 종료되었습니다." + "\n" +"제거하시겠습니까?";
+        #endregion Negative_Unloading
 
 
         public bool PopStatus_Positive_Flag { get; set; } = false;

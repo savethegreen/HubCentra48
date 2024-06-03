@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using static HubCentra_A1.EnumManager;
 
 namespace HubCentra_A1
 {
@@ -39,6 +40,7 @@ namespace HubCentra_A1
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            TimerInitialize();
         }
 
         #endregion window
@@ -65,7 +67,7 @@ namespace HubCentra_A1
         public async void TimerInitialize()
         {
             timer.Tick += TimerCallbacks;
-            timer.Interval = TimeSpan.FromMicroseconds(1000);
+            timer.Interval = TimeSpan.FromMicroseconds(100);
             timer.Start();
         }
 
@@ -78,7 +80,16 @@ namespace HubCentra_A1
         }
         private void TimerCallbacks(object sender, EventArgs e)
         {
-
+            if(_viewModel.System_PositiveFirstint == -1 )
+            {
+                Timer_Stop();
+                this.Close();
+            }
+            if( _viewModel.MainWindow_ButtonFlag == Enum_MainWindow_ButtonFlag.SystemRack1)
+            {
+                Timer_Stop();
+                this.Close();
+            }
         }
 
 

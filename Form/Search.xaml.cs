@@ -55,7 +55,7 @@ namespace HubCentra_A1
 
                 // Set proportional widths
                 colID.Width = totalAvailableWidth * 0.1; //
-                colCell.Width = totalAvailableWidth * 0.1; //
+                colPatient.Width = totalAvailableWidth * 0.2; //
 
                 colBarcode.Width = totalAvailableWidth * 0.2; //
                 colLoading.Width = totalAvailableWidth * 0.2;// 

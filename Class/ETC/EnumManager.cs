@@ -53,8 +53,9 @@ namespace HubCentra_A1
             로딩 = 15,
             언로딩 = 16,
             PositiveDelay = 17,
-            Cal_PCB1_Manual = 19,
-            test1 = 20,
+            Lamp =18,
+            Tilting = 19,
+            Cal_PCB1_Manual = 20,
         }
         #endregion Threads
 

@@ -54,7 +54,23 @@
                            FontStyle="Italic"
                            Text="{Binding Alarm_Positive_Unloading_whatSystem}"
                            TextAlignment="Center" />
+                        <TextBlock
+                             Grid.Row="1"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Top"
+                             FontSize="26"
+                             FontWeight="Bold"
+                             Text="{Binding Alarm_Positive_Unloading_Cell}"
+                             TextAlignment="Center">
+                            <TextBlock.Style>
+                                <Style>
+                                    <Setter Property="TextElement.Foreground" Value="#f27200" />
 
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        
+                        
                         <TextBlock
                            Grid.Row="3"
                            HorizontalAlignment="Center"
@@ -62,21 +78,7 @@
                            FontSize="20"
                            Text="{Binding Alarm_Positive_Unloading_Warning}"
                            TextAlignment="Center" />
-                        <TextBlock
-                           Grid.Row="1"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Top"
-                           FontSize="26"
-                           FontWeight="Bold"
-                           Text="{Binding Alarm_Positive_Unloading_Cell}"
-                           TextAlignment="Center">
-                            <TextBlock.Style>
-                                <Style>
-                                    <Setter Property="TextElement.Foreground" Value="#f27200" />
-                             
-                                </Style>
-                            </TextBlock.Style>
-                        </TextBlock>
+          
 
                         <TextBlock
                            Grid.Row="2"

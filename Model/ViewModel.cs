@@ -217,6 +217,34 @@ namespace HubCentra_A1.Model
                 OnPropertyChanged(nameof(Common_TotalSystemCellCount));
             }
         }
+
+        public int Common_Minute
+        {
+            get => _view.Common_Minute;
+            set
+            {
+                _view.Common_Minute = value;
+                OnPropertyChanged(nameof(Common_Minute));
+            }
+        }
+        public int Common_Hour
+        {
+            get => _view.Common_Hour;
+            set
+            {
+                _view.Common_Hour = value;
+                OnPropertyChanged(nameof(Common_Hour));
+            }
+        }
+        public int Common_Day
+        {
+            get => _view.Common_Day;
+            set
+            {
+                _view.Common_Day = value;
+                OnPropertyChanged(nameof(Common_Day));
+            }
+        }
         #endregion Common
 
         #region MainWindow
@@ -533,6 +561,18 @@ namespace HubCentra_A1.Model
                 OnPropertyChanged(nameof(Barcode_ID_Loading));
             }
         }
+        public string Patient_ID_Loading
+        {
+            get => _view.Patient_ID_Loading;
+            set
+            {
+                _view.Patient_ID_Loading = value;
+                OnPropertyChanged(nameof(Patient_ID_Loading));
+            }
+        }
+
+
+        
         public string Barcode_ID
         {
             get => _view.Barcode_ID;
@@ -853,6 +893,33 @@ namespace HubCentra_A1.Model
         }
         #endregion DatabaseManager
 
+        #region  Result
+        public Dictionary<int, Queue<(DateTime, double)>> Result_PositiveTime
+        {
+            get => _view.Result_PositiveTime;
+            set
+            {
+                if (_view.Result_PositiveTime != value)
+                {
+                    _view.Result_PositiveTime = value;
+                    OnPropertyChanged(nameof(Result_PositiveTime));
+                }
+            }
+        }
+        public bool Result_Timer
+        {
+            get => _view.Result_Timer;
+            set
+            {
+                if (_view.Result_Timer != value)
+                {
+                    _view.Result_Timer = value;
+                    OnPropertyChanged(nameof(Result_Timer));
+                }
+            }
+        }
+        #endregion Result
+
         #region Home
         public int Home_Available
         {
@@ -983,6 +1050,18 @@ namespace HubCentra_A1.Model
                 }
             }
         }
+
+        public string Report_Find_Barcode
+        {
+            get => _view.Report_Find_Barcode;
+            set
+            {
+                _view.Report_Find_Barcode = value;
+                OnPropertyChanged(nameof(Report_Find_Barcode));
+            }
+        }
+
+
 
         public string Report_Barcode
         {
@@ -1227,6 +1306,16 @@ namespace HubCentra_A1.Model
             {
                 _view.System_PositiveFirstint = value;
                 OnPropertyChanged(nameof(System_PositiveFirstint));
+            }
+        }
+
+        public int System1_Result
+        {
+            get => _view.System1_Result;
+            set
+            {
+                _view.System1_Result = value;
+                OnPropertyChanged(nameof(System1_Result));
             }
         }
         #endregion System1
@@ -1603,6 +1692,54 @@ namespace HubCentra_A1.Model
         }
         #endregion Positive
 
+        #region Negative_Unloading
+        public string Alarm_Negative_Unloading_BarcodeID
+        {
+            get => _view.Alarm_Negative_Unloading_BarcodeID;
+            set
+            {
+                _view.Alarm_Negative_Unloading_BarcodeID = value;
+                OnPropertyChanged(nameof(Alarm_Negative_Unloading_BarcodeID));
+            }
+        }
+        public string Alarm_Negative_Unloading_Title
+        {
+            get => _view.Alarm_Negative_Unloading_Title;
+            set
+            {
+                _view.Alarm_Negative_Unloading_Title = value;
+                OnPropertyChanged(nameof(Alarm_Negative_Unloading_Title));
+            }
+        }
+        public string Alarm_Negative_Unloading_whatSystem
+        {
+            get => _view.Alarm_Negative_Unloading_whatSystem;
+            set
+            {
+                _view.Alarm_Negative_Unloading_whatSystem = value;
+                OnPropertyChanged(nameof(Alarm_Negative_Unloading_whatSystem));
+            }
+        }
+        public string Alarm_Negative_Unloading_Cell
+        {
+            get => _view.Alarm_Negative_Unloading_Cell;
+            set
+            {
+                _view.Alarm_Negative_Unloading_Cell = value;
+                OnPropertyChanged(nameof(Alarm_Negative_Unloading_Cell));
+            }
+        }
+        public string Alarm_Negative_Unloading_Content
+        {
+            get => _view.Alarm_Negative_Unloading_Content;
+            set
+            {
+                _view.Alarm_Negative_Unloading_Content = value;
+                OnPropertyChanged(nameof(Alarm_Negative_Unloading_Content));
+            }
+        }
+        #endregion Negative_Unloading
+
         #region Positive_Unloading
 
 
@@ -1656,6 +1793,19 @@ namespace HubCentra_A1.Model
         #endregion Positive_Unloading
 
         #endregion Alarm
+
+        #region Buzzer
+        public bool Buzzer
+        {
+            get => _view.Buzzer;
+            set
+            {
+                _view.Buzzer = value;
+                OnPropertyChanged(nameof(Buzzer));
+            }
+        }
+        #endregion Buzzer
+
 
         #region Class
         public DatabaseManager[] databaseManagercs = new DatabaseManager[20];

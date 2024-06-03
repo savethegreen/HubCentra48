@@ -258,3 +258,5 @@ D:\Auto\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Positive.g.cs
 D:\Auto\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Positive.baml
 D:\Auto\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Positive_Unloading.g.cs
 D:\Auto\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Positive_Unloading.baml
+D:\Auto\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Negative.g.cs
+D:\Auto\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Negative.baml

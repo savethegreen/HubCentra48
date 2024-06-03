@@ -367,6 +367,15 @@
                         </Grid>
 
                         <Grid Grid.Row="4" Grid.Column="1">
+                            <Grid.Style>
+                                <Style TargetType="Grid">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Grid.Style>
                             <Grid.InputBindings>
                                 <MouseBinding
                               Command="{Binding ICommand_MainWindow}"
@@ -475,7 +484,7 @@
                                                 <DataTrigger Binding="{Binding MainWindow_ButtonFlag}" Value="4">
                                                     <Setter Property="Fill" Value="{StaticResource MainWindow_LinearGradientBrush_03}" />
                                                 </DataTrigger>
-                                                <DataTrigger Binding="{Binding HasPositiveCell}" Value="True">
+                                                <DataTrigger Binding="{Binding  System1_Result}" Value="1">
                                                     <Setter Property="Fill" Value="Red" />
                                                 </DataTrigger>
                                             </Style.Triggers>

@@ -1,4 +1,5 @@
-﻿using HubCentra_A1.Model;
+﻿using HarfBuzzSharp;
+using HubCentra_A1.Model;
 using LiveChartsCore;
 using Microsoft.VisualBasic.Logging;
 using System;
@@ -28,6 +29,7 @@ using System.Windows.Threading;
 using static HubCentra_A1.EnumManager;
 using static HubCentra_A1.Model.View;
 using static SkiaSharp.HarfBuzz.SKShaper;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace HubCentra_A1
 {
@@ -52,6 +54,7 @@ namespace HubCentra_A1
             ViewModel();
             Alarmini();
             DatabaseManagerInitialize();
+            ResultInitialize();
             FASTECHInitialize();
             PCBInitialize();
             SystemInitialize();
@@ -75,7 +78,6 @@ namespace HubCentra_A1
             }
 
             _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Tiling].Flag = false;
-            Thread.Sleep(1000);
             FASTECH_Set();
             System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
@@ -382,8 +384,15 @@ namespace HubCentra_A1
                         PositiveDelay();
                         Thread.Sleep(1000);
                         break;
+                    case EnumMStartWorkerThreads.Lamp:
+                        Lamp();
+                        Thread.Sleep(1000);
+                        break;
 
-                       
+                    case EnumMStartWorkerThreads.Tilting:
+                        문상태확인및틸팅제어();
+                        Thread.Sleep(10);
+                        break;
                     case EnumMStartWorkerThreads.Cal_PCB1_Manual:
                         if (_viewModel.PCB1_targetvalue_test == true)
                         {
@@ -408,6 +417,7 @@ namespace HubCentra_A1
         private DispatcherTimer BottleLoading_timer = new DispatcherTimer();
         private DispatcherTimer Barcode_timer = new DispatcherTimer();
 
+
         public async void TimerInitialize()
         {
             BottleLoading_timer.Tick += TimerCallback_BottleLoading;
@@ -421,6 +431,8 @@ namespace HubCentra_A1
             Alarm_Positive_timer.Tick += TimerCallback_Alarm_Positive;
             Alarm_Positive_timer.Interval = TimeSpan.FromMicroseconds(1000);
             Alarm_Positive_timer.Start();
+
+            Buzzer_timer_Start();
         }
 
 
@@ -438,7 +450,6 @@ namespace HubCentra_A1
             _viewModel.FASTECH_IO_Connection = _viewModel.fastechDeviceManager.Connect_IO(Enum_FASTECH_ID.IO, _viewModel.FASTECH_IO_IP);
             _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.GreenLamp].Flag = true;
             Thread.Sleep(100);
-            await 문상태확인및틸팅제어();
         }
         public void FASTECH()
         {
@@ -487,12 +498,13 @@ namespace HubCentra_A1
 
             var select_Equipment = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.Common].Select_Equipment();
             _viewModel.EquipmentInfo = select_Equipment;
-            string updateQuery = "UPDATE Equipment SET Switched = @Switched WHERE isEnable = @isEnable";
+            string updateQuery = "UPDATE Equipment SET Switched = @Switched WHERE isEnable = @isEnable AND Result = @Result";
             Dictionary<string, object> parameters = new Dictionary<string, object>
-    {
-        { "@Switched", false },
-        { "@isEnable", true }
-    };
+                {
+                    { "@Switched", true },
+                    { "@isEnable", true },
+                    { "@Result", "Incubation" }
+                };
             _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_MainEngine].UpdateEquipment(updateQuery, parameters);
 
 
@@ -557,6 +569,7 @@ namespace HubCentra_A1
                 {
                     await Task.Delay(10);
                 }
+                _viewModel.Result_Timer = true;
                 var select_Equipment = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_Insert_EquipmentH].Select_Equipment_Search();
                 for (int i = 0; i < select_Equipment.Count; i++)
                 {
@@ -619,29 +632,46 @@ namespace HubCentra_A1
         #endregion DatabaseManager
 
         #region Result
+        public void ResultInitialize()
+        {
+
+            try
+            {
+                _viewModel.Result_PositiveTime = new Dictionary<int, Queue<(DateTime, double)>>();
+                for (int i = 0; i < _viewModel.Common_TotalSystemCellCount; i++)
+                {
+  
+                    _viewModel.Result_PositiveTime[i] = new Queue<(DateTime, double)>();
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
         public async Task Result()
         {
             try
             {
+
+
                 var filteredItems = _viewModel.EquipmentInfo.Where(e => e.isActive && e.isEnable && e.Switched).ToList();
-
-                int MaximumTime = _viewModel.Config[0].MaximumTime * 60;
-
+                int MaximumTime = _viewModel.Config[0].MaximumTime * _viewModel.Common_Minute;
+                DateTime now = DateTime.Now;
                 foreach (var item in filteredItems)
                 {
-
+                    int index = item.ID - 1;
                     double IncubationTime = item.IncubationTime;
-                    string result = DetermineResult(item.ID - 1, IncubationTime, MaximumTime);
+                    string result = DetermineResult(index, IncubationTime, MaximumTime, now);
 
                     if (!string.IsNullOrEmpty(result))
                     {
 
-                        Enum_MainEngine_Statuslist status = result == "Positive" ? Enum_MainEngine_Statuslist.Positive : Enum_MainEngine_Statuslist.Negative;
+                        Enum_MainEngine_Statuslist status = result == "Positive" ? Enum_MainEngine_Statuslist.Negative : Enum_MainEngine_Statuslist.Negative;
                         //_viewModel.MainEngine_Statuslist.Add(new MainEngine_StatusList { ID = item.ID, Result = status });
 
 
-                        DateTime now = DateTime.Now;
-                        string barcodeID = _viewModel.EquipmentInfo[item.ID - 1].Barcode;
+                        string barcodeID = _viewModel.EquipmentInfo[index].Barcode;
                         string UpdateBarcode_Query = "UPDATE Barcode SET " +
                          "PositiveTime = @PositiveTime, " +
                          "Result = @Result " +
@@ -681,27 +711,12 @@ namespace HubCentra_A1
                         _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_Result].UpdateEquipment(UpdateEquipment_Query, UpdateEquipment_parameters);
 
 
-                        if (status == Enum_MainEngine_Statuslist.Positive)
-                        {
-
-                            _viewModel.Alarm_Positive.Enqueue(new Tuple<int>(item.ID -1));
-
-                            //int cellsPerRack = 28;
-                            //int ID = item.ID;
-                            //string selectedId = _viewModel.SystemInfo[0].PCB_ID1;
-                            //string rackNumber = ((ID - 1) / cellsPerRack + 1).ToString();
-                            //string positionInRack = ((ID - 1) % cellsPerRack + 1).ToString();
-
-                            //_viewModel.PopStatus_Positive.Enqueue(new Tuple<string, string>(rackNumber, positionInRack));
-
-                        }
-                        else
-                        {
-
-                        }
+                        PCB_LED(_viewModel.SystemInfo[0].PCB_ID1, index, status.ToString());
                         break;
                     }
                 }
+                _viewModel.Result_Timer = false;
+
             }
             catch (Exception ex)
             {
@@ -709,18 +724,93 @@ namespace HubCentra_A1
             }
         }
 
-        private string DetermineResult(int idx, double incubationTime, int maximumTime)
+        private string DetermineResult(int idx, double incubationTime, int maximumTime, DateTime date)
         {
+            DateTime Date = date;
             int Positive_Delay = _viewModel.Config[0].Positive_Wait;
-            if (_viewModel.PositiveDelay[idx] > Positive_Delay)
+            double IncubationTime = incubationTime;
+            double ADC = _viewModel.PCB_Data[idx].ADC;
+
+            if (ADC <= 0)
+            {
+                return "";
+            }
+            if (_viewModel.Result_Timer)
+            {
+                if (ReceiveNewVoltageValue(idx, ADC, Date) && IncubationTime >_viewModel.Common_Hour)
+                {
+                    return "Positive";
+                }
+            }
+            if (_viewModel.PositiveDelay[idx] > Positive_Delay )
             {
                 return "Positive";
             }
-            else if (incubationTime >= maximumTime)
+            if (IncubationTime >= maximumTime)
             {
                 return "Negative";
             }
             return "";
+        }
+
+        private bool ReceiveNewVoltageValue(int pcbIndex, double currentvalue, DateTime TIME)
+
+        {
+            try
+            {
+                DateTime now = TIME;
+                int index = pcbIndex;
+                double Currentvalue = currentvalue;
+                int analysis_Time_Range = _viewModel.Config[0].Analysis_Time_Range;
+                int number_of_Analysis_Intervals = _viewModel.Config[0].Analysis_Intervals;
+                double voltage_Increase_Threshold = _viewModel.Config[0].Threshold;
+                double percentageDifference = 0;
+
+                _viewModel.Result_PositiveTime[pcbIndex].Enqueue((now, Currentvalue));
+                while (_viewModel.Result_PositiveTime[pcbIndex].Count > 0 && (now - _viewModel.Result_PositiveTime[pcbIndex].Peek().Item1).TotalMinutes > analysis_Time_Range)
+                {
+                    _viewModel.Result_PositiveTime[pcbIndex].Dequeue();
+                }
+
+                var data = _viewModel.Result_PositiveTime[pcbIndex];
+                int rage = (int)(analysis_Time_Range );
+
+                if (data.Count < rage)
+                {
+                    return false;
+                }
+
+                int Size = analysis_Time_Range / number_of_Analysis_Intervals;
+                List<double> Averages = new List<double>();
+
+                for (int i = 0; i < number_of_Analysis_Intervals; i++)
+                {
+                    List<double> Data = data.Skip(i * Size).Take(Size).Select(d => d.Item2).ToList();
+                    double average = Data.Average();
+                    Averages.Add(average);
+                }
+                bool allQuartersPositiveIncrease = true;
+                for (int i = 1; i < number_of_Analysis_Intervals; i++)
+                {
+                    percentageDifference = ((Averages[i] - Averages[i - 1]) / Averages[i - 1]) * 100.0;
+
+                    if (percentageDifference < voltage_Increase_Threshold)
+                    {
+                        allQuartersPositiveIncrease = false;
+                        break;
+                    }
+                }
+                if (allQuartersPositiveIncrease)
+                {             
+                    return true;
+                }
+
+                return false;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
         }
         #endregion  Result
 
@@ -754,7 +844,10 @@ namespace HubCentra_A1
                         _viewModel.Login = Enum_Login.OPERATOR;
                         break;
                     }
+
                 }
+
+                _viewModel.MainWindow_ButtonFlag = Enum_MainWindow_ButtonFlag.Home;
             }
             catch (Exception ex)
             {
@@ -849,8 +942,9 @@ namespace HubCentra_A1
         {
             try
             {
-                var select_Equipment = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_select_Equipment_Search].Select_Barcode(_viewModel.MyDatePicke_Start, _viewModel.MyDatePicke_End);
+                var select_Equipment = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_select_Equipment_Search].Select_Barcode(_viewModel.MyDatePicke_Start, _viewModel.MyDatePicke_End, _viewModel.Report_Find_Barcode);
                 _viewModel.Report_List = select_Equipment;
+                _viewModel.Report_Find_Barcode = "";
                 DateTime date = _viewModel.MyDatePicke_Start;
                 DateTime date2 = _viewModel.MyDatePicke_End;
     
@@ -974,7 +1068,7 @@ namespace HubCentra_A1
                 DateTime start = _viewModel.MyDatePicke_Start;
                 DateTime end = _viewModel.MyDatePicke_End;
 
-                var select_Equipment = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_select_Equipment_Search].Select_Barcode(_viewModel.MyDatePicke_Start, _viewModel.MyDatePicke_End);
+                var select_Equipment = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_select_Equipment_Search].Select_Barcode(_viewModel.MyDatePicke_Start, _viewModel.MyDatePicke_End, _viewModel.Report_Find_Barcode);
 
                 if (select_Equipment.Count > 0 && (select_Equipment[0].Result == "Positive" || select_Equipment[0].Result == "Negative" || select_Equipment[0].Result == "Incubation"))
                 {
@@ -1395,6 +1489,15 @@ namespace HubCentra_A1
                 _viewModel.Queue_PCB_Manual.Enqueue(LAMP);
                 string str = $"${id},LINE{i},DIMREAD";
                 _viewModel.Queue_PCB_Manual.Enqueue(str);
+            }
+
+            var filteredItems = _viewModel.EquipmentInfo.Where(e => e.isActive && e.isEnable ).ToList();
+            foreach (var item in filteredItems)
+            {
+                string boardID = _viewModel.SystemInfo[0].PCB_ID1;
+                int index = item.ID - 1;
+                string result = item.Result;
+                PCB_LED(boardID, index, result);
             }
         }
 
@@ -1864,10 +1967,10 @@ namespace HubCentra_A1
         public async Task Barcode_WriteAsync()
         {
             ClearSerialPortBuffer_Barcode(_viewModel.Barcode_SerialPort);
-            await Barcode_ReadAsync(2000, (Barcodedata) => _viewModel.Barcode_ID = Barcodedata);
+            await Barcode_ReadAsync(2000);
 
         }
-        public async Task Barcode_ReadAsync(double timeout, Action<string> Barcodedata)
+        public async Task Barcode_ReadAsync(double timeout)
         {
             try
             {
@@ -1891,24 +1994,37 @@ namespace HubCentra_A1
                             {
                                 if(_viewModel.Equipment_DataWithDB_presenceArray.Any(x => x.alive))
                                 {
-                                    Barcodedata("");
+                        
                                     _viewModel.Barcode_ID = "";
+                                    _viewModel.Patient_ID = "";
                                     _viewModel.Barcode_ID_Loading = "";
+                                    _viewModel.Patient_ID_Loading = "";
                                 }
                                 else
                                 {
                                     if (!searchBarcodeDuplicates(barcode))
                                     {
-                                        Barcodedata(barcode);
-                                        _viewModel.Barcode_ID_Loading = barcode;
+                                        if (barcode.All(char.IsDigit))
+                                        {
+                                            _viewModel.Patient_ID = barcode;
+                                            _viewModel.Patient_ID_Loading = barcode;
+                                        }
+                                        else
+                                        {
+                                            _viewModel.Barcode_ID = barcode;
+                                            _viewModel.Barcode_ID_Loading = barcode;
+                                        }
                                     }
                                     else
                                     {
                                         _viewModel.Alarm_Barcode.Enqueue(new Tuple<string>(barcode));
                                         _viewModel.Barcode_ID = "";
+                                        _viewModel.Patient_ID = "";
                                         _viewModel.Barcode_ID_Loading = "";
+                                        _viewModel.Patient_ID_Loading = "";
                                     }
                                     ClearSerialPortBuffer_Barcode(_viewModel.Barcode_SerialPort);
+
                                 }
                               
                                 return;
@@ -2161,7 +2277,7 @@ namespace HubCentra_A1
             try
             {
 
-                var Equipment = _viewModel.EquipmentInfo.Where(equipment => !equipment.isEnable && equipment.isActive).ToList();
+                var Equipment = _viewModel.EquipmentInfo.Where(equipment => !equipment.isEnable && equipment.isActive && equipment.Result != "Block").ToList();
                 foreach (var equipments in Equipment)
                 {
                     var equipment = equipments;
@@ -2177,20 +2293,22 @@ namespace HubCentra_A1
                     }
                     if (pcbData.ADC > 0 && pcbData.ADC < limit)
                     {
-                        if (_viewModel.Barcode_ID_Loading != "")
+                        if (_viewModel.Barcode_ID_Loading != "" && _viewModel.Patient_ID_Loading != "")
                         {
                             string barcodeid = _viewModel.Barcode_ID_Loading;
+                            string patientid = _viewModel.Patient_ID_Loading;
                             DateTime now = DateTime.Now;
                             List<DatabaseManager_Barcode> list = new List<DatabaseManager_Barcode>();
-                            list.Add(new DatabaseManager_Barcode { ID = ID, Barcode = barcodeid, Loading = now, Result = Result });
+                            list.Add(new DatabaseManager_Barcode { ID = ID, Barcode = barcodeid, Qrcode = patientid,   Loading = now, Result = Result });
                             _viewModel.databaseManagercs[(int)Enum_DatabaseManager.로딩].InsertBarcode(list);
 
 
 
-                            string query = "UPDATE Equipment SET barcode = @barcode, Loading = @Loading, Result = @Result,  switched = @switched, isEnable = @isEnable WHERE ID = @ID";
+                            string query = "UPDATE Equipment SET barcode = @barcode, Qrcode = @Qrcode, Loading = @Loading, Result = @Result,  switched = @switched, isEnable = @isEnable WHERE ID = @ID";
                             var parameters = new Dictionary<string, object>
                                         {
-                                            { "@Barcode", _viewModel.Barcode_ID },
+                                            { "@Barcode", barcodeid },
+                                            { "@Qrcode", patientid },
                                             { "@Loading", now },
                                             { "@Result", "Incubation" },
                                             { "@switched", true },
@@ -2199,13 +2317,16 @@ namespace HubCentra_A1
                                         };
                             _viewModel.databaseManagercs[(int)Enum_DatabaseManager.로딩].UpdateEquipment(query, parameters);
                             _viewModel.Barcode_ID_Loading = "";
+                            _viewModel.Patient_ID_Loading = "";
                             Thread.Sleep(100);
                             if (!_viewModel.Alarm_BottleLoading_Set.Contains(i))
                             {
                                 _viewModel.BottleLoading_Result[i] = true;
                                 _viewModel.Alarm_BottleLoading_Set.Add(i);
                                 _viewModel.Alarm_BottleLoading.Enqueue(new Tuple<int>(i));
+                                PCB_LED(_viewModel.SystemInfo[0].PCB_ID1, i, "Incubation");
                             }
+
                         }
                         else
                         {
@@ -2284,8 +2405,10 @@ namespace HubCentra_A1
                                 _viewModel.BottleLoading_Cell_Num = "Cell : " + cell.ToString();
                                 _viewModel.BottleLoading_BarcodeID = "barcode : " + _viewModel.Barcode_ID;
                                 _viewModel.Barcode_ID = "";
-                               _viewModel.Barcode_ID_Loading = "";
-                           }
+                                _viewModel.Patient_ID = "";
+                                _viewModel.Barcode_ID_Loading = "";
+                            _viewModel.Patient_ID_Loading = "";
+                        }
                             else
                             {
 
@@ -2294,12 +2417,15 @@ namespace HubCentra_A1
                                 _viewModel.BottleLoading_WhatSystem = "System" + sysyem.ToString();
                                 _viewModel.BottleLoading_Cell_Num = "Cell : " + cell.ToString();
                                 _viewModel.Barcode_ID = "";
-                               _viewModel.Barcode_ID_Loading = "";
+                                _viewModel.Patient_ID = "";
+                                _viewModel.Barcode_ID_Loading = "";
+                                _viewModel.Patient_ID_Loading = "";
                         }
                             Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                             {
                                 BottleLoading popup = new BottleLoading(_viewModel, item1);
-                              //  popup.ClosedEvent += BottleLoading_Closed;
+                                //  popup.ClosedEvent += BottleLoading_Closed;
+                                popup.Owner = System.Windows.Application.Current.MainWindow;
                                 popup.Show();
                             }));
                         }
@@ -2335,11 +2461,13 @@ namespace HubCentra_A1
                     _viewModel.System1_HasPositive = true;
                     //_viewModel.System_PositiveFirst[fitst - 1].alive = true;
                     _viewModel.System_PositiveFirstint = fitst - 1;
+                    _viewModel.System1_Result = 1;
                 }
                 else
                 {
                     _viewModel.System1_HasPositive = false;
                     _viewModel.System_PositiveFirstint = -1;
+                    _viewModel.System1_Result = 0;
                     //for (int i = 0; i < _viewModel.System_PositiveFirst.Count; i++)
                     //{
                     //    _viewModel.System_PositiveFirst[i].alive = false;
@@ -2358,16 +2486,16 @@ namespace HubCentra_A1
                     if (pcbData.ADC > 0 && pcbData.ADC > limit )
                     {
                         if(equipment.Result == "Positive")
-                        {
+                        {        
                             Positive_Delete(idx, IncubationTime, equipment.ID, barcodeID, fitst);
                         }
                         else if(equipment.Result == "Incubation")
                         {
                             Incubation_Delete(idx, IncubationTime, equipment.ID, barcodeID);
-
                         }
                         else
                         {
+                            Negative_Unloading_Delete(idx, IncubationTime, equipment.ID, barcodeID);
                         }
                     }
      
@@ -2380,6 +2508,88 @@ namespace HubCentra_A1
 
             }
         }
+
+        #region Negative_Unloading
+        private Alarm_Negative Negative_Unloading;
+        public void Negative_Unloading_Delete(int idx, int IncubationTime, int ID, string barcodeID)
+        {
+            try
+            {
+                if (Negative_Unloading != null && Negative_Unloading.IsVisible)
+                {
+                    return; // 팝업이 열려 있으면 아무것도 하지 않음
+                }
+                _viewModel.Alarm_Negative_Unloading_whatSystem = systemidx(idx);
+                _viewModel.Alarm_Negative_Unloading_Cell = cellidx(idx);
+                _viewModel.Alarm_Negative_Unloading_BarcodeID = barcodeID;
+                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+                {
+                    Negative_Unloading = new Alarm_Negative(_viewModel, idx);
+                    Negative_Unloading.OKClicked += (s, e) => Negative_Unloading_OKClicked(s, e, idx, IncubationTime, ID, barcodeID);
+                    Negative_Unloading.CancelClicked += (s, e) => Negative_Unloading_CancelClicked(s, e, idx, IncubationTime, ID, barcodeID);
+                    Negative_Unloading.Owner = System.Windows.Application.Current.MainWindow;
+                    Negative_Unloading.Show();
+                }));
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+
+        private void Negative_Unloading_OKClicked(object sender, Alarm_Negative_UnloadingEventArgs e, int idx, int incubationTime, int id, string barcodeID)
+        {
+            int IDX = idx;
+            int IncubationTime = incubationTime;
+            int ID = id;
+            string BarcodeID = barcodeID;
+            DateTime now = DateTime.Now;
+            string FormattedNow = now.ToString("yyyy-MM-dd HH:mm:ss");
+
+
+            string UpdateBarcode_Query = "UPDATE Barcode SET " +
+                              "Unloading = @Unloading, IncubationTime = @IncubationTime " +
+                              "WHERE Barcode = @Barcode";
+
+
+
+            Dictionary<string, object> UpdateBarcode_parameters = new Dictionary<string, object>
+                        {
+
+                            { "@Unloading", now },
+                            { "@IncubationTime", IncubationTime },
+                            { "@Barcode", BarcodeID },
+                        };
+            _viewModel.databaseManagercs[(int)Enum_DatabaseManager.언로딩].UpdateBarcode(UpdateBarcode_Query, UpdateBarcode_parameters);
+
+            string UpdateEquipment_Query = "UPDATE Equipment SET " +
+                                             "Barcode = @Barcode, Qrcode = @Qrcode, Loading = @Loading, CreDate = @CreDate, PositiveTime = @PositiveTime, Result = @Result, IncubationTime = @IncubationTime, switched = @switched, isEnable = @isEnable " +
+                                             "WHERE ID = @ID";
+            Dictionary<string, object> UpdateEquipment_parameters = new Dictionary<string, object>
+                        {
+                            { "@Barcode", null },
+                            { "@Qrcode", null },
+                            { "@Loading", null },
+                            { "@CreDate", null },
+                            { "@PositiveTime", null },
+                            { "@Result", "Null" },
+                            { "@IncubationTime", null },
+                            { "@switched", false },
+                            { "@isEnable", false },
+                            { "@ID", ID }  // 
+                        };
+            _viewModel.databaseManagercs[(int)Enum_DatabaseManager.언로딩].UpdateEquipment(UpdateEquipment_Query, UpdateEquipment_parameters);
+            _viewModel.PositiveDelay[IDX] = 0;
+            PCB_LED(_viewModel.SystemInfo[0].PCB_ID1, IDX, "Null");
+        }
+
+        private void Negative_Unloading_CancelClicked(object sender, Alarm_Negative_UnloadingEventArgs e, int idx, int IncubationTime, int ID, string barcodeI)
+        {
+
+        }
+        #endregion Negative_Unloading
+
         #region Positive_Unloading
         private Alarm_Positive_Unloading Positive_Unloading;
         public void Positive_Delete(int idx, int IncubationTime, int ID, string barcodeID, int first)
@@ -2460,6 +2670,7 @@ namespace HubCentra_A1
                         };
             _viewModel.databaseManagercs[(int)Enum_DatabaseManager.언로딩].UpdateEquipment(UpdateEquipment_Query, UpdateEquipment_parameters);
             _viewModel.PositiveDelay[IDX] = 0;
+            PCB_LED(_viewModel.SystemInfo[0].PCB_ID1, IDX, "Null");
         }
 
         private void Positive_Unloading_CancelClicked(object sender, Alarm_Positive_UnloadingEventArgs e, int idx, int IncubationTime, int ID, string barcodeI)
@@ -2538,6 +2749,7 @@ namespace HubCentra_A1
                         };
             _viewModel.databaseManagercs[(int)Enum_DatabaseManager.언로딩].UpdateEquipment(UpdateEquipment_Query, UpdateEquipment_parameters);
             _viewModel.PositiveDelay[IDX] = 0;
+            PCB_LED(_viewModel.SystemInfo[0].PCB_ID1, IDX, "Null");
         }
 
         private void Popup_CancelClicked(object sender, PopupEventArgs e, int idx, int IncubationTime, int ID, string barcodeI)
@@ -2550,9 +2762,6 @@ namespace HubCentra_A1
         #endregion spare
 
         #endregion 언로딩
-
-
-
 
         #endregion 로딩언로딩
 
@@ -2573,25 +2782,30 @@ namespace HubCentra_A1
 
         #region Tilting
 
-        public async Task 문상태확인및틸팅제어()
+        public void  문상태확인및틸팅제어()
         {
             try
             {
-                while (true)
+                if (_viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Door].Flag == true)
                 {
-                    if (_viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Door].Flag == true)
+                    틸팅시작();
+                }
+                else
+                {
+                    if (_viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Trigger].Flag == false)
                     {
-                        틸팅시작();
-                    }
-                    else
-                    {
-                        var tiltingStopped = await 틸팅중지();
-                        if (!tiltingStopped)
+                        if (!_viewModel.Buzzer)
                         {
-                          
+                            _viewModel.Buzzer = true;
+                            //Buzzer_timer_Start();
                         }
                     }
-                    await Task.Delay(100);
+                    if (틸팅중지())
+                    {
+                        _viewModel.Buzzer = false;
+                    }
+              
+
                 }
             }
             catch (Exception ex)
@@ -2599,43 +2813,33 @@ namespace HubCentra_A1
              
             }
         }
-
-
-        public async Task<bool> 틸팅중지()
+        public void 틸팅시작()
         {
-            var stopwatch = Stopwatch.StartNew();
-            int timeout = 5000;
-
-            var cts = new CancellationTokenSource();
-
             try
             {
-                var buzzerTask = ToggleBuzzer(cts.Token);
-                var triggerTask = WaitForTrigger(timeout);
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Tiling].Flag = true;
+            }
+            catch (Exception ex)
+            {
 
-                var completedTask = await Task.WhenAny(buzzerTask, triggerTask);
+            }
+        }
 
-                if (completedTask == triggerTask && await triggerTask)
+        public bool 틸팅중지()
+        {
+            try
+            {
+                if (_viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Trigger].Flag == true)
                 {
                     _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Tiling].Flag = false;
-                    _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag = false;
-                    cts.Cancel(); 
                     return true;
                 }
-
-                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Tiling].Flag = false;
-                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag = false;
-                cts.Cancel();
                 return false;
             }
             catch (Exception ex)
             {
                
                 return false;
-            }
-            finally
-            {
-                cts.Dispose();
             }
         }
 
@@ -2690,17 +2894,7 @@ namespace HubCentra_A1
         }
 
 
-        public void 틸팅시작()
-        {
-            try
-            {
-                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Tiling].Flag = true;
-            }
-            catch (Exception ex)
-            {
 
-            }
-        }
 
         //public async Task<bool> 틸팅중지()
         //{
@@ -2728,6 +2922,116 @@ namespace HubCentra_A1
         //}
         #endregion Tilting
 
+        #region Lamp
+        public void Lamp()
+        {
+            try
+            {
+                List<DatabaseManager_Equipment> equ = _viewModel.EquipmentInfo;
+                bool hasPositive = equ.Any(e => e.Result == "Positive");
+                bool hasNegative = equ.Any(e => e.Result == "Negative");
+
+
+                if (hasPositive)
+                {
+                    Lamp_Red();
+                }
+                else if (hasNegative)
+                {
+                    Lamp_Yellow();
+                }
+                else
+                {
+                    Lamp_Green();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public void Lamp_Red()
+        {
+            try
+            {
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.GreenLamp].Flag = false;
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.RedLamp].Flag = true;
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.YellowLamp].Flag = false;
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        public void Lamp_Green()
+        {
+            try
+            {
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.GreenLamp].Flag = true;
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.RedLamp].Flag = false;
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.YellowLamp].Flag = false;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        public void Lamp_Yellow()
+        {
+            try
+            {
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.GreenLamp].Flag = true;
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.RedLamp].Flag = true;
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.YellowLamp].Flag = false;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        #endregion Lamp
+
+        #region Buzzer
+        private DispatcherTimer Buzzer_timer = new DispatcherTimer();
+        public void Buzzer_timer_Start()
+        {
+
+            Buzzer_timer.Tick += TimerCallbacks_Buzzer_timer;
+            Buzzer_timer.Interval = TimeSpan.FromMilliseconds(300);
+            Buzzer_timer.Start();
+        }
+
+        public void Buzzer_timer_Stop()
+        {
+            if (Buzzer_timer.IsEnabled)
+            {
+                Buzzer_timer.Stop();
+            }
+        }
+        private void TimerCallbacks_Buzzer_timer(object sender, EventArgs e)
+        {
+            if (_viewModel.Config[0].UseBuzzer == false)
+            {
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag = false;
+                return;
+            }
+            if (_viewModel.Buzzer && _viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Trigger].Flag == false && _viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Door].Flag == false)
+            {
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag = !_viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag;
+            }
+            else if(_viewModel.System_PositiveFirstint != -1)
+            {
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag = !_viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag;
+            }
+            else
+            {
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag = false;
+            }
+        }
+        #endregion Buzzer
+
         #region Alarm
         public void Alarmini()
         {
@@ -2754,26 +3058,43 @@ namespace HubCentra_A1
                 {
                     return; // 팝업이 열려 있으면 아무것도 하지 않음
                 }
-                if (_viewModel.Alarm_Positive.Count > 0)
-                {
-                    if (_viewModel.Alarm_Positive.TryDequeue(out Tuple<int> command))
-                    {
-                        int item1 = command.Item1;
-                        string DateNow = _viewModel.EquipmentInfo[item1].PositiveTime.ToString();
-                        _viewModel.Alarm_Positive_whatSystem = systemidx(item1);
-                        _viewModel.Alarm_Positive_Cell = cellidx(item1);
-                        _viewModel.Alarm_Positive_Warning = "시간 : " + DateNow + "\n" +
-                         "Positive가 감지되었습니다." + "\n" +
-                         "해당 Cell을 제거 해주세요." + "\n";
-                        Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
-                        {
-                            alarm_positive = new Alarm_Positive(_viewModel);
-                            alarm_positive.Owner = System.Windows.Application.Current.MainWindow;
-                            alarm_positive.Show();
-                        }));
 
-                    }
+                if(_viewModel.System_PositiveFirstint != -1 && _viewModel.MainWindow_ButtonFlag !=  Enum_MainWindow_ButtonFlag.SystemRack1)
+                {
+                    int item1 = _viewModel.System_PositiveFirstint;
+                    string DateNow = _viewModel.EquipmentInfo[item1].PositiveTime.ToString();
+                    _viewModel.Alarm_Positive_whatSystem = systemidx(item1);
+                    _viewModel.Alarm_Positive_Cell = cellidx(item1);
+                    _viewModel.Alarm_Positive_Warning = "시간 : " + DateNow + "\n" +
+                     "Positive가 감지되었습니다." + "\n" +
+                     "해당 Cell을 제거 해주세요." + "\n";
+                    Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+                    {
+                        alarm_positive = new Alarm_Positive(_viewModel);
+                        alarm_positive.Owner = System.Windows.Application.Current.MainWindow;
+                        alarm_positive.Show();
+                    }));
                 }
+                //if (_viewModel.Alarm_Positive.Count > 0)
+                //{
+                //    if (_viewModel.Alarm_Positive.TryDequeue(out Tuple<int> command))
+                //    {
+                //        int item1 = command.Item1;
+                //        string DateNow = _viewModel.EquipmentInfo[item1].PositiveTime.ToString();
+                //        _viewModel.Alarm_Positive_whatSystem = systemidx(item1);
+                //        _viewModel.Alarm_Positive_Cell = cellidx(item1);
+                //        _viewModel.Alarm_Positive_Warning = "시간 : " + DateNow + "\n" +
+                //         "Positive가 감지되었습니다." + "\n" +
+                //         "해당 Cell을 제거 해주세요." + "\n";
+                //        Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+                //        {
+                //            alarm_positive = new Alarm_Positive(_viewModel);
+                //            alarm_positive.Owner = System.Windows.Application.Current.MainWindow;
+                //            alarm_positive.Show();
+                //        }));
+
+                //    }
+                //}
             }
             catch(Exception ex)
             {
@@ -2844,16 +3165,114 @@ namespace HubCentra_A1
                 return "Cell : " + "1";
             }
         }
+
+        #region LED
+
+        public void PCB_LED(string boardID, int idx, string result)
+        {
+            try
+            {
+                string BoardID = boardID;
+                string Result = result;
+                int index = idx;
+
+                string line = DetermineLine(index);
+                string channel = DetermineChannel(index);
+
+                if (Result == "Positive")
+                {
+                    string color = GetRgbColor(2); // Assuming this method returns the correct color format
+                    string command = $"{BoardID},{line},TLED,{channel},ON,{color}";
+                    _viewModel.Queue_PCB_Manual.Enqueue(command);
+                }
+                else if(Result == "Negative")
+                {
+                    string color = GetRgbColor(3); // Assuming this method returns the correct color format
+                    string command = $"{BoardID},{line},TLED,{channel},ON,{color}";
+                    _viewModel.Queue_PCB_Manual.Enqueue(command);
+                }
+                else if (Result == "Incubation")
+                {
+                    string color = GetRgbColor(1); // Assuming this method returns the correct color format
+                    string command = $"{BoardID},{line},TLED,{channel},ON,{color}";
+                    _viewModel.Queue_PCB_Manual.Enqueue(command);
+                }
+                else if (Result == "Block")
+                {
+                    string color = GetRgbColor(4); // Assuming this method returns the correct color format
+                    string command = $"{BoardID},{line},TLED,{channel},ON,{color}";
+                    _viewModel.Queue_PCB_Manual.Enqueue(command);
+                }
+                else
+                {
+                    string color = GetRgbColor(0); 
+                    string command = $"{BoardID},{line},TLED,{channel},OFF";
+                    _viewModel.Queue_PCB_Manual.Enqueue(command);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private string DetermineLine(int index)
+        {
+            if (index >= 0 && index <= 27) return "LINE0";
+            else if (index >= 28 && index <= 55) return "LINE1";
+            else return "LINE2";
+        }
+
+        private string DetermineChannel(int index)
+        {
+            return $"CH{index % 28 + 1}";
+        }
+
+        private string GetRgbColor(int aliveValue)
+        {
+            string hexColor = aliveValue switch
+            {
+                0 => "#FFAF9D9D", // Null
+                1 => "#FF04FF08", //Incubation
+                2 => "#FFFF0000", //Positive
+                3 => "#FFFF3407", //Negative
+                4 => "#FF191311", //Black
+                _ => "#FFFFFFFF" 
+            };
+
+
+            if (hexColor.StartsWith("#") && (hexColor.Length == 7 || hexColor.Length == 9))
+            {
+                try
+                {
+                    int startIndex = hexColor.Length == 9 ? 3 : 1; 
+                    int r = Convert.ToInt32(hexColor.Substring(startIndex, 2), 16);
+                    int g = Convert.ToInt32(hexColor.Substring(startIndex + 2, 2), 16);
+                    int b = Convert.ToInt32(hexColor.Substring(startIndex + 4, 2), 16);
+                    return $"{r},{g},{b}";
+                }
+                catch
+                {
+               
+                    return "255,255,255";
+                }
+            }
+            else
+            {
+                return "255,255,255";
+            }
+        }
+        #endregion LED
         #endregion Function
+        double adc = 250;
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.System_PositiveFirstint = 2;
+            _viewModel.Buzzer = true;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-    
+            _viewModel.Buzzer = false;
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
