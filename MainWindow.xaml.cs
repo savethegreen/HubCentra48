@@ -17,10 +17,12 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -30,6 +32,7 @@ using static HubCentra_A1.EnumManager;
 using static HubCentra_A1.Model.View;
 using static SkiaSharp.HarfBuzz.SKShaper;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using Application = System.Windows.Application;
 
 namespace HubCentra_A1
 {
@@ -2207,12 +2210,19 @@ namespace HubCentra_A1
                             string item1 = command.Item1;
                             _viewModel.Barcode_BarcodeID = item1;
                             _viewModel.Barcode_Content = "Barcode  " + _viewModel.Barcode_BarcodeID + "  already exists.";
-                            Dispatcher.Invoke(DispatcherPriority.Background, new Action(() =>
+                            Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                             {
                                 Alarm_Barcode alarm_Barcode = new Alarm_Barcode(_viewModel);
                                 alarm_Barcode.ClosedEvent += Alarm_Barcode_Closed;
-                                //alarm_Barcode.Owner = System.Windows.Application.Current.MainWindow;
+
+                                if (Application.Current.MainWindow != null && Application.Current.MainWindow != alarm_Barcode)
+                                {
+                                    alarm_Barcode.Owner = Application.Current.MainWindow;
+                                }
+
+                                alarm_Barcode.Topmost = true;
                                 alarm_Barcode.Show();
+                                alarm_Barcode.Activate();      
                             }));
                         }
                     }
@@ -2548,12 +2558,35 @@ namespace HubCentra_A1
                                 _viewModel.Barcode_ID_Loading = "";
                                 _viewModel.Patient_ID_Loading = "";
                             }
-                            Dispatcher.Invoke(DispatcherPriority.Background, new Action(() =>
+                            Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                             {
-                                BottleLoading popup = new BottleLoading(_viewModel, item1);
-                                //  popup.ClosedEvent += BottleLoading_Closed;
-                                //popup.Owner = System.Windows.Application.Current.MainWindow;
-                                popup.Show();
+                                try
+                                {
+                                    BottleLoading popup = new BottleLoading(_viewModel, item1);
+
+                                    if (Application.Current.MainWindow != null && Application.Current.MainWindow != popup)
+                                    {
+                                        popup.Owner = Application.Current.MainWindow;
+                                    }
+
+                                    popup.Topmost = true; 
+                                    popup.Show();
+                                    popup.Activate(); 
+
+                                    //Window currentWindow = Window.GetWindow(this);
+                                    //if (currentWindow != null && currentWindow != Application.Current.MainWindow)
+                                    //{
+                                    //    popup.Owner = currentWindow;
+                                    //}
+
+                                    //popup.Show(); // Show the popup
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    // Log or handle the exception
+                                    System.Windows.MessageBox.Show($"An error occurred: {ex.Message}");
+                                }
                             }));
                         }
                     }
@@ -2659,8 +2692,15 @@ namespace HubCentra_A1
                     Negative_Unloading = new Alarm_Negative(_viewModel, idx);
                     Negative_Unloading.OKClicked += (s, e) => Negative_Unloading_OKClicked(s, e, idx, IncubationTime, ID, barcodeID);
                     Negative_Unloading.CancelClicked += (s, e) => Negative_Unloading_CancelClicked(s, e, idx, IncubationTime, ID, barcodeID);
-                    //Negative_Unloading.Owner = System.Windows.Application.Current.MainWindow;
+
+                    if (Application.Current.MainWindow != null && Application.Current.MainWindow != Negative_Unloading)
+                    {
+                        Negative_Unloading.Owner = Application.Current.MainWindow;
+                    }
+
+                    Negative_Unloading.Topmost = true;
                     Negative_Unloading.Show();
+                    Negative_Unloading.Activate();         
                 }));
             }
             catch (Exception ex)
@@ -2749,8 +2789,14 @@ namespace HubCentra_A1
                     Positive_Unloading = new Alarm_Positive_Unloading(_viewModel);
                     Positive_Unloading.OKClicked += (s, e) => Positive_Unloading_OKClicked(s, e, idx, IncubationTime, ID, barcodeID);
                     Positive_Unloading.CancelClicked += (s, e) => Positive_Unloading_CancelClicked(s, e, idx, IncubationTime, ID, barcodeID);
-                    //Positive_Unloading.Owner = System.Windows.Application.Current.MainWindow;
+                    if (Application.Current.MainWindow != null && Application.Current.MainWindow != Positive_Unloading)
+                    {
+                        Positive_Unloading.Owner = Application.Current.MainWindow;
+                    }
+
+                    Positive_Unloading.Topmost = true;
                     Positive_Unloading.Show();
+                    Positive_Unloading.Activate();
                 }));
 
             }
@@ -2832,8 +2878,15 @@ namespace HubCentra_A1
                     Incubation = new Alarm_Incubation(_viewModel, idx);
                     Incubation.OKClicked += (s, e) => Popup_OKClicked(s, e, idx, IncubationTime, ID, barcodeID);
                     Incubation.CancelClicked += (s, e) => Popup_CancelClicked(s, e, idx, IncubationTime, ID, barcodeID);
-                    //Incubation.Owner = System.Windows.Application.Current.MainWindow;
+                    if (Application.Current.MainWindow != null && Application.Current.MainWindow != Incubation)
+                    {
+                        Incubation.Owner = Application.Current.MainWindow;
+                    }
+
+                    Incubation.Topmost = true;
                     Incubation.Show();
+                    Incubation.Activate();
+
                 }));
             }
             catch (Exception ex)
@@ -3096,8 +3149,15 @@ namespace HubCentra_A1
                 Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                 {
                     Alarm_Door alarm_Door = new Alarm_Door(_viewModel);
-                    //alarm_Door.Owner = System.Windows.Application.Current.MainWindow;
+                    if (Application.Current.MainWindow != null && Application.Current.MainWindow != alarm_Door)
+                    {
+                        alarm_Door.Owner = Application.Current.MainWindow;
+                    }
+
+                    alarm_Door.Topmost = true;
                     alarm_Door.Show();
+                    alarm_Door.Activate();
+
                 }));
             }
             catch(Exception ex)
@@ -3258,30 +3318,16 @@ namespace HubCentra_A1
                     Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                     {
                         alarm_positive = new Alarm_Positive(_viewModel);
-                        //alarm_positive.Owner = System.Windows.Application.Current.MainWindow;
+                        if (Application.Current.MainWindow != null && Application.Current.MainWindow != alarm_positive)
+                        {
+                            alarm_positive.Owner = Application.Current.MainWindow;
+                        }
+
+                        alarm_positive.Topmost = true;
                         alarm_positive.Show();
+                        alarm_positive.Activate();
                     }));
                 }
-                //if (_viewModel.Alarm_Positive.Count > 0)
-                //{
-                //    if (_viewModel.Alarm_Positive.TryDequeue(out Tuple<int> command))
-                //    {
-                //        int item1 = command.Item1;
-                //        string DateNow = _viewModel.EquipmentInfo[item1].PositiveTime.ToString();
-                //        _viewModel.Alarm_Positive_whatSystem = systemidx(item1);
-                //        _viewModel.Alarm_Positive_Cell = cellidx(item1);
-                //        _viewModel.Alarm_Positive_Warning = "시간 : " + DateNow + "\n" +
-                //         "Positive가 감지되었습니다." + "\n" +
-                //         "해당 Cell을 제거 해주세요." + "\n";
-                //        Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
-                //        {
-                //            alarm_positive = new Alarm_Positive(_viewModel);
-                //            alarm_positive.Owner = System.Windows.Application.Current.MainWindow;
-                //            alarm_positive.Show();
-                //        }));
-
-                //    }
-                //}
             }
             catch(Exception ex)
             {
