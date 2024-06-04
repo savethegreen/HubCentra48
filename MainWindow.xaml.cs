@@ -278,6 +278,18 @@ namespace HubCentra_A1
                 case Enum_Config_ButtonEvent.Calibration_Start:
                     _viewModel.Calibration_Falg = true;
                     break;
+                case Enum_Config_ButtonEvent.SYSTEM1:
+                    UpdateConfig_bool(DataTransfer, _viewModel.Config[0].SYSTEM1);
+                    break;
+                case Enum_Config_ButtonEvent.SYSTEM2:
+                    UpdateConfig_bool(DataTransfer, _viewModel.Config[0].SYSTEM2);
+                    break;
+                case Enum_Config_ButtonEvent.SYSTEM3:
+                    UpdateConfig_bool(DataTransfer, _viewModel.Config[0].SYSTEM3);
+                    break;
+                case Enum_Config_ButtonEvent.SYSTEM4:
+                    UpdateConfig_bool(DataTransfer, _viewModel.Config[0].SYSTEM4);
+                    break;
                 default:
                     break;
             }
@@ -383,6 +395,18 @@ namespace HubCentra_A1
             {
                 case Enum_Config_ButtonEvent.UseBuzzer:
                     _viewModel.Config[0].UseBuzzer = !transferValue;
+                    break;
+                case Enum_Config_ButtonEvent.SYSTEM1:
+                    _viewModel.Config[0].SYSTEM1 = !transferValue;
+                    break;
+                case Enum_Config_ButtonEvent.SYSTEM2:
+                    _viewModel.Config[0].SYSTEM2 = !transferValue;
+                    break;
+                case Enum_Config_ButtonEvent.SYSTEM3:
+                    _viewModel.Config[0].SYSTEM3 = !transferValue;
+                    break;
+                case Enum_Config_ButtonEvent.SYSTEM4:
+                    _viewModel.Config[0].SYSTEM4 = !transferValue;
                     break;
 
             }
@@ -779,8 +803,6 @@ namespace HubCentra_A1
         {
             try
             {
-
-
                 var filteredItems = _viewModel.EquipmentInfo.Where(e => e.isActive && e.isEnable && e.Switched).ToList();
                 int MaximumTime = _viewModel.Config[0].MaximumTime * _viewModel.Common_Minute;
                 DateTime now = DateTime.Now;
@@ -794,10 +816,18 @@ namespace HubCentra_A1
                     {
 
                         Enum_MainEngine_Statuslist status = result == "Positive" ? Enum_MainEngine_Statuslist.Positive : Enum_MainEngine_Statuslist.Negative;
-                        //_viewModel.MainEngine_Statuslist.Add(new MainEngine_StatusList { ID = item.ID, Result = status });
-
 
                         string barcodeID = _viewModel.EquipmentInfo[index].Barcode;
+
+
+                        string Qrcode = _viewModel.EquipmentInfo[index].Qrcode;
+                        double PcbADC = _viewModel.PCB_Data[index].ADC;
+                        double PcbLED = _viewModel.PCB_Data[index].LED;
+                        double Temperature_ProcessValue = _viewModel.Temperature_ProcessValue;
+                        List<DatabaseManager_EquipmentH> Equipment = new List<DatabaseManager_EquipmentH>();
+                        Equipment.Add(new DatabaseManager_EquipmentH { ID = item.ID, Barcode = barcodeID, Qrcode = Qrcode, PcbADC = PcbADC, PcbLED = PcbLED, Temperature = Temperature_ProcessValue, CreDate = now });
+                        _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_Insert_EquipmentH].InsertEquipmentH(now, Equipment);
+
                         string UpdateBarcode_Query = "UPDATE Barcode SET " +
                          "PositiveTime = @PositiveTime, " +
                          "Result = @Result " +
@@ -812,14 +842,6 @@ namespace HubCentra_A1
                         _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_Result].UpdateBarcode(UpdateBarcode_Query, UpdateBarcode_parameters);
 
 
-                        //string query = "UPDATE Equipment SET Result = @Result, switched = @switched WHERE ID = @ID";
-                        //var parameters = new Dictionary<string, object>
-                        //    {
-                        //        { "@Result", result },
-                        //        { "@switched", true },
-                        //        { "@ID",  item.ID }
-                        //    };
-                        //_viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_Result].UpdateEquipment(query, parameters);
 
 
                         string UpdateEquipment_Query = "UPDATE Equipment SET " +
@@ -841,8 +863,6 @@ namespace HubCentra_A1
                         break;
                     }
                 }
-                _viewModel.Result_Timer = false;
-
             }
             catch (Exception ex)
             {
@@ -863,9 +883,13 @@ namespace HubCentra_A1
             }
             if (_viewModel.Result_Timer)
             {
-                if (ReceiveNewVoltageValue(idx, ADC, Date) && IncubationTime >_viewModel.Common_Hour)
+                _viewModel.Result_Timer = false;
+                if (IncubationTime >= _viewModel.Common_Hour)
                 {
-                    return "Positive";
+                    if (ReceiveNewVoltageValue(idx, ADC, Date))
+                    {
+                        return "Positive";
+                    }
                 }
             }
             if (_viewModel.PositiveDelay[idx] > Positive_Delay )
@@ -2183,11 +2207,11 @@ namespace HubCentra_A1
                             string item1 = command.Item1;
                             _viewModel.Barcode_BarcodeID = item1;
                             _viewModel.Barcode_Content = "Barcode  " + _viewModel.Barcode_BarcodeID + "  already exists.";
-                            Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+                            Dispatcher.Invoke(DispatcherPriority.Background, new Action(() =>
                             {
                                 Alarm_Barcode alarm_Barcode = new Alarm_Barcode(_viewModel);
                                 alarm_Barcode.ClosedEvent += Alarm_Barcode_Closed;
-                                alarm_Barcode.Owner = System.Windows.Application.Current.MainWindow;
+                                //alarm_Barcode.Owner = System.Windows.Application.Current.MainWindow;
                                 alarm_Barcode.Show();
                             }));
                         }
@@ -2462,7 +2486,9 @@ namespace HubCentra_A1
 
         private  void TimerCallback_BottleLoading(object sender, EventArgs e)
         {
-            // 타이머 콜백이 호출될 때 수행할 작업을 여기에 작성합니다.
+            try
+            {
+                // 타이머 콜백이 호출될 때 수행할 작업을 여기에 작성합니다.
                 if (!_viewModel.BottleLoading_isPopupOpen)
                 {
                     if (_viewModel.Alarm_BottleLoading.Count > 0)
@@ -2508,8 +2534,8 @@ namespace HubCentra_A1
                                 _viewModel.Barcode_ID = "";
                                 _viewModel.Patient_ID = "";
                                 _viewModel.Barcode_ID_Loading = "";
-                            _viewModel.Patient_ID_Loading = "";
-                        }
+                                _viewModel.Patient_ID_Loading = "";
+                            }
                             else
                             {
 
@@ -2521,12 +2547,12 @@ namespace HubCentra_A1
                                 _viewModel.Patient_ID = "";
                                 _viewModel.Barcode_ID_Loading = "";
                                 _viewModel.Patient_ID_Loading = "";
-                        }
-                            Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+                            }
+                            Dispatcher.Invoke(DispatcherPriority.Background, new Action(() =>
                             {
                                 BottleLoading popup = new BottleLoading(_viewModel, item1);
                                 //  popup.ClosedEvent += BottleLoading_Closed;
-                                popup.Owner = System.Windows.Application.Current.MainWindow;
+                                //popup.Owner = System.Windows.Application.Current.MainWindow;
                                 popup.Show();
                             }));
                         }
@@ -2536,7 +2562,12 @@ namespace HubCentra_A1
 
                     }
                 }
-            
+            }
+            catch (Exception ex)
+            {
+
+            }
+              
         }
 
 
@@ -2628,7 +2659,7 @@ namespace HubCentra_A1
                     Negative_Unloading = new Alarm_Negative(_viewModel, idx);
                     Negative_Unloading.OKClicked += (s, e) => Negative_Unloading_OKClicked(s, e, idx, IncubationTime, ID, barcodeID);
                     Negative_Unloading.CancelClicked += (s, e) => Negative_Unloading_CancelClicked(s, e, idx, IncubationTime, ID, barcodeID);
-                    Negative_Unloading.Owner = System.Windows.Application.Current.MainWindow;
+                    //Negative_Unloading.Owner = System.Windows.Application.Current.MainWindow;
                     Negative_Unloading.Show();
                 }));
             }
@@ -2718,7 +2749,7 @@ namespace HubCentra_A1
                     Positive_Unloading = new Alarm_Positive_Unloading(_viewModel);
                     Positive_Unloading.OKClicked += (s, e) => Positive_Unloading_OKClicked(s, e, idx, IncubationTime, ID, barcodeID);
                     Positive_Unloading.CancelClicked += (s, e) => Positive_Unloading_CancelClicked(s, e, idx, IncubationTime, ID, barcodeID);
-                    Positive_Unloading.Owner = System.Windows.Application.Current.MainWindow;
+                    //Positive_Unloading.Owner = System.Windows.Application.Current.MainWindow;
                     Positive_Unloading.Show();
                 }));
 
@@ -2741,8 +2772,6 @@ namespace HubCentra_A1
             string UpdateBarcode_Query = "UPDATE Barcode SET " +
                               "Unloading = @Unloading, IncubationTime = @IncubationTime " +
                               "WHERE Barcode = @Barcode";
-
-
 
             Dictionary<string, object> UpdateBarcode_parameters = new Dictionary<string, object>
                         {
@@ -2770,6 +2799,11 @@ namespace HubCentra_A1
                             { "@ID", ID }  // 
                         };
             _viewModel.databaseManagercs[(int)Enum_DatabaseManager.언로딩].UpdateEquipment(UpdateEquipment_Query, UpdateEquipment_parameters);
+
+
+
+
+
             _viewModel.PositiveDelay[IDX] = 0;
             PCB_LED(_viewModel.SystemInfo[0].PCB_ID1, IDX, "Null");
         }
@@ -2798,7 +2832,7 @@ namespace HubCentra_A1
                     Incubation = new Alarm_Incubation(_viewModel, idx);
                     Incubation.OKClicked += (s, e) => Popup_OKClicked(s, e, idx, IncubationTime, ID, barcodeID);
                     Incubation.CancelClicked += (s, e) => Popup_CancelClicked(s, e, idx, IncubationTime, ID, barcodeID);
-                    Incubation.Owner = System.Windows.Application.Current.MainWindow;
+                    //Incubation.Owner = System.Windows.Application.Current.MainWindow;
                     Incubation.Show();
                 }));
             }
@@ -2815,7 +2849,6 @@ namespace HubCentra_A1
             string BarcodeID = barcodeID;
             DateTime now = DateTime.Now;
             string FormattedNow = now.ToString("yyyy-MM-dd HH:mm:ss");
-
 
             string UpdateBarcode_Query = "UPDATE Barcode SET " +
                               "Unloading = @Unloading, IncubationTime = @IncubationTime " +
@@ -3063,7 +3096,7 @@ namespace HubCentra_A1
                 Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                 {
                     Alarm_Door alarm_Door = new Alarm_Door(_viewModel);
-                    alarm_Door.Owner = System.Windows.Application.Current.MainWindow;
+                    //alarm_Door.Owner = System.Windows.Application.Current.MainWindow;
                     alarm_Door.Show();
                 }));
             }
@@ -3225,7 +3258,7 @@ namespace HubCentra_A1
                     Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                     {
                         alarm_positive = new Alarm_Positive(_viewModel);
-                        alarm_positive.Owner = System.Windows.Application.Current.MainWindow;
+                        //alarm_positive.Owner = System.Windows.Application.Current.MainWindow;
                         alarm_positive.Show();
                     }));
                 }
@@ -3491,14 +3524,39 @@ namespace HubCentra_A1
 
         double adc = 250;
 
+        private string DetermineResult2(int idx, double adc, double incubationTime, DateTime date)
+        {
+            DateTime Date = date;
+            int Positive_Delay = _viewModel.Config[0].Positive_Wait;
+            double IncubationTime = incubationTime;
+            double ADC = adc;
+
+            if (ADC <= 0)
+            {
+                return "";
+            }
+            if (IncubationTime >= _viewModel.Common_Hour)
+            {
+                if (ReceiveNewVoltageValue(idx, ADC, Date))
+                {
+                    return "Positive";
+                }
+            }
+
+            return "";
+        }
+        DateTime NOW;
+        double ACD = 200;
+        int iNCUBATIONT = 3600;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.Buzzer = true;
+            NOW = DateTime.Now;
+    
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            _viewModel.Buzzer = false;
+     
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -3507,7 +3565,11 @@ namespace HubCentra_A1
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            _viewModel.PCB1_targetvalue_test = true;
+            DateTime dates =  NOW.AddMinutes(1);
+            NOW = dates;
+            iNCUBATIONT += 60;
+            ACD += 0.5;
+            DetermineResult2(1, ACD, iNCUBATIONT, dates);
         }
     }
 }

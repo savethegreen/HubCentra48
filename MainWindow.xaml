@@ -474,6 +474,19 @@
                             </Grid.ColumnDefinitions>
 
                             <Grid Grid.Row="0" Grid.Column="0">
+                                <Grid.Style>
+                                    <Style TargetType="Grid">
+                                        <Setter Property="Opacity" Value="1" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Config[0].SYSTEM1}" Value="False">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Config[0].SYSTEM1}" Value="False">
+                                                <Setter Property="Opacity" Value="0.5" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
                                 <Grid.InputBindings>
                                     <MouseBinding
                                      Command="{Binding ICommand_MainWindow}"
@@ -516,6 +529,19 @@
                             </Grid>
 
                             <Grid Grid.Row="0" Grid.Column="2">
+                                <Grid.Style>
+                                    <Style TargetType="Grid">
+                                        <Setter Property="Opacity" Value="1" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Config[0].SYSTEM2}" Value="False">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Config[0].SYSTEM2}" Value="False">
+                                                <Setter Property="Opacity" Value="0.5" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
                                 <Grid.InputBindings>
                                     <MouseBinding
                                     Command="{Binding ICommand_MainWindow}"
@@ -558,6 +584,19 @@
                             </Grid>
 
                             <Grid Grid.Row="2" Grid.Column="0">
+                                <Grid.Style>
+                                    <Style TargetType="Grid">
+                                        <Setter Property="Opacity" Value="1" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Config[0].SYSTEM3}" Value="False">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Config[0].SYSTEM3}" Value="False">
+                                                <Setter Property="Opacity" Value="0.5" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
                                 <Grid.InputBindings>
                                     <MouseBinding
                                       Command="{Binding ICommand_MainWindow}"
@@ -600,6 +639,19 @@
                             </Grid>
 
                             <Grid Grid.Row="2" Grid.Column="2">
+                                <Grid.Style>
+                                    <Style TargetType="Grid">
+                                        <Setter Property="Opacity" Value="1" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Config[0].SYSTEM4}" Value="False">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Config[0].SYSTEM4}" Value="False">
+                                                <Setter Property="Opacity" Value="0.5" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
                                 <Grid.InputBindings>
                                     <MouseBinding
              Command="{Binding ICommand_MainWindow}"

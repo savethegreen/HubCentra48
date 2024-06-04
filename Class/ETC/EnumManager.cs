@@ -118,6 +118,10 @@ namespace HubCentra_A1
             Calibration_From = 28,
             Calibration_To = 29,
             Calibration_Start = 30,
+            SYSTEM1 =31,
+            SYSTEM2 = 32,
+            SYSTEM3 = 33,
+            SYSTEM4 = 34,
         }
         #endregion Config
 

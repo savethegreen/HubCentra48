@@ -273,6 +273,10 @@ namespace HubCentra_A1
            "BottleExistenceRange INT NULL, " +
            "DataStorageSave INT NULL, " +
            "TrashCanFillLevel  INT NULL, " +
+           "SYSTEM1 BIT NULL, " +
+           "SYSTEM2 BIT NULL, " +
+           "SYSTEM3 BIT NULL, " +
+           "SYSTEM4 BIT NULL, " +
            "Spare1 VARCHAR(255) NULL, " +
            "Spare2 VARCHAR(255) NULL, " +
            "Spare3 VARCHAR(255) NULL, " +
@@ -283,8 +287,8 @@ namespace HubCentra_A1
                     command.ExecuteNonQuery();
                 }
                 using (SqlCommand populateCommand = new SqlCommand(
-                    $"INSERT INTO {tableName} (ID, Temp, doorOpenAlarmTrigger, LoadCellMin, LoadCellMax, MaximumTime,  UseBuzzer, Positive_Wait, Positive_Low, Positive_High, Analysis_Time_Range, Analysis_Intervals, Threshold, BottleExistenceRange, DataStorageSave, TrashCanFillLevel, Spare1, Spare2, Spare3, Spare4, Spare5)" +
-                    $" VALUES (@ID, @Temp, @doorOpenAlarmTrigger, @LoadCellMin, @LoadCellMax, @MaximumTime,  @UseBuzzer, @Positive_Wait, @Positive_Low, @Positive_High, @Analysis_Time_Range, @Analysis_Intervals, @Threshold, @BottleExistenceRange, @DataStorageSave, @TrashCanFillLevel, @Spare1, @Spare2, @Spare3, @Spare4, @Spare5)",
+                    $"INSERT INTO {tableName} (ID, Temp, doorOpenAlarmTrigger, LoadCellMin, LoadCellMax, MaximumTime,  UseBuzzer, Positive_Wait, Positive_Low, Positive_High, Analysis_Time_Range, Analysis_Intervals, Threshold, BottleExistenceRange, DataStorageSave, TrashCanFillLevel, SYSTEM1, SYSTEM2, SYSTEM3, SYSTEM4, Spare1, Spare2, Spare3, Spare4, Spare5)" +
+                    $" VALUES (@ID, @Temp, @doorOpenAlarmTrigger, @LoadCellMin, @LoadCellMax, @MaximumTime,  @UseBuzzer, @Positive_Wait, @Positive_Low, @Positive_High, @Analysis_Time_Range, @Analysis_Intervals, @Threshold, @BottleExistenceRange, @DataStorageSave, @TrashCanFillLevel, @SYSTEM1, @SYSTEM2, @SYSTEM3, @SYSTEM4, @Spare1, @Spare2, @Spare3, @Spare4, @Spare5)",
                     connection))
                 {
                     populateCommand.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int));
@@ -303,6 +307,10 @@ namespace HubCentra_A1
                     populateCommand.Parameters.Add(new SqlParameter("@BottleExistenceRange", SqlDbType.Int));
                     populateCommand.Parameters.Add(new SqlParameter("@DataStorageSave", SqlDbType.Int));
                     populateCommand.Parameters.Add(new SqlParameter("@TrashCanFillLevel", SqlDbType.Int));
+                    populateCommand.Parameters.Add(new SqlParameter("@SYSTEM1", SqlDbType.Bit));
+                    populateCommand.Parameters.Add(new SqlParameter("@SYSTEM2", SqlDbType.Bit));
+                    populateCommand.Parameters.Add(new SqlParameter("@SYSTEM3", SqlDbType.Bit));
+                    populateCommand.Parameters.Add(new SqlParameter("@SYSTEM4", SqlDbType.Bit));
                     populateCommand.Parameters.Add(new SqlParameter("@Spare1", SqlDbType.VarChar));
                     populateCommand.Parameters.Add(new SqlParameter("@Spare2", SqlDbType.VarChar));
                     populateCommand.Parameters.Add(new SqlParameter("@Spare3", SqlDbType.VarChar));
@@ -330,6 +338,10 @@ namespace HubCentra_A1
                         populateCommand.Parameters["@BottleExistenceRange"].Value = 700;
                         populateCommand.Parameters["@DataStorageSave"].Value = 1;
                         populateCommand.Parameters["@TrashCanFillLevel"].Value = 10;
+                        populateCommand.Parameters["@SYSTEM1"].Value = 1;
+                        populateCommand.Parameters["@SYSTEM2"].Value = 0;
+                        populateCommand.Parameters["@SYSTEM3"].Value = 0;
+                        populateCommand.Parameters["@SYSTEM4"].Value = 0;
                         populateCommand.Parameters["@Spare1"].Value = "";
                         populateCommand.Parameters["@Spare2"].Value = "";
                         populateCommand.Parameters["@Spare3"].Value = "";
@@ -977,6 +989,10 @@ namespace HubCentra_A1
                                     BottleExistenceRange = Convert.ToInt32(reader["BottleExistenceRange"]),
                                     DataStorageSave = Convert.ToInt32(reader["DataStorageSave"]),
                                     TrashCanFillLevel = Convert.ToInt32(reader["TrashCanFillLevel"]),
+                                    SYSTEM1 = Convert.ToBoolean(reader["SYSTEM1"]),
+                                    SYSTEM2 = Convert.ToBoolean(reader["SYSTEM2"]),
+                                    SYSTEM3 = Convert.ToBoolean(reader["SYSTEM3"]),
+                                    SYSTEM4 = Convert.ToBoolean(reader["SYSTEM4"]),
                                     Spare1 = reader["Spare1"].ToString(),
                                     Spare2 = reader["Spare2"].ToString(),
                                     Spare3 = reader["Spare3"].ToString(),
@@ -1627,7 +1643,10 @@ namespace HubCentra_A1
                                                             "BottleExistenceRange = @BottleExistenceRange, " +
                                                             "DataStorageSave = @DataStorageSave, " +
                                                             "TrashCanFillLevel = @TrashCanFillLevel, " +
-
+                                                            "SYSTEM1 = @SYSTEM1, " +
+                                                            "SYSTEM2 = @SYSTEM2, " +
+                                                            "SYSTEM3 = @SYSTEM3, " +
+                                                            "SYSTEM4 = @SYSTEM4, " +
                                                             "Spare1 = @Spare1, " +
                                                             "Spare2 = @Spare2, " +
                                                             "Spare3 = @Spare3, " +
@@ -1651,6 +1670,10 @@ namespace HubCentra_A1
                             command.Parameters.AddWithValue("@BottleExistenceRange", item.BottleExistenceRange);
                             command.Parameters.AddWithValue("@DataStorageSave", item.DataStorageSave);
                             command.Parameters.AddWithValue("@TrashCanFillLevel", item.TrashCanFillLevel);
+                            command.Parameters.AddWithValue("@SYSTEM1", item.SYSTEM1);
+                            command.Parameters.AddWithValue("@SYSTEM2", item.SYSTEM2);
+                            command.Parameters.AddWithValue("@SYSTEM3", item.SYSTEM3);
+                            command.Parameters.AddWithValue("@SYSTEM4", item.SYSTEM4);
                             command.Parameters.AddWithValue("@Spare1", item.Spare1);
                             command.Parameters.AddWithValue("@Spare2", item.Spare2);
                             command.Parameters.AddWithValue("@Spare3", item.Spare3);

@@ -506,11 +506,30 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-
-                    <CheckBox Grid.Column="0" Content="SYSTEM 1" IsChecked="True" IsEnabled="False" Style="{StaticResource  System_CheckBoxStyle_01}"/>
-                    <CheckBox Grid.Column="1" Content="SYSTEM 2" Style="{StaticResource System_CheckBoxStyle_01}"/>
-                    <CheckBox Grid.Column="2" Content="SYSTEM 3" Style="{StaticResource System_CheckBoxStyle_01}"/>
-                    <CheckBox Grid.Column="3" Content="SYSTEM 4" Style="{StaticResource System_CheckBoxStyle_01}"/>
+                    <Grid Grid.Column="0">
+                        <Grid.InputBindings>
+                            <MouseBinding MouseAction="LeftClick" Command="{Binding ICommand_Config}" CommandParameter="31"/>
+                        </Grid.InputBindings>
+                        <CheckBox  Content="SYSTEM 1"  IsEnabled="False" IsChecked="{Binding Config[0].SYSTEM1, Mode=OneWay}" Style="{StaticResource  System_CheckBoxStyle_01}"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Grid.InputBindings>
+                            <MouseBinding MouseAction="LeftClick" Command="{Binding ICommand_Config}" CommandParameter="32"/>
+                        </Grid.InputBindings>
+                        <CheckBox  Content="SYSTEM 2"  IsEnabled="False" IsChecked="{Binding Config[0].SYSTEM2, Mode=OneWay}" Style="{StaticResource System_CheckBoxStyle_01}"/>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <Grid.InputBindings>
+                            <MouseBinding MouseAction="LeftClick" Command="{Binding ICommand_Config}" CommandParameter="33"/>
+                        </Grid.InputBindings>
+                        <CheckBox Content="SYSTEM 3"  IsEnabled="False" IsChecked="{Binding Config[0].SYSTEM3, Mode=OneWay}" Style="{StaticResource System_CheckBoxStyle_01}"/>
+                    </Grid>
+                    <Grid Grid.Column="3">
+                        <Grid.InputBindings>
+                            <MouseBinding MouseAction="LeftClick" Command="{Binding ICommand_Config}" CommandParameter="34"/>
+                        </Grid.InputBindings>
+                        <CheckBox Content="SYSTEM 4"  IsEnabled="False" IsChecked="{Binding Config[0].SYSTEM4, Mode=OneWay}" Style="{StaticResource System_CheckBoxStyle_01}"/>
+                    </Grid>
                 </Grid>
             </Grid>
             <!--#endregion SYSTEM-->
@@ -557,7 +576,7 @@
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="100*"/>
                         </Grid.ColumnDefinitions>
-                        <Grid  Grid.Column="0">
+                        <Grid  Grid.Column="0" Margin="5,5">
                             <Button
                              Command="{Binding ICommand_Config}"
                              CommandParameter="25"
@@ -568,7 +587,7 @@
                             </Button>
                         </Grid>
 
-                        <Grid  Grid.Column="2">
+                        <Grid  Grid.Column="2" Margin="5,5">
                             <Button
                                  Command="{Binding ICommand_Config}"
                                  CommandParameter="26"
@@ -654,7 +673,7 @@
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="100*"/>
                         </Grid.ColumnDefinitions>
-                        <Grid  Grid.Column="0">
+                        <Grid  Grid.Column="0" Margin="5,5">
                             <Button
                          Command="{Binding ICommand_Config}"
                          CommandParameter="30"

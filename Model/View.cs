@@ -2030,6 +2030,10 @@ namespace HubCentra_A1.Model
             public int _BottleExistenceRange;
             public int _DataStorageSave;
             public int _TrashCanFillLevel;
+            public bool _SYSTEM1;
+            public bool _SYSTEM2;
+            public bool _SYSTEM3;
+            public bool _SYSTEM4;
             public string _Spare1;
             public string _Spare2;
             public string _Spare3;
@@ -2229,6 +2233,55 @@ namespace HubCentra_A1.Model
                     {
                         _TrashCanFillLevel = value;
                         OnPropertyChanged(nameof(TrashCanFillLevel));
+                    }
+                }
+            }
+            public bool SYSTEM1
+            {
+                get => _SYSTEM1;
+                set
+                {
+                    if (_SYSTEM1 != value)
+                    {
+                        _SYSTEM1 = value;
+                        OnPropertyChanged(nameof(SYSTEM1));
+                    }
+                }
+            }
+            public bool SYSTEM2
+            {
+                get => _SYSTEM2;
+                set
+                {
+                    if (_SYSTEM2 != value)
+                    {
+                        _SYSTEM2 = value;
+                        OnPropertyChanged(nameof(SYSTEM2));
+                    }
+                }
+            }
+            public bool SYSTEM3
+            {
+                get => _SYSTEM3;
+                set
+                {
+                    if (_SYSTEM3 != value)
+                    {
+                        _SYSTEM3 = value;
+                        OnPropertyChanged(nameof(SYSTEM3));
+                    }
+                }
+            }
+
+            public bool SYSTEM4
+            {
+                get => _SYSTEM4;
+                set
+                {
+                    if (_SYSTEM4 != value)
+                    {
+                        _SYSTEM4 = value;
+                        OnPropertyChanged(nameof(SYSTEM4));
                     }
                 }
             }
