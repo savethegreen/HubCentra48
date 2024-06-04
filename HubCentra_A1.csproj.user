@@ -7,6 +7,12 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Form\Alarm_Equipment.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Form\Alarm_Door.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Form\Alarm_Negative.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -69,6 +75,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Form\Alarm_Equipment.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Form\Alarm_Door.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Form\Alarm_Negative.xaml">
       <SubType>Designer</SubType>
     </Page>

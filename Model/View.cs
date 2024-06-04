@@ -111,7 +111,7 @@ namespace HubCentra_A1.Model
         public string teststr { get; set; } = "444";
 
         public bool PCB1_targetvalue_test { get; set; } = false;
-        public double PCB_targetvalue { get; set; } = 900;
+        public double PCB_targetvalue { get; set; } = 200;
 
         #endregion PCB
 
@@ -164,6 +164,7 @@ namespace HubCentra_A1.Model
 
         #region Config
         public List<Class_Config> Config { get; set; }
+        public int Config_Block { get; set; } = 1;
         #endregion Config
 
         #region Search
@@ -297,7 +298,18 @@ namespace HubCentra_A1.Model
         public string Alarm_Negative_Unloading_Content { get; set; } = "배양이 종료되었습니다." + "\n" +"제거하시겠습니까?";
         #endregion Negative_Unloading
 
+        #region Door
+        public string Alarm_Door_Title { get; set; } = "Door Open!!";
+        public string Alarm_Door_Content { get; set; } = "문이 오랫동안 열려 있습니다." + "\n" +
+                                              "문을 닫아 주세요!!!";
 
+        public bool Alarm_Door_Buzzer { get; set; } = false;
+        #endregion Door
+
+        #region Equipment
+        public string Alarm_Equipment_Title { get; set; } = "Connect Error";
+        public string Alarm_Equipment_Content { get; set; } = "System1 is not Connected.";
+        #endregion Equipment
         public bool PopStatus_Positive_Flag { get; set; } = false;
         public string PopStatus_Positive_Title { get; set; } = "Positive 발생!!";
 
@@ -317,6 +329,17 @@ namespace HubCentra_A1.Model
         public string PopStatus_TrashCanAlert { get; set; } = "휴지통을 제거 해주세요!!";
         public bool PopStatus_TrashCanAlert_Flag { get; set; } = false;
         #endregion Alarm
+
+        #region Door
+        public bool Door_previousDoorState { get; set; } = false;
+        #endregion Door
+
+        #region Calibration
+        public bool Calibration_Falg { get; set; } = false;
+        public int Calibration_From { get; set; } = 0;
+        public int Calibration_To { get; set; } = 1;
+
+        #endregion Calibration
 
         #region Class
         #region DatabaseManager_System

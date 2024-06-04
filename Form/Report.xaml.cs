@@ -64,7 +64,7 @@ namespace HubCentra_A1
                 colLoading.Width = totalAvailableWidth * 0.16;// 
                 colUnloading.Width = totalAvailableWidth * 0.16;// 
                 colIncubationTime.Width = totalAvailableWidth * 0.16;//                
-                colResult.Width = totalAvailableWidth * 0.1;//
+                colResult.Width = totalAvailableWidth * 0.08;//
                 colPositiveTime.Width = totalAvailableWidth * 0.16;//       
             }
         }

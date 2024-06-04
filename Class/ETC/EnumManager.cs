@@ -55,7 +55,7 @@ namespace HubCentra_A1
             PositiveDelay = 17,
             Lamp =18,
             Tilting = 19,
-            Cal_PCB1_Manual = 20,
+            Calibration = 20,
         }
         #endregion Threads
 
@@ -112,6 +112,12 @@ namespace HubCentra_A1
             TrashCanFillLevel = 12,
             LoadCellMin = 20,
             LoadCellMax = 21,
+            Block_OK = 25,
+            Block_Cancel = 26,
+            Block_Data = 27,
+            Calibration_From = 28,
+            Calibration_To = 29,
+            Calibration_Start = 30,
         }
         #endregion Config
 

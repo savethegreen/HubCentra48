@@ -68,7 +68,7 @@ namespace HubCentra_A1
         public async void TimerInitialize()
         {
             timer.Tick += TimerCallbacks;
-            timer.Interval = TimeSpan.FromMicroseconds(1000);
+            timer.Interval = TimeSpan.FromMilliseconds(100);
             timer.Start();
         }
 

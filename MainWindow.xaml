@@ -58,16 +58,16 @@
                         <RowDefinition Height="100*" />
                         <RowDefinition Height="100*" />
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
+                    <Grid Grid.Row="0" Visibility="Hidden">
                         <Button  Click="Button_Click"></Button>
                     </Grid>
-                    <Grid Grid.Row="1">
+                    <Grid Grid.Row="1" Visibility="Hidden">
                         <Button Click="Button_Click_1"></Button>
                     </Grid>
-                    <Grid Grid.Row="2">
+                    <Grid Grid.Row="2" Visibility="Hidden">
                         <Button Click="Button_Click_2"></Button>
                     </Grid>
-                    <Grid Grid.Row="3">
+                    <Grid Grid.Row="3" Visibility="Hidden">
                         <Button Click="Button_Click_3"></Button>
                     </Grid>
                 </Grid>
@@ -94,7 +94,7 @@
                                     CommandParameter="10"
                                     Content="Loading">
                                 <Button.Style>
-                                    <Style BasedOn="{StaticResource MainWindow_Button_01}" TargetType="Button" />
+                                    <Style BasedOn="{StaticResource MainWindow_Button_02}" TargetType="Button" />
                                 </Button.Style>
                             </Button>
                         </Grid>
@@ -104,7 +104,7 @@
                                    CommandParameter="11"
                                    Content="Unloading">
                                 <Button.Style>
-                                    <Style BasedOn="{StaticResource MainWindow_Button_01}" TargetType="Button" />
+                                    <Style BasedOn="{StaticResource MainWindow_Button_02}" TargetType="Button" />
                                 </Button.Style>
                             </Button>
                         </Grid>
@@ -369,9 +369,13 @@
                         <Grid Grid.Row="4" Grid.Column="1">
                             <Grid.Style>
                                 <Style TargetType="Grid">
+                                    <Setter Property="Opacity" Value="1" />
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
                                             <Setter Property="IsEnabled" Value="False"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                            <Setter Property="Opacity" Value="0.5" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>

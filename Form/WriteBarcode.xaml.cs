@@ -75,6 +75,7 @@ namespace HubCentra_A1
                 _viewModel.Barcode_ID = _viewModel.WriteBarcode_ID;
                 _viewModel.Patient_ID = _viewModel.WritePatient_ID;
                 _viewModel.Barcode_ID_Loading = _viewModel.WriteBarcode_ID;
+                _viewModel.Patient_ID_Loading = _viewModel.WritePatient_ID;
             }
             this.Close();
         }

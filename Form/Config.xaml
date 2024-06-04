@@ -119,6 +119,16 @@
                     <Rectangle Stroke="Black" StrokeThickness="3" StrokeDashArray="1,1" />
                 </Grid>
             </Border>
+            <Border Grid.Row="22" Grid.Column="0">
+                <Grid>
+                    <Rectangle Stroke="Black" StrokeThickness="3" StrokeDashArray="1,1" />
+                </Grid>
+            </Border>
+            <Border Grid.Row="24" Grid.Column="0">
+                <Grid>
+                    <Rectangle Stroke="Black" StrokeThickness="3" StrokeDashArray="1,1" />
+                </Grid>
+            </Border>
             <!--#endregion 경계선-->
 
             <!--#region Temp-->
@@ -151,7 +161,7 @@
             </Grid>
             <!--#endregion Temp-->
 
-            <!--#region LoadCell-->
+            <!--#region DoorOpen-->
             <Grid Grid.Row="3" Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
@@ -175,14 +185,14 @@
                         <Grid.InputBindings>
                             <MouseBinding MouseAction="LeftClick" Command="{Binding ICommand_Config}" CommandParameter="1"/>
                         </Grid.InputBindings>
-                        <TextBlock Text="{Binding Config[0].doorOpenAlarmTrigger, StringFormat='{}{0} Min '}" Style="{StaticResource Config_TextBlock_02}"></TextBlock>
+                        <TextBlock Text="{Binding Config[0].doorOpenAlarmTrigger, StringFormat='{}{0} (m)'}" Style="{StaticResource Config_TextBlock_02}"></TextBlock>
                     </Grid>
                     <Grid Grid.Column="2" >
 
                     </Grid>
                 </Grid>
             </Grid>
-            <!--#endregion LoadCell-->
+            <!--#endregion DoorOpen-->
 
             <!--#region MaximumTime-->
             <Grid Grid.Row="5" Grid.Column="1">
@@ -207,7 +217,7 @@
                         <Grid.InputBindings>
                             <MouseBinding MouseAction="LeftClick" Command="{Binding ICommand_Config}" CommandParameter="2"/>
                         </Grid.InputBindings>
-                        <TextBlock Text="{Binding Config[0].MaximumTime, StringFormat='{}{0} Min'}" Style="{StaticResource Config_TextBlock_02}"></TextBlock>
+                        <TextBlock Text="{Binding Config[0].MaximumTime, StringFormat='{}{0} (h)'}" Style="{StaticResource Config_TextBlock_02}"></TextBlock>
                     </Grid>
                 </Grid>
             </Grid>
@@ -278,7 +288,7 @@
 
                             <MouseBinding MouseAction="LeftClick" Command="{Binding ICommand_Config}" CommandParameter="4"/>
                         </Grid.InputBindings>
-                        <TextBlock Text="{Binding Config[0].Positive_Wait, StringFormat='{}{0} '}" Style="{StaticResource Config_TextBlock_02}"></TextBlock>
+                        <TextBlock Text="{Binding Config[0].Positive_Wait, StringFormat='{}{0} (s)'}" Style="{StaticResource Config_TextBlock_02}"></TextBlock>
                     </Grid>
                 </Grid>
             </Grid>
@@ -366,7 +376,7 @@
                         <Grid.InputBindings>
                             <MouseBinding MouseAction="LeftClick" Command="{Binding ICommand_Config}" CommandParameter="7"/>
                         </Grid.InputBindings>
-                        <TextBlock Text="{Binding Config[0].Analysis_Time_Range, StringFormat='{}Analysis Time : {0} Min '}" Style="{StaticResource Config_TextBlock_02}"></TextBlock>
+                        <TextBlock Text="{Binding Config[0].Analysis_Time_Range, StringFormat='{}Analysis Time : {0} (m) '}" Style="{StaticResource Config_TextBlock_02}"></TextBlock>
                     </Grid>
 
                     <Grid Grid.Column="2">
@@ -462,13 +472,13 @@
                         <Grid.InputBindings>
                             <MouseBinding MouseAction="LeftClick" Command="{Binding ICommand_Config}" CommandParameter="11"/>
                         </Grid.InputBindings>
-                        <TextBlock Text="{Binding Config[0].DataStorageSave, StringFormat='{}{0} Min'}" Style="{StaticResource Config_TextBlock_02}"></TextBlock>
+                        <TextBlock Text="{Binding Config[0].DataStorageSave, StringFormat='{}{0} (m)'}" Style="{StaticResource Config_TextBlock_02}"></TextBlock>
                     </Grid>
                 </Grid>
             </Grid>
             <!--#endregion DataStorageSave-->
 
-            <!--#region TrashCanFillLevel -->
+            <!--#region SYSTEM -->
             <Grid Grid.Row="19" Grid.Column="1">
                 <Grid.Style>
                     <Style TargetType="Grid">
@@ -503,7 +513,162 @@
                     <CheckBox Grid.Column="3" Content="SYSTEM 4" Style="{StaticResource System_CheckBoxStyle_01}"/>
                 </Grid>
             </Grid>
-            <!--#endregion DataStorageSave-->
+            <!--#endregion SYSTEM-->
+
+            <!--#region Block -->
+            <Grid Grid.Row="21" Grid.Column="1">
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="120*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="300*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <TextBlock Grid.Column="0" Text="Block" Style="{StaticResource Config_TextBlock_01}"></TextBlock>
+
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="100*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid  Grid.Column="0">
+                        <Grid.InputBindings>
+                            <MouseBinding MouseAction="LeftClick" Command="{Binding ICommand_Config}" CommandParameter="27"/>
+                        </Grid.InputBindings>
+                        <TextBlock Text="{Binding Config_Block, StringFormat='{}{0}'}" Style="{StaticResource Config_TextBlock_02}"></TextBlock>
+                    </Grid>
+
+                    <Grid  Grid.Column="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="100*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid  Grid.Column="0">
+                            <Button
+                             Command="{Binding ICommand_Config}"
+                             CommandParameter="25"
+                             Content="Block">
+                                <Button.Style>
+                                    <Style BasedOn="{StaticResource MainWindow_Button_02}" TargetType="Button" />
+                                </Button.Style>
+                            </Button>
+                        </Grid>
+
+                        <Grid  Grid.Column="2">
+                            <Button
+                                 Command="{Binding ICommand_Config}"
+                                 CommandParameter="26"
+                                 Content="Unblock">
+                                <Button.Style>
+                                    <Style BasedOn="{StaticResource MainWindow_Button_02}" TargetType="Button" />
+                                </Button.Style>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <!--#endregion Block-->
+
+            <!--#region Calibration -->
+            <Grid Grid.Row="23" Grid.Column="1">
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="120*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="300*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <TextBlock Grid.Column="0" Text="Calibration" Style="{StaticResource Config_TextBlock_01}"></TextBlock>
+
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="100*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid  Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="100*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <TextBlock Text="From" Style="{StaticResource Config_TextBlock_02}"></TextBlock>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <Grid.InputBindings>
+                                <MouseBinding MouseAction="LeftClick" Command="{Binding ICommand_Config}" CommandParameter="28"/>
+                            </Grid.InputBindings>
+                            <TextBlock Text="{Binding Calibration_From, StringFormat='{}{0}'}" Style="{StaticResource Config_TextBlock_02}"></TextBlock>
+                        </Grid>
+                       
+                    </Grid>
+
+                    <Grid  Grid.Column="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="100*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <TextBlock Text="To" Style="{StaticResource Config_TextBlock_02}"></TextBlock>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <Grid.InputBindings>
+                                <MouseBinding MouseAction="LeftClick" Command="{Binding ICommand_Config}" CommandParameter="29"/>
+                            </Grid.InputBindings>
+                            <TextBlock Text="{Binding Calibration_To, StringFormat='{}{0}'}" Style="{StaticResource Config_TextBlock_02}"></TextBlock>
+                        </Grid>
+
+                    </Grid>
+
+                    <Grid  Grid.Column="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="100*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid  Grid.Column="0">
+                            <Button
+                         Command="{Binding ICommand_Config}"
+                         CommandParameter="30"
+                         Content="Start">
+                                <Button.Style>
+                                    <Style BasedOn="{StaticResource MainWindow_Button_02}" TargetType="Button" />
+                                </Button.Style>
+                            </Button>
+                        </Grid>
+
+                    </Grid>
+                </Grid>
+            </Grid>
+            <!--#endregion Calibration-->
         </Grid>
         <!--#endregion R1C1-->
     </Grid>

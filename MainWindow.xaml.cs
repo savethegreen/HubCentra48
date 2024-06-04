@@ -259,10 +259,136 @@ namespace HubCentra_A1
                 case Enum_Config_ButtonEvent.DataStorageSave:
                     UpdateConfig_int(DataTransfer, _viewModel.Config[0].DataStorageSave);
                     break;
+                case Enum_Config_ButtonEvent.Block_OK:
+                    Blcok_OK(_viewModel.Config_Block);
+                    break;
+                case Enum_Config_ButtonEvent.Block_Cancel:
 
+                    Blcok_Cancel(_viewModel.Config_Block);
+                    break;
+                case Enum_Config_ButtonEvent.Block_Data:
+                    UpdateConfig_int(DataTransfer, _viewModel.Config_Block);
+                    break;
+                case Enum_Config_ButtonEvent.Calibration_From:
+                    UpdateConfig_int(DataTransfer, _viewModel.Calibration_From);
+                    break;
+                case Enum_Config_ButtonEvent.Calibration_To:
+                    UpdateConfig_int(DataTransfer, _viewModel.Calibration_To);
+                    break;
+                case Enum_Config_ButtonEvent.Calibration_Start:
+                    _viewModel.Calibration_Falg = true;
+                    break;
                 default:
                     break;
             }
+        }
+
+        private void UpdateConfig_int(Enum_Config_ButtonEvent DataTransfer, double transferValue)
+        {
+            Calculator calculator = new Calculator(_viewModel, transferValue.ToString());
+            calculator.ShowDialog();
+            if (calculator.DialogResult.HasValue && calculator.DialogResult.Value)
+            {
+                if (int.TryParse(_viewModel.Calculator_DisplayTextBlock, out int value))
+                {
+                    switch (DataTransfer)
+                    {
+                        case Enum_Config_ButtonEvent.doorOpenAlarmTrigger:
+                            _viewModel.Config[0].doorOpenAlarmTrigger = value;
+                            Door_timer_Stop();
+                            Door_timer_Start();
+                            break;
+                        case Enum_Config_ButtonEvent.Positive_Wait:
+                            _viewModel.Config[0].Positive_Wait = value;
+                            break;
+                        case Enum_Config_ButtonEvent.Positive_Low:
+                            _viewModel.Config[0].Positive_Low = value;
+                            break;
+                        case Enum_Config_ButtonEvent.Positive_High:
+                            _viewModel.Config[0].Positive_High = value;
+                            break;
+                        case Enum_Config_ButtonEvent.Analysis_Time_Range:
+                            _viewModel.Config[0].Analysis_Time_Range = value;
+                            break;
+                        case Enum_Config_ButtonEvent.Analysis_Intervals:
+                            _viewModel.Config[0].Analysis_Intervals = value;
+                            break;
+                        case Enum_Config_ButtonEvent.BottleExistenceRange:
+                            _viewModel.Config[0].BottleExistenceRange = value;
+                            break;
+                        case Enum_Config_ButtonEvent.DataStorageSave:
+                            _viewModel.Config[0].DataStorageSave = value;
+                            break;
+                        case Enum_Config_ButtonEvent.TrashCanFillLevel:
+                            _viewModel.Config[0].TrashCanFillLevel = value;
+                            break;
+                        case Enum_Config_ButtonEvent.MaximumTime:
+                            _viewModel.Config[0].MaximumTime = value;
+                            break;
+                        case Enum_Config_ButtonEvent.Block_Data:
+                            _viewModel.Config_Block = value;
+                            break;
+                        case Enum_Config_ButtonEvent.Calibration_From:
+                            _viewModel.Calibration_From = value;
+                            break;
+                        case Enum_Config_ButtonEvent.Calibration_To:
+                            _viewModel.Calibration_To = value;
+                            break;
+                    }
+                    _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].UpdateConfig(_viewModel.Config);
+                    var select_ConfigInfo = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].Select_Config();
+                    _viewModel.Config = new List<Class_Config>(select_ConfigInfo);
+
+                }
+                else
+                {
+                }
+            }
+        }
+        private void UpdateConfig_double(Enum_Config_ButtonEvent DataTransfer, double transferValue)
+        {
+            Calculator calculator = new Calculator(_viewModel, transferValue.ToString());
+            calculator.ShowDialog();
+            if (calculator.DialogResult.HasValue && calculator.DialogResult.Value)
+            {
+                if (double.TryParse(_viewModel.Calculator_DisplayTextBlock, out double value))
+                {
+                    switch (DataTransfer)
+                    {
+                        case Enum_Config_ButtonEvent.Temp:
+                            _viewModel.Config[0].Temp = value;
+                            break;
+                        case Enum_Config_ButtonEvent.LoadCellMin:
+                            _viewModel.Config[0].LoadCellMin = value;
+                            break;
+                        case Enum_Config_ButtonEvent.LoadCellMax:
+                            _viewModel.Config[0].LoadCellMax = value;
+                            break;
+                        case Enum_Config_ButtonEvent.Threshold:
+                            _viewModel.Config[0].Threshold = value;
+                            break;
+                    }
+                    _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].UpdateConfig(_viewModel.Config);
+                    var select_ConfigInfo = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].Select_Config();
+                    _viewModel.Config = new List<Class_Config>(select_ConfigInfo);
+                }
+                else
+                {
+                }
+            }
+        }
+        private void UpdateConfig_bool(Enum_Config_ButtonEvent DataTransfer, bool transferValue)
+        {
+            switch (DataTransfer)
+            {
+                case Enum_Config_ButtonEvent.UseBuzzer:
+                    _viewModel.Config[0].UseBuzzer = !transferValue;
+                    break;
+
+            }
+            _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].UpdateConfig(_viewModel.Config);
+            var select_ConfigInfo = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].Select_Config();
+            _viewModel.Config = new List<Class_Config>(select_ConfigInfo);
         }
         #endregion Config
 
@@ -393,10 +519,10 @@ namespace HubCentra_A1
                         문상태확인및틸팅제어();
                         Thread.Sleep(10);
                         break;
-                    case EnumMStartWorkerThreads.Cal_PCB1_Manual:
-                        if (_viewModel.PCB1_targetvalue_test == true)
+                    case EnumMStartWorkerThreads.Calibration:
+                        if (_viewModel.Calibration_Falg == true)
                         {
-                            Cal_PCB1();
+                            Calibration(); 
                         }
                         Thread.Sleep(100);
                         break;
@@ -667,7 +793,7 @@ namespace HubCentra_A1
                     if (!string.IsNullOrEmpty(result))
                     {
 
-                        Enum_MainEngine_Statuslist status = result == "Positive" ? Enum_MainEngine_Statuslist.Negative : Enum_MainEngine_Statuslist.Negative;
+                        Enum_MainEngine_Statuslist status = result == "Positive" ? Enum_MainEngine_Statuslist.Positive : Enum_MainEngine_Statuslist.Negative;
                         //_viewModel.MainEngine_Statuslist.Add(new MainEngine_StatusList { ID = item.ID, Result = status });
 
 
@@ -1065,12 +1191,15 @@ namespace HubCentra_A1
                 }
 
                 string BacodeID = _viewModel.Report_Barcode;
+
+
+
                 DateTime start = _viewModel.MyDatePicke_Start;
                 DateTime end = _viewModel.MyDatePicke_End;
 
                 var select_Equipment = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_select_Equipment_Search].Select_Barcode(_viewModel.MyDatePicke_Start, _viewModel.MyDatePicke_End, _viewModel.Report_Find_Barcode);
 
-                if (select_Equipment.Count > 0 && (select_Equipment[0].Result == "Positive" || select_Equipment[0].Result == "Negative" || select_Equipment[0].Result == "Incubation"))
+                if (select_Equipment.Count > 0 && select_Equipment[0].Unloading != null & (select_Equipment[0].Result == "Positive" || select_Equipment[0].Result == "Negative" || select_Equipment[0].Result == "Incubation"))
                 {
                     _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_select_Equipment_Search].DeleteRecords(BacodeID, start, end);
                     string UpdateEquipment_Query = "UPDATE Equipment SET " +
@@ -1094,6 +1223,7 @@ namespace HubCentra_A1
                 }
                 else
                 {
+                    System.Windows.MessageBox.Show("배양이 끝나지 않았습니다. 배양을 정상적으로 종료하십시오.");
                 }
 
             }
@@ -1105,101 +1235,72 @@ namespace HubCentra_A1
         #endregion Report
 
         #region Config
-        private void UpdateConfig_int(Enum_Config_ButtonEvent DataTransfer, double transferValue)
+        public void Blcok_OK(int idx)
         {
-            Calculator calculator = new Calculator(_viewModel, transferValue.ToString());
-            calculator.ShowDialog();
-            if (calculator.DialogResult.HasValue && calculator.DialogResult.Value)
+            try
             {
-                if (int.TryParse(_viewModel.Calculator_DisplayTextBlock, out int value))
+                int index = idx;
+                if (_viewModel.EquipmentInfo[index].isEnable == true)
                 {
-                    switch (DataTransfer)
-                    {
-                        case Enum_Config_ButtonEvent.doorOpenAlarmTrigger:
-                            _viewModel.Config[0].doorOpenAlarmTrigger = value;
-                            break;
-                        case Enum_Config_ButtonEvent.Positive_Wait:
-                            _viewModel.Config[0].Positive_Wait = value;
-                            break;
-                        case Enum_Config_ButtonEvent.Positive_Low:
-                            _viewModel.Config[0].Positive_Low = value;
-                            break;
-                        case Enum_Config_ButtonEvent.Positive_High:
-                            _viewModel.Config[0].Positive_High = value;
-                            break;
-                        case Enum_Config_ButtonEvent.Analysis_Time_Range:
-                            _viewModel.Config[0].Analysis_Time_Range = value;
-                            break;
-                        case Enum_Config_ButtonEvent.Analysis_Intervals:
-                            _viewModel.Config[0].Analysis_Intervals = value;
-                            break;
-                        case Enum_Config_ButtonEvent.BottleExistenceRange:
-                            _viewModel.Config[0].BottleExistenceRange = value;
-                            break;
-                        case Enum_Config_ButtonEvent.DataStorageSave:
-                            _viewModel.Config[0].DataStorageSave = value;
-                            break;
-                        case Enum_Config_ButtonEvent.TrashCanFillLevel:
-                            _viewModel.Config[0].TrashCanFillLevel = value;
-                            break;
-                        case Enum_Config_ButtonEvent.MaximumTime:
-                            _viewModel.Config[0].MaximumTime = value;
-                            break;
-                    }
-                    _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].UpdateConfig(_viewModel.Config);
-                    var select_ConfigInfo = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].Select_Config();
-                    _viewModel.Config = new List<Class_Config>(select_ConfigInfo);
-  
+                    return;
                 }
-                else
-                {
-                }
+                string UpdateEquipment_Query = "UPDATE Equipment SET " +
+                                            "Barcode = @Barcode, Qrcode = @Qrcode, Loading = @Loading, CreDate = @CreDate, PositiveTime = @PositiveTime, Result = @Result, IncubationTime = @IncubationTime, switched = @switched, isEnable = @isEnable, isActive = @isActive " +
+                                            "WHERE ID = @ID";
+                Dictionary<string, object> UpdateEquipment_parameters = new Dictionary<string, object>
+                        {
+                            { "@Barcode", null },
+                            { "@Qrcode", null },
+                            { "@Loading", null },
+                            { "@CreDate", null },
+                            { "@PositiveTime", null },
+                            { "@Result", "Block" },
+                            { "@IncubationTime", null },
+                            { "@switched", false },
+                            { "@isEnable", false },
+                            { "@isActive", false },
+                            { "@ID", index }  // 
+                        };
+                _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].UpdateEquipment(UpdateEquipment_Query, UpdateEquipment_parameters);
             }
-        }
-        private void UpdateConfig_double(Enum_Config_ButtonEvent DataTransfer, double transferValue)
-        {
-            Calculator calculator = new Calculator(_viewModel, transferValue.ToString());
-            calculator.ShowDialog();
-            if (calculator.DialogResult.HasValue && calculator.DialogResult.Value)
+            catch(Exception e)
             {
-                if (double.TryParse(_viewModel.Calculator_DisplayTextBlock, out double value))
-                {
-                    switch (DataTransfer)
-                    {
-                        case Enum_Config_ButtonEvent.Temp:
-                            _viewModel.Config[0].Temp = value;
-                            break;
-                        case Enum_Config_ButtonEvent.LoadCellMin:
-                            _viewModel.Config[0].LoadCellMin = value;
-                            break;
-                        case Enum_Config_ButtonEvent.LoadCellMax:
-                            _viewModel.Config[0].LoadCellMax = value;
-                            break;
-                        case Enum_Config_ButtonEvent.Threshold:
-                            _viewModel.Config[0].Threshold = value;
-                            break;
-                    }
-                    _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].UpdateConfig(_viewModel.Config);
-                    var select_ConfigInfo = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].Select_Config();
-                    _viewModel.Config = new List<Class_Config>(select_ConfigInfo);
-                }
-                else
-                {
-                }
-            }
-        }
-        private void UpdateConfig_bool(Enum_Config_ButtonEvent DataTransfer, bool transferValue)
-        {
-            switch (DataTransfer)
-            {
-                case Enum_Config_ButtonEvent.UseBuzzer:
-                    _viewModel.Config[0].UseBuzzer = !transferValue;
-                    break;
 
             }
-            _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].UpdateConfig(_viewModel.Config);
-            var select_ConfigInfo = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].Select_Config();
-            _viewModel.Config = new List<Class_Config>(select_ConfigInfo);
+        }
+
+        public void Blcok_Cancel(int idx)
+        {
+            try
+            {
+                int index = idx;
+                if (_viewModel.EquipmentInfo[index].isEnable == true)
+                {
+                    return;
+                }
+                string UpdateEquipment_Query = "UPDATE Equipment SET " +
+                                            "Barcode = @Barcode, Qrcode = @Qrcode, Loading = @Loading, CreDate = @CreDate, PositiveTime = @PositiveTime, Result = @Result, IncubationTime = @IncubationTime, switched = @switched, isEnable = @isEnable, isActive = @isActive " +
+                                            "WHERE ID = @ID";
+                Dictionary<string, object> UpdateEquipment_parameters = new Dictionary<string, object>
+                        {
+                            { "@Barcode", null },
+                            { "@Qrcode", null },
+                            { "@Loading", null },
+                            { "@CreDate", null },
+                            { "@PositiveTime", null },
+                            { "@Result", "Null" },
+                            { "@IncubationTime", null },
+                            { "@switched", false },
+                            { "@isEnable", false },
+                            { "@isActive", true },
+                            { "@ID", index }  // 
+                        };
+                _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].UpdateEquipment(UpdateEquipment_Query, UpdateEquipment_parameters);
+            }
+            catch (Exception e)
+            {
+
+            }
         }
         #endregion Config
 
@@ -2783,36 +2884,51 @@ namespace HubCentra_A1
         #region Tilting
 
         public void  문상태확인및틸팅제어()
-        {
-            try
-            {
-                if (_viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Door].Flag == true)
+        {       
+                try
                 {
-                    틸팅시작();
-                }
-                else
-                {
-                    if (_viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Trigger].Flag == false)
+                    bool currentDoorState = _viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Door].Flag;
+
+                    if (currentDoorState != _viewModel.Door_previousDoorState)
                     {
-                        if (!_viewModel.Buzzer)
+                        if (currentDoorState == true)
                         {
-                            _viewModel.Buzzer = true;
-                            //Buzzer_timer_Start();
+                            _viewModel.MainWindow_ButtonFlag = Enum_MainWindow_ButtonFlag.Home;
+                             Door_timer_Stop(); 
+                    }
+                        else
+                        {
+                            _viewModel.MainWindow_ButtonFlag = Enum_MainWindow_ButtonFlag.SystemRack1;
+                            Door_timer_Start();
+                    }
+                        _viewModel.Door_previousDoorState = currentDoorState;
+                    }
+
+                    if (currentDoorState == true)
+                    {
+                        틸팅시작();
+                    }
+                    else
+                    {
+                        if (_viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Trigger].Flag == false)
+                        {
+                            if (!_viewModel.Buzzer)
+                            {
+                                _viewModel.Buzzer = true;
+                                // Buzzer_timer_Start();
+                            }
+                        }
+                        if (틸팅중지())
+                        {
+                            _viewModel.Buzzer = false;
                         }
                     }
-                    if (틸팅중지())
-                    {
-                        _viewModel.Buzzer = false;
-                    }
-              
-
+                }
+                catch (Exception ex)
+                {
+                    // 예외 처리 로직
                 }
             }
-            catch (Exception ex)
-            {
-             
-            }
-        }
         public void 틸팅시작()
         {
             try
@@ -2922,6 +3038,44 @@ namespace HubCentra_A1
         //}
         #endregion Tilting
 
+        #region Door
+        private DispatcherTimer Door_timer = new DispatcherTimer();
+        public void Door_timer_Start()
+        {
+           int Interval = _viewModel.Config[0].doorOpenAlarmTrigger;
+            Door_timer.Tick += TimerCallbacks_Door_timer;
+            Door_timer.Interval = TimeSpan.FromMinutes(Interval);
+            Door_timer.Start();
+        }
+        public void Door_timer_Stop()
+        {
+            if (Door_timer.IsEnabled)
+            {
+                Door_timer.Stop();
+            }
+        }
+        public void TimerCallbacks_Door_timer(object sender, EventArgs e)
+        {
+           try
+            {
+                _viewModel.Alarm_Door_Buzzer = true; 
+                Door_timer_Stop();
+                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+                {
+                    Alarm_Door alarm_Door = new Alarm_Door(_viewModel);
+                    alarm_Door.Owner = System.Windows.Application.Current.MainWindow;
+                    alarm_Door.Show();
+                }));
+            }
+            catch(Exception ex)
+            {
+
+            }
+
+
+        }
+        #endregion Door
+
         #region Lamp
         public void Lamp()
         {
@@ -2930,9 +3084,9 @@ namespace HubCentra_A1
                 List<DatabaseManager_Equipment> equ = _viewModel.EquipmentInfo;
                 bool hasPositive = equ.Any(e => e.Result == "Positive");
                 bool hasNegative = equ.Any(e => e.Result == "Negative");
+                bool Dooropen = _viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Door].Flag;
 
-
-                if (hasPositive)
+                if (hasPositive || Dooropen == false)
                 {
                     Lamp_Red();
                 }
@@ -3017,7 +3171,7 @@ namespace HubCentra_A1
                 _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag = false;
                 return;
             }
-            if (_viewModel.Buzzer && _viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Trigger].Flag == false && _viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Door].Flag == false)
+            if (_viewModel.Buzzer && _viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Trigger].Flag == false && _viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Door].Flag == false || _viewModel.Alarm_Door_Buzzer ==true)
             {
                 _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag = !_viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag;
             }
@@ -3104,6 +3258,172 @@ namespace HubCentra_A1
         #endregion Positive
         #endregion Alarm
 
+        #region Calibration
+        public void Calibration()
+        {
+            try
+            {
+                int Calibration_From = _viewModel.Calibration_From;
+                int Calibration_To = _viewModel.Calibration_To;
+                for (int i = Calibration_From; i < Calibration_To + 1; i++)
+                {
+                    for (int k = 1; k <= 60; k++)
+                    {
+                        int ini = 0;
+                        int line = (i - 1) / 28;
+                        int channel = (i - 1) % 28 + 1;
+                        string commandBase_CH = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},DIM,CH{channel}";
+                        string commandBase_ADCREAD = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},ADCREAD";
+                        string commandBase_DIMREAD = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},DIMREAD";
+                        string command = $"{commandBase_CH},{k}";
+
+                        _viewModel.Queue_PCB_Manual.Enqueue(command);
+                        Thread.Sleep(200);
+                        _viewModel.Queue_PCB_Manual.Enqueue(commandBase_ADCREAD);
+                        Thread.Sleep(200);
+                        _viewModel.Queue_PCB_Manual.Enqueue(commandBase_DIMREAD);
+                        Thread.Sleep(200);
+                        int lints = line * 28;
+                        while (_viewModel.PCB_Data[i - 1].LED != k)
+                        {
+                            Thread.Sleep(300); // Adjust the delay as needed
+                            ini++;
+
+                            if (ini > 5)
+                            {
+                                string commands = $"{commandBase_CH},{k}";
+                                //string commandBase2_CH = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},DIM,CH{channel}";
+                                //string commandBase2_ADCREAD = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},ADCREAD";
+                                string commandBase2_DIMREAD = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},DIMREAD";
+                               // string commandf = $"{commandBase2_CH},{k}";
+                                //_viewModel.Queue_PCB_Manual.Enqueue(commandf);
+                                //_viewModel.Queue_PCB_Manual.Enqueue(commandBase2_ADCREAD);
+                                _viewModel.Queue_PCB_Manual.Enqueue(commandBase2_DIMREAD);
+                                ini = 0;
+                            }
+                            Thread.Sleep(300); // Adjust the delay as needed
+                        }
+                        double averageADC = _viewModel.PCB_Data[i - 1].ADC;
+                        double lowerBound = _viewModel.PCB_targetvalue;
+                        double upperBound = _viewModel.PCB_targetvalue + 0.01;
+                        if (averageADC >= lowerBound)
+                        {
+                            break;
+                        }
+                        if (averageADC > upperBound)
+                        {
+                            break;
+                        }
+
+
+                    }
+                }
+                _viewModel.Calibration_Falg = false;
+            }
+            catch(Exception ex)
+            {
+                _viewModel.Calibration_Falg = false;
+            }
+        }
+        #endregion Calibration
+
+        #region LED
+
+        public void PCB_LED(string boardID, int idx, string result)
+        {
+            try
+            {
+                string BoardID = boardID;
+                string Result = result;
+                int index = idx;
+
+                string line = DetermineLine(index);
+                string channel = DetermineChannel(index);
+
+                if (Result == "Positive")
+                {
+                    string color = GetRgbColor(2); // Assuming this method returns the correct color format
+                    string command = $"{BoardID},{line},TLED,{channel},ON,{color}";
+                    _viewModel.Queue_PCB_Manual.Enqueue(command);
+                }
+                else if (Result == "Negative")
+                {
+                    string color = GetRgbColor(3); // Assuming this method returns the correct color format
+                    string command = $"{BoardID},{line},TLED,{channel},ON,{color}";
+                    _viewModel.Queue_PCB_Manual.Enqueue(command);
+                }
+                else if (Result == "Incubation")
+                {
+                    string color = GetRgbColor(1); // Assuming this method returns the correct color format
+                    string command = $"{BoardID},{line},TLED,{channel},ON,{color}";
+                    _viewModel.Queue_PCB_Manual.Enqueue(command);
+                }
+                else if (Result == "Block")
+                {
+                    string color = GetRgbColor(4); // Assuming this method returns the correct color format
+                    string command = $"{BoardID},{line},TLED,{channel},ON,{color}";
+                    _viewModel.Queue_PCB_Manual.Enqueue(command);
+                }
+                else
+                {
+                    string color = GetRgbColor(0);
+                    string command = $"{BoardID},{line},TLED,{channel},OFF";
+                    _viewModel.Queue_PCB_Manual.Enqueue(command);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private string DetermineLine(int index)
+        {
+            if (index >= 0 && index <= 27) return "LINE0";
+            else if (index >= 28 && index <= 55) return "LINE1";
+            else return "LINE2";
+        }
+
+        private string DetermineChannel(int index)
+        {
+            return $"CH{index % 28 + 1}";
+        }
+
+        private string GetRgbColor(int aliveValue)
+        {
+            string hexColor = aliveValue switch
+            {
+                0 => "#FFAF9D9D", // Null
+                1 => "#FF00FF00", //Incubation
+                2 => "#FFFF0000", //Positive
+                3 => "#FFFFA500", //Negative
+                4 => "#FF191311", //Black
+                _ => "#FFFFFFFF"
+            };
+
+
+            if (hexColor.StartsWith("#") && (hexColor.Length == 7 || hexColor.Length == 9))
+            {
+                try
+                {
+                    int startIndex = hexColor.Length == 9 ? 3 : 1;
+                    int r = Convert.ToInt32(hexColor.Substring(startIndex, 2), 16);
+                    int g = Convert.ToInt32(hexColor.Substring(startIndex + 2, 2), 16);
+                    int b = Convert.ToInt32(hexColor.Substring(startIndex + 4, 2), 16);
+                    return $"{r},{g},{b}";
+                }
+                catch
+                {
+
+                    return "255,255,255";
+                }
+            }
+            else
+            {
+                return "255,255,255";
+            }
+        }
+        #endregion LED
+
         #region Function
         public string systemidx(int idx)
         {
@@ -3166,103 +3486,9 @@ namespace HubCentra_A1
             }
         }
 
-        #region LED
-
-        public void PCB_LED(string boardID, int idx, string result)
-        {
-            try
-            {
-                string BoardID = boardID;
-                string Result = result;
-                int index = idx;
-
-                string line = DetermineLine(index);
-                string channel = DetermineChannel(index);
-
-                if (Result == "Positive")
-                {
-                    string color = GetRgbColor(2); // Assuming this method returns the correct color format
-                    string command = $"{BoardID},{line},TLED,{channel},ON,{color}";
-                    _viewModel.Queue_PCB_Manual.Enqueue(command);
-                }
-                else if(Result == "Negative")
-                {
-                    string color = GetRgbColor(3); // Assuming this method returns the correct color format
-                    string command = $"{BoardID},{line},TLED,{channel},ON,{color}";
-                    _viewModel.Queue_PCB_Manual.Enqueue(command);
-                }
-                else if (Result == "Incubation")
-                {
-                    string color = GetRgbColor(1); // Assuming this method returns the correct color format
-                    string command = $"{BoardID},{line},TLED,{channel},ON,{color}";
-                    _viewModel.Queue_PCB_Manual.Enqueue(command);
-                }
-                else if (Result == "Block")
-                {
-                    string color = GetRgbColor(4); // Assuming this method returns the correct color format
-                    string command = $"{BoardID},{line},TLED,{channel},ON,{color}";
-                    _viewModel.Queue_PCB_Manual.Enqueue(command);
-                }
-                else
-                {
-                    string color = GetRgbColor(0); 
-                    string command = $"{BoardID},{line},TLED,{channel},OFF";
-                    _viewModel.Queue_PCB_Manual.Enqueue(command);
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-        private string DetermineLine(int index)
-        {
-            if (index >= 0 && index <= 27) return "LINE0";
-            else if (index >= 28 && index <= 55) return "LINE1";
-            else return "LINE2";
-        }
-
-        private string DetermineChannel(int index)
-        {
-            return $"CH{index % 28 + 1}";
-        }
-
-        private string GetRgbColor(int aliveValue)
-        {
-            string hexColor = aliveValue switch
-            {
-                0 => "#FFAF9D9D", // Null
-                1 => "#FF04FF08", //Incubation
-                2 => "#FFFF0000", //Positive
-                3 => "#FFFF3407", //Negative
-                4 => "#FF191311", //Black
-                _ => "#FFFFFFFF" 
-            };
-
-
-            if (hexColor.StartsWith("#") && (hexColor.Length == 7 || hexColor.Length == 9))
-            {
-                try
-                {
-                    int startIndex = hexColor.Length == 9 ? 3 : 1; 
-                    int r = Convert.ToInt32(hexColor.Substring(startIndex, 2), 16);
-                    int g = Convert.ToInt32(hexColor.Substring(startIndex + 2, 2), 16);
-                    int b = Convert.ToInt32(hexColor.Substring(startIndex + 4, 2), 16);
-                    return $"{r},{g},{b}";
-                }
-                catch
-                {
-               
-                    return "255,255,255";
-                }
-            }
-            else
-            {
-                return "255,255,255";
-            }
-        }
-        #endregion LED
         #endregion Function
+
+
         double adc = 250;
 
         private void Button_Click(object sender, RoutedEventArgs e)

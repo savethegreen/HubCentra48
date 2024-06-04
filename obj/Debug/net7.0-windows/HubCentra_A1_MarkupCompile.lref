@@ -1,6 +1,8 @@
 ﻿D:\Auto\HubCentra_A1\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
 FD:\Auto\HubCentra_A1\App.xaml;;
 FD:\Auto\HubCentra_A1\Form\Alarm_Barcode.xaml;;
+FD:\Auto\HubCentra_A1\Form\Alarm_Door.xaml;;
+FD:\Auto\HubCentra_A1\Form\Alarm_Equipment.xaml;;
 FD:\Auto\HubCentra_A1\Form\Alarm_Incubation.xaml;;
 FD:\Auto\HubCentra_A1\Form\Alarm_Negative.xaml;;
 FD:\Auto\HubCentra_A1\Form\Alarm_Positive.xaml;;

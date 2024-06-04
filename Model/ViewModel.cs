@@ -1008,6 +1008,16 @@ namespace HubCentra_A1.Model
                 }
             }
         }
+
+        public int Config_Block
+        {
+            get => _view.Config_Block;
+            set
+            {
+                _view.Config_Block = value;
+                OnPropertyChanged(nameof(Config_Block));
+            }
+        }
         #endregion Config
 
         #region Search
@@ -1329,7 +1339,6 @@ namespace HubCentra_A1.Model
         #region System4
         #endregion System4
         #endregion System
-
 
         #region WriteBarcode
         public string WriteBarcode_ID
@@ -1792,6 +1801,50 @@ namespace HubCentra_A1.Model
         }
         #endregion Positive_Unloading
 
+        #region Door
+        public string Alarm_Door_Title
+        {
+            get => _view.Alarm_Door_Title;
+            set
+            {
+                _view.Alarm_Door_Title = value;
+                OnPropertyChanged(nameof(Alarm_Door_Title));
+            }
+        }
+
+        public string Alarm_Door_Content
+        {
+            get => _view.Alarm_Door_Content;
+            set
+            {
+                _view.Alarm_Door_Content = value;
+                OnPropertyChanged(nameof(Alarm_Door_Content));
+            }
+        }
+        #endregion Door
+
+        #region Equipment
+        public string Alarm_Equipment_Title
+        {
+            get => _view.Alarm_Equipment_Title;
+            set
+            {
+                _view.Alarm_Equipment_Title = value;
+                OnPropertyChanged(nameof(Alarm_Equipment_Title));
+            }
+        }
+
+        public string Alarm_Equipment_Content
+        {
+            get => _view.Alarm_Equipment_Content;
+            set
+            {
+                _view.Alarm_Equipment_Content = value;
+                OnPropertyChanged(nameof(Alarm_Equipment_Content));
+            }
+        }
+        #endregion Equipment
+
         #endregion Alarm
 
         #region Buzzer
@@ -1806,6 +1859,61 @@ namespace HubCentra_A1.Model
         }
         #endregion Buzzer
 
+        #region Door
+        public bool Door_previousDoorState
+        {
+            get => _view.Door_previousDoorState;
+            set
+            {
+                _view.Door_previousDoorState = value;
+                OnPropertyChanged(nameof(Door_previousDoorState));
+            }
+        }
+        public bool Alarm_Door_Buzzer
+        {
+            get => _view.Alarm_Door_Buzzer;
+            set
+            {
+                _view.Alarm_Door_Buzzer = value;
+                OnPropertyChanged(nameof(Alarm_Door_Buzzer));
+            }
+        }
+
+
+
+        #endregion Door
+
+        #region Calibration
+        public bool Calibration_Falg
+        {
+            get => _view.Calibration_Falg;
+            set
+            {
+                _view.Calibration_Falg = value;
+                OnPropertyChanged(nameof(Calibration_Falg));
+            }
+        }
+
+        public int Calibration_From
+        {
+            get => _view.Calibration_From;
+            set
+            {
+                _view.Calibration_From = value;
+                OnPropertyChanged(nameof(Calibration_From));
+            }
+        }
+
+        public int Calibration_To
+        {
+            get => _view.Calibration_To;
+            set
+            {
+                _view.Calibration_To = value;
+                OnPropertyChanged(nameof(Calibration_To));
+            }
+        }
+        #endregion Calibration
 
         #region Class
         public DatabaseManager[] databaseManagercs = new DatabaseManager[20];
