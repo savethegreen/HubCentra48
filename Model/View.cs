@@ -149,6 +149,7 @@ namespace HubCentra_A1.Model
         #region  Result
         public Dictionary<int, Queue<(DateTime, double)>> Result_PositiveTime;
         public bool Result_Timer{ get; set; } = false;
+
         #endregion Result
 
         #region Home
@@ -188,6 +189,10 @@ namespace HubCentra_A1.Model
 
         public DateTime MyDatePicke_Start { get; set; } = DateTime.Today;
         public DateTime MyDatePicke_End { get; set; } = DateTime.Today.AddDays(1).AddTicks(-1);
+
+        public string Report_Result { get; set; } = "";
+
+        public string Report_Positive_Time { get; set; } = "";
         #endregion Report
 
         #region LiveCharts
@@ -202,6 +207,7 @@ namespace HubCentra_A1.Model
         public int LiveCharts_Positive_End { get; set; } = 0;
 
         public int LiveCharts_Positive_Index { get; set; } = 0;
+        public string LiveCharts_Result { get; set; } = "";
 
         public string LiveCharts_Positive_Time { get; set; } = "";
         #endregion LiveCharts

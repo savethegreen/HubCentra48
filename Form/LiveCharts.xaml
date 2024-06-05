@@ -20,71 +20,44 @@
 
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="100*"/>
                 <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="70*"/>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="70*"/>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="60*"/>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="250*"/>
-                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="30*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="20*"/>
                     <ColumnDefinition Width="5*"/>
                     <ColumnDefinition Width="50*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
-                    <TextBlock Grid.Column="0" Text="Low : " Style="{StaticResource LiveCharts_TextBlock_01}"></TextBlock>
+                    <TextBlock Grid.Column="0" Text="결과 : " Style="{StaticResource LiveCharts_TextBlock_01}"></TextBlock>
                 </Grid>
                 <Grid Grid.Column="2" Margin="0.5" >
-                    <TextBlock Text="{Binding SQL_ETC[0].Chart_Range_Low, StringFormat='{}{0}'}" Style="{StaticResource LiveCharts_TextBlock_02}"></TextBlock>
+                    <TextBlock Text="{Binding LiveCharts_Result, StringFormat='{}{0}'}" Style="{StaticResource LiveCharts_TextBlock_02}"></TextBlock>
                 </Grid>
             </Grid>
+            
+            
             <Grid Grid.Column="3">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="20*"/>
                     <ColumnDefinition Width="5*"/>
                     <ColumnDefinition Width="50*"/>
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
-                    <TextBlock Grid.Column="0" Text="High : " Style="{StaticResource LiveCharts_TextBlock_01}"></TextBlock>
+                    <TextBlock Grid.Column="0" Text="시간 : " Style="{StaticResource LiveCharts_TextBlock_01}"></TextBlock>
                 </Grid>
                 <Grid Grid.Column="2" Margin="0.5" >
-                    <TextBlock Text="{Binding SQL_ETC[0].Chart_Range_High, StringFormat='{}{0}'}" Style="{StaticResource LiveCharts_TextBlock_02}"></TextBlock>
+                    <TextBlock Text="{Binding LiveCharts_Positive_Time, StringFormat='{}{0}'}" Style="{StaticResource LiveCharts_TextBlock_02}"></TextBlock>
                 </Grid>
             </Grid>
-            <Grid Grid.Column="5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100*"/>
-                    <ColumnDefinition Width="5*"/>
-                    <ColumnDefinition Width="50*"/>
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
-                    <TextBlock Grid.Column="0" Text="Step : " Style="{StaticResource LiveCharts_TextBlock_01}"></TextBlock>
-                </Grid>
-                <Grid Grid.Column="2" Margin="0.5" >
-                    <TextBlock Text="{Binding SQL_ETC[0].Chart_Step, StringFormat='{}{0}'}" Style="{StaticResource LiveCharts_TextBlock_02}"></TextBlock>
-                </Grid>
-            </Grid>
+  
 
-
-            <Grid Grid.Column="7">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50*"/>
-                    <ColumnDefinition Width="5*"/>
-                    <ColumnDefinition Width="100*"/>
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0" Margin="0.5" >
-                    <TextBlock Text="{Binding Chart_Positive_Start, StringFormat='{}index :{0}'}" Style="{StaticResource LiveCharts_TextBlock_01}"></TextBlock>
-                </Grid>
-                <Grid Grid.Column="2" Margin="0.5" >
-                    <TextBlock Text="{Binding PositiveFalgdate, StringFormat='{}Flag :{0}'}" Style="{StaticResource LiveCharts_TextBlock_01}"></TextBlock>
-                </Grid>
-            </Grid>
+       
         </Grid>
 
         <Grid Grid.Row="2">

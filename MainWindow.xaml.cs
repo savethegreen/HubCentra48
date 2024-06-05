@@ -722,7 +722,6 @@ namespace HubCentra_A1
                 {
                     await Task.Delay(10);
                 }
-                _viewModel.Result_Timer = true;
                 var select_Equipment = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_Insert_EquipmentH].Select_Equipment_Search();
                 for (int i = 0; i < select_Equipment.Count; i++)
                 {
@@ -732,6 +731,10 @@ namespace HubCentra_A1
                     string Qrcode = select_Equipment[i].Qrcode;
                     double PcbADC = _viewModel.PCB_Data[ID - 1].ADC;
                     double PcbLED = _viewModel.PCB_Data[ID - 1].LED;
+                    if(PcbADC >= _viewModel.Config[0].BottleExistenceRange)
+                    {
+                        continue;
+                    }
                     double Temperature_ProcessValue = _viewModel.Temperature_ProcessValue;
                     DateTime now = DateTime.Now;
                     string updateQuery_Equipment = "UPDATE Equipment SET IncubationTime = @IncubationTime WHERE ID = @ID";
@@ -757,6 +760,7 @@ namespace HubCentra_A1
                     _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_Insert_EquipmentH].InsertEquipmentH(now, Equipment);
 
                 }
+                _viewModel.Result_Timer = true;
 
             }
             catch (Exception ex)
@@ -793,7 +797,6 @@ namespace HubCentra_A1
                 _viewModel.Result_PositiveTime = new Dictionary<int, Queue<(DateTime, double)>>();
                 for (int i = 0; i < _viewModel.Common_TotalSystemCellCount; i++)
                 {
-  
                     _viewModel.Result_PositiveTime[i] = new Queue<(DateTime, double)>();
                 }
             }
@@ -866,6 +869,7 @@ namespace HubCentra_A1
                         break;
                     }
                 }
+                _viewModel.Result_Timer = false;
             }
             catch (Exception ex)
             {
@@ -886,8 +890,7 @@ namespace HubCentra_A1
             }
             if (_viewModel.Result_Timer)
             {
-                _viewModel.Result_Timer = false;
-                if (IncubationTime >= _viewModel.Common_Hour)
+                if (IncubationTime >= _viewModel.Common_Minute && ADC < _viewModel.Config[0].BottleExistenceRange)
                 {
                     if (ReceiveNewVoltageValue(idx, ADC, Date))
                     {
@@ -918,6 +921,11 @@ namespace HubCentra_A1
                 int number_of_Analysis_Intervals = _viewModel.Config[0].Analysis_Intervals;
                 double voltage_Increase_Threshold = _viewModel.Config[0].Threshold;
                 double percentageDifference = 0;
+
+                if (!_viewModel.Result_PositiveTime.ContainsKey(pcbIndex))
+                {
+                    _viewModel.Result_PositiveTime[pcbIndex] = new Queue<(DateTime, double)>();
+                }
 
                 _viewModel.Result_PositiveTime[pcbIndex].Enqueue((now, Currentvalue));
                 while (_viewModel.Result_PositiveTime[pcbIndex].Count > 0 && (now - _viewModel.Result_PositiveTime[pcbIndex].Peek().Item1).TotalMinutes > analysis_Time_Range)
@@ -1119,6 +1127,16 @@ namespace HubCentra_A1
 
                     if (_viewModel.Report_Model == Enum_Report_Model.raw)
                     {
+                        var select_barcode = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_select_Equipment_Search].Select_Barcode(_viewModel.Report_Barcode);
+                        _viewModel.Report_Result = select_barcode[0].Result;
+                        if (select_barcode[0].PositiveTime.HasValue)
+                        {
+                            _viewModel.Report_Positive_Time = select_barcode[0].PositiveTime.Value.ToString("yyyy-MM-dd HH:mm");
+                        }
+                        else
+                        {
+                            _viewModel.Report_Positive_Time = string.Empty; // 또는 기본값을 설정
+                        }
                         _viewModel.CSV_List = select_Equipment;
 
                     }
@@ -1131,7 +1149,7 @@ namespace HubCentra_A1
                     {
 
                     }
-
+                    Report_PositiveBounddury();
                     Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog
                     {
                         Filter = "CSV file (*.csv)|*.csv",
@@ -1145,14 +1163,18 @@ namespace HubCentra_A1
 
                         var sb = new StringBuilder();
 
-                        // Add header line (adjust with your properties)
-                        sb.AppendLine("Cell, Barcode, PCB Value, Temp Value, Creation Date");
+                        sb.AppendLine($"Result  : ,  {_viewModel.Report_Result}, Event Time  :   , {_viewModel.Report_Positive_Time}");
+                        sb.AppendLine(); // 첫 번째 공백 줄 추가
+                        sb.AppendLine(); // 두 번째 공백 줄 추가
+                        sb.AppendLine("Cell, Barcode ID, Patient ID,  PCB Value, Temp Value, Creation Date");
 
                         foreach (var item in _viewModel.CSV_List)
                         {
 
-                            sb.AppendLine($"{item.ID},{item.Barcode},{item.PcbADC},{item.Temperature}," +
-                      $"{item.CreDate.ToString("yyyy-MM-dd HH:mm:ss")},");
+                            sb.AppendLine($"{item.ID},{item.Barcode},{item.Qrcode},{item.PcbADC},{item.Temperature}," +
+                           $"{item.CreDate.ToString("yyyy-MM-dd HH:mm:ss")},");
+
+
                         }
 
                         // Write the CSV data to file
@@ -1259,6 +1281,145 @@ namespace HubCentra_A1
 
             }
         }
+
+
+        public void Report_PositiveBounddury()
+        {
+            try
+            {
+                int Analysis_Time_Range = _viewModel.Config[0].Analysis_Time_Range;
+                int Number_of_Analysis_Intervals = _viewModel.Config[0].Analysis_Intervals;
+                double Voltage_Increase_Threshold = _viewModel.Config[0].Threshold;
+                _viewModel.LiveCharts_TimeSeries = new Dictionary<int, Queue<(DateTime, double)>>();
+                if (_viewModel.LiveCharts_TimeSeries.ContainsKey(0))
+                {
+                    _viewModel.LiveCharts_TimeSeries[0].Clear();
+                }
+                DateTime startTime = _viewModel.CSV_List[0].CreDate.AddMinutes(60);
+                for (int i = 0; i < _viewModel.CSV_List.Count; i++)
+                {
+                    int pcbIndex = 0; // 예시를 위한 PCB 인덱스, 실제 인덱스 사용 필요
+
+                    DateTime timestamp = _viewModel.CSV_List[i].CreDate;
+                    if (timestamp < startTime)
+                    {
+                        continue; // 처음 100분 동안의 데이터는 스킵
+                    }
+
+                    double pcbValue = _viewModel.CSV_List[i].PcbADC; // PCB 전압값
+
+                    // 해당 인덱스의 큐가 없으면 생성
+                    //if (!voltageTimeSeries.ContainsKey(pcbIndex))
+                    //{
+                    //    voltageTimeSeries[pcbIndex] = new Queue<(DateTime, double)>();
+                    //}
+
+                    // 시계열 데이터에 시간과 전압값의 쌍 추가
+                    if (i == 549)
+                    {
+
+                    }
+                    bool shouldStop = Report_VoltageValue(0, pcbValue, timestamp, Analysis_Time_Range, Number_of_Analysis_Intervals, Voltage_Increase_Threshold);
+                    if (shouldStop)
+                    {
+                        break; // for 루프 중단
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private bool Report_VoltageValue(int pcbIndex, double currentVoltage, DateTime TIME, int Analysis_Time_Range, int Number_of_Analysis_Intervals, double Voltage_Increase_Threshold)
+        {
+            try
+            {
+                _viewModel.LiveCharts_Positive_Start = 0;
+                _viewModel.LiveCharts_Positive_End = 0;
+                int analysis_Time_Range = Analysis_Time_Range; ;
+                int number_of_Analysis_Intervals = Number_of_Analysis_Intervals;
+                double voltage_Increase_Threshold = Voltage_Increase_Threshold;
+                double percentageDifference = 0;
+                //double percentageThreshold = 1;
+                //int windowSize = 180; // Size of rolling window in minutes
+                //int numQuarters = 4; // Number of quarters to divide the window into
+                DateTime currentTime = TIME;
+
+                if (!_viewModel.LiveCharts_TimeSeries.ContainsKey(pcbIndex))
+                {
+                    _viewModel.LiveCharts_TimeSeries[pcbIndex] = new Queue<(DateTime, double)>();
+                }
+
+                // Rolling window update
+                Queue<(DateTime, double)> window = _viewModel.LiveCharts_TimeSeries[pcbIndex];
+                window.Enqueue((currentTime, currentVoltage));
+
+                // Maintain window size
+                while (window.Count > 0 && (currentTime - window.Peek().Item1).TotalMinutes > analysis_Time_Range)
+                {
+                    window.Dequeue();
+                }
+
+                var data = _viewModel.LiveCharts_TimeSeries[pcbIndex];
+                int rage = (int)(analysis_Time_Range * 0.9);
+                if (data.Count < rage)
+                {
+                    return false;
+                }
+
+                int quarterSize = analysis_Time_Range / number_of_Analysis_Intervals;
+                List<double> quarterAverages = new List<double>();
+
+                for (int i = 0; i < number_of_Analysis_Intervals; i++)
+                {
+                    List<double> quarterData = data.Skip(i * quarterSize).Take(quarterSize).Select(d => d.Item2).ToList();
+                    double quarterAverage = quarterData.Average();
+                    quarterAverages.Add(quarterAverage);
+                }
+
+
+                bool allQuartersPositiveIncrease = true;
+                if (currentTime == new DateTime(2024, 02, 04, 04, 29, 48))
+                {
+
+                }
+                for (int i = 1; i < number_of_Analysis_Intervals; i++)
+                {
+                    percentageDifference = ((quarterAverages[i] - quarterAverages[i - 1]) / quarterAverages[i - 1]) * 100.0;
+
+                    if (percentageDifference < voltage_Increase_Threshold)
+                    {
+                        allQuartersPositiveIncrease = false;
+                        break;
+                    }
+                }
+
+                if (allQuartersPositiveIncrease)
+                {
+                    for (int i = 0; i < _viewModel.CSV_List.Count; i++)
+                    {
+                        if (_viewModel.CSV_List[i].CreDate == currentTime)
+                        {
+                            if (_viewModel.Report_Model == Enum_Report_Model.SMA)
+                            {
+                                _viewModel.Report_Result = "Positive";
+                                _viewModel.Report_Positive_Time = _viewModel.CSV_List[i].CreDate.ToString("yyyy-MM-dd HH:mm");
+                            }
+                            break;
+                        }
+                    }
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
         #endregion Report
 
         #region Config
@@ -1338,23 +1499,30 @@ namespace HubCentra_A1
             {
                 if (_viewModel.Report_Barcode.Length > 0)
                 {
+                    _viewModel.LiveCharts_Result = "";
+                    _viewModel.LiveCharts_Positive_Time = "";
                     var select_Equipment = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_select_Equipment_Search].QueryDataForBarcodeAndDateRange(_viewModel.Report_Barcode, _viewModel.Report_DatePicke_Start, _viewModel.Report_DatePicke_End);
+
                     if (_viewModel.Report_Model == Enum_Report_Model.raw)
                     {
+                        var select_barcode = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_select_Equipment_Search].Select_Barcode(_viewModel.Report_Barcode);
+
                         _viewModel.LiveCharts_List = select_Equipment;
+                        _viewModel.LiveCharts_Result = select_barcode[0].Result;
+                        if (select_barcode[0].PositiveTime.HasValue)
+                        {
+                            _viewModel.LiveCharts_Positive_Time = select_barcode[0].PositiveTime.Value.ToString("yyyy-MM-dd HH:mm");
+                        }
+                        else
+                        {
+                            _viewModel.LiveCharts_Positive_Time = string.Empty; // 또는 기본값을 설정
+                        }
+
 
                     }
                     else if (_viewModel.Report_Model == Enum_Report_Model.SMA)
                     {
-                        //if (int.TryParse(txtvalue.Text, out int windowSize))
-                        //{
-                        //    _viewModel.LiveCharts_List = SmoothPcbValues(select_Equipment, windowSize);
-                        //}
-                        //else
-                        //{
-                        //    return null;
-                        //}
-
+                        _viewModel.LiveCharts_List = SmoothPcbValues(select_Equipment, _viewModel.Report_AverageValue);
                     }
                     else
                     {
@@ -1429,7 +1597,6 @@ namespace HubCentra_A1
             {
                 _viewModel.LiveCharts_Positive_Start = 0;
                 _viewModel.LiveCharts_Positive_End = 0;
-                _viewModel.LiveCharts_Positive_Time = "";
                 int analysis_Time_Range = Analysis_Time_Range; ;
                 int number_of_Analysis_Intervals = Number_of_Analysis_Intervals;
                 double voltage_Increase_Threshold = Voltage_Increase_Threshold;
@@ -1496,7 +1663,11 @@ namespace HubCentra_A1
                         {
                             _viewModel.LiveCharts_Positive_Start = i;
                             _viewModel.LiveCharts_Positive_End = i + Math.Max(1, _viewModel.LiveCharts_List.Count / 200);
-                            _viewModel.LiveCharts_Positive_Time = _viewModel.LiveCharts_List[i].CreDate.ToString();
+                            if (_viewModel.Report_Model == Enum_Report_Model.SMA)
+                            {
+                                _viewModel.LiveCharts_Result = "Positive";
+                                _viewModel.LiveCharts_Positive_Time = _viewModel.LiveCharts_List[i].CreDate.ToString();
+                            }
                             break;
                         }
                     }
@@ -2753,6 +2924,7 @@ namespace HubCentra_A1
                         };
             _viewModel.databaseManagercs[(int)Enum_DatabaseManager.언로딩].UpdateEquipment(UpdateEquipment_Query, UpdateEquipment_parameters);
             _viewModel.PositiveDelay[IDX] = 0;
+            _viewModel.Result_PositiveTime[IDX] = new Queue<(DateTime, double)>();
             PCB_LED(_viewModel.SystemInfo[0].PCB_ID1, IDX, "Null");
         }
 
@@ -2851,6 +3023,7 @@ namespace HubCentra_A1
 
 
             _viewModel.PositiveDelay[IDX] = 0;
+            _viewModel.Result_PositiveTime[IDX] = new Queue<(DateTime, double)>();
             PCB_LED(_viewModel.SystemInfo[0].PCB_ID1, IDX, "Null");
         }
 
@@ -2876,8 +3049,8 @@ namespace HubCentra_A1
                 Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                 {
                     Incubation = new Alarm_Incubation(_viewModel, idx);
-                    Incubation.OKClicked += (s, e) => Popup_OKClicked(s, e, idx, IncubationTime, ID, barcodeID);
-                    Incubation.CancelClicked += (s, e) => Popup_CancelClicked(s, e, idx, IncubationTime, ID, barcodeID);
+                    Incubation.OKClicked += (s, e) => Incubation_OKClicked(s, e, idx, IncubationTime, ID, barcodeID);
+                    Incubation.CancelClicked += (s, e) => Incubation_CancelClicked(s, e, idx, IncubationTime, ID, barcodeID);
                     if (Application.Current.MainWindow != null && Application.Current.MainWindow != Incubation)
                     {
                         Incubation.Owner = Application.Current.MainWindow;
@@ -2894,7 +3067,7 @@ namespace HubCentra_A1
 
             }
         }
-        private void Popup_OKClicked(object sender, PopupEventArgs e, int idx, int incubationTime, int id, string barcodeID)
+        private void Incubation_OKClicked(object sender, PopupEventArgs e, int idx, int incubationTime, int id, string barcodeID)
         {
             int IDX = idx;
             int IncubationTime = incubationTime;
@@ -2936,10 +3109,12 @@ namespace HubCentra_A1
                         };
             _viewModel.databaseManagercs[(int)Enum_DatabaseManager.언로딩].UpdateEquipment(UpdateEquipment_Query, UpdateEquipment_parameters);
             _viewModel.PositiveDelay[IDX] = 0;
+            _viewModel.Result_PositiveTime[IDX] = new Queue<(DateTime, double)>();
             PCB_LED(_viewModel.SystemInfo[0].PCB_ID1, IDX, "Null");
+
         }
 
-        private void Popup_CancelClicked(object sender, PopupEventArgs e, int idx, int IncubationTime, int ID, string barcodeI)
+        private void Incubation_CancelClicked(object sender, PopupEventArgs e, int idx, int IncubationTime, int ID, string barcodeI)
         {
 
         }
@@ -3591,18 +3766,56 @@ namespace HubCentra_A1
 
             return "";
         }
+
+        private string DetermineResult3(int idx, double incubationTime, int maximumTime, DateTime date, double  adc)
+        {
+            DateTime Date = date;
+            int Positive_Delay = _viewModel.Config[0].Positive_Wait;
+            double IncubationTime = incubationTime;
+            double ADC = adc;
+
+            if (ADC <= 0)
+            {
+                return "";
+            }
+            if (IncubationTime >= _viewModel.Common_Hour)
+            {
+                if (ReceiveNewVoltageValue(idx, ADC, Date))
+                {
+                    return "Positive";
+                }
+            }
+            if (_viewModel.PositiveDelay[idx] > Positive_Delay)
+            {
+                return "Positive";
+            }
+            if (IncubationTime >= maximumTime)
+            {
+                return "Negative";
+            }
+            return "";
+        }
         DateTime NOW;
         double ACD = 200;
         int iNCUBATIONT = 3600;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             NOW = DateTime.Now;
-    
+            int inqubation = 0;
+
+            var select_Equipment = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_select_Equipment_Search].QueryDataForBarcodeAndDateRange(_viewModel.Report_Barcode, _viewModel.Report_DatePicke_Start, _viewModel.Report_DatePicke_End);
+            _viewModel.Result_PositiveTime[16] = new Queue<(DateTime, double)>();
+            foreach (var item in select_Equipment)
+            {
+
+                DetermineResult3(item.ID - 1, inqubation, 3600 * 12, item.CreDate, item.PcbADC);
+                inqubation += 60;
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-     
+
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

@@ -1455,6 +1455,62 @@ namespace HubCentra_A1
 
             return false;
         }
+
+        public List<DatabaseManager_BarcodeList> Select_Barcode(string BarcodeID)
+        {
+            string tableName = "Barcode";
+            var configurations = new List<DatabaseManager_BarcodeList>();
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    string sqlQuery = $"SELECT * FROM {tableName}";
+
+                    if (!string.IsNullOrEmpty(BarcodeID))
+                    {
+                        sqlQuery += " WHERE Barcode LIKE @Barcode";
+                    }
+
+                    sqlQuery += " ORDER BY Loading ASC";
+
+                    connection.Open();
+                    using (var command = new SqlCommand(sqlQuery, connection))
+                    {
+                        if (!string.IsNullOrEmpty(BarcodeID))
+                        {
+                            command.Parameters.AddWithValue("@Barcode", "%" + BarcodeID.Trim() + "%");
+                        }
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var data = new DatabaseManager_BarcodeList
+                                {
+                                    ID = Convert.ToInt32(reader["ID"]),
+                                    Barcode = reader.IsDBNull(reader.GetOrdinal("Barcode")) ? null : reader.GetString(reader.GetOrdinal("Barcode")),
+                                    Qrcode = reader.IsDBNull(reader.GetOrdinal("Qrcode")) ? null : reader.GetString(reader.GetOrdinal("Qrcode")),
+                                    LoadCell = reader["LoadCell"] != DBNull.Value ? Convert.ToDouble(reader["LoadCell"]) : 0,
+                                    Loading = reader.IsDBNull(reader.GetOrdinal("Loading")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("Loading")),
+                                    Unloading = reader.IsDBNull(reader.GetOrdinal("Unloading")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("Unloading")),
+                                    IncubationTime = ConvertSecondsToReadableTime(reader["IncubationTime"] != DBNull.Value ? Convert.ToInt32(reader["IncubationTime"]) : 0),
+                                    Result = reader.IsDBNull(reader.GetOrdinal("Result")) ? null : reader.GetString(reader.GetOrdinal("Result")),
+                                    PositiveTime = reader.IsDBNull(reader.GetOrdinal("PositiveTime")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("PositiveTime")),
+                                };
+
+                                configurations.Add(data);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // 로그 또는 예외 처리
+            }
+            return configurations;
+        }
+
         #endregion Barcode
 
 

@@ -1,19 +1,16 @@
-﻿using LiveChartsCore.SkiaSharpView;
+﻿using HubCentra_A1.Class.FASTECH;
 using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO.Ports;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
 using System.Windows.Input;
 using static HubCentra_A1.EnumManager;
 using static HubCentra_A1.Model.View;
-using System.Net;
-using HubCentra_A1.Class.FASTECH;
 
 namespace HubCentra_A1.Model
 {
@@ -1145,6 +1142,26 @@ namespace HubCentra_A1.Model
                 }
             }
         }
+
+        public string Report_Result
+        {
+            get => _view.Report_Result;
+            set
+            {
+                _view.Report_Result = value;
+                OnPropertyChanged(nameof(Report_Result));
+            }
+        }
+        public string Report_Positive_Time
+        {
+            get => _view.Report_Positive_Time;
+            set
+            {
+                _view.Report_Positive_Time = value;
+                OnPropertyChanged(nameof(Report_Positive_Time));
+            }
+        }
+
         #endregion Report
 
         #region LiveCharts
@@ -1243,7 +1260,15 @@ namespace HubCentra_A1.Model
                 OnPropertyChanged(nameof(LiveCharts_Positive_Index));
             }
         }
-
+        public string LiveCharts_Result
+        {
+            get => _view.LiveCharts_Result;
+            set
+            {
+                _view.LiveCharts_Result = value;
+                OnPropertyChanged(nameof(LiveCharts_Result));
+            }
+        }
         public string LiveCharts_Positive_Time
         {
             get => _view.LiveCharts_Positive_Time;
