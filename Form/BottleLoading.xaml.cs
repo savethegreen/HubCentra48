@@ -25,9 +25,6 @@ namespace HubCentra_A1
     {
         #region window
         private ViewModel _viewModel;
-        //public event EventHandler<bool?, int> ClosedEvent;
-        public delegate void ClosedEventHandler(object sender, bool? result, int idx);
-        public event ClosedEventHandler ClosedEvent;
         public int IDX = 0;
         public BottleLoading(ViewModel model , int idx)
         {
@@ -99,6 +96,7 @@ namespace HubCentra_A1
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //this.Close();
+
             _viewModel.BottleLoading_Result[IDX] = false;
         }
 

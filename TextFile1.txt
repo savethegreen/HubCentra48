@@ -3,3 +3,4 @@
 3. 로그인 모드 관련 숨김창 설정 - 완료
 4. Insert_EquipmentH() continue 한거 체크 하기
 5. DetermineResult() 에서 바틀을 잠ㄱ시 제거 했을때 데이터 안들어가는거 확인.
+ㅏㅓㅠㅓㅗ포ㅓ포

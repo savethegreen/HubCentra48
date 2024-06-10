@@ -188,5 +188,23 @@ namespace HubCentra_A1
             Buzzer = 4,
         }
         #endregion FASTECH
+
+        #region PCB
+        public enum Enum_PCB
+        {
+            ADC = 0,
+            LED = 1,
+            TLED = 1,
+        }
+        #endregion PCB
+
+        #region LOG
+        public enum Enum_LOG
+        {
+            PCB = 0,
+            LED = 1,
+            TLED = 1,
+        }
+        #endregion LOG
     }
 }

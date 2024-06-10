@@ -40,6 +40,8 @@ namespace HubCentra_A1.Model
 
         #region MainWindow
         public Enum_MainWindow_ButtonFlag MainWindow_ButtonFlag { get; set; } =  Enum_MainWindow_ButtonFlag.Home;
+
+        public bool ProgramShotdown { get; set; } = false;
         #endregion MainWindow
 
         #region MainEngine
@@ -76,7 +78,8 @@ namespace HubCentra_A1.Model
 
         #region FASTECH
         #region Connection
-        public IPAddress FASTECH_IO_IP { get; set; } = new IPAddress(new byte[] { 192, 168, 0, 3 });
+        public string FASTECH_IO_IP { get; set; } = "192.160.0.1";
+        //public IPAddress FASTECH_IO_IP { get; set; } = new IPAddress(new byte[] { 192, 168, 0, 1 });
         public bool FASTECH_IO_Connection { get; set; } = false;
         #endregion Connection
 
@@ -166,6 +169,7 @@ namespace HubCentra_A1.Model
         #region Config
         public List<Class_Config> Config { get; set; }
         public int Config_Block { get; set; } = 1;
+        public bool Config_DataStorageSave_timer_Flag { get; set; } = false;
         #endregion Config
 
         #region Search
@@ -346,6 +350,10 @@ namespace HubCentra_A1.Model
         public int Calibration_To { get; set; } = 1;
 
         #endregion Calibration
+
+        #region LOG
+        public ConcurrentQueue<KeyValuePair<string, Enum_LOG>> Queue_LOG { get; set; } = new ConcurrentQueue<KeyValuePair<string, Enum_LOG>>();
+        #endregion LOG
 
         #region Class
         #region DatabaseManager_System

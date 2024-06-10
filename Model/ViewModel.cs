@@ -254,6 +254,17 @@ namespace HubCentra_A1.Model
                 OnPropertyChanged(nameof(MainWindow_ButtonFlag));
             }
         }
+
+        public bool ProgramShotdown
+        {
+            get => _view.ProgramShotdown;
+            set
+            {
+                _view.ProgramShotdown = value;
+                OnPropertyChanged(nameof(ProgramShotdown));
+            }
+        }
+        
         #endregion MainWindow
 
         #region Loading
@@ -316,7 +327,7 @@ namespace HubCentra_A1.Model
         #region FASTECH
         #region Connection
 
-        public IPAddress FASTECH_IO_IP
+        public string FASTECH_IO_IP
         {
             get => _view.FASTECH_IO_IP;
             set
@@ -1013,6 +1024,16 @@ namespace HubCentra_A1.Model
             {
                 _view.Config_Block = value;
                 OnPropertyChanged(nameof(Config_Block));
+            }
+        }
+
+        public bool Config_DataStorageSave_timer_Flag
+        {
+            get => _view.Config_DataStorageSave_timer_Flag;
+            set
+            {
+                _view.Config_DataStorageSave_timer_Flag = value;
+                OnPropertyChanged(nameof(Config_DataStorageSave_timer_Flag));
             }
         }
         #endregion Config
@@ -1939,6 +1960,25 @@ namespace HubCentra_A1.Model
             }
         }
         #endregion Calibration
+
+        #region LOG
+        public ConcurrentQueue<KeyValuePair<string, Enum_LOG>> Queue_LOG
+        {
+            get => _view.Queue_LOG;
+            set
+            {
+                _view.Queue_LOG = value;
+                OnPropertyChanged(nameof(Queue_LOG));
+            }
+        }
+        #endregion LOG
+
+        #region
+        public void test()
+        {
+            string asdsadsadsadsa = "dsdf";
+        }
+        #endregion
 
         #region Class
         public DatabaseManager[] databaseManagercs = new DatabaseManager[20];

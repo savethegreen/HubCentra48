@@ -217,7 +217,7 @@
                         <Grid.InputBindings>
                             <MouseBinding MouseAction="LeftClick" Command="{Binding ICommand_Config}" CommandParameter="2"/>
                         </Grid.InputBindings>
-                        <TextBlock Text="{Binding Config[0].MaximumTime, StringFormat='{}{0} (h)'}" Style="{StaticResource Config_TextBlock_02}"></TextBlock>
+                        <TextBlock Text="{Binding Config[0].MaximumTime, StringFormat='{}{0} (D)'}" Style="{StaticResource Config_TextBlock_02}"></TextBlock>
                     </Grid>
                 </Grid>
             </Grid>

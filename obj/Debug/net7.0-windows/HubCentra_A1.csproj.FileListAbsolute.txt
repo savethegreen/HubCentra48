@@ -264,7 +264,574 @@ D:\Auto\HubCentra_A1\obj\Debug\net7.0-windows\refint\HubCentra_A1.dll
 D:\Auto\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.pdb
 D:\Auto\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.genruntimeconfig.cache
 D:\Auto\HubCentra_A1\obj\Debug\net7.0-windows\ref\HubCentra_A1.dll
-D:\Auto\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm64\native\libSkiaSharp.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HubCentra_A1.exe
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HubCentra_A1.deps.json
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HubCentra_A1.runtimeconfig.json
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HubCentra_A1.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HubCentra_A1.pdb
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Azure.Core.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Azure.Identity.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HarfBuzzSharp.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\LiveChartsCore.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\LiveChartsCore.SkiaSharpView.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\LiveChartsCore.SkiaSharpView.WPF.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Data.SqlClient.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Identity.Client.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Identity.Client.Extensions.Msal.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Identity.Client.NativeInterop.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Abstractions.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Logging.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Protocols.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Tokens.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.SqlServer.Server.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Web.WebView2.Core.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Web.WebView2.WinForms.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Web.WebView2.Wpf.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Xaml.Behaviors.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\SkiaSharp.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\SkiaSharp.HarfBuzz.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\SkiaSharp.Views.Desktop.Common.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\SkiaSharp.Views.WPF.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\System.IdentityModel.Tokens.Jwt.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\System.IO.Ports.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\System.Memory.Data.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\System.Runtime.Caching.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\de\Microsoft.Data.SqlClient.resources.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\es\Microsoft.Data.SqlClient.resources.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\fr\Microsoft.Data.SqlClient.resources.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\it\Microsoft.Data.SqlClient.resources.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\ja\Microsoft.Data.SqlClient.resources.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\ko\Microsoft.Data.SqlClient.resources.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\pt-BR\Microsoft.Data.SqlClient.resources.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\ru\Microsoft.Data.SqlClient.resources.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\osx\native\libHarfBuzzSharp.dylib
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm64\native\libHarfBuzzSharp.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x64\native\libHarfBuzzSharp.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x86\native\libHarfBuzzSharp.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm64\native\msalruntime_arm64.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x64\native\msalruntime.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x86\native\msalruntime_x86.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm64\native\WebView2Loader.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x64\native\WebView2Loader.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x86\native\WebView2Loader.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\linux-arm\native\libSystem.IO.Ports.Native.so
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\linux-arm64\native\libSystem.IO.Ports.Native.so
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\linux-x64\native\libSystem.IO.Ports.Native.so
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\osx-arm64\native\libSystem.IO.Ports.Native.dylib
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\osx-x64\native\libSystem.IO.Ports.Native.dylib
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\osx\native\libSkiaSharp.dylib
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm64\native\libSkiaSharp.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x64\native\libSkiaSharp.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x86\native\libSkiaSharp.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\unix\lib\net6.0\System.IO.Ports.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win\lib\net6.0\System.IO.Ports.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.csproj.AssemblyReference.cache
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Style\ButtonStyles.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Style\ColorResourcesStyle.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Style\EtcStyle.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Style\Gradient.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Style\TextBlockStyles.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Barcode.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Door.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Equipment.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Incubation.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Negative.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Positive.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Positive_Unloading.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\BottleLoading.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Calculator.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Config.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Home.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\LiveCharts.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Loading.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Login.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\PopStatus.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Report.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Search.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_1.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_2.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_3.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_4.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\WriteBarcode.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\MainWindow.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\App.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1_MarkupCompile.cache
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1_MarkupCompile.lref
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\App.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Barcode.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Door.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Equipment.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Incubation.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Negative.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Positive.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Positive_Unloading.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\BottleLoading.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Calculator.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Config.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Home.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\LiveCharts.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Loading.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Login.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\PopStatus.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Report.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Search.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_1.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_2.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_3.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_4.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\WriteBarcode.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\MainWindow.baml
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.g.resources
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.GeneratedMSBuildEditorConfig.editorconfig
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.AssemblyInfoInputs.cache
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.AssemblyInfo.cs
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.csproj.CoreCompileInputs.cache
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.sourcelink.json
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.csproj.CopyComplete
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\refint\HubCentra_A1.dll
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.pdb
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.genruntimeconfig.cache
+E:\성기현 과장\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\ref\HubCentra_A1.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HubCentra_A1.exe
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HubCentra_A1.deps.json
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HubCentra_A1.runtimeconfig.json
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HubCentra_A1.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HubCentra_A1.pdb
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Azure.Core.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Azure.Identity.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HarfBuzzSharp.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\LiveChartsCore.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\LiveChartsCore.SkiaSharpView.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\LiveChartsCore.SkiaSharpView.WPF.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Data.SqlClient.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Identity.Client.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Identity.Client.NativeInterop.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Abstractions.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Logging.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Protocols.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Tokens.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.SqlServer.Server.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Web.WebView2.Core.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Web.WebView2.WinForms.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Web.WebView2.Wpf.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Xaml.Behaviors.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\SkiaSharp.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\SkiaSharp.HarfBuzz.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\SkiaSharp.Views.Desktop.Common.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\SkiaSharp.Views.WPF.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\System.IdentityModel.Tokens.Jwt.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\System.IO.Ports.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\System.Memory.Data.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\System.Runtime.Caching.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\de\Microsoft.Data.SqlClient.resources.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\es\Microsoft.Data.SqlClient.resources.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\fr\Microsoft.Data.SqlClient.resources.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\it\Microsoft.Data.SqlClient.resources.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\ja\Microsoft.Data.SqlClient.resources.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\ko\Microsoft.Data.SqlClient.resources.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\pt-BR\Microsoft.Data.SqlClient.resources.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\ru\Microsoft.Data.SqlClient.resources.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\osx\native\libHarfBuzzSharp.dylib
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm64\native\libHarfBuzzSharp.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x64\native\libHarfBuzzSharp.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x86\native\libHarfBuzzSharp.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm64\native\msalruntime_arm64.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x64\native\msalruntime.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x86\native\msalruntime_x86.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm64\native\WebView2Loader.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x64\native\WebView2Loader.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x86\native\WebView2Loader.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\linux-arm\native\libSystem.IO.Ports.Native.so
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\linux-arm64\native\libSystem.IO.Ports.Native.so
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\linux-x64\native\libSystem.IO.Ports.Native.so
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\osx-arm64\native\libSystem.IO.Ports.Native.dylib
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\osx-x64\native\libSystem.IO.Ports.Native.dylib
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\osx\native\libSkiaSharp.dylib
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm64\native\libSkiaSharp.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x64\native\libSkiaSharp.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x86\native\libSkiaSharp.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\unix\lib\net6.0\System.IO.Ports.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win\lib\net6.0\System.IO.Ports.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.csproj.AssemblyReference.cache
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Style\ButtonStyles.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Style\ColorResourcesStyle.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Style\EtcStyle.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Style\Gradient.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Style\TextBlockStyles.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Barcode.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Door.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Equipment.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Incubation.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Negative.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Positive.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Positive_Unloading.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\BottleLoading.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Calculator.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Config.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Home.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\LiveCharts.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Loading.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Login.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\PopStatus.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Report.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Search.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_1.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_2.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_3.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_4.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\WriteBarcode.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\MainWindow.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\App.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1_MarkupCompile.cache
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1_MarkupCompile.lref
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\App.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Barcode.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Door.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Equipment.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Incubation.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Negative.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Positive.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Positive_Unloading.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\BottleLoading.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Calculator.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Config.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Home.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\LiveCharts.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Loading.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Login.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\PopStatus.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Report.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Search.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_1.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_2.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_3.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_4.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\WriteBarcode.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\MainWindow.baml
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.g.resources
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.GeneratedMSBuildEditorConfig.editorconfig
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.AssemblyInfoInputs.cache
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.AssemblyInfo.cs
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.csproj.CoreCompileInputs.cache
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.sourcelink.json
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.csproj.CopyComplete
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\refint\HubCentra_A1.dll
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.pdb
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.genruntimeconfig.cache
+D:\새 폴더\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\ref\HubCentra_A1.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HubCentra_A1.exe
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HubCentra_A1.deps.json
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HubCentra_A1.runtimeconfig.json
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HubCentra_A1.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HubCentra_A1.pdb
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Azure.Core.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Azure.Identity.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HarfBuzzSharp.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\LiveChartsCore.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\LiveChartsCore.SkiaSharpView.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\LiveChartsCore.SkiaSharpView.WPF.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Data.SqlClient.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Identity.Client.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Identity.Client.Extensions.Msal.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Identity.Client.NativeInterop.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Abstractions.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Logging.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Protocols.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Tokens.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.SqlServer.Server.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Web.WebView2.Core.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Web.WebView2.WinForms.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Web.WebView2.Wpf.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Xaml.Behaviors.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\SkiaSharp.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\SkiaSharp.HarfBuzz.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\SkiaSharp.Views.Desktop.Common.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\SkiaSharp.Views.WPF.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\System.IdentityModel.Tokens.Jwt.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\System.IO.Ports.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\System.Memory.Data.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\System.Runtime.Caching.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\de\Microsoft.Data.SqlClient.resources.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\es\Microsoft.Data.SqlClient.resources.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\fr\Microsoft.Data.SqlClient.resources.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\it\Microsoft.Data.SqlClient.resources.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\ja\Microsoft.Data.SqlClient.resources.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\ko\Microsoft.Data.SqlClient.resources.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\pt-BR\Microsoft.Data.SqlClient.resources.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\ru\Microsoft.Data.SqlClient.resources.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\osx\native\libHarfBuzzSharp.dylib
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm64\native\libHarfBuzzSharp.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x64\native\libHarfBuzzSharp.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x86\native\libHarfBuzzSharp.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm64\native\msalruntime_arm64.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x64\native\msalruntime.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x86\native\msalruntime_x86.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm64\native\WebView2Loader.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x64\native\WebView2Loader.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x86\native\WebView2Loader.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\linux-arm\native\libSystem.IO.Ports.Native.so
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\linux-arm64\native\libSystem.IO.Ports.Native.so
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\linux-x64\native\libSystem.IO.Ports.Native.so
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\osx-arm64\native\libSystem.IO.Ports.Native.dylib
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\osx-x64\native\libSystem.IO.Ports.Native.dylib
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\osx\native\libSkiaSharp.dylib
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm64\native\libSkiaSharp.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x64\native\libSkiaSharp.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x86\native\libSkiaSharp.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\unix\lib\net6.0\System.IO.Ports.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win\lib\net6.0\System.IO.Ports.dll
+E:\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.csproj.AssemblyReference.cache
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Style\ButtonStyles.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Style\ColorResourcesStyle.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Style\EtcStyle.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Style\Gradient.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Style\TextBlockStyles.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Barcode.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Door.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Equipment.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Incubation.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Negative.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Positive.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Positive_Unloading.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\BottleLoading.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Calculator.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Config.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Home.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\LiveCharts.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Loading.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Login.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\PopStatus.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Report.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Search.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_1.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_2.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_3.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_4.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\WriteBarcode.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\MainWindow.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\App.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1_MarkupCompile.cache
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1_MarkupCompile.lref
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\App.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Barcode.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Door.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Equipment.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Incubation.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Negative.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Positive.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Positive_Unloading.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\BottleLoading.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Calculator.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Config.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Home.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\LiveCharts.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Loading.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Login.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\PopStatus.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Report.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Search.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_1.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_2.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_3.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_4.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\WriteBarcode.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\MainWindow.baml
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.g.resources
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.GeneratedMSBuildEditorConfig.editorconfig
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.AssemblyInfoInputs.cache
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.AssemblyInfo.cs
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.csproj.CoreCompileInputs.cache
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.sourcelink.json
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.csproj.CopyComplete
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.dll
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\refint\HubCentra_A1.dll
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.pdb
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.genruntimeconfig.cache
+E:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\ref\HubCentra_A1.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HubCentra_A1.exe
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HubCentra_A1.deps.json
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HubCentra_A1.runtimeconfig.json
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HubCentra_A1.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HubCentra_A1.pdb
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Azure.Core.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Azure.Identity.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HarfBuzzSharp.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\LiveChartsCore.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\LiveChartsCore.SkiaSharpView.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\LiveChartsCore.SkiaSharpView.WPF.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Data.SqlClient.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Identity.Client.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Identity.Client.NativeInterop.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Logging.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Protocols.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Tokens.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.SqlServer.Server.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Web.WebView2.Core.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Web.WebView2.WinForms.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Web.WebView2.Wpf.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\Microsoft.Xaml.Behaviors.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\SkiaSharp.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\SkiaSharp.HarfBuzz.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\SkiaSharp.Views.Desktop.Common.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\SkiaSharp.Views.WPF.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\System.IO.Ports.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\System.Memory.Data.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\System.Runtime.Caching.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\de\Microsoft.Data.SqlClient.resources.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\es\Microsoft.Data.SqlClient.resources.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\fr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\it\Microsoft.Data.SqlClient.resources.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\ja\Microsoft.Data.SqlClient.resources.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\ko\Microsoft.Data.SqlClient.resources.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\pt-BR\Microsoft.Data.SqlClient.resources.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\ru\Microsoft.Data.SqlClient.resources.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\osx\native\libHarfBuzzSharp.dylib
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm64\native\libHarfBuzzSharp.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x64\native\libHarfBuzzSharp.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x86\native\libHarfBuzzSharp.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm64\native\msalruntime_arm64.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x64\native\msalruntime.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x86\native\msalruntime_x86.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm64\native\WebView2Loader.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x64\native\WebView2Loader.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x86\native\WebView2Loader.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\linux-arm\native\libSystem.IO.Ports.Native.so
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\linux-arm64\native\libSystem.IO.Ports.Native.so
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\linux-x64\native\libSystem.IO.Ports.Native.so
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\osx-arm64\native\libSystem.IO.Ports.Native.dylib
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\osx-x64\native\libSystem.IO.Ports.Native.dylib
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\osx\native\libSkiaSharp.dylib
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm64\native\libSkiaSharp.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x64\native\libSkiaSharp.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x86\native\libSkiaSharp.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\unix\lib\net6.0\System.IO.Ports.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win\lib\net6.0\System.IO.Ports.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.csproj.AssemblyReference.cache
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Style\ButtonStyles.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Style\ColorResourcesStyle.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Style\EtcStyle.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Style\Gradient.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Style\TextBlockStyles.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Barcode.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Door.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Equipment.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Incubation.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Negative.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Positive.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Positive_Unloading.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\BottleLoading.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Calculator.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Config.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Home.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\LiveCharts.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Loading.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Login.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\PopStatus.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Report.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Search.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_1.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_2.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_3.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_4.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\WriteBarcode.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\MainWindow.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\App.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1_MarkupCompile.cache
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1_MarkupCompile.lref
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\App.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Barcode.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Door.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Equipment.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Incubation.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Negative.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Positive.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Alarm_Positive_Unloading.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\BottleLoading.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Calculator.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Config.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Home.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\LiveCharts.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Loading.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Login.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\PopStatus.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Report.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\Search.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_1.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_2.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_3.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\System_4.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\Form\WriteBarcode.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\MainWindow.baml
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.g.resources
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.AssemblyInfoInputs.cache
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.AssemblyInfo.cs
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.csproj.CoreCompileInputs.cache
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.sourcelink.json
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.csproj.CopyComplete
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\refint\HubCentra_A1.dll
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.pdb
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.genruntimeconfig.cache
+C:\Users\SKH\Desktop\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\ref\HubCentra_A1.dll
 D:\Auto\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HubCentra_A1.exe
 D:\Auto\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HubCentra_A1.deps.json
 D:\Auto\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\HubCentra_A1.runtimeconfig.json
@@ -332,6 +899,7 @@ D:\Auto\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\linux-x64\na
 D:\Auto\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\osx-arm64\native\libSystem.IO.Ports.Native.dylib
 D:\Auto\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\osx-x64\native\libSystem.IO.Ports.Native.dylib
 D:\Auto\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\osx\native\libSkiaSharp.dylib
+D:\Auto\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-arm64\native\libSkiaSharp.dll
 D:\Auto\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x64\native\libSkiaSharp.dll
 D:\Auto\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\win-x86\native\libSkiaSharp.dll
 D:\Auto\HubCentra_A1\HubCentra_A1\bin\Debug\net7.0-windows\runtimes\unix\lib\net6.0\System.IO.Ports.dll

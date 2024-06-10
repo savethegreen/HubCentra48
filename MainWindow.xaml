@@ -58,16 +58,16 @@
                         <RowDefinition Height="100*" />
                         <RowDefinition Height="100*" />
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" Visibility="Hidden">
+                    <Grid Grid.Row="0" Visibility="Visible">
                         <Button  Click="Button_Click"></Button>
                     </Grid>
-                    <Grid Grid.Row="1" Visibility="Hidden">
+                    <Grid Grid.Row="1" Visibility="Visible">
                         <Button Click="Button_Click_1"></Button>
                     </Grid>
-                    <Grid Grid.Row="2" Visibility="Hidden">
+                    <Grid Grid.Row="2" Visibility="Visible">
                         <Button Click="Button_Click_2"></Button>
                     </Grid>
-                    <Grid Grid.Row="3" Visibility="Hidden">
+                    <Grid Grid.Row="3" Visibility="Visible">
                         <Button Click="Button_Click_3"></Button>
                     </Grid>
                 </Grid>

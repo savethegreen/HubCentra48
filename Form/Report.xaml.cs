@@ -73,7 +73,7 @@ namespace HubCentra_A1
         {
             if (lv.SelectedItem is DatabaseManager_BarcodeList selectedItem)
             {
-                string selectedBarcode = selectedItem._Barcode;
+                string selectedBarcode = selectedItem.Barcode;
                 DateTime? selectedloading = selectedItem.Loading;
                 DateTime? selectedunloading;
                 if (selectedItem.Unloading == null)
