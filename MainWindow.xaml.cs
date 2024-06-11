@@ -286,6 +286,9 @@ namespace HubCentra_A1
                 case Enum_Config_ButtonEvent.Calibration_Start:
                     _viewModel.Calibration_Falg = true;
                     break;
+                case Enum_Config_ButtonEvent.Calibration_Target:
+                    UpdateConfig_int(DataTransfer, _viewModel.PCB_targetvalue);
+                    break;
                 case Enum_Config_ButtonEvent.SYSTEM1:
                     UpdateConfig_bool(DataTransfer, _viewModel.Config[0].SYSTEM1);
                     break;
@@ -356,6 +359,11 @@ namespace HubCentra_A1
                         case Enum_Config_ButtonEvent.Calibration_To:
                             _viewModel.Calibration_To = value;
                             break;
+                        case Enum_Config_ButtonEvent.Calibration_Target:
+                            _viewModel.PCB_targetvalue = value;
+                            break;
+
+                            
                     }
                     _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].UpdateConfig(_viewModel.Config);
                     var select_ConfigInfo = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].Select_Config();
@@ -1892,27 +1900,30 @@ namespace HubCentra_A1
             {
                 if (!_viewModel.PCB_SerialPort.IsOpen && !_viewModel.PCB_Connection)
                     return;
-                if (_viewModel.Queue_PCB_Manual.Count > 0)
+                if (_viewModel.Queue_PCB_Manual.Count > 0 )
                 {
                     if (_viewModel.Queue_PCB_Manual.TryDequeue(out string str))
                     {
                         int lineIndex = ExtractLineIndex(str);
                         string line = str + "\r\n";
-                        string response = ReadSerialPortResponse(line);
+                        string response = ReadSerialPortResponse(line, true);
                         if (response != null)
                         {
                             PCB_Manual_Data(response, lineIndex);
                         }
- 
                     }
                 }
                 else
                 {
+                    if (_viewModel.Calibration_Falg )
+                    {
+                        return;
+                    }
                     for (int i = 0; i < 3; i++)
                     {
                         string id = _viewModel.SystemInfo[0].PCB_ID1;
                         string line = $"{id},LINE{i},ADCREAD";
-                        string response = ReadSerialPortResponse(line);
+                        string response = ReadSerialPortResponse(line, false);
                         if (response != null)
                         {
                             PCB_Auto_Data(response.ToString());
@@ -1993,12 +2004,12 @@ namespace HubCentra_A1
         }
 
 
-        private string ReadSerialPortResponse(string line)
+        private string ReadSerialPortResponse(string line, bool type)
         {
             const int maxRetries = 1;
             const int readTimeout = 500;
             const int sleepInterval = 20;
-
+            bool Type = type;
             for (int retry = 0; retry < maxRetries; retry++)
             {
                 try
@@ -2008,15 +2019,22 @@ namespace HubCentra_A1
 
                     byte[] dataToSend = Encoding.ASCII.GetBytes(line + "\r\n");
                     _viewModel.PCB_SerialPort.Write(dataToSend, 0, dataToSend.Length);
+
                     var response = new StringBuilder();
                     var stopwatch = Stopwatch.StartNew();
                     while (stopwatch.ElapsedMilliseconds < readTimeout)
                     {
                         if (_viewModel.PCB_SerialPort.BytesToRead > 0)
                         {
-                            Thread.Sleep(50);
+                            if(Type)
+                            {
+                                Thread.Sleep(200);
+                            }
+                            else
+                            {
+                                Thread.Sleep(50);
+                            }
                             string data = _viewModel.PCB_SerialPort.ReadExisting();
-           
                             int lastIndex = data.LastIndexOf("$");
 
 
@@ -2026,32 +2044,29 @@ namespace HubCentra_A1
                                 if (endIndex != -1)
                                 {
                                     string tempData = data.Substring(lastIndex, endIndex - lastIndex);
-                                    _viewModel.Queue_LOG.Enqueue(new KeyValuePair<string, Enum_LOG>(tempData, Enum_LOG.PCB));
+                                    //_viewModel.Queue_LOG.Enqueue(new KeyValuePair<string, Enum_LOG>(tempData, Enum_LOG.PCB));
                                     return response.Append(tempData).ToString();
                                 }
                                 else
                                 {
-                                    _viewModel.Queue_LOG.Enqueue(new KeyValuePair<string, Enum_LOG>("Null", Enum_LOG.PCB));
+                                   // _viewModel.Queue_LOG.Enqueue(new KeyValuePair<string, Enum_LOG>("Null", Enum_LOG.PCB));
                                     return null;
                                 }
                             }
                             else
                             {
-                                _viewModel.Queue_LOG.Enqueue(new KeyValuePair<string, Enum_LOG>("Null", Enum_LOG.PCB));
+                               // _viewModel.Queue_LOG.Enqueue(new KeyValuePair<string, Enum_LOG>("Null", Enum_LOG.PCB));
                             }
-
-                            Thread.Sleep(sleepInterval);
                         }
+                        Thread.Sleep(sleepInterval);
                     }
                 }
                 catch (Exception ex)
                 {
-                    _viewModel.Queue_LOG.Enqueue(new KeyValuePair<string, Enum_LOG>("Null", Enum_LOG.PCB));
                 }
 
                 Thread.Sleep(50);
             }
-            _viewModel.Queue_LOG.Enqueue(new KeyValuePair<string, Enum_LOG>("Null", Enum_LOG.PCB));
             return null;
         }
 
@@ -2422,11 +2437,11 @@ namespace HubCentra_A1
         {
 
             int sv = (int)(_viewModel.Config[0].Temp * 10);
-            //byte[] PV_Temp = new byte[8] { 0x01, 0x04, 0x03, 0xE8, 0x00, 0x01, 0xB1, 0xBA };
+            byte[] PV_Temp = new byte[8] { 0x01, 0x04, 0x03, 0xE8, 0x00, 0x01, 0xB1, 0xBA };
 
 
-            byte[] PV_Temp = { 0x02, 0x04, 0x03, 0xE8, 0x00, 0x01, 0xB1, 0x89 };
-            byte[] SV_Temp = GenerateFrame(sv, 2);
+            //byte[] PV_Temp = { 0x02, 0x04, 0x03, 0xE8, 0x00, 0x01, 0xB1, 0x89 };
+            byte[] SV_Temp = GenerateFrame(sv, 1);
             await Temperature_ReadAsync(PV_Temp, SV_Temp, 500, (temp) => _viewModel.Temperature_ProcessValue = temp);
             //await LoadCell_ReadAsync("R5", 500, (LoadCelldata) => _viewModel.LoadCell_ProcessValue = LoadCelldata);
 
@@ -3463,10 +3478,13 @@ namespace HubCentra_A1
         #endregion Alarm
 
         #region Calibration
+
+        public bool test5 = false;
         public void Calibration()
         {
             try
             {
+                Thread.Sleep(2000);
                 int Calibration_From = _viewModel.Calibration_From;
                 int Calibration_To = _viewModel.Calibration_To;
                 for (int i = Calibration_From; i < Calibration_To + 1; i++)
@@ -3476,36 +3494,35 @@ namespace HubCentra_A1
                         int ini = 0;
                         int line = (i - 1) / 28;
                         int channel = (i - 1) % 28 + 1;
-                        string commandBase_CH = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},DIM,CH{channel}";
-                        string commandBase_ADCREAD = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},ADCREAD";
-                        string commandBase_DIMREAD = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},DIMREAD";
-                        string command = $"{commandBase_CH},{k}";
 
-                        _viewModel.Queue_PCB_Manual.Enqueue(command);
-                        Thread.Sleep(200);
+                        string commandBase_CH = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},DIM,CH{channel}";
+                        string commandCH = $"{commandBase_CH},{k}";
+
+
+
+                        string commandBase_ADCREAD = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},ADCREAD";
+
+
+                        string commandBase_DIMREAD = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},DIMREAD";
+                        _viewModel.Queue_PCB_Manual.Enqueue(commandCH);
                         _viewModel.Queue_PCB_Manual.Enqueue(commandBase_ADCREAD);
-                        Thread.Sleep(200);
                         _viewModel.Queue_PCB_Manual.Enqueue(commandBase_DIMREAD);
-                        Thread.Sleep(200);
+                        Thread.Sleep(1000);
+
+
                         int lints = line * 28;
                         while (_viewModel.PCB_Data[i - 1].LED != k)
                         {
-                            Thread.Sleep(300); // Adjust the delay as needed
                             ini++;
 
                             if (ini > 5)
                             {
-                                string commands = $"{commandBase_CH},{k}";
-                                //string commandBase2_CH = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},DIM,CH{channel}";
-                                //string commandBase2_ADCREAD = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},ADCREAD";
-                                string commandBase2_DIMREAD = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},DIMREAD";
-                               // string commandf = $"{commandBase2_CH},{k}";
-                                //_viewModel.Queue_PCB_Manual.Enqueue(commandf);
-                                //_viewModel.Queue_PCB_Manual.Enqueue(commandBase2_ADCREAD);
-                                _viewModel.Queue_PCB_Manual.Enqueue(commandBase2_DIMREAD);
-                                ini = 0;
+                                _viewModel.Calibration_Falg = false;
+                                return;
+
                             }
-                            Thread.Sleep(300); // Adjust the delay as needed
+
+                            Thread.Sleep(1000); // Adjust the delay as needed
                         }
                         double averageADC = _viewModel.PCB_Data[i - 1].ADC;
                         double lowerBound = _viewModel.PCB_targetvalue;

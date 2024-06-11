@@ -630,6 +630,8 @@
                         <ColumnDefinition Width="100*"/>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="100*"/>
                     </Grid.ColumnDefinitions>
                     <Grid  Grid.Column="0">
                         <Grid.ColumnDefinitions>
@@ -667,7 +669,26 @@
 
                     </Grid>
 
+
                     <Grid  Grid.Column="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="100*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <TextBlock Text="Target" Style="{StaticResource Config_TextBlock_02}"></TextBlock>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <Grid.InputBindings>
+                                <MouseBinding MouseAction="LeftClick" Command="{Binding ICommand_Config}" CommandParameter="35"/>
+                            </Grid.InputBindings>
+                            <TextBlock Text="{Binding PCB_targetvalue, StringFormat='{}{0}'}" Style="{StaticResource Config_TextBlock_02}"></TextBlock>
+                        </Grid>
+
+                    </Grid>
+
+                    <Grid  Grid.Column="6">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100*"/>
                             <ColumnDefinition Width="2*"/>

@@ -31,7 +31,7 @@
                 <ColumnDefinition Width="45*" />
                 <ColumnDefinition Width="20*" />
             </Grid.ColumnDefinitions>
-            
+
             <!--#region 이미지-->
             <Grid Grid.Row="0" Grid.Column="0">
                 <Image
@@ -58,16 +58,16 @@
                         <RowDefinition Height="100*" />
                         <RowDefinition Height="100*" />
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" Visibility="Visible">
+                    <Grid Grid.Row="0" Visibility="Hidden">
                         <Button  Click="Button_Click"></Button>
                     </Grid>
-                    <Grid Grid.Row="1" Visibility="Visible">
+                    <Grid Grid.Row="1" Visibility="Hidden">
                         <Button Click="Button_Click_1"></Button>
                     </Grid>
-                    <Grid Grid.Row="2" Visibility="Visible">
+                    <Grid Grid.Row="2" Visibility="Hidden">
                         <Button Click="Button_Click_2"></Button>
                     </Grid>
-                    <Grid Grid.Row="3" Visibility="Visible">
+                    <Grid Grid.Row="3" Visibility="Hidden">
                         <Button Click="Button_Click_3"></Button>
                     </Grid>
                 </Grid>
@@ -293,7 +293,7 @@
                   CommandParameter="0"
                   MouseAction="LeftClick" />
                             </Grid.InputBindings>
-                            
+
                             <Rectangle RadiusX="15" RadiusY="15">
                                 <Rectangle.Style>
                                     <Style TargetType="Rectangle">
@@ -412,7 +412,7 @@
                                         VerticalAlignment="Center"
                                         Source="/Image/Report.png"
                                         Stretch="Uniform" />
-                                                                        <TextBlock
+                                <TextBlock
                                         Grid.Row="3"
                                         Style="{StaticResource MainWindow_TextBlock_04}"
                                         Text="Report" />
@@ -452,7 +452,7 @@
                                     VerticalAlignment="Center"
                                     Source="/Image/Configuration.png"
                                     Stretch="Uniform" />
-                                                                    <TextBlock
+                                <TextBlock
                                     Grid.Row="3"
                                     Style="{StaticResource MainWindow_TextBlock_04}"
                                     Text="Configuration" />
@@ -631,7 +631,7 @@
                                      VerticalAlignment="Center"
                                      Source="/Image/Rack.png"
                                      Stretch="Uniform" />
-                                                                        <TextBlock
+                                    <TextBlock
                                      Grid.Row="3"
                                      Style="{StaticResource MainWindow_TextBlock_05}"
                                      Text="SYSTEM3" />
@@ -686,7 +686,7 @@
                                         VerticalAlignment="Center"
                                         Source="/Image/Rack.png"
                                         Stretch="Uniform" />
-                                                                            <TextBlock
+                                    <TextBlock
                                         Grid.Row="3"
                                         Style="{StaticResource MainWindow_TextBlock_05}"
                                         Text="SYSTEM4" />
@@ -776,9 +776,10 @@
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0">
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="50*" />
                                 <RowDefinition Height="100*" />
                                 <RowDefinition Height="100*" />
-                                <RowDefinition Height="100*" />
+                                <RowDefinition Height="50*" />
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="1">
                                 <Grid.ColumnDefinitions>
@@ -786,11 +787,15 @@
                                     <ColumnDefinition Width="100*" />
                                 </Grid.ColumnDefinitions>
                                 <Grid Grid.Column="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="59*"/>
+                                        <ColumnDefinition Width="61*"/>
+                                    </Grid.ColumnDefinitions>
                                     <TextBlock 
                                         HorizontalAlignment="Right"
                                         Style="{StaticResource  MainWindow_TextBlock_06}"
-                                        Text="Barcode ID : ">
-                                        
+                                        Text="Barcode ID : " Grid.ColumnSpan="2">
+
                                     </TextBlock>
                                 </Grid>
                                 <Grid Grid.Column="1">
@@ -811,7 +816,7 @@
                                        HorizontalAlignment="Right"
                                        Style="{StaticResource  MainWindow_TextBlock_06}"
                                        Text="Patient ID : ">
-                                    </TextBlock>            
+                                    </TextBlock>
                                 </Grid>
                                 <Grid Grid.Column="1">
                                     <TextBlock 
@@ -822,13 +827,14 @@
                                 </Grid>
                             </Grid>
                         </Grid>
-                    
+
                         <Grid Grid.Column="1">
                             <TextBlock
-                        Margin="44,0,0,0"
-                        HorizontalAlignment="Left"
-                        Style="{StaticResource  MainWindow_TextBlock_06}"
-                        Text="Ver.1.0.0" />
+                                Margin="48,0,0,15"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"
+                                Style="{StaticResource  MainWindow_TextBlock_07}"
+                                Text="Ver.1.0.0" />
                         </Grid>
                     </Grid>
                 </Grid>

@@ -69,7 +69,7 @@ namespace HubCentra_A1 {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/HubCentra_A1;component/form/alarm_incubation.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/HubCentra_A1;V1.0.0.0;component/form/alarm_incubation.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Form\Alarm_Incubation.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
