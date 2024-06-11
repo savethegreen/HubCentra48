@@ -1,4 +1,5 @@
-﻿using HarfBuzzSharp;
+﻿using Azure;
+using HarfBuzzSharp;
 using HubCentra_A1.Model;
 using LiveChartsCore;
 using Microsoft.VisualBasic.Logging;
@@ -157,8 +158,8 @@ namespace HubCentra_A1
                     WriteBarcodepage();
                     break;
 
-                case Enum_MainWindow_ButtonEvent.Unloading:
- 
+                case Enum_MainWindow_ButtonEvent.ResetBarcode:
+                    ResetBarcode();
                     break;
 
                 default:
@@ -2026,7 +2027,7 @@ namespace HubCentra_A1
                     {
                         if (_viewModel.PCB_SerialPort.BytesToRead > 0)
                         {
-                            if(Type)
+                            if (Type)
                             {
                                 Thread.Sleep(200);
                             }
@@ -2049,13 +2050,13 @@ namespace HubCentra_A1
                                 }
                                 else
                                 {
-                                   // _viewModel.Queue_LOG.Enqueue(new KeyValuePair<string, Enum_LOG>("Null", Enum_LOG.PCB));
+                                    // _viewModel.Queue_LOG.Enqueue(new KeyValuePair<string, Enum_LOG>("Null", Enum_LOG.PCB));
                                     return null;
                                 }
                             }
                             else
                             {
-                               // _viewModel.Queue_LOG.Enqueue(new KeyValuePair<string, Enum_LOG>("Null", Enum_LOG.PCB));
+                                // _viewModel.Queue_LOG.Enqueue(new KeyValuePair<string, Enum_LOG>("Null", Enum_LOG.PCB));
                             }
                         }
                         Thread.Sleep(sleepInterval);
@@ -2377,6 +2378,21 @@ namespace HubCentra_A1
                 _viewModel.Alarm_Barcode_isPopupOpen = false;
             }
             else
+            {
+
+            }
+        }
+
+        public void ResetBarcode()
+        {
+            try
+            {
+                _viewModel.Barcode_ID = "";
+                _viewModel.Patient_ID = "";
+                _viewModel.Barcode_ID_Loading = "";
+                _viewModel.Patient_ID_Loading = "";
+            }
+            catch(Exception ex)
             {
 
             }
@@ -3497,17 +3513,18 @@ namespace HubCentra_A1
 
                         string commandBase_CH = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},DIM,CH{channel}";
                         string commandCH = $"{commandBase_CH},{k}";
-
+                        _viewModel.Queue_PCB_Manual.Enqueue(commandCH);
+                        Thread.Sleep(1000);
 
 
                         string commandBase_ADCREAD = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},ADCREAD";
-
+                         _viewModel.Queue_PCB_Manual.Enqueue(commandBase_ADCREAD);
 
                         string commandBase_DIMREAD = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},DIMREAD";
-                        _viewModel.Queue_PCB_Manual.Enqueue(commandCH);
-                        _viewModel.Queue_PCB_Manual.Enqueue(commandBase_ADCREAD);
-                        _viewModel.Queue_PCB_Manual.Enqueue(commandBase_DIMREAD);
-                        Thread.Sleep(1000);
+                         _viewModel.Queue_PCB_Manual.Enqueue(commandBase_DIMREAD);
+
+
+                        Thread.Sleep(500);
 
 
                         int lints = line * 28;

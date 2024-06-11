@@ -102,7 +102,7 @@
                             <Button
                                    Command="{Binding ICommand_MainWindow}"
                                    CommandParameter="11"
-                                   Content="Unloading">
+                                   Content="Reset Barcode">
                                 <Button.Style>
                                     <Style BasedOn="{StaticResource MainWindow_Button_02}" TargetType="Button" />
                                 </Button.Style>

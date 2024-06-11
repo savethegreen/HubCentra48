@@ -16,7 +16,7 @@ namespace HubCentra_A1
             Report = 2,
             Conguration = 3,
             SystemRack1 = 4, SystemRack2 = 5, SystemRack3 = 6, SystemRack4 = 7,
-            Login = 8, Logout = 9, Loading =10, Unloading =11
+            Login = 8, Logout = 9, Loading =10, ResetBarcode =11
         }
         public enum Enum_MainWindow_ButtonFlag
         {
