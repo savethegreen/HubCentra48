@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStyle="None"
          WindowStartupLocation="CenterScreen"
-         Title="Alarm_Positive"  Width="430" Height="280">
+         Title="Alarm_Positive"  Width="430" Height="320">
     <Grid
        Background="Transparent">
         <Border
@@ -38,7 +38,8 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="15*" />
-                            <RowDefinition Height="35*" />
+                            <RowDefinition Height="30*" />
+                            <RowDefinition Height="30*" />
                             <RowDefinition Height="30*" />
                             <RowDefinition Height="80*" />
                             <RowDefinition Height="80*" />
@@ -69,10 +70,40 @@
                                 </Style>
                             </TextBlock.Style>
                         </TextBlock>
-                        
-                        
+
+
                         <TextBlock
-                           Grid.Row="3"
+                      Grid.Row="2"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Top"
+                      FontSize="23"
+                      Text="{Binding Alarm_Positive_Unloading_BarcodeID}"
+                      TextAlignment="Center">
+                            <TextBlock.Style>
+                                <Style>
+                                    <Setter Property="TextElement.Foreground" Value="Black" />
+
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+                        <TextBlock
+                              Grid.Row="2"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Top"
+                              FontSize="23"
+                              Text="{Binding Alarm_Positive_Unloading_PatientID}"
+                              TextAlignment="Center">
+                            <TextBlock.Style>
+                                <Style>
+                                    <Setter Property="TextElement.Foreground" Value="Black" />
+
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+                        <TextBlock
+                           Grid.Row="4"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
                            FontSize="20"
@@ -80,22 +111,9 @@
                            TextAlignment="Center" />
           
 
-                        <TextBlock
-                           Grid.Row="2"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Top"
-                           FontSize="23"
-                           Text="{Binding Alarm_Positive_Unloading_BarcodeID}"
-                           TextAlignment="Center">
-                            <TextBlock.Style>
-                                <Style>
-                                    <Setter Property="TextElement.Foreground" Value="Black" />
-                              
-                                </Style>
-                            </TextBlock.Style>
-                        </TextBlock>
+     
 
-                        <Grid Grid.Row="4">
+                        <Grid Grid.Row="5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50*" />
                                 <ColumnDefinition Width="50*" />

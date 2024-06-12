@@ -864,6 +864,42 @@ namespace HubCentra_A1
             }
         }
         #endregion Barcode
+
+        #region Login
+        public void InsertLogin(IEnumerable<DatabaseManager_Login> lst)
+        {
+            try
+            {
+                string tableName = "Login";
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    foreach (var item in lst)
+                    {
+                        var commandText = $@"INSERT INTO {tableName} 
+                                    (User_Id, User_Level, User_Password) 
+                                    VALUES 
+                                    (@User_Id, @User_Level, @User_Password)";
+
+                        using (var command = new SqlCommand(commandText, connection))
+                        {
+                            command.Parameters.AddWithValue("@User_Id", item.User_Id ?? (object)DBNull.Value);
+                            command.Parameters.AddWithValue("@User_Level", item.User_Level ?? (object)DBNull.Value);
+                            command.Parameters.AddWithValue("@User_Password", item.User_Password ?? (object)DBNull.Value);
+
+
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // 오류 처리
+                Console.WriteLine(ex.Message);
+            }
+        }
+        #endregion Login
         #endregion Insert
 
         #region Select
@@ -1829,6 +1865,33 @@ namespace HubCentra_A1
                 using (var reader = command.ExecuteReader())
                 {
                     return reader.HasRows;
+                }
+            }
+        }
+
+
+        public void Delete_Login(string User_Id)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "DELETE FROM Login WHERE User_Id = @User_Id";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@User_Id", User_Id);
+                        int result = command.ExecuteNonQuery();
+
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine("SQL Error: " + ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
                 }
             }
         }

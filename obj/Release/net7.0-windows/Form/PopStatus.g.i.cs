@@ -77,7 +77,7 @@ namespace HubCentra_A1 {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/HubCentra_A1;V1.0.0.0;component/form/popstatus.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/HubCentra_A1;component/form/popstatus.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Form\PopStatus.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -74,6 +74,8 @@ namespace HubCentra_A1.Model
         public Enum_Login Login { get; set; } = Enum_Login.OPERATOR;
         public string LoginID { get; set; } = "";
         public string Password { get; set; } = "";
+
+        public string Login_LevelC { get; set; } = "";
         #endregion Login
 
         #region FASTECH
@@ -261,6 +263,7 @@ namespace HubCentra_A1.Model
         public bool[] BottleLoading_Result { get; set; } = new bool[336];
         public bool BottleLoading_isPopupOpen { get; set; } = false;
         public string BottleLoading_BarcodeID { get; set; } = "";
+        public string BottleLoading_PatientID { get; set; } = "";
         public string BottleLoading_Title { get; set; } = "";
         public string BottleLoading_Content { get; set; } = "";
         public string BottleLoading_WhatSystem { get; set; } = "";
@@ -276,6 +279,7 @@ namespace HubCentra_A1.Model
 
         #region Incubation
         public string Alarm_Incubation_BarcodeID { get; set; } = "";
+        public string Alarm_Incubation_PatientID { get; set; } = "";
         public string Alarm_Incubation_Title { get; set; } = "Bottle Unloading";
         public string Alarm_Incubation_whatSystem { get; set; } = "";
         public string Alarm_Incubation_Cell { get; set; } = "";
@@ -296,11 +300,14 @@ namespace HubCentra_A1.Model
         public string Alarm_Positive_Unloading_whatSystem { get; set; } = "";
         public string Alarm_Positive_Unloading_Cell { get; set; } = "";
         public string Alarm_Positive_Unloading_BarcodeID { get; set; } = "";
+
+        public string Alarm_Positive_Unloading_PatientID { get; set; } = "";
         public string Alarm_Positive_Unloading_Warning { get; set; } = "Bottle Unloading";
         #endregion Positive_Unloading
 
         #region Negative_Unloading
         public string Alarm_Negative_Unloading_BarcodeID { get; set; } = "";
+        public string Alarm_Negative_Unloading_PatientID { get; set; } = "";
         public string Alarm_Negative_Unloading_Title { get; set; } = "Bottle Unloading";
         public string Alarm_Negative_Unloading_whatSystem { get; set; } = "";
         public string Alarm_Negative_Unloading_Cell { get; set; } = "";

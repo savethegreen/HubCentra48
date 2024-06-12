@@ -75,17 +75,13 @@ namespace HubCentra_A1
         {
             if (timer.IsEnabled)
             {
+                timer.Tick -= TimerCallbacks;
                 timer.Stop();
             }
         }
         private void TimerCallbacks(object sender, EventArgs e)
         {
-            if(_viewModel.System_PositiveFirstint == -1 )
-            {
-                Timer_Stop();
-                this.Close();
-            }
-            if( _viewModel.MainWindow_ButtonFlag == Enum_MainWindow_ButtonFlag.SystemRack1)
+            if(_viewModel.System_PositiveFirstint == -1  || _viewModel.MainWindow_ButtonFlag == Enum_MainWindow_ButtonFlag.SystemRack1 || _viewModel.MainWindow_ButtonFlag == Enum_MainWindow_ButtonFlag.Report || _viewModel.MainWindow_ButtonFlag == Enum_MainWindow_ButtonFlag.Conguration)
             {
                 Timer_Stop();
                 this.Close();

@@ -69,9 +69,14 @@ namespace HubCentra_A1
         }
         public enum Enum_Login_ButtonEvent
         {
-            OK,
-
-
+            OK = 0,
+            ADD = 1,
+            ADD_CANCEL = 2,
+            PASSWORD_SAVE = 3,
+            PASSWORD_CANCEL = 4,
+            ADD_OPERATOR =5,
+            ADD_ENGINEER = 6,
+            Delete =7,
         }
         #endregion Login
 

@@ -8,7 +8,7 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         Title="Alarm_Positive"  Width="430"
-        Height="280" Loaded="Window_Loaded">
+        Height="320" Loaded="Window_Loaded">
     <Grid
             Background="Transparent">
         <Border
@@ -62,11 +62,11 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="15*" />
-                            <RowDefinition Height="20*" />
+                            <RowDefinition Height="30*" />
                             <RowDefinition Height="30*" />
                             <RowDefinition Height="100*" />
-                            <RowDefinition Height="50*" />
-                            <RowDefinition Height="10*" />
+                            <RowDefinition Height="80*" />
+                            <RowDefinition Height="1*" />
                         </Grid.RowDefinitions>
 
                         <TextBlock
@@ -79,13 +79,6 @@
                                 Text="{Binding Alarm_Positive_whatSystem}"
                                 TextAlignment="Center" />
 
-                        <TextBlock
-                                Grid.Row="3"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontSize="20"
-                                Text="{Binding Alarm_Positive_Warning}"
-                                TextAlignment="Center" />
 
                         <TextBlock
                                 Grid.Row="2"
@@ -96,6 +89,15 @@
                                 FontWeight="Bold"
                                 Foreground="Red"
                                 Text="{Binding Alarm_Positive_Cell}"
+                                TextAlignment="Center" />
+
+
+                        <TextBlock
+                                Grid.Row="3"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="20"
+                                Text="{Binding Alarm_Positive_Warning}"
                                 TextAlignment="Center" />
 
                         <Button

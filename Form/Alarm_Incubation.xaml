@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Alarm_Incubation"  WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        Height="280" Width="420" Loaded="Window_Loaded">
+        Height="320" Width="420" Loaded="Window_Loaded">
     <Grid Background="Transparent">
         <Border
                    Background="{StaticResource SolidColorBrush_08}"
@@ -39,6 +39,7 @@
                             <RowDefinition Height="15*" />
                             <RowDefinition Height="30*" />
                             <RowDefinition Height="30*" />
+                            <RowDefinition Height="30*" />
                             <RowDefinition Height="80*" />
                             <RowDefinition Height="80*" />
                             <RowDefinition Height="1*" />
@@ -55,53 +56,77 @@
                                    TextAlignment="Center" />
 
                         <TextBlock
-                                   Grid.Row="3"
+                                Grid.Row="1"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                FontSize="26"
+                                FontWeight="Bold"
+                                Text="{Binding Alarm_Incubation_Cell}"
+                                TextAlignment="Center">
+                            <TextBlock.Style>
+                                <Style>
+                                    <Setter Property="TextElement.Foreground" Value="#f27200" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Equipment_DataWithDB_presenceArray[17].alive}" Value="False">
+                                            <Setter Property="TextElement.Foreground" Value="Red" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+                        <TextBlock
+                            Grid.Row="2"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            FontSize="26"
+                            FontWeight="Bold"
+                            Text="{Binding Alarm_Incubation_BarcodeID}"
+                            TextAlignment="Center">
+                            <TextBlock.Style>
+                                <Style>
+                                    <Setter Property="TextElement.Foreground" Value="#f27200" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Equipment_DataWithDB_presenceArray[17].alive}" Value="False">
+                                            <Setter Property="TextElement.Foreground" Value="Red" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+                        <TextBlock
+               Grid.Row="3"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top"
+               FontSize="26"
+               FontWeight="Bold"
+               Text="{Binding BottleLoading_PatientID}"
+               TextAlignment="Center">
+                            <TextBlock.Style>
+                                <Style>
+                                    <Setter Property="TextElement.Foreground" Value="#f27200" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Equipment_DataWithDB_presenceArray[17].alive}" Value="False">
+                                            <Setter Property="TextElement.Foreground" Value="Red" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+
+                        <TextBlock
+                                   Grid.Row="4"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
                                    FontSize="20"
                                    Text="{Binding Alarm_Incubation_Content}"
                                    TextAlignment="Center" />
-                        <TextBlock
-                                   Grid.Row="1"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Top"
-                                   FontSize="26"
-                                   FontWeight="Bold"
-                                   Text="{Binding Alarm_Incubation_Cell}"
-                                   TextAlignment="Center">
-                            <TextBlock.Style>
-                                <Style>
-                                    <Setter Property="TextElement.Foreground" Value="#f27200" />
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Equipment_DataWithDB_presenceArray[17].alive}" Value="False">
-                                            <Setter Property="TextElement.Foreground" Value="Red" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBlock.Style>
-                        </TextBlock>
+   
+                     
 
-                        <TextBlock
-                Grid.Row="2"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top"
-                FontSize="26"
-                FontWeight="Bold"
-                Text="{Binding Alarm_Incubation_BarcodeID}"
-                TextAlignment="Center">
-                            <TextBlock.Style>
-                                <Style>
-                                    <Setter Property="TextElement.Foreground" Value="#f27200" />
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Equipment_DataWithDB_presenceArray[17].alive}" Value="False">
-                                            <Setter Property="TextElement.Foreground" Value="Red" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBlock.Style>
-                        </TextBlock>
-
-                        <Grid Grid.Row="4">
+                        <Grid Grid.Row="5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50*" />
                                 <ColumnDefinition Width="50*" />

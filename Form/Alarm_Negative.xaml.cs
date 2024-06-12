@@ -66,16 +66,31 @@ namespace HubCentra_A1
 
         public async void TimerInitialize()
         {
-            timer.Tick += TimerCallbacks;
-            timer.Interval = TimeSpan.FromMilliseconds(100);
-            timer.Start();
+            try
+            {
+                timer.Tick += TimerCallbacks;
+                timer.Interval = TimeSpan.FromMilliseconds(100);
+                timer.Start();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public void Timer_Stop()
         {
-            if (timer.IsEnabled)
+            try
             {
-                timer.Stop();
+                if (timer.IsEnabled)
+                {
+                    timer.Tick -= TimerCallbacks;
+                    timer.Stop();
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
         private void TimerCallbacks(object sender, EventArgs e)
@@ -88,14 +103,30 @@ namespace HubCentra_A1
 
         private void OK_Click(object sender, RoutedEventArgs e)
         {
-            OKClicked?.Invoke(this, new Alarm_Negative_UnloadingEventArgs(_idx));
-            this.Close();
+            try
+            {
+                OKClicked?.Invoke(this, new Alarm_Negative_UnloadingEventArgs(_idx));
+                Timer_Stop();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            CancelClicked?.Invoke(this, new Alarm_Negative_UnloadingEventArgs(_idx));
-            this.Close();
+            try
+            {
+                CancelClicked?.Invoke(this, new Alarm_Negative_UnloadingEventArgs(_idx));
+                Timer_Stop();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
     public class Alarm_Negative_UnloadingEventArgs : EventArgs

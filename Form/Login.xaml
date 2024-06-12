@@ -193,6 +193,9 @@
 
                                     </Style>
                                 </Button.Style>
+                                <Button.InputBindings>
+                                    <MouseBinding MouseAction="LeftClick" Command="{Binding ICommand_Login}" CommandParameter="7"/>
+                                </Button.InputBindings>
                             </Button>
                         </Grid>
                     </Grid>
@@ -359,6 +362,9 @@
                                             </Style.Triggers>
                                         </Style>
                                     </Button.Style>
+                                    <Button.InputBindings>
+                                        <MouseBinding MouseAction="LeftClick" Command="{Binding ICommand_Login}" CommandParameter="5"/>
+                                    </Button.InputBindings>
                                 </Button>
                             </Grid>
                             <Grid  Grid.Column="3">
@@ -373,6 +379,9 @@
                                             </Style.Triggers>
                                         </Style>
                                     </Button.Style>
+                                    <Button.InputBindings>
+                                        <MouseBinding MouseAction="LeftClick" Command="{Binding ICommand_Login}" CommandParameter="6"/>
+                                    </Button.InputBindings>
                                 </Button>
                             </Grid>
                         </Grid>
@@ -415,6 +424,9 @@
 
                                         </Style>
                                     </Button.Style>
+                                    <Button.InputBindings>
+                                        <MouseBinding MouseAction="LeftClick" Command="{Binding ICommand_Login}" CommandParameter="1"/>
+                                    </Button.InputBindings>
                                 </Button>
                             </Grid>
                             <Grid  Grid.Column="3">
@@ -424,6 +436,9 @@
 
                                         </Style>
                                     </Button.Style>
+                                    <Button.InputBindings>
+                                        <MouseBinding MouseAction="LeftClick" Command="{Binding ICommand_Login}" CommandParameter="2"/>
+                                    </Button.InputBindings>
                                 </Button>
                             </Grid>
                         </Grid>

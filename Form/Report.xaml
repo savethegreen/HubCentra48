@@ -7,6 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="763" d:DesignWidth="962">
 
+    <UserControl.Resources>
+        <local:TimeConverter x:Key="TimeConverter" />
+    </UserControl.Resources>
+
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>
@@ -469,7 +473,7 @@
                                     <TextBlock
                                         x:Name="Loading"
                                         Style="{StaticResource Search_TextBlock_02}"
-                                        Text="{Binding Loading}" />
+                                        Text="{Binding Loading, Converter={StaticResource TimeConverter}}" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -491,7 +495,7 @@
                                     <TextBlock
                                         x:Name="Unloading"
                                         Style="{StaticResource Search_TextBlock_02}"
-                                        Text="{Binding Unloading}" />
+                                        Text="{Binding Unloading, Converter={StaticResource TimeConverter}}" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -550,7 +554,7 @@
                                     <TextBlock
                                         x:Name="PositiveTime"
                                         Style="{StaticResource Search_TextBlock_02}"
-                                        Text="{Binding PositiveTime}" />
+                                        Text="{Binding PositiveTime, Converter={StaticResource TimeConverter}}" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

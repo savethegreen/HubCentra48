@@ -177,7 +177,25 @@ namespace HubCentra_A1
                     UpdateLogin();
                     UpdateUserLoginStatus();
                     break;
-    
+
+                case Enum_Login_ButtonEvent.ADD:
+                    Login_Add();
+                    UpdateUserLoginStatus();
+                    break;
+                case Enum_Login_ButtonEvent.ADD_CANCEL:
+
+                    break;
+                case Enum_Login_ButtonEvent.ADD_OPERATOR:
+                    _viewModel.Login_LevelC = "OPERATOR";
+                    break;
+
+                case Enum_Login_ButtonEvent.ADD_ENGINEER:
+                    _viewModel.Login_LevelC = "ENGINEER";
+                    break;
+                case Enum_Login_ButtonEvent.Delete:
+                    Login_Delete();
+                    break;
+
                 default:
                     break;
             }
@@ -1132,6 +1150,58 @@ namespace HubCentra_A1
             _viewModel.LoginInfo = new List<DatabaseManager_Login>(select_LoginInfo);
             _viewModel.MainWindow_ButtonFlag = Enum_MainWindow_ButtonFlag.Home;
         }
+
+        public void Login_Add()
+        {
+            try
+            {
+                string id = _viewModel.LoginID;
+                Enum_Login level = _viewModel.Login;
+                if (level != Enum_Login.MASTER)
+                {
+                    System.Windows.MessageBox.Show("게정을 생성 할려면 MASTER ID로 로그인 해야 합니다..");
+                    return;
+                }
+                string NEWID = login.NEWID_ADD.Text.Trim(); ;
+                string PASSWORD = login.PASSWORD_ADD.Password.Trim();
+                List<DatabaseManager_Login> list = new List<DatabaseManager_Login>();
+                list.Add(new DatabaseManager_Login {  User_Id = NEWID,  User_Level = _viewModel.Login_LevelC,  User_Password = PASSWORD });
+                _viewModel.databaseManagercs[(int)Enum_DatabaseManager.Common].InsertLogin(list);
+                var select_LoginInfo = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.Common].Select_LoginInfo();
+                _viewModel.LoginInfo = new List<DatabaseManager_Login>(select_LoginInfo);
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        public void Login_Delete()
+        {
+            try
+            {
+                string id = _viewModel.LoginID;
+                Enum_Login level = _viewModel.Login;
+                if (id == "MASTER")
+                {
+                    System.Windows.MessageBox.Show("MASTER ID는 삭제할 수 없습니다.");
+                    return;
+                }
+                if (level !=  Enum_Login.MASTER)
+                {
+                    System.Windows.MessageBox.Show("게정을 삭제 할려면 MASTER ID로 로그인 해야 합니다..");
+                    return;
+                }
+                _viewModel.databaseManagercs[(int)Enum_DatabaseManager.Common].Delete_Login(id);
+                var select_LoginInfo = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.Common].Select_LoginInfo();
+                _viewModel.LoginInfo = new List<DatabaseManager_Login>(select_LoginInfo);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         #endregion Login
 
         #region Loading
@@ -1169,21 +1239,21 @@ namespace HubCentra_A1
                 if (_viewModel.Report_Barcode.Length > 0)
                 {
                     var select_Equipment = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_select_Equipment_Search].QueryDataForBarcodeAndDateRange(_viewModel.Report_Barcode, _viewModel.Report_DatePicke_Start, _viewModel.Report_DatePicke_End);
-
+                    var select_barcode = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_select_Equipment_Search].Select_Barcode(_viewModel.Report_Barcode);
+                    _viewModel.Report_Result = select_barcode[0].Result;
+                    if (select_barcode[0].PositiveTime.HasValue)
+                    {
+                        _viewModel.Report_Positive_Time = select_barcode[0].PositiveTime.Value.ToString("yyyy-MM-dd HH:mm");
+                    }
+                    else
+                    {
+                        _viewModel.Report_Positive_Time = string.Empty; // 또는 기본값을 설정
+                    }
 
 
                     if (_viewModel.Report_Model == Enum_Report_Model.raw)
                     {
-                        var select_barcode = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_select_Equipment_Search].Select_Barcode(_viewModel.Report_Barcode);
-                        _viewModel.Report_Result = select_barcode[0].Result;
-                        if (select_barcode[0].PositiveTime.HasValue)
-                        {
-                            _viewModel.Report_Positive_Time = select_barcode[0].PositiveTime.Value.ToString("yyyy-MM-dd HH:mm");
-                        }
-                        else
-                        {
-                            _viewModel.Report_Positive_Time = string.Empty; // 또는 기본값을 설정
-                        }
+           
                         _viewModel.CSV_List = select_Equipment;
 
                     }
@@ -1196,7 +1266,7 @@ namespace HubCentra_A1
                     {
 
                     }
-                    Report_PositiveBounddury();
+                    //Report_PositiveBounddury();
                     Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog
                     {
                         Filter = "CSV file (*.csv)|*.csv",
@@ -1608,7 +1678,7 @@ namespace HubCentra_A1
                     {
 
                     }
-                    LiveCharts_PositiveBounddury();
+                   // LiveCharts_PositiveBounddury();
 
                     LiveCharts liveCharts = new LiveCharts(_viewModel);
                     liveCharts.ShowDialog();
@@ -1788,9 +1858,6 @@ namespace HubCentra_A1
                     DataBits = 8,
                     Parity = Parity.None,
                     StopBits = StopBits.One,
-                    Handshake = Handshake.None,
-                    ReadTimeout = 1000, // 타임아웃 조정
-                    WriteTimeout = 1000, // 타임아웃 조정
                 };
                 _viewModel.PCB_SerialPort.Open();
                 return true;
@@ -1906,8 +1973,9 @@ namespace HubCentra_A1
                     if (_viewModel.Queue_PCB_Manual.TryDequeue(out string str))
                     {
                         int lineIndex = ExtractLineIndex(str);
-                        string line = str + "\r\n";
+                        string line = str ;
                         string response = ReadSerialPortResponse(line, true);
+
                         if (response != null)
                         {
                             PCB_Manual_Data(response, lineIndex);
@@ -1980,28 +2048,39 @@ namespace HubCentra_A1
       
         private void PCB_Manual_Data(string response, int lineIndex)
         {
-            var dataPartsf = response.Split(',');
-            var dataParts = dataPartsf.Where(part => !part.Contains('?')).ToArray();
-            int startIndex = lineIndex * 28;
-
-            var values = dataParts.Skip(3).Take(28).Select(val => double.TryParse(val, out double dVal) ? dVal : 0).ToList();
-            for (int i = 0; i < values.Count; i++)
+            try
             {
-                int pcbIndex = startIndex + i;
-                if (pcbIndex < _viewModel.PCB_Data.Count)
+                var dataPartsf = response.Split(',');
+                var dataParts = dataPartsf.Where(part => !part.Contains('?')).ToArray();
+                int startIndex = lineIndex * 28;
+
+                var values = dataParts.Skip(3).Take(28).Select(val => double.TryParse(val, out double dVal) ? dVal : 0).ToList();
+                for (int i = 0; i < values.Count; i++)
                 {
-                    if (dataParts[2] == "ADCREAD")
+                    int pcbIndex = startIndex + i;
+                    if (pcbIndex < _viewModel.PCB_Data.Count)
                     {
-                        int reverseIndex = values.Count - 1 - i;
-                        _viewModel.PCB_Data[pcbIndex].ADC = values[i] * 1000;
-                    }
-                    else if (dataParts[2] == "DIMREAD")
-                    {
-                        int reverseIndex = values.Count - 1 - i;
-                        _viewModel.PCB_Data[pcbIndex].LED = values[reverseIndex];
+                        if (dataParts[2] == "ADCREAD")
+                        {
+                            int reverseIndex = values.Count - 1 - i;
+                            Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+                            {
+                                _viewModel.PCB_Data[pcbIndex].ADC = values[i] * 1000;
+                            }));
+
+                        }
+                        else if (dataParts[2] == "DIMREAD")
+                        {
+                            int reverseIndex = values.Count - 1 - i;
+                            _viewModel.PCB_Data[pcbIndex].LED = values[reverseIndex];
+                        }
                     }
                 }
             }
+            catch(Exception e) 
+            { 
+
+            }      
         }
 
 
@@ -2011,67 +2090,60 @@ namespace HubCentra_A1
             const int readTimeout = 500;
             const int sleepInterval = 20;
             bool Type = type;
-            for (int retry = 0; retry < maxRetries; retry++)
-            {
-                try
+
+            try
+            {            
+                string frame = line + "\r\n";
+                _viewModel.PCB_SerialPort.Write(frame);
+
+                var response = new StringBuilder();
+                var stopwatch = Stopwatch.StartNew();
+                while (stopwatch.ElapsedMilliseconds < readTimeout)
                 {
-                    _viewModel.PCB_SerialPort.DiscardInBuffer();
-                    _viewModel.PCB_SerialPort.DiscardOutBuffer();
-
-                    byte[] dataToSend = Encoding.ASCII.GetBytes(line + "\r\n");
-                    _viewModel.PCB_SerialPort.Write(dataToSend, 0, dataToSend.Length);
-
-                    var response = new StringBuilder();
-                    var stopwatch = Stopwatch.StartNew();
-                    while (stopwatch.ElapsedMilliseconds < readTimeout)
+                    if (_viewModel.PCB_SerialPort.BytesToRead > 0)
                     {
-                        if (_viewModel.PCB_SerialPort.BytesToRead > 0)
+                        Thread.Sleep(sleepInterval);
+                        string data = _viewModel.PCB_SerialPort.ReadExisting();
+                        int lastIndex = data.LastIndexOf("$");
+                        if (lastIndex != -1)
                         {
-                            if (Type)
+                            int endIndex = data.IndexOf("\r\n", lastIndex);
+                            if (endIndex != -1 && data.Length > 50)
                             {
-                                Thread.Sleep(200);
-                            }
-                            else
-                            {
-                                Thread.Sleep(50);
-                            }
-                            string data = _viewModel.PCB_SerialPort.ReadExisting();
-                            int lastIndex = data.LastIndexOf("$");
-
-
-                            if (lastIndex != -1)
-                            {
-                                int endIndex = data.IndexOf("\r\n", lastIndex);
-                                if (endIndex != -1)
-                                {
-                                    string tempData = data.Substring(lastIndex, endIndex - lastIndex);
-                                    //_viewModel.Queue_LOG.Enqueue(new KeyValuePair<string, Enum_LOG>(tempData, Enum_LOG.PCB));
-                                    return response.Append(tempData).ToString();
-                                }
-                                else
-                                {
-                                    // _viewModel.Queue_LOG.Enqueue(new KeyValuePair<string, Enum_LOG>("Null", Enum_LOG.PCB));
-                                    return null;
-                                }
-                            }
-                            else
-                            {
-                                // _viewModel.Queue_LOG.Enqueue(new KeyValuePair<string, Enum_LOG>("Null", Enum_LOG.PCB));
+                                string tempData = data.Substring(lastIndex, endIndex - lastIndex);
+                                ClearSerialPortBuffer(_viewModel.PCB_SerialPort);
+                                return response.Append(tempData).ToString();
                             }
                         }
-                        Thread.Sleep(sleepInterval);
+                        else
+                        {
+                            ClearSerialPortBuffer(_viewModel.PCB_SerialPort);
+                            return null;
+                        }
                     }
+                    Thread.Sleep(sleepInterval);
                 }
-                catch (Exception ex)
-                {
-                }
-
-                Thread.Sleep(50);
+                ClearSerialPortBuffer(_viewModel.PCB_SerialPort);
+                Thread.Sleep(20);
+                return null;
             }
-            return null;
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
-      
+
+        private void ClearSerialPortBuffer(SerialPort serialPort)
+        {
+            if (serialPort.IsOpen)
+            {
+                serialPort.DiscardInBuffer();
+                serialPort.DiscardOutBuffer();
+            }
+        }
+
+
         private void ClearSerialPortBuffer_PCB(SerialPort port)
         {
             try
@@ -2701,7 +2773,8 @@ namespace HubCentra_A1
 
                                 _viewModel.BottleLoading_WhatSystem = "System" + sysyem.ToString();
                                 _viewModel.BottleLoading_Cell_Num = "Cell : " + cell.ToString();
-                                _viewModel.BottleLoading_BarcodeID = "barcode : " + _viewModel.Barcode_ID;
+                                _viewModel.BottleLoading_BarcodeID = "Barcode : " + _viewModel.Barcode_ID;
+                                _viewModel.BottleLoading_PatientID = "Patient : " + _viewModel.Patient_ID;
                                 _viewModel.Barcode_ID = "";
                                 _viewModel.Patient_ID = "";
                                 _viewModel.Barcode_ID_Loading = "";
@@ -2807,21 +2880,22 @@ namespace HubCentra_A1
                     var pcbData = _viewModel.PCB_Data[idx];
                     int limit = _viewModel.Config[0].BottleExistenceRange;
                     string barcodeID = equipment.Barcode;
+                    string PatientID = equipment.Qrcode;
                     int IncubationTime = equipment.IncubationTime;
                     string Result = equipment.Result;
                     if (pcbData.ADC > 0 && pcbData.ADC > limit )
                     {
                         if(equipment.Result == "Positive")
                         {        
-                            Positive_Delete(idx, IncubationTime, equipment.ID, barcodeID, fitst);
+                            Positive_Delete(idx, IncubationTime, equipment.ID, barcodeID, PatientID, fitst);
                         }
                         else if(equipment.Result == "Incubation")
                         {
-                            Incubation_Delete(idx, IncubationTime, equipment.ID, barcodeID);
+                            Incubation_Delete(idx, IncubationTime, equipment.ID, barcodeID, PatientID);
                         }
                         else
                         {
-                            Negative_Unloading_Delete(idx, IncubationTime, equipment.ID, barcodeID);
+                            Negative_Unloading_Delete(idx, IncubationTime, equipment.ID, barcodeID, PatientID);
                         }
                     }
      
@@ -2837,7 +2911,7 @@ namespace HubCentra_A1
 
         #region Negative_Unloading
         private Alarm_Negative Negative_Unloading;
-        public void Negative_Unloading_Delete(int idx, int IncubationTime, int ID, string barcodeID)
+        public void Negative_Unloading_Delete(int idx, int IncubationTime, int ID, string barcodeID, string patientID)
         {
             try
             {
@@ -2847,7 +2921,8 @@ namespace HubCentra_A1
                 }
                 _viewModel.Alarm_Negative_Unloading_whatSystem = systemidx(idx);
                 _viewModel.Alarm_Negative_Unloading_Cell = cellidx(idx);
-                _viewModel.Alarm_Negative_Unloading_BarcodeID = barcodeID;
+                _viewModel.Alarm_Negative_Unloading_BarcodeID = "Barcode ID  :  " + barcodeID;
+                _viewModel.Alarm_Negative_Unloading_PatientID = "Patient ID  :  " + patientID;
                 Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                 {
                     Negative_Unloading = new Alarm_Negative(_viewModel, idx);
@@ -2926,7 +3001,7 @@ namespace HubCentra_A1
 
         #region Positive_Unloading
         private Alarm_Positive_Unloading Positive_Unloading;
-        public void Positive_Delete(int idx, int IncubationTime, int ID, string barcodeID, int first)
+        public void Positive_Delete(int idx, int IncubationTime, int ID, string barcodeID, string PatientID, int first)
         {
             try
             {
@@ -2937,6 +3012,8 @@ namespace HubCentra_A1
                 _viewModel.Alarm_Positive_Unloading_whatSystem = systemidx(idx);
                 _viewModel.Alarm_Positive_Unloading_Cell = cellidx(idx);
                 _viewModel.Alarm_Positive_Unloading_BarcodeID = "Barcode ID  :  " + barcodeID;
+                _viewModel.Alarm_Positive_Unloading_PatientID = "Patient ID  :  " + PatientID;
+
                 if (idx == first - 1)
                 {
                     _viewModel.Alarm_Positive_Unloading_Warning = "해당 Positive를 제거합니다.";
@@ -3025,7 +3102,7 @@ namespace HubCentra_A1
 
         #region Incubation
         private Alarm_Incubation Incubation;
-        public void Incubation_Delete(int idx, int IncubationTime, int ID, string barcodeID)
+        public void Incubation_Delete(int idx, int IncubationTime, int ID, string barcodeID, string PatientID)
         {
             try
             {
@@ -3035,7 +3112,9 @@ namespace HubCentra_A1
                 }
                 _viewModel.Alarm_Incubation_whatSystem = systemidx(idx);
                 _viewModel.Alarm_Incubation_Cell = cellidx(idx);
-                _viewModel.Alarm_Incubation_BarcodeID = barcodeID;
+                _viewModel.Alarm_Incubation_BarcodeID = "Barcode : " + barcodeID;
+                _viewModel.Alarm_Incubation_PatientID = "Patient : " + PatientID;
+
                 Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                 {
                     Incubation = new Alarm_Incubation(_viewModel, idx);
@@ -3462,7 +3541,7 @@ namespace HubCentra_A1
                     return; // 팝업이 열려 있으면 아무것도 하지 않음
                 }
 
-                if(_viewModel.System_PositiveFirstint != -1 && _viewModel.MainWindow_ButtonFlag !=  Enum_MainWindow_ButtonFlag.SystemRack1)
+                if(_viewModel.System_PositiveFirstint != -1 && _viewModel.MainWindow_ButtonFlag !=  Enum_MainWindow_ButtonFlag.SystemRack1 && _viewModel.MainWindow_ButtonFlag != Enum_MainWindow_ButtonFlag.Report && _viewModel.MainWindow_ButtonFlag != Enum_MainWindow_ButtonFlag.Conguration)
                 {
                     int item1 = _viewModel.System_PositiveFirstint;
                     string DateNow = _viewModel.EquipmentInfo[item1].PositiveTime.ToString();
@@ -3505,45 +3584,40 @@ namespace HubCentra_A1
                 int Calibration_To = _viewModel.Calibration_To;
                 for (int i = Calibration_From; i < Calibration_To + 1; i++)
                 {
+
                     for (int k = 1; k <= 60; k++)
                     {
                         int ini = 0;
                         int line = (i - 1) / 28;
                         int channel = (i - 1) % 28 + 1;
-
                         string commandBase_CH = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},DIM,CH{channel}";
-                        string commandCH = $"{commandBase_CH},{k}";
-                        _viewModel.Queue_PCB_Manual.Enqueue(commandCH);
+                        string commandBase_ADCREAD = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},ADCREAD";
+                        string commandBase_DIMREAD = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},DIMREAD";
+
+
+                        string command = $"{commandBase_CH},{k}";
+
+                        _viewModel.Queue_PCB_Manual.Enqueue(command);
+                        _viewModel.Queue_PCB_Manual.Enqueue(commandBase_ADCREAD);
+                        _viewModel.Queue_PCB_Manual.Enqueue(commandBase_DIMREAD);
                         Thread.Sleep(1000);
 
-
-                        string commandBase_ADCREAD = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},ADCREAD";
-                         _viewModel.Queue_PCB_Manual.Enqueue(commandBase_ADCREAD);
-
-                        string commandBase_DIMREAD = $"{_viewModel.SystemInfo[0].PCB_ID1},LINE{line},DIMREAD";
-                         _viewModel.Queue_PCB_Manual.Enqueue(commandBase_DIMREAD);
-
-
-                        Thread.Sleep(500);
-
-
                         int lints = line * 28;
+                        var stopwatch = Stopwatch.StartNew();
+                        const int readTimeout = 2000;
                         while (_viewModel.PCB_Data[i - 1].LED != k)
                         {
-                            ini++;
-
-                            if (ini > 5)
+                            if(stopwatch.ElapsedMilliseconds > readTimeout)
                             {
                                 _viewModel.Calibration_Falg = false;
                                 return;
-
                             }
-
-                            Thread.Sleep(1000); // Adjust the delay as needed
                         }
+
                         double averageADC = _viewModel.PCB_Data[i - 1].ADC;
                         double lowerBound = _viewModel.PCB_targetvalue;
                         double upperBound = _viewModel.PCB_targetvalue + 0.01;
+
                         if (averageADC >= lowerBound)
                         {
                             break;
@@ -3552,9 +3626,8 @@ namespace HubCentra_A1
                         {
                             break;
                         }
-
-
                     }
+
                 }
                 _viewModel.Calibration_Falg = false;
             }

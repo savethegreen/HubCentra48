@@ -834,7 +834,7 @@
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Bottom"
                                 Style="{StaticResource  MainWindow_TextBlock_07}"
-                                Text="Ver.1.0.0" />
+                                Text="Ver.1.0.1" />
                         </Grid>
                     </Grid>
                 </Grid>

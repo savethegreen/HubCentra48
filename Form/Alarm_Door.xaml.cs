@@ -65,24 +65,47 @@ namespace HubCentra_A1
 
         public async void TimerInitialize()
         {
-            timer.Tick += TimerCallbacks;
-            timer.Interval = TimeSpan.FromMilliseconds(100);
-            timer.Start();
+            try
+            {
+                timer.Tick += TimerCallbacks;
+                timer.Interval = TimeSpan.FromMilliseconds(100);
+                timer.Start();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public void Timer_Stop()
         {
-            if (timer.IsEnabled)
+            try
             {
-                timer.Stop();
+                if (timer.IsEnabled)
+                {
+                    timer.Tick -= TimerCallbacks;
+                    timer.Stop();
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
         private void TimerCallbacks(object sender, EventArgs e)
         {
-            if (_viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Door].Flag == true)
+            try
             {
-                _viewModel.Alarm_Door_Buzzer = false;
-                this.Close();
+                if (_viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Door].Flag == true)
+                {
+                    _viewModel.Alarm_Door_Buzzer = false;
+                    Timer_Stop();
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
 

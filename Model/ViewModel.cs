@@ -322,6 +322,15 @@ namespace HubCentra_A1.Model
                 OnPropertyChanged(nameof(Password));
             }
         }
+        public string Login_LevelC
+        {
+            get => _view.Login_LevelC;
+            set
+            {
+                _view.Login_LevelC = value;
+                OnPropertyChanged(nameof(Login_LevelC));
+            }
+        }
         #endregion Login
 
         #region FASTECH
@@ -1573,6 +1582,16 @@ namespace HubCentra_A1.Model
                 OnPropertyChanged(nameof(BottleLoading_BarcodeID));
             }
         }
+        public string BottleLoading_PatientID
+        {
+            get => _view.BottleLoading_PatientID;
+            set
+            {
+                _view.BottleLoading_PatientID = value;
+                OnPropertyChanged(nameof(BottleLoading_PatientID));
+            }
+        }
+        
         public string BottleLoading_Title
         {
             get => _view.BottleLoading_Title;
@@ -1664,6 +1683,16 @@ namespace HubCentra_A1.Model
                 OnPropertyChanged(nameof(Alarm_Incubation_BarcodeID));
             }
         }
+        public string Alarm_Incubation_PatientID
+        {
+            get => _view.Alarm_Incubation_PatientID;
+            set
+            {
+                _view.Alarm_Incubation_PatientID = value;
+                OnPropertyChanged(nameof(Alarm_Incubation_PatientID));
+            }
+        }
+        
         public string Alarm_Incubation_Title
         {
             get => _view.Alarm_Incubation_Title;
@@ -1757,6 +1786,17 @@ namespace HubCentra_A1.Model
                 OnPropertyChanged(nameof(Alarm_Negative_Unloading_BarcodeID));
             }
         }
+        public string Alarm_Negative_Unloading_PatientID
+        {
+            get => _view.Alarm_Negative_Unloading_PatientID;
+            set
+            {
+                _view.Alarm_Negative_Unloading_PatientID = value;
+                OnPropertyChanged(nameof(Alarm_Negative_Unloading_PatientID));
+            }
+        }
+
+        
         public string Alarm_Negative_Unloading_Title
         {
             get => _view.Alarm_Negative_Unloading_Title;
@@ -1836,6 +1876,18 @@ namespace HubCentra_A1.Model
                 OnPropertyChanged(nameof(Alarm_Positive_Unloading_BarcodeID));
             }
         }
+
+        public string Alarm_Positive_Unloading_PatientID
+        {
+            get => _view.Alarm_Positive_Unloading_PatientID;
+            set
+            {
+                _view.Alarm_Positive_Unloading_PatientID = value;
+                OnPropertyChanged(nameof(Alarm_Positive_Unloading_PatientID));
+            }
+        }
+
+        
         public string Alarm_Positive_Unloading_Warning
         {
             get => _view.Alarm_Positive_Unloading_Warning;

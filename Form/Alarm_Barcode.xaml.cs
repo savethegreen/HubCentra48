@@ -50,7 +50,14 @@ namespace HubCentra_A1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            try
+            {
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void btn_Popup_Alarm_Click(object sender, RoutedEventArgs e)

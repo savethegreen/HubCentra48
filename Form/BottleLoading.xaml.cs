@@ -75,6 +75,7 @@ namespace HubCentra_A1
         {
             if (timer.IsEnabled)
             {
+                timer.Tick -= TimerCallbacks;
                 timer.Stop();
             }
         }
@@ -83,12 +84,11 @@ namespace HubCentra_A1
             if(!_viewModel.BottleLoading_Result[IDX])
                 {
                 _viewModel.BottleLoading_isPopupOpen = false;
-
+                Timer_Stop();
                 Dispatcher.Invoke(() =>
                 {
                     this.Close();
                 });
-                Timer_Stop();
             }
         }
         #endregion Timer

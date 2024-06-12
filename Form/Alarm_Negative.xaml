@@ -7,7 +7,7 @@
         mc:Ignorable="d"
          Title="Alarm_Negative"  WindowStyle="None"
          WindowStartupLocation="CenterScreen"
-         Height="280" Width="420" Loaded="Window_Loaded">
+         Height="320" Width="420" Loaded="Window_Loaded">
     <Grid Background="Transparent">
         <Border
                    Background="{StaticResource SolidColorBrush_08}"
@@ -39,6 +39,7 @@
                             <RowDefinition Height="15*" />
                             <RowDefinition Height="30*" />
                             <RowDefinition Height="30*" />
+                            <RowDefinition Height="30*" />
                             <RowDefinition Height="80*" />
                             <RowDefinition Height="80*" />
                             <RowDefinition Height="1*" />
@@ -54,28 +55,23 @@
                                    Text="{Binding Alarm_Negative_Unloading_whatSystem}"
                                    TextAlignment="Center" />
 
+
                         <TextBlock
-                                   Grid.Row="3"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   FontSize="20"
-                                   Text="{Binding Alarm_Negative_Unloading_Content}"
-                                   TextAlignment="Center" />
-                        <TextBlock
-                                   Grid.Row="1"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Top"
-                                   FontSize="26"
-                                   FontWeight="Bold"
-                                   Text="{Binding Alarm_Negative_Unloading_Cell}"
-                                   TextAlignment="Center">
+                                Grid.Row="1"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                FontSize="26"
+                                FontWeight="Bold"
+                                Text="{Binding Alarm_Negative_Unloading_Cell}"
+                                TextAlignment="Center">
                             <TextBlock.Style>
                                 <Style>
                                     <Setter Property="TextElement.Foreground" Value="#f27200" />
-                           
+
                                 </Style>
                             </TextBlock.Style>
                         </TextBlock>
+
 
                         <TextBlock
                 Grid.Row="2"
@@ -88,12 +84,50 @@
                             <TextBlock.Style>
                                 <Style>
                                     <Setter Property="TextElement.Foreground" Value="#f27200" />
-                            
+
                                 </Style>
                             </TextBlock.Style>
                         </TextBlock>
 
-                        <Grid Grid.Row="4">
+
+                        <TextBlock
+                            Grid.Row="3"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            FontSize="26"
+                            FontWeight="Bold"
+                            Text="{Binding Alarm_Negative_Unloading_PatientID}"
+                            TextAlignment="Center">
+                            <TextBlock.Style>
+                                <Style>
+                                    <Setter Property="TextElement.Foreground" Value="#f27200" />
+
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+                        <TextBlock
+                   Grid.Row="4"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="20"
+                   Text="{Binding Alarm_Negative_Unloading_Content}"
+                   TextAlignment="Center" />
+                        
+                        
+
+                        <TextBlock
+                                   Grid.Row="4"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="20"
+                                   Text="{Binding Alarm_Negative_Unloading_Content}"
+                                   TextAlignment="Center" />
+   
+
+
+
+                        <Grid Grid.Row="5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50*" />
                                 <ColumnDefinition Width="50*" />

@@ -260,9 +260,27 @@
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[0].ADC, StringFormat='V : {0:F0}'}" />
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[0].LED, StringFormat='L : {0:F0}'}" />
                                         </Grid>
                                     </Grid>
@@ -360,9 +378,27 @@
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[1].ADC, StringFormat='V : {0:F0}'}" />
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[1].LED, StringFormat='L : {0:F0}'}" />
                                         </Grid>
                                     </Grid>
@@ -459,9 +495,27 @@
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[2].ADC, StringFormat='V : {0:F0}'}" />
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[2].LED, StringFormat='L : {0:F0}'}" />
                                         </Grid>
                                     </Grid>
@@ -557,9 +611,27 @@
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[3].ADC, StringFormat='V : {0:F0}'}" />
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[3].LED, StringFormat='L : {0:F0}'}" />
                                         </Grid>
                                     </Grid>
@@ -655,9 +727,27 @@
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[4].ADC, StringFormat='V : {0:F0}'}" />
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[4].LED, StringFormat='L : {0:F0}'}" />
                                         </Grid>
                                     </Grid>
@@ -753,9 +843,27 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[5].ADC, StringFormat='V : {0:F0}'}" />
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[5].LED, StringFormat='L : {0:F0}'}" />
                                         </Grid>
                                     </Grid>
@@ -851,12 +959,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[6].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[6].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -952,11 +1076,27 @@ Duration="0:0:0.500" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[7].ADC, StringFormat='V : {0:F0}'}" />
-
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                         </Grid>
                                         <Grid Grid.Row="3">
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[7].LED, StringFormat='L : {0:F0}'}" />
-
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -1052,11 +1192,27 @@ Duration="0:0:0.500" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[8].ADC, StringFormat='V : {0:F0}'}" />
-
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                         </Grid>
                                         <Grid Grid.Row="3">
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[8].LED, StringFormat='L : {0:F0}'}" />
-
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -1152,11 +1308,27 @@ Duration="0:0:0.500" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[9].ADC, StringFormat='V : {0:F0}'}" />
-
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                         </Grid>
                                         <Grid Grid.Row="3">
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[9].LED, StringFormat='L : {0:F0}'}" />
-
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -1252,11 +1424,27 @@ Duration="0:0:0.500" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[10].ADC, StringFormat='V : {0:F0}'}" />
-
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                         </Grid>
                                         <Grid Grid.Row="3">
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[10].LED, StringFormat='L : {0:F0}'}" />
-
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -1352,11 +1540,27 @@ Duration="0:0:0.500" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[11].ADC, StringFormat='V : {0:F0}'}" />
-
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                         </Grid>
                                         <Grid Grid.Row="3">
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[11].LED, StringFormat='L : {0:F0}'}" />
-
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -1452,11 +1656,27 @@ Duration="0:0:0.500" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[12].ADC, StringFormat='V : {0:F0}'}" />
-
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                         </Grid>
                                         <Grid Grid.Row="3">
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[12].LED, StringFormat='L : {0:F0}'}" />
-
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -1552,11 +1772,27 @@ Duration="0:0:0.500" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[13].ADC, StringFormat='V : {0:F0}'}" />
-
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                         </Grid>
                                         <Grid Grid.Row="3">
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[13].LED, StringFormat='L : {0:F0}'}" />
-
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -1644,9 +1880,27 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[14].ADC, StringFormat='V : {0:F0}'}" />
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[14].LED, StringFormat='L : {0:F0}'}" />
                                         </Grid>
                                     </Grid>
@@ -1739,9 +1993,27 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[15].ADC, StringFormat='V : {0:F0}'}" />
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[15].LED, StringFormat='L : {0:F0}'}" />
                                         </Grid>
                                     </Grid>
@@ -1834,9 +2106,27 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[16].ADC, StringFormat='V : {0:F0}'}" />
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[16].LED, StringFormat='L : {0:F0}'}" />
                                         </Grid>
                                     </Grid>
@@ -1928,9 +2218,27 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[17].ADC, StringFormat='V : {0:F0}'}" />
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[17].LED, StringFormat='L : {0:F0}'}" />
                                         </Grid>
                                     </Grid>
@@ -2023,10 +2331,29 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[18].ADC, StringFormat='V : {0:F0}'}" />
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[18].LED, StringFormat='L : {0:F0}'}" />
+                                       
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -2118,9 +2445,27 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[19].ADC, StringFormat='V : {0:F0}'}" />
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[19].LED, StringFormat='L : {0:F0}'}" />
                                         </Grid>
                                     </Grid>
@@ -2213,12 +2558,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[20].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[20].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -2310,12 +2671,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[21].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[21].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -2407,12 +2784,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[22].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[22].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -2504,12 +2897,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[23].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[23].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -2601,12 +3010,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[24].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[24].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -2698,12 +3123,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[25].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[25].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -2795,12 +3236,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[26].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[26].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -2892,12 +3349,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[27].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[27].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -3058,12 +3531,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[28].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[28].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -3157,12 +3646,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[29].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[29].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -3256,12 +3761,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[30].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[30].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -3355,12 +3876,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[31].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[31].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -3454,12 +3991,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[32].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[32].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -3553,12 +4106,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[33].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[33].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -3652,12 +4221,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[34].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[34].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -3751,12 +4336,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[35].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[35].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -3850,12 +4451,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[36].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[36].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -3949,12 +4566,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[37].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[37].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -4048,12 +4681,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[38].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[38].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -4147,12 +4796,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[39].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[39].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -4246,12 +4911,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[40].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[40].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -4345,12 +5026,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[41].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[41].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -4436,12 +5133,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[42].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[42].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -4533,12 +5246,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[43].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[43].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -4630,12 +5359,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[44].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[44].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -4727,12 +5472,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[45].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[45].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -4824,12 +5585,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[46].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[46].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -4921,12 +5698,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[47].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[47].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -5018,12 +5811,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[48].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[48].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -5115,12 +5924,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[49].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[49].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -5212,12 +6037,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[50].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[50].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -5309,12 +6150,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[51].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[51].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -5406,12 +6263,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[52].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[52].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -5503,12 +6376,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[53].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[53].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -5600,12 +6489,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[54].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[54].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -5697,12 +6602,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[55].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[55].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -5862,12 +6783,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[56].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[56].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -5961,12 +6898,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[57].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[57].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -6060,12 +7013,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[58].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[58].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -6159,12 +7128,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[59].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[59].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -6258,12 +7243,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[60].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[60].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -6357,12 +7358,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[61].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[61].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -6456,12 +7473,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[62].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[62].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -6555,12 +7588,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[63].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[63].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -6654,12 +7703,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[64].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[64].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -6753,12 +7818,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[65].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[65].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -6852,12 +7933,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[66].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[66].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -6951,12 +8048,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[67].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[67].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -7050,12 +8163,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[68].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[68].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -7149,12 +8278,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[69].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[69].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -7240,12 +8385,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[70].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[70].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -7337,12 +8498,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[71].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[71].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -7434,12 +8611,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[72].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[72].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -7531,12 +8724,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[73].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[73].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -7628,12 +8837,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[74].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[74].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -7725,12 +8950,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[75].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[75].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -7822,12 +9063,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[76].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[76].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -7919,12 +9176,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[77].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[77].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -8016,12 +9289,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[78].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[78].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -8113,12 +9402,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[79].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[79].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -8210,12 +9515,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[80].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[80].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -8307,12 +9628,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[81].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[81].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -8404,12 +9741,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[82].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[82].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -8501,12 +9854,28 @@ Duration="0:0:0.500" />
                                             <RowDefinition Height="100*" />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_01}" Text="{Binding PCB_Data[83].ADC, StringFormat='V : {0:F0}'}" />
-
                                         </Grid>
                                         <Grid Grid.Row="3">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[83].LED, StringFormat='L : {0:F0}'}" />
-
                                         </Grid>
                                     </Grid>
                                 </Grid>
