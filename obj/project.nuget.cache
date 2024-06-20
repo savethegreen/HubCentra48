@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+AQIBPDeEZKAMEIc2jRXdMn+yW/fdDhN/MsZ0tUwJMg6mNJ+RmFpyXHL90TidWhjOOo0v0ujCYrI0VYL5y8zcw==",
+  "dgSpecHash": "luQRCZRqh32PD8KYwY4X7JgTwvqACJ3rfiWoIoGO8zs1R5BzMIb5YLBKIIpLJfxtEnXO6JIHVliU58pRQFngdw==",
   "success": true,
-  "projectFilePath": "D:\\Auto\\HubCentra_A1\\HubCentra_A1\\HubCentra_A1.csproj",
+  "projectFilePath": "D:\\HubCentra_A1\\HubCentra_A1\\HubCentra_A1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\savet\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\savet\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

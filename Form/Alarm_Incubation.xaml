@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Alarm_Incubation"  WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        Height="320" Width="420" Loaded="Window_Loaded">
+        Height="320" Width="430" Loaded="Window_Loaded">
     <Grid Background="Transparent">
         <Border
                    Background="{StaticResource SolidColorBrush_08}"
@@ -66,11 +66,7 @@
                             <TextBlock.Style>
                                 <Style>
                                     <Setter Property="TextElement.Foreground" Value="#f27200" />
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Equipment_DataWithDB_presenceArray[17].alive}" Value="False">
-                                            <Setter Property="TextElement.Foreground" Value="Red" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
+                             
                                 </Style>
                             </TextBlock.Style>
                         </TextBlock>
@@ -86,11 +82,7 @@
                             <TextBlock.Style>
                                 <Style>
                                     <Setter Property="TextElement.Foreground" Value="#f27200" />
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Equipment_DataWithDB_presenceArray[17].alive}" Value="False">
-                                            <Setter Property="TextElement.Foreground" Value="Red" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
+                     
                                 </Style>
                             </TextBlock.Style>
                         </TextBlock>
@@ -101,16 +93,12 @@
                VerticalAlignment="Top"
                FontSize="26"
                FontWeight="Bold"
-               Text="{Binding BottleLoading_PatientID}"
+               Text="{Binding Alarm_Incubation_PatientID}"
                TextAlignment="Center">
                             <TextBlock.Style>
                                 <Style>
                                     <Setter Property="TextElement.Foreground" Value="#f27200" />
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Equipment_DataWithDB_presenceArray[17].alive}" Value="False">
-                                            <Setter Property="TextElement.Foreground" Value="Red" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
+                         
                                 </Style>
                             </TextBlock.Style>
                         </TextBlock>

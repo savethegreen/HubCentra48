@@ -6,6 +6,9 @@
              xmlns:local="clr-namespace:HubCentra_A1"
              mc:Ignorable="d" 
              d:DesignHeight="763" d:DesignWidth="962">
+    <UserControl.Resources>
+        <local:TimeConverter x:Key="TimeConverter" />
+    </UserControl.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -75,7 +78,7 @@
                             </GridViewColumn.Header>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate >
-                                    <TextBlock x:Name="ID" Text="{Binding ID}" Style="{StaticResource Search_TextBlock_02}"/>
+                                    <TextBlock x:Name="Cell" Text="{Binding ID}" Style="{StaticResource Search_TextBlock_02}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -89,7 +92,7 @@
                             </GridViewColumn.Header>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate >
-                                    <TextBlock x:Name="Barcode" Text="{Binding Barcode}" Style="{StaticResource Search_TextBlock_02}"/>
+                                    <TextBlock x:Name="Bottle" Text="{Binding Barcode}" Style="{StaticResource Search_TextBlock_02}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -99,7 +102,7 @@
                                 <GridViewColumnHeader
                  Background="White"
                  Tag="Patient">
-                                    <TextBlock Style="{StaticResource Search_TextBlock_01}" Text="Patient" />
+                                    <TextBlock Style="{StaticResource Search_TextBlock_01}" Text="Clinical sample" />
                                 </GridViewColumnHeader>
                             </GridViewColumn.Header>
                             <GridViewColumn.CellTemplate>
@@ -121,7 +124,7 @@
                             </GridViewColumn.Header>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate >
-                                    <TextBlock x:Name="Loading" Text="{Binding Loading}" Style="{StaticResource Search_TextBlock_02}"/>
+                                    <TextBlock x:Name="Loading"  Text="{Binding Loading, Converter={StaticResource TimeConverter}}" Style="{StaticResource Search_TextBlock_02}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

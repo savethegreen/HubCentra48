@@ -407,7 +407,7 @@
                                     <TextBlock
                                         VerticalAlignment="Center"
                                         Style="{StaticResource Search_TextBlock_01}"
-                                        Text="ID" />
+                                        Text="Cell" />
                                 </GridViewColumnHeader>
                             </GridViewColumn.Header>
                             <GridViewColumn.CellTemplate>
@@ -427,7 +427,7 @@
                                     Background="White"
                                     Click="GridViewColumnHeader_Click"
                                     Tag="Barcode">
-                                    <TextBlock Style="{StaticResource Search_TextBlock_01}" Text="Barcode" />
+                                    <TextBlock Style="{StaticResource Search_TextBlock_01}" Text="Bottle" />
                                 </GridViewColumnHeader>
                             </GridViewColumn.Header>
                             <GridViewColumn.CellTemplate>
@@ -445,7 +445,7 @@
                                 <GridViewColumnHeader
                        Background="White"
                        Tag="Patient">
-                                    <TextBlock Style="{StaticResource Search_TextBlock_01}" Text="Patient" />
+                                    <TextBlock Style="{StaticResource Search_TextBlock_01}" Text="Clinical sample" />
                                 </GridViewColumnHeader>
                             </GridViewColumn.Header>
                             <GridViewColumn.CellTemplate>

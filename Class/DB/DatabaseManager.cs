@@ -1459,7 +1459,7 @@ namespace HubCentra_A1
         private string ConvertSecondsToReadableTime(int totalSeconds)
         {
             TimeSpan time = TimeSpan.FromSeconds(totalSeconds);
-            return $"{time.Days}일 {time.Hours}시 {time.Minutes}분 {time.Seconds}초";
+            return $"{time.Days}일 {time.Hours}시간 {time.Minutes}분";
         }
         public bool Select_Barcode_Search(string barcodeID)
         {

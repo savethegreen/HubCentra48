@@ -1,18 +1,22 @@
-﻿<Window x:Class="HubCentra_A1.Alarm_Negative"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HubCentra_A1"
-        mc:Ignorable="d"
-         Title="Alarm_Negative"  WindowStyle="None"
-         WindowStartupLocation="CenterScreen"
-         Height="320" Width="420" Loaded="Window_Loaded">
+﻿<Window
+    x:Class="HubCentra_A1.Alarm_Negative"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:HubCentra_A1"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Alarm_Negative"
+    Width="420"
+    Height="320"
+    Loaded="Window_Loaded"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
     <Grid Background="Transparent">
         <Border
-                   Background="{StaticResource SolidColorBrush_08}"
-                   BorderThickness="0"
-                   CornerRadius="10">
+            Background="{StaticResource SolidColorBrush_08}"
+            BorderThickness="0"
+            CornerRadius="10">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="15*" />
@@ -21,19 +25,19 @@
 
                 <Grid Grid.Row="0">
                     <TextBlock
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               FontSize="23"
-                               FontWeight="Bold"
-                               Foreground="White"
-                               Text="{Binding Alarm_Negative_Unloading_Title}"
-                               TextAlignment="Center" />
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontSize="23"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        Text="{Binding Alarm_Negative_Unloading_Title}"
+                        TextAlignment="Center" />
                 </Grid>
 
                 <Grid
-                           Grid.Row="1"
-                           Margin="5,5"
-                           Background="#e8e5da">
+                    Grid.Row="1"
+                    Margin="5,5"
+                    Background="#e8e5da">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="15*" />
@@ -46,24 +50,24 @@
                         </Grid.RowDefinitions>
 
                         <TextBlock
-                                   Grid.Row="0"
-                                   Margin="5,0,0,-5"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   FontSize="18"
-                                   FontStyle="Italic"
-                                   Text="{Binding Alarm_Negative_Unloading_whatSystem}"
-                                   TextAlignment="Center" />
+                            Grid.Row="0"
+                            Margin="5,0,0,-5"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="18"
+                            FontStyle="Italic"
+                            Text="{Binding Alarm_Negative_Unloading_whatSystem}"
+                            TextAlignment="Center" />
 
 
                         <TextBlock
-                                Grid.Row="1"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Top"
-                                FontSize="26"
-                                FontWeight="Bold"
-                                Text="{Binding Alarm_Negative_Unloading_Cell}"
-                                TextAlignment="Center">
+                            Grid.Row="1"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            FontSize="26"
+                            FontWeight="Bold"
+                            Text="{Binding Alarm_Negative_Unloading_Cell}"
+                            TextAlignment="Center">
                             <TextBlock.Style>
                                 <Style>
                                     <Setter Property="TextElement.Foreground" Value="#f27200" />
@@ -74,13 +78,13 @@
 
 
                         <TextBlock
-                Grid.Row="2"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top"
-                FontSize="26"
-                FontWeight="Bold"
-                Text="{Binding Alarm_Incubation_BarcodeID}"
-                TextAlignment="Center">
+                            Grid.Row="2"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            FontSize="26"
+                            FontWeight="Bold"
+                            Text="{Binding Alarm_Incubation_BarcodeID}"
+                            TextAlignment="Center">
                             <TextBlock.Style>
                                 <Style>
                                     <Setter Property="TextElement.Foreground" Value="#f27200" />
@@ -107,23 +111,23 @@
                         </TextBlock>
 
                         <TextBlock
-                   Grid.Row="4"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   FontSize="20"
-                   Text="{Binding Alarm_Negative_Unloading_Content}"
-                   TextAlignment="Center" />
-                        
-                        
+                            Grid.Row="4"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontSize="20"
+                            Text="{Binding Alarm_Negative_Unloading_Content}"
+                            TextAlignment="Center" />
+
+
 
                         <TextBlock
-                                   Grid.Row="4"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   FontSize="20"
-                                   Text="{Binding Alarm_Negative_Unloading_Content}"
-                                   TextAlignment="Center" />
-   
+                            Grid.Row="4"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontSize="20"
+                            Text="{Binding Alarm_Negative_Unloading_Content}"
+                            TextAlignment="Center" />
+
 
 
 
@@ -133,38 +137,38 @@
                                 <ColumnDefinition Width="50*" />
                             </Grid.ColumnDefinitions>
                             <Button
-                                       x:Name="OK"
-                                       Grid.Column="0"
-                                       Width="67"
-                                       Height="35"
-                                       Margin="0,0,0,0"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"
-                                       Background="#f27200"
-                                       BorderThickness="0"
-                                       Click="OK_Click"
-                                       Content="확인"
-                                       FontSize="20"
-                                       Foreground="White">
+                                x:Name="OK"
+                                Grid.Column="0"
+                                Width="67"
+                                Height="35"
+                                Margin="0,0,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Background="#f27200"
+                                BorderThickness="0"
+                                Click="OK_Click"
+                                Content="확인"
+                                FontSize="20"
+                                Foreground="White">
                                 <Button.Effect>
                                     <DropShadowEffect ShadowDepth="2" />
                                 </Button.Effect>
                             </Button>
 
                             <Button
-                                       x:Name="Cancel"
-                                       Grid.Column="1"
-                                       Width="67"
-                                       Height="35"
-                                       Margin="0,0,0,0"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"
-                                       Background="#f27200"
-                                       BorderThickness="0"
-                                       Click="Cancel_Click"
-                                       Content="취소"
-                                       FontSize="20"
-                                       Foreground="White">
+                                x:Name="Cancel"
+                                Grid.Column="1"
+                                Width="67"
+                                Height="35"
+                                Margin="0,0,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Background="#f27200"
+                                BorderThickness="0"
+                                Click="Cancel_Click"
+                                Content="취소"
+                                FontSize="20"
+                                Foreground="White">
                                 <Button.Effect>
                                     <DropShadowEffect ShadowDepth="2" />
                                 </Button.Effect>

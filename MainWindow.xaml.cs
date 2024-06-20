@@ -645,15 +645,22 @@ namespace HubCentra_A1
         public async void FASTECHInitialize()
         {
 
-            _viewModel.FASTECH_Set_Output = new List<Class_FASTECH_Output>();
-            for (int i = 0; i < 8; i++)
+            try
             {
-                _viewModel.FASTECH_Set_Output.Add(new Class_FASTECH_Output { Flag = false });
+                _viewModel.FASTECH_Set_Output = new List<Class_FASTECH_Output>();
+                for (int i = 0; i < 8; i++)
+                {
+                    _viewModel.FASTECH_Set_Output.Add(new Class_FASTECH_Output { Flag = false });
+                }
+                IPAddress ipAddress = IPAddress.Parse(_viewModel.SystemInfo[0]._FASTECH_IO_Input_IP);
+                _viewModel.FASTECH_IO_Connection = _viewModel.fastechDeviceManager.Connect_IO(Enum_FASTECH_ID.IO, ipAddress);
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.GreenLamp].Flag = true;
+                Thread.Sleep(100);
             }
-            IPAddress ipAddress = IPAddress.Parse(_viewModel.SystemInfo[0]._FASTECH_IO_Input_IP);
-            _viewModel.FASTECH_IO_Connection = _viewModel.fastechDeviceManager.Connect_IO(Enum_FASTECH_ID.IO, ipAddress);
-            _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.GreenLamp].Flag = true;
-            Thread.Sleep(100);
+            catch(Exception ex)
+            {
+
+            }
         }
         public void FASTECH()
         {
@@ -1973,7 +1980,7 @@ namespace HubCentra_A1
                     if (_viewModel.Queue_PCB_Manual.TryDequeue(out string str))
                     {
                         int lineIndex = ExtractLineIndex(str);
-                        string line = str ;
+                        string line = str;
                         string response = ReadSerialPortResponse(line, true);
 
                         if (response != null)
@@ -2422,7 +2429,7 @@ namespace HubCentra_A1
                             _viewModel.Alarm_Barcode_isPopupOpen = true;
                             string item1 = command.Item1;
                             _viewModel.Barcode_BarcodeID = item1;
-                            _viewModel.Barcode_Content = "Barcode  " + _viewModel.Barcode_BarcodeID + "  already exists.";
+                            _viewModel.Barcode_Content = "Bottle  " + _viewModel.Barcode_BarcodeID + "  already exists.";
                             Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                             {
                                 Alarm_Barcode alarm_Barcode = new Alarm_Barcode(_viewModel);
@@ -2773,8 +2780,8 @@ namespace HubCentra_A1
 
                                 _viewModel.BottleLoading_WhatSystem = "System" + sysyem.ToString();
                                 _viewModel.BottleLoading_Cell_Num = "Cell : " + cell.ToString();
-                                _viewModel.BottleLoading_BarcodeID = "Barcode : " + _viewModel.Barcode_ID;
-                                _viewModel.BottleLoading_PatientID = "Patient : " + _viewModel.Patient_ID;
+                                _viewModel.BottleLoading_BarcodeID = "Bottle : " + _viewModel.Barcode_ID;
+                                _viewModel.BottleLoading_PatientID = "Clinical sample : " + _viewModel.Patient_ID;
                                 _viewModel.Barcode_ID = "";
                                 _viewModel.Patient_ID = "";
                                 _viewModel.Barcode_ID_Loading = "";
@@ -2855,7 +2862,21 @@ namespace HubCentra_A1
                 int fitst = oldestPositiveEquipment != null ? oldestPositiveEquipment.ID : 0;
                 if( fitst > 0 )
                 {
-                    _viewModel.System1_Positive_Warning = "Positive가 감지되었습니다." + " (발생 시간 : " + oldestPositiveEquipment.PositiveTime.ToString() + ")";
+                    DateTime? positiveTimeNullable = oldestPositiveEquipment.PositiveTime;
+                    string formattedDate = "";
+                    if (positiveTimeNullable.HasValue)
+                    {
+                        DateTime positiveTime = positiveTimeNullable.Value;
+                        formattedDate = positiveTime.ToString("yyyy-MM-dd HH:mm");
+
+
+                    }
+                    else
+                    {
+                        formattedDate = string.Empty;
+                    }
+
+                    _viewModel.System1_Positive_Warning = "Positive가 감지되었습니다." + " (발생 시간 : " + formattedDate + ")";
                     _viewModel.System1_Positive_Cel = cellidx(fitst - 1);
                     _viewModel.System1_HasPositive = true;
                     //_viewModel.System_PositiveFirst[fitst - 1].alive = true;
@@ -3011,8 +3032,8 @@ namespace HubCentra_A1
                 }
                 _viewModel.Alarm_Positive_Unloading_whatSystem = systemidx(idx);
                 _viewModel.Alarm_Positive_Unloading_Cell = cellidx(idx);
-                _viewModel.Alarm_Positive_Unloading_BarcodeID = "Barcode ID  :  " + barcodeID;
-                _viewModel.Alarm_Positive_Unloading_PatientID = "Patient ID  :  " + PatientID;
+                _viewModel.Alarm_Positive_Unloading_BarcodeID = "Bottle :  " + barcodeID;
+                _viewModel.Alarm_Positive_Unloading_PatientID = "Clinical sample  :  " + PatientID;
 
                 if (idx == first - 1)
                 {
@@ -3544,12 +3565,26 @@ namespace HubCentra_A1
                 if(_viewModel.System_PositiveFirstint != -1 && _viewModel.MainWindow_ButtonFlag !=  Enum_MainWindow_ButtonFlag.SystemRack1 && _viewModel.MainWindow_ButtonFlag != Enum_MainWindow_ButtonFlag.Report && _viewModel.MainWindow_ButtonFlag != Enum_MainWindow_ButtonFlag.Conguration)
                 {
                     int item1 = _viewModel.System_PositiveFirstint;
-                    string DateNow = _viewModel.EquipmentInfo[item1].PositiveTime.ToString();
+
+                    DateTime? positiveTimeNullable = _viewModel.EquipmentInfo[item1].PositiveTime;
+                    string formattedDate = "";
+                    if (positiveTimeNullable.HasValue)
+                    {
+                        DateTime positiveTime = positiveTimeNullable.Value;
+                         formattedDate = positiveTime.ToString("yyyy-MM-dd HH:mm");
+
+                    }
+                    else
+                    {
+                        formattedDate = string.Empty; 
+                    }
+
+                    string DateNow = formattedDate;  
                     _viewModel.Alarm_Positive_whatSystem = systemidx(item1);
                     _viewModel.Alarm_Positive_Cell = cellidx(item1);
                     _viewModel.Alarm_Positive_Warning = "시간 : " + DateNow + "\n" +
                      "Positive가 감지되었습니다." + "\n" +
-                     "해당 Cell을 제거 해주세요." + "\n";
+                     "해당 cell에 삽입된 bottle을 제거해 주세요." + "\n";
                     Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                     {
                         alarm_positive = new Alarm_Positive(_viewModel);
@@ -4079,10 +4114,7 @@ namespace HubCentra_A1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            int cellnum = 13;
-            string BarcodeID = "Sample5";
-            string QrcodeID = "1234";
-            createGradient(cellnum, BarcodeID, QrcodeID);
+            PCB_LED(_viewModel.SystemInfo[0].PCB_ID1, 5, "Incubation");
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

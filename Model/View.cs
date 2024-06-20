@@ -327,6 +327,7 @@ namespace HubCentra_A1.Model
         public string Alarm_Equipment_Title { get; set; } = "Connect Error";
         public string Alarm_Equipment_Content { get; set; } = "System1 is not Connected.";
         #endregion Equipment
+
         public bool PopStatus_Positive_Flag { get; set; } = false;
         public string PopStatus_Positive_Title { get; set; } = "Positive 발생!!";
 

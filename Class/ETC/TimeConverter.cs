@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 
 namespace HubCentra_A1
@@ -14,7 +15,7 @@ namespace HubCentra_A1
         {
             if (value != null && DateTime.TryParse(value.ToString(), out DateTime dateTime))
             {
-                return dateTime.ToString("yyyy/MM/dd HH:mm:ss");
+                return dateTime.ToString("yyyy/MM/dd HH:mm");
             }
             return value;
         }
@@ -24,4 +25,7 @@ namespace HubCentra_A1
             throw new NotImplementedException();
         }
     }
+
+
+    
 }
