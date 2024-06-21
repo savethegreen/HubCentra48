@@ -10,14 +10,14 @@
         "projectUniqueName": "D:\\HubCentra_A1\\HubCentra_A1\\HubCentra_A1.csproj",
         "projectName": "HubCentra_A1",
         "projectPath": "D:\\HubCentra_A1\\HubCentra_A1\\HubCentra_A1.csproj",
-        "packagesPath": "C:\\Users\\savet\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\covotech\\.nuget\\packages\\",
         "outputPath": "D:\\HubCentra_A1\\HubCentra_A1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\savet\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\covotech\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -39,6 +39,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -81,7 +86,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

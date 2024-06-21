@@ -1250,9 +1250,10 @@ D:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.GeneratedMSBu
 D:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.AssemblyInfoInputs.cache
 D:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.AssemblyInfo.cs
 D:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.csproj.CoreCompileInputs.cache
-D:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.csproj.CopyComplete
 D:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.dll
 D:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\refint\HubCentra_A1.dll
 D:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.pdb
 D:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.genruntimeconfig.cache
 D:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\ref\HubCentra_A1.dll
+D:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentra_A1.sourcelink.json
+D:\HubCentra_A1\HubCentra_A1\obj\Debug\net7.0-windows\HubCentr.983DB8A3.Up2Date
