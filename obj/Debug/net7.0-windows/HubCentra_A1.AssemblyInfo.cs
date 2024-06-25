@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HubCentra_A1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e53c4504f67e7b6509ce60b3d1cc5a099a65a8d5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2d9a46b5bc8c3caa1a37acccf6e5998221c2e81d")]
 [assembly: System.Reflection.AssemblyProductAttribute("HubCentra_A1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HubCentra_A1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

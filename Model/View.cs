@@ -254,6 +254,12 @@ namespace HubCentra_A1.Model
         #endregion Buzzer
 
         #region Alarm
+        #region System
+        public string System_Title { get; set; } = "";
+        public string System_WhatSystem { get; set; } = "";
+        public string System_Content { get; set; } = "";
+        #endregion System
+
         #region BottleLoading
         public ConcurrentQueue<Tuple<int>> Alarm_BottleLoading { get; set; } = new ConcurrentQueue<Tuple<int>>();
 

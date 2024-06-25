@@ -1530,6 +1530,36 @@ namespace HubCentra_A1.Model
         #endregion PopStatus
 
         #region Alarm
+        #region System
+        public string System_Title
+        {
+            get => _view.System_Title;
+            set
+            {
+                _view.System_Title = value;
+                OnPropertyChanged(nameof(System_Title));
+            }
+        }
+        public string System_WhatSystem
+        {
+            get => _view.System_WhatSystem;
+            set
+            {
+                _view.System_WhatSystem = value;
+                OnPropertyChanged(nameof(System_WhatSystem));
+            }
+        }
+        public string System_Content
+        {
+            get => _view.System_Content;
+            set
+            {
+                _view.System_Content = value;
+                OnPropertyChanged(nameof(System_Content));
+            }
+        }
+        #endregion System
+
         #region BottleLoading
         public ConcurrentQueue<Tuple<int>> Alarm_BottleLoading
         {
