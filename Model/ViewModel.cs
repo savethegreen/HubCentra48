@@ -435,6 +435,17 @@ namespace HubCentra_A1.Model
             }
         }
 
+        public bool PCB_Restart
+        {
+            get => _view.PCB_Restart;
+            set
+            {
+                _view.PCB_Restart = value;
+                OnPropertyChanged(nameof(PCB_Restart));
+            }
+        }
+
+
         public string PCB_ID
         {
             get => _view.PCB_ID;

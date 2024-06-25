@@ -98,6 +98,8 @@ namespace HubCentra_A1.Model
         public SerialPort PCB_SerialPort { get; set; }
         public bool PCB_Connection { get; set; } = false;
         public bool PCB_Status { get; set; } = false;
+
+        public bool PCB_Restart { get; set; } = true;
         public string PCB_ID { get; set; } = "$ID1";
 
         public List<PCB> PCB_Data { get; set; }

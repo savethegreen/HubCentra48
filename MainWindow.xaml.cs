@@ -680,20 +680,26 @@ namespace HubCentra_A1
         }
 
         public void FASTECH_Get()
-        {
-        
+        {        
             if (_viewModel.FASTECH_IO_Connection)
             {
                 var GetStatus = _viewModel.fastechDeviceManager.Get_Input(Enum_FASTECH_ID.IO);
                 _viewModel.FASTECH_Input = GetStatus;
                 var GetStatus2 = _viewModel.fastechDeviceManager.Get_Output(Enum_FASTECH_ID.IO);
                 _viewModel.FASTECH_Output = GetStatus2;
-                if (GetStatus == null || GetStatus2 == null)
+                if (GetStatus == null )
                 {
                     _viewModel.FASTECH_IO_Connection = false;
-
+                    _viewModel.PCB_Restart = false; // 통신이 끊어졌음을 표시
                 }
-
+                else
+                {
+                    if (!_viewModel.PCB_Restart)
+                    {
+                        PCBFrame(); // 처음 연결되었을 때만 호출
+                        _viewModel.PCB_Restart = true; // 통신이 연결되었음을 표시
+                    }
+                }
             }
         }
 
@@ -1952,16 +1958,28 @@ namespace HubCentra_A1
         public void PCBFrame()
         {
             bool[] ledidx =  new bool[84];
+            string id = _viewModel.SystemInfo[0].PCB_ID1;
+            for (int i = 0; i < 3; i++)
+            {
+                string LAMP = $"{id},LINE{i},LAMP,CHALL,ON";
+                _viewModel.Queue_PCB_Manual.Enqueue(LAMP);   
+            }
+
+            Thread.Sleep(1000);
+            for (int i = 0; i < 3; i++)
+            {
+
+                string ACD = $"{id},LINE{i},ADCREAD";
+                _viewModel.Queue_PCB_Manual.Enqueue(ACD);
+            }
 
             for (int i = 0; i < 3; i++)
             {
-                string id = _viewModel.SystemInfo[0].PCB_ID1;
                 string LED = $"{id},LINE{i},TLED,ALL,ON,0,255,0";
                 _viewModel.Queue_PCB_Manual.Enqueue(LED);
-                string LAMP = $"{id},LINE{i},LAMP,CHALL,ON";
-                _viewModel.Queue_PCB_Manual.Enqueue(LAMP);
-                string str = $"{id},LINE{i},DIMREAD";
-                _viewModel.Queue_PCB_Manual.Enqueue(str);
+
+                string DIM = $"{id},LINE{i},DIMREAD";
+                _viewModel.Queue_PCB_Manual.Enqueue(DIM);
             }
 
             var filteredItems = _viewModel.EquipmentInfo.Where(e => e.isActive && e.isEnable ).ToList();
@@ -1984,11 +2002,16 @@ namespace HubCentra_A1
             }
         }
 
-        public void PCB()
+        public void PCB_LAMP_ON()
         {
             try
             {
-
+                string id = _viewModel.SystemInfo[0].PCB_ID1;
+                for (int i = 0; i < 3; i++)
+                {
+                    string LAMP = $"{id},LINE{i},LAMP,CHALL,ON";
+                    _viewModel.Queue_PCB_Manual.Enqueue(LAMP);
+                }
             }
             catch (Exception ex)
             {
@@ -2035,6 +2058,8 @@ namespace HubCentra_A1
                             PCB_Auto_Data(response.ToString());
                         }
                     }
+
+    
                 }
             }
             catch (Exception ex)
@@ -2777,98 +2802,97 @@ namespace HubCentra_A1
                 // 타이머 콜백이 호출될 때 수행할 작업을 여기에 작성합니다.
                 if (!_viewModel.BottleLoading_isPopupOpen)
                 {
-                    if (_viewModel.Alarm_BottleLoading.Count > 0)
+                    if (_viewModel.Queue_PCB_Manual.Count < 0)
                     {
-                        if (_viewModel.Alarm_BottleLoading.TryDequeue(out Tuple<int> command))
+                        if (_viewModel.Alarm_BottleLoading.Count > 0)
                         {
-                            _viewModel.BottleLoading_isPopupOpen = true;
-                            int item1 = command.Item1;
-                            _viewModel.Alarm_BottleLoading_Set.Remove(item1);
-                            string sysyem = "1";
-                            string cell = (item1 + 1).ToString();
+                            if (_viewModel.Alarm_BottleLoading.TryDequeue(out Tuple<int> command))
+                            {
+                                _viewModel.BottleLoading_isPopupOpen = true;
+                                int item1 = command.Item1;
+                                _viewModel.Alarm_BottleLoading_Set.Remove(item1);
+                                string sysyem = "1";
+                                string cell = (item1 + 1).ToString();
 
-                            if (item1 >= 0 && item1 <= 83)
-                            {
-                                sysyem = "1";
-                                cell = (item1 + 1).ToString();
-                            }
-                            else if (item1 >= 84 && item1 <= 167)
-                            {
-                                sysyem = "2";
-                                cell = ((item1 + 1) - 84).ToString();
-                            }
-                            else if (item1 >= 168 && item1 <= 251)
-                            {
-                                sysyem = "3";
-                                cell = ((item1 + 1) - 168).ToString();
-                            }
-                            else if (item1 >= 252 && item1 <= 335)
-                            {
-                                sysyem = "4";
-                                cell = ((item1 + 1) - 252).ToString();
-                            }
-
-                            if (_viewModel.EquipmentInfo[item1].isActive && _viewModel.EquipmentInfo[item1].isEnable && _viewModel.EquipmentInfo[item1].Switched)
-                            {
-                                _viewModel.BottleLoading_Title = "Bottle Loading";
-                                _viewModel.BottleLoading_Content = "정상적으로 로딩되었습니다." + "\n" +
-                                                    "배양을 시작합니다.";
-
-                                _viewModel.BottleLoading_WhatSystem = "System" + sysyem.ToString();
-                                _viewModel.BottleLoading_Cell_Num = "Cell : " + cell.ToString();
-                                _viewModel.BottleLoading_BarcodeID = "Bottle : " + _viewModel.Barcode_ID;
-                                _viewModel.BottleLoading_PatientID = "Clinical sample : " + _viewModel.Patient_ID;
-                                _viewModel.Barcode_ID = "";
-                                _viewModel.Patient_ID = "";
-                                _viewModel.Barcode_ID_Loading = "";
-                                _viewModel.Patient_ID_Loading = "";
-                            }
-                            else
-                            {
-
-                                _viewModel.BottleLoading_Title = "Bottle Loading";
-                                _viewModel.BottleLoading_Content = "바코드 정보가 확인되지 않았습니다." + "\n" + "바코드를 스캔/입력 후 다시 넣어주세요.";
-                                _viewModel.BottleLoading_WhatSystem = "System" + sysyem.ToString();
-                                _viewModel.BottleLoading_Cell_Num = "Cell : " + cell.ToString();
-                                _viewModel.Barcode_ID = "";
-                                _viewModel.Patient_ID = "";
-                                _viewModel.Barcode_ID_Loading = "";
-                                _viewModel.Patient_ID_Loading = "";
-                            }
-                            Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
-                            {
-                                try
+                                if (item1 >= 0 && item1 <= 83)
                                 {
-                                    BottleLoading bottleLoading = new BottleLoading(_viewModel, item1);
-                                    if (Application.Current.MainWindow != null && Application.Current.MainWindow != bottleLoading)
+                                    sysyem = "1";
+                                    cell = (item1 + 1).ToString();
+                                }
+                                else if (item1 >= 84 && item1 <= 167)
+                                {
+                                    sysyem = "2";
+                                    cell = ((item1 + 1) - 84).ToString();
+                                }
+                                else if (item1 >= 168 && item1 <= 251)
+                                {
+                                    sysyem = "3";
+                                    cell = ((item1 + 1) - 168).ToString();
+                                }
+                                else if (item1 >= 252 && item1 <= 335)
+                                {
+                                    sysyem = "4";
+                                    cell = ((item1 + 1) - 252).ToString();
+                                }
+
+                                if (_viewModel.EquipmentInfo[item1].isActive && _viewModel.EquipmentInfo[item1].isEnable && _viewModel.EquipmentInfo[item1].Switched)
+                                {
+                                    _viewModel.BottleLoading_Title = "Bottle Loading";
+                                    _viewModel.BottleLoading_Content = "정상적으로 로딩되었습니다." + "\n" +
+                                                        "배양을 시작합니다.";
+
+                                    _viewModel.BottleLoading_WhatSystem = "System" + sysyem.ToString();
+                                    _viewModel.BottleLoading_Cell_Num = "Cell : " + cell.ToString();
+                                    _viewModel.BottleLoading_BarcodeID = "Bottle : " + _viewModel.Barcode_ID;
+                                    _viewModel.BottleLoading_PatientID = "Clinical sample : " + _viewModel.Patient_ID;
+                                    _viewModel.Barcode_ID = "";
+                                    _viewModel.Patient_ID = "";
+                                    _viewModel.Barcode_ID_Loading = "";
+                                    _viewModel.Patient_ID_Loading = "";
+                                }
+                                else
+                                {
+
+                                    _viewModel.BottleLoading_Title = "Bottle Loading";
+                                    _viewModel.BottleLoading_Content = "바코드 정보가 확인되지 않았습니다." + "\n" + "바코드를 스캔/입력 후 다시 넣어주세요.";
+                                    _viewModel.BottleLoading_WhatSystem = "System" + sysyem.ToString();
+                                    _viewModel.BottleLoading_Cell_Num = "Cell : " + cell.ToString();
+                                    _viewModel.Barcode_ID = "";
+                                    _viewModel.Patient_ID = "";
+                                    _viewModel.Barcode_ID_Loading = "";
+                                    _viewModel.Patient_ID_Loading = "";
+                                }
+                                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+                                {
+                                    try
                                     {
-                                        bottleLoading.Owner = Application.Current.MainWindow;
+                                        BottleLoading bottleLoading = new BottleLoading(_viewModel, item1);
+                                        if (Application.Current.MainWindow != null && Application.Current.MainWindow != bottleLoading)
+                                        {
+                                            bottleLoading.Owner = Application.Current.MainWindow;
+                                        }
+
+                                        bottleLoading.Topmost = true;
+                                        bottleLoading.Show();
+                                        bottleLoading.Activate();
+
+                                        //Window currentWindow = Window.GetWindow(this);
+                                        //if (currentWindow != null && currentWindow != Application.Current.MainWindow)
+                                        //{
+                                        //    popup.Owner = currentWindow;
+                                        //}
+
+                                        //popup.Show(); // Show the popup
+
                                     }
-
-                                    bottleLoading.Topmost = true; 
-                                    bottleLoading.Show();
-                                    bottleLoading.Activate(); 
-
-                                    //Window currentWindow = Window.GetWindow(this);
-                                    //if (currentWindow != null && currentWindow != Application.Current.MainWindow)
-                                    //{
-                                    //    popup.Owner = currentWindow;
-                                    //}
-
-                                    //popup.Show(); // Show the popup
-
-                                }
-                                catch (Exception ex)
-                                {
-                                    // Log or handle the exception
-                                    System.Windows.MessageBox.Show($"An error occurred: {ex.Message}");
-                                }
-                            }));
+                                    catch (Exception ex)
+                                    {
+                                        // Log or handle the exception
+                                        System.Windows.MessageBox.Show($"An error occurred: {ex.Message}");
+                                    }
+                                }));
+                            }
                         }
-                    }
-                    else
-                    {
-
                     }
                 }
             }
