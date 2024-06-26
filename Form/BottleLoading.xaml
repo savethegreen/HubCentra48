@@ -65,16 +65,7 @@
                                   FontWeight="Bold"
                                   Text="{Binding BottleLoading_Cell_Num}"
                                   TextAlignment="Center">
-                            <TextBlock.Style>
-                                <Style>
-                                    <Setter Property="TextElement.Foreground" Value="#f27200" />
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Equipment_DataWithDB_presenceArray[17].alive}" Value="False">
-                                            <Setter Property="TextElement.Foreground" Value="Red" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBlock.Style>
+                        
                         </TextBlock>
 
                         <TextBlock
@@ -85,16 +76,7 @@
                             FontWeight="Bold"
                             Text="{Binding BottleLoading_BarcodeID}"
                             TextAlignment="Center">
-                            <TextBlock.Style>
-                                <Style>
-                                    <Setter Property="TextElement.Foreground" Value="#f27200" />
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Equipment_DataWithDB_presenceArray[17].alive}" Value="False">
-                                            <Setter Property="TextElement.Foreground" Value="Red" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBlock.Style>
+                    
                         </TextBlock>
 
                         <TextBlock
@@ -105,16 +87,7 @@
                FontWeight="Bold"
                Text="{Binding BottleLoading_PatientID}"
                TextAlignment="Center">
-                            <TextBlock.Style>
-                                <Style>
-                                    <Setter Property="TextElement.Foreground" Value="#f27200" />
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Equipment_DataWithDB_presenceArray[17].alive}" Value="False">
-                                            <Setter Property="TextElement.Foreground" Value="Red" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBlock.Style>
+                
                         </TextBlock>
 
 

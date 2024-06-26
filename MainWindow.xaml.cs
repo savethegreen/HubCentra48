@@ -11,6 +11,7 @@ using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Runtime.Intrinsics.Arm;
 using System.Text;
@@ -68,6 +69,7 @@ namespace HubCentra_A1
             TimerInitialize();
             BarcodeInitialize();
             TemperatureInitialize();
+            LEDini();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -86,8 +88,6 @@ namespace HubCentra_A1
             _viewModel.ProgramShotdown = true;
             Thread.Sleep(3000);
             PCB_SerialPortClose();
-            _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Tiling].Flag = false;
-            FASTECH_Set();
             System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
         #endregion window
@@ -563,7 +563,7 @@ namespace HubCentra_A1
                         break;
                     case EnumMStartWorkerThreads.Lamp:
                         Lamp();
-                        Thread.Sleep(1000);
+                        Thread.Sleep(500);
                         break;
 
                     case EnumMStartWorkerThreads.Tilting:
@@ -598,6 +598,8 @@ namespace HubCentra_A1
         private DispatcherTimer DataStorageSave_timer = new DispatcherTimer();
         private DispatcherTimer Buzzer_timer = new DispatcherTimer();
         private DispatcherTimer Alarm_System_timer = new DispatcherTimer();
+        private DispatcherTimer FASTECH_Pingcheck = new DispatcherTimer();
+
 
         public async void TimerInitialize()
         {
@@ -624,6 +626,11 @@ namespace HubCentra_A1
             Alarm_System_timer.Tick += TimerCallbacks_Alarm_System_timer;
             Alarm_System_timer.Interval = TimeSpan.FromMilliseconds(1000);
             Alarm_System_timer.Start();
+
+
+            FASTECH_Pingcheck.Tick += TimerCallbacks_FASTECH_Pingcheck_timer;
+            FASTECH_Pingcheck.Interval = TimeSpan.FromMilliseconds(10);
+            FASTECH_Pingcheck.Start();
 
 
             Door_timer.Tick += TimerCallbacks_Door_timer;
@@ -679,6 +686,7 @@ namespace HubCentra_A1
             }
         }
 
+      
         public void FASTECH_Get()
         {        
             if (_viewModel.FASTECH_IO_Connection)
@@ -687,18 +695,10 @@ namespace HubCentra_A1
                 _viewModel.FASTECH_Input = GetStatus;
                 var GetStatus2 = _viewModel.fastechDeviceManager.Get_Output(Enum_FASTECH_ID.IO);
                 _viewModel.FASTECH_Output = GetStatus2;
-                if (GetStatus == null )
+                if (_viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Trigger].Latch >10000)
                 {
-                    _viewModel.FASTECH_IO_Connection = false;
-                    _viewModel.PCB_Restart = false; // 통신이 끊어졌음을 표시
-                }
-                else
-                {
-                    if (!_viewModel.PCB_Restart)
-                    {
-                        PCBFrame(); // 처음 연결되었을 때만 호출
-                        _viewModel.PCB_Restart = true; // 통신이 연결되었음을 표시
-                    }
+                    _viewModel.fastechDeviceManager.ClearLatch(Enum_FASTECH_ID.IO);
+                    _viewModel.FASTECH_Input_Latch = 0;
                 }
             }
         }
@@ -706,6 +706,58 @@ namespace HubCentra_A1
         public void FASTECH_Set()
         {
             _viewModel.fastechDeviceManager.Set_Output(Enum_FASTECH_ID.IO, _viewModel.FASTECH_Set_Output);
+        }
+
+
+        public void TimerCallbacks_FASTECH_Pingcheck_timer(object sender, EventArgs e)
+        {
+            try
+            {
+                Pingcheck(_viewModel.SystemInfo[0].FASTECH_IO_Input_IP);
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        public void Pingcheck(string ping)
+        {
+            string host = ping;
+            int timeout = 10;
+
+            try
+            {
+                Ping pingSender = new Ping();
+                PingOptions options = new PingOptions();
+                options.DontFragment = true;
+
+                string data = "aaaaaaaaaaaaaaaa";
+                byte[] buffer = System.Text.Encoding.ASCII.GetBytes(data);
+                PingReply reply = pingSender.Send(host, timeout, buffer, options);
+
+                if (reply.Status == IPStatus.Success && reply.RoundtripTime <= timeout)
+                {
+
+                    if (!_viewModel.PCB_Restart)
+                    {
+                        Thread.Sleep(100);
+                        PCBFrame(); // 처음 연결되었을 때만 호출
+                        LEDini();
+                        _viewModel.PCB_Restart = true; // 통신이 연결되었음을 표시
+                    }
+                }
+                else
+                {
+                    _viewModel.FASTECH_Input_Latch = -1;
+                    _viewModel.FASTECH_IO_Connection = false;
+                    _viewModel.PCB_Restart = false; // 통신이 끊어졌음을 표시
+                    _viewModel.PCB_Status = false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         #endregion FASTECH
@@ -1397,22 +1449,7 @@ namespace HubCentra_A1
                 if (select_Equipment.Count > 0 && select_Equipment[0].Unloading != null)
                 {
                     _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_select_Equipment_Search].DeleteRecords(BacodeID, start, end);
-                    string UpdateEquipment_Query = "UPDATE Equipment SET " +
-        "Barcode = @Barcode, Qrcode = @Qrcode, Loading = @Loading, CreDate = @CreDate, PositiveTime = @PositiveTime, Result = @Result, IncubationTime = @IncubationTime, isEnable = @isEnable " +
-        "WHERE ID = @ID";
-                    Dictionary<string, object> UpdateEquipment_parameters = new Dictionary<string, object>
-                        {
-                            { "@Barcode", null },
-                            { "@Qrcode", null },
-                            { "@Loading", null },
-                            { "@CreDate", null },
-                            { "@PositiveTime", null },
-                            { "@Result", "Null" },
-                            { "@IncubationTime", null },
-                            { "@isEnable", false },
-                            { "@ID", select_Equipment[0].ID }  // 
-                        };
-                    _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_select_Equipment_Search].UpdateEquipment(UpdateEquipment_Query, UpdateEquipment_parameters);
+
                     ReportSerach();
 
                 }
@@ -1965,7 +2002,7 @@ namespace HubCentra_A1
                 _viewModel.Queue_PCB_Manual.Enqueue(LAMP);   
             }
 
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             for (int i = 0; i < 3; i++)
             {
 
@@ -1983,13 +2020,12 @@ namespace HubCentra_A1
             }
 
             var filteredItems = _viewModel.EquipmentInfo.Where(e => e.isActive && e.isEnable ).ToList();
-            string boardID = _viewModel.SystemInfo[0].PCB_ID1;
             foreach (var item in filteredItems)
             {
 
                 int index = item.ID - 1;
                 string result = item.Result;
-                PCB_LED(boardID, index, result);
+                PCB_LED(id, index, result);
                 ledidx[index] = true;
             }
 
@@ -1997,7 +2033,7 @@ namespace HubCentra_A1
             {
                 if (ledidx[i] == false)
                 {
-                    PCB_LED(boardID, i, "Null");
+                    PCB_LED(id, i, "Null");
                 }
             }
         }
@@ -2027,9 +2063,13 @@ namespace HubCentra_A1
             try
             {
                 if (!_viewModel.PCB_SerialPort.IsOpen && !_viewModel.PCB_Connection)
+                {
                     return;
+                }
+
                 if (_viewModel.Queue_PCB_Manual.Count > 0 )
                 {
+                    //_viewModel.PCB_Status = false;
                     if (_viewModel.Queue_PCB_Manual.TryDequeue(out string str))
                     {
                         int lineIndex = ExtractLineIndex(str);
@@ -2058,8 +2098,6 @@ namespace HubCentra_A1
                             PCB_Auto_Data(response.ToString());
                         }
                     }
-
-    
                 }
             }
             catch (Exception ex)
@@ -2076,34 +2114,41 @@ namespace HubCentra_A1
         }
         private void ProcessDataParts(string[] dataParts)
         {
-            if(dataParts.Length != 31)
+            try
             {
-                return;
-            }
-            int lineIndex = ExtractLineIndex2(dataParts[1]);
-            int startIndex = 3;
-            for (int i = 0; i < 28; i++)
-            {
-                if (double.TryParse(dataParts[i + startIndex], out double cellValue))
-                
+                if (dataParts.Length != 31)
                 {
-                    _viewModel.PCB_CellReadings[0][lineIndex][i].Add(cellValue);
+                    return;
+                }
+                int lineIndex = ExtractLineIndex2(dataParts[1]);
+                int startIndex = 3;
+                for (int i = 0; i < 28; i++)
+                {
+                    if (double.TryParse(dataParts[i + startIndex], out double cellValue))
 
-                    if (_viewModel.PCB_CellReadings[0][lineIndex][i].Count == 5)
                     {
-                        _viewModel.PCB_CellReadings[0][lineIndex][i].Sort();
-                        double averageValue = _viewModel.PCB_CellReadings[0][lineIndex][i].Skip(1).Take(3).Average();
+                        _viewModel.PCB_CellReadings[0][lineIndex][i].Add(cellValue);
 
-                        int pcbIndex = lineIndex * 28 + i;
-                        if (pcbIndex < _viewModel.PCB_Data.Count)
+                        if (_viewModel.PCB_CellReadings[0][lineIndex][i].Count == 5)
                         {
-                            _viewModel.PCB_Data[pcbIndex].ADC = (int)(averageValue * 1000);
+                            _viewModel.PCB_CellReadings[0][lineIndex][i].Sort();
+                            double averageValue = _viewModel.PCB_CellReadings[0][lineIndex][i].Skip(1).Take(3).Average();
 
+                            int pcbIndex = lineIndex * 28 + i;
+                            if (pcbIndex < _viewModel.PCB_Data.Count)
+                            {
+                                _viewModel.PCB_Data[pcbIndex].ADC = (int)(averageValue * 1000);
+
+                            }
+                            _viewModel.PCB_CellReadings[0][lineIndex][i].Clear();
+                            _viewModel.PCB_Status = true;
                         }
-                        _viewModel.PCB_CellReadings[0][lineIndex][i].Clear();
                     }
                 }
             }
+            catch (Exception ex)
+            {
+            }          
         }
 
 
@@ -2245,17 +2290,24 @@ namespace HubCentra_A1
 
         private int ExtractLineIndex2(string response)
         {
-            var lineNumberStart = response.IndexOf("LINE") + "LINE".Length;
-            var lineNumberEnd = response.Length;
-
-            var lineNumberStr = response.Substring(lineNumberStart, lineNumberEnd - lineNumberStart);
-
-            if (int.TryParse(lineNumberStr, out int lineIndex))
+            try
             {
-                return lineIndex;
-            }
+                var lineNumberStart = response.IndexOf("LINE") + "LINE".Length;
+                var lineNumberEnd = response.Length;
 
-            return -1;
+                var lineNumberStr = response.Substring(lineNumberStart, lineNumberEnd - lineNumberStart);
+
+                if (int.TryParse(lineNumberStr, out int lineIndex))
+                {
+                    return lineIndex;
+                }
+
+                return -1;
+            }
+            catch (Exception ex)
+            {
+                return -1;
+            }
         }
 
 
@@ -2709,7 +2761,10 @@ namespace HubCentra_A1
         {
             try
             {
-
+                if(!_viewModel.PCB_Status)
+                {
+                    return;
+                }
                 var Equipment = _viewModel.EquipmentInfo.Where(equipment => !equipment.isEnable && equipment.isActive && equipment.Result != "Block").ToList();
                 foreach (var equipments in Equipment)
                 {
@@ -2720,11 +2775,11 @@ namespace HubCentra_A1
                     var pcbData = _viewModel.PCB_Data[i];
                     int limit = _viewModel.Config[0].BottleExistenceRange;
                     string Result = "Incubation";
-                    if (i == 30)
+                    if (pcbData.ADC <= 0 )
                     {
-
+                        return;
                     }
-                    if (pcbData.ADC > 0 && pcbData.ADC < limit)
+                    if (pcbData.ADC > 0 && pcbData.ADC < limit )
                     {
                         if (_viewModel.Barcode_ID_Loading != "" && _viewModel.Patient_ID_Loading != "")
                         {
@@ -2770,15 +2825,16 @@ namespace HubCentra_A1
                                 _viewModel.Equipment_DataWithDB_presenceArray[i].alive = true;
                                 _viewModel.Alarm_BottleLoading_Set.Add(i);
                                 _viewModel.Alarm_BottleLoading.Enqueue(new Tuple<int>(i));
+                                PCB_LED(_viewModel.SystemInfo[0].PCB_ID1, i, "Error");
                             }
                         }
 
                     }
                     else
                     {
-                        if (i == 30)
+                        if (_viewModel.Equipment_DataWithDB_presenceArray[i].alive == true)
                         {
-                         
+                            PCB_LED(_viewModel.SystemInfo[0].PCB_ID1, i, "Null");
                         }
                         if (_viewModel.EquipmentInfo[i].Result == "Null")
                         {
@@ -2802,7 +2858,7 @@ namespace HubCentra_A1
                 // 타이머 콜백이 호출될 때 수행할 작업을 여기에 작성합니다.
                 if (!_viewModel.BottleLoading_isPopupOpen)
                 {
-                    if (_viewModel.Queue_PCB_Manual.Count < 0)
+                    if (_viewModel.Queue_PCB_Manual.Count < 0 || _viewModel.PCB_Status)
                     {
                         if (_viewModel.Alarm_BottleLoading.Count > 0)
                         {
@@ -3308,7 +3364,9 @@ namespace HubCentra_A1
                     }
                         else
                         {
-                            _viewModel.MainWindow_ButtonFlag = Enum_MainWindow_ButtonFlag.SystemRack1;
+                        _viewModel.FASTECH_Input_Latch = _viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Trigger].Latch;
+
+                        _viewModel.MainWindow_ButtonFlag = Enum_MainWindow_ButtonFlag.SystemRack1;
                             Door_timer_Start();
                     }
                         _viewModel.Door_previousDoorState = currentDoorState;
@@ -3323,9 +3381,9 @@ namespace HubCentra_A1
                         if (_viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Trigger].Flag == false)
                         {
                             if (!_viewModel.Buzzer)
-                            {
-                                _viewModel.Buzzer = true;
-                                // Buzzer_timer_Start();
+                        {
+                            _viewModel.Buzzer = true;
+              
                             }
                         }
                         if (틸팅중지())
@@ -3501,8 +3559,12 @@ namespace HubCentra_A1
                 bool hasPositive = equ.Any(e => e.Result == "Positive");
                 bool hasNegative = equ.Any(e => e.Result == "Negative");
                 bool Dooropen = _viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Door].Flag;
-
-                if (hasPositive || Dooropen == false)
+                bool Indi = _viewModel.Equipment_DataWithDB_presenceArray.Any(data => data.alive == true);
+                if (Indi)
+                {
+                    Lamp_Blinking();
+                }
+                else if(hasPositive || Dooropen == false)
                 {
                     Lamp_Red();
                 }
@@ -3510,6 +3572,7 @@ namespace HubCentra_A1
                 {
                     Lamp_Yellow();
                 }
+         
                 else
                 {
                     Lamp_Green();
@@ -3561,11 +3624,20 @@ namespace HubCentra_A1
 
             }
         }
+        public void Lamp_Blinking()
+        {
+            try
+            {
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.RedLamp].Flag = !_viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.RedLamp].Flag;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
         #endregion Lamp
 
         #region Buzzer
-
-
         public void Buzzer_timer_Stop()
         {
             if (Buzzer_timer.IsEnabled)
@@ -3575,23 +3647,45 @@ namespace HubCentra_A1
         }
         private void TimerCallbacks_Buzzer_timer(object sender, EventArgs e)
         {
-            if (_viewModel.Config[0].UseBuzzer == false)
+            try
+            {
+                if (_viewModel.Config[0].UseBuzzer == false)
+                {
+                    _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag = false;
+                    return;
+                }
+                 if (_viewModel.Equipment_DataWithDB_presenceArray.Any(data => data.alive == true) && _viewModel.PCB_Restart)
+                {
+                    _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag = !_viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag;
+                }
+                else if (_viewModel.System_PositiveFirstint != -1)
+                {
+                    _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag = !_viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag;
+                }
+
+                else if (_viewModel.Buzzer && _viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Door].Flag == false || _viewModel.Alarm_Door_Buzzer == true)
+                {
+                    if (_viewModel.FASTECH_Input_Latch >= _viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Trigger].Latch)
+                    {
+                        _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag = !_viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag;
+                    }
+                    else
+                    {
+                        _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag = false;
+                    }
+
+                }
+     
+
+                else
+                {
+                    _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag = false;
+                }
+            }
+            catch (Exception ex)
             {
                 _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag = false;
-                return;
-            }
-            if (_viewModel.Buzzer && _viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Trigger].Flag == false && _viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Door].Flag == false || _viewModel.Alarm_Door_Buzzer ==true)
-            {
-                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag = !_viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag;
-            }
-            else if(_viewModel.System_PositiveFirstint != -1)
-            {
-                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag = !_viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag;
-            }
-            else
-            {
-                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.Buzzer].Flag = false;
-            }
+            }      
         }
         #endregion Buzzer
 
@@ -3683,7 +3777,7 @@ namespace HubCentra_A1
                     Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                     {
                         alarm_System = new Alarm_System(_viewModel);
-                        if (Application.Current.MainWindow != null && Application.Current.MainWindow != alarm_positive)
+                        if (Application.Current.MainWindow != null && Application.Current.MainWindow != alarm_System)
                         {
                             alarm_System.Owner = Application.Current.MainWindow;
                         }
@@ -3770,6 +3864,23 @@ namespace HubCentra_A1
         #endregion Calibration
 
         #region LED
+        public void LEDini()
+        {
+            try
+            {
+                string id = _viewModel.SystemInfo[0].PCB_ID1;
+                for (int i = 0; i < _viewModel.Common_SystemCellCount; i++)
+                {
+                    if (_viewModel.Equipment_DataWithDB_presenceArray[i].alive == true)
+                    {
+                        PCB_LED(id, i, "Error");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
 
         public void PCB_LED(string boardID, int idx, string result)
         {
@@ -3806,6 +3917,12 @@ namespace HubCentra_A1
                     string command = $"{BoardID},{line},TLED,{channel},ON,{color}";
                     _viewModel.Queue_PCB_Manual.Enqueue(command);
                 }
+                else if (Result == "Error")
+                {
+                    string color = GetRgbColor(5); // Assuming this method returns the correct color format
+                    string command = $"{BoardID},{line},TLED,{channel},ON,{color}";
+                    _viewModel.Queue_PCB_Manual.Enqueue(command);
+                }
                 else
                 {
                     string color = GetRgbColor(0);
@@ -3839,6 +3956,7 @@ namespace HubCentra_A1
                 2 => "#FFFF0000", //Positive
                 3 => "#FFFFA500", //Negative
                 4 => "#FF191311", //Black
+                5 => "#FFFFA500", //Error
                 _ => "#FFFFFFFF"
             };
 

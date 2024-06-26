@@ -83,14 +83,21 @@ namespace HubCentra_A1.Class.FASTECH
                 {
                     for (int i = 0; i < nLatchCount; i++)
                     {
+                        uint idx = (uint)i;
+                        uint Latchcount = 0;
+                        FAS_GetLatchCount(nBdID, idx, ref Latchcount);
+
                         bool State = (put & 1u << i) != 0;
                         //_viewModel.Observable_Ezi_Input[i].bools = inputState;
                         Class_FASTECH_Input io = new Class_FASTECH_Input
                         {
-                            Flag = State
+                            Flag = State,
+                            Latch = (int)Latchcount,
                         };
                         lst.Add(io);
+              
                     }
+        
                     return lst;
                 }
             }
@@ -198,6 +205,19 @@ namespace HubCentra_A1.Class.FASTECH
 
             }
 
+        }
+
+        public void ClearLatch(Enum_FASTECH_ID ID)
+        {
+            try
+            {
+                int nBdID = (int)ID;
+             
+                FAS_ClearLatchCount(nBdID, 2);
+            }
+            catch (Exception ex)
+            {
+            }
         }
         #endregion Set
    

@@ -402,6 +402,19 @@ namespace HubCentra_A1.Model
                 }
             }
         }
+
+        public int FASTECH_Input_Latch
+        {
+            get => _view.FASTECH_Input_Latch;
+            set
+            {
+                if (_view.FASTECH_Input_Latch != value)
+                {
+                    _view.FASTECH_Input_Latch = value;
+                    OnPropertyChanged(nameof(FASTECH_Input_Latch));
+                }
+            }
+        }
         #endregion IO
         #endregion FASTECH
 

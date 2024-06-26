@@ -88,6 +88,8 @@ namespace HubCentra_A1.Model
 
         #region IO
         public List<Class_FASTECH_Input> FASTECH_Input { get; set; }
+
+        public int FASTECH_Input_Latch =-1;
         public List<Class_FASTECH_Output> FASTECH_Output { get; set; }
 
         public List<Class_FASTECH_Output> FASTECH_Set_Output { get; set; }
@@ -1994,6 +1996,7 @@ namespace HubCentra_A1.Model
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
             private bool _Flag;
+            private int _Latch;
             public bool Flag
             {
                 get => _Flag;
@@ -2006,6 +2009,19 @@ namespace HubCentra_A1.Model
                     }
                 }
             }
+            public int Latch
+            {
+                get => _Latch;
+                set
+                {
+                    if (_Latch != value)
+                    {
+                        _Latch = value;
+                        OnPropertyChanged(nameof(_Latch));
+                    }
+                }
+            }
+
 
         }
         #endregion Input
