@@ -8,11 +8,18 @@
     d:DesignHeight="763"
     d:DesignWidth="962"
     mc:Ignorable="d">
+
+
+    <UserControl.Resources>
+        <local:BooleanToOnOffConverter x:Key="BooleanToOnOffConverter"/>
+    </UserControl.Resources>
+    
+    
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20*" />
+            <RowDefinition Height="10*" />
             <RowDefinition Height="100*" />
-            <RowDefinition Height="20*" />
+            <RowDefinition Height="10*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
@@ -23,6 +30,10 @@
         <!--#region R1C1-->
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="100*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="100*" />
                 <RowDefinition Height="3*" />
                 <RowDefinition Height="100*" />
                 <RowDefinition Height="3*" />
@@ -177,7 +188,7 @@
                     <TextBlock
                         Grid.Column="0"
                         Style="{StaticResource Config_TextBlock_01}"
-                        Text="Temp" />
+                        Text="Set temperature" />
                 </Grid>
                 <Grid Grid.Column="3">
                     <Grid.ColumnDefinitions>
@@ -213,7 +224,7 @@
                     <TextBlock
                         Grid.Column="0"
                         Style="{StaticResource Config_TextBlock_01}"
-                        Text="Door Open Alarm" />
+                        Text="Door-Open Alarm" />
                 </Grid>
                 <Grid Grid.Column="3">
                     <Grid.ColumnDefinitions>
@@ -250,7 +261,7 @@
                     <TextBlock
                         Grid.Column="0"
                         Style="{StaticResource Config_TextBlock_01}"
-                        Text="MaximumTime" />
+                        Text="Incubation Time" />
                 </Grid>
                 <Grid Grid.Column="3">
                     <Grid.ColumnDefinitions>
@@ -285,7 +296,7 @@
                     <TextBlock
                         Grid.Column="0"
                         Style="{StaticResource Config_TextBlock_01}"
-                        Text="Use Buzzer" />
+                        Text="Buzzer On/OFF" />
                 </Grid>
                 <Grid Grid.Column="3">
                     <Grid.ColumnDefinitions>
@@ -303,7 +314,7 @@
                                 CommandParameter="3"
                                 MouseAction="LeftClick" />
                         </Grid.InputBindings>
-                        <TextBlock Style="{StaticResource Config_TextBlock_02}" Text="{Binding Config[0].UseBuzzer, StringFormat='{}{0} '}" />
+                        <TextBlock Style="{StaticResource Config_TextBlock_02}" Text="{Binding Config[0].UseBuzzer, Converter={StaticResource BooleanToOnOffConverter}}" />
                     </Grid>
                 </Grid>
             </Grid>
@@ -853,6 +864,110 @@
                 </Grid>
             </Grid>
             <!--#endregion Calibration-->
+
+            <!--#region Equipment Change-->
+            <Grid Grid.Row="25" Grid.Column="1">
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="120*" />
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="300*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <TextBlock
+                        Grid.Column="0"
+                        Style="{StaticResource Config_TextBlock_01}"
+                        Text="Equipment Change" />
+
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="100*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="100*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="100*" />
+                    </Grid.ColumnDefinitions>
+         
+
+                    <Grid Grid.Column="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="100*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0" Margin="5,5">
+                            <Button
+                                Command="{Binding ICommand_Config}"
+                                CommandParameter="36"
+                                Content="장비 교체">
+                                <Button.Style>
+                                    <Style BasedOn="{StaticResource MainWindow_Button_02}" TargetType="Button" />
+                                </Button.Style>
+                            </Button>
+                        </Grid>
+
+                    </Grid>
+                </Grid>
+            </Grid>
+            <!--#endregion Equipment Change-->
+
+            <!--#region Negative On/ OFF-->
+            <Grid Grid.Row="27" Grid.Column="1">
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="120*" />
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="300*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <TextBlock
+                        Grid.Column="0"
+                        Style="{StaticResource Config_TextBlock_01}"
+                        Text="Negative On/ OFF" />
+
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100*" />
+                        <ColumnDefinition Width="50*" />
+                        <ColumnDefinition Width="100*" />
+                        <ColumnDefinition Width="50*" />
+                        <ColumnDefinition Width="100*" />
+                        <ColumnDefinition Width="50*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.InputBindings>
+                            <MouseBinding
+                 Command="{Binding ICommand_Config}"
+                 CommandParameter="37"
+                 MouseAction="LeftClick" />
+                        </Grid.InputBindings>
+                        <TextBlock Style="{StaticResource Config_TextBlock_02}" Text="{Binding Config[0].NegativeOnOFF, Converter={StaticResource BooleanToOnOffConverter}}" />
+                    </Grid>
+                </Grid>
+            </Grid>
+            <!--#endregion Equipment Change-->
         </Grid>
         <!--#endregion R1C1-->
     </Grid>

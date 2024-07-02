@@ -23,6 +23,7 @@ namespace HubCentra_A1
     public partial class Alarm_Equipment : Window
     {
         #region window
+        public event EventHandler<Alarm_Equipment_PopupEventArgs> OKClicked;
         private ViewModel _viewModel;
         public Alarm_Equipment(ViewModel model)
         {
@@ -37,7 +38,7 @@ namespace HubCentra_A1
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            TimerInitialize();
+
         }
 
         #endregion window
@@ -109,5 +110,22 @@ namespace HubCentra_A1
 
 
         #endregion Timer
+
+        private void OK_Click(object sender, RoutedEventArgs e)
+        {
+
+            this.Close();
+        }
+    }
+
+
+    public class Alarm_Equipment_PopupEventArgs : EventArgs
+    {
+        public int Idx { get; }
+
+        public Alarm_Equipment_PopupEventArgs()
+        {
+      
+        }
     }
 }

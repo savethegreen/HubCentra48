@@ -76,7 +76,7 @@
                       Grid.Row="2"
                       HorizontalAlignment="Center"
                       VerticalAlignment="Top"
-                      FontSize="23"
+                      FontSize="18"
                       Text="{Binding Alarm_Positive_Unloading_BarcodeID}"
                       TextAlignment="Center">
                             <TextBlock.Style>
@@ -91,7 +91,7 @@
                               Grid.Row="3"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Top"
-                              FontSize="23"
+                              FontSize="18"
                               Text="{Binding Alarm_Positive_Unloading_PatientID}"
                               TextAlignment="Center">
                             <TextBlock.Style>

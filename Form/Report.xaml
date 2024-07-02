@@ -46,129 +46,154 @@
 
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="200*"/>
                         <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="30*"/>
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Column="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="90*"/>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="100*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Patient Name : " Style="{StaticResource Report_TextBlock_01}"/>
-                        <TextBox Grid.Column="2"  Margin="1,1"  HorizontalContentAlignment="Center" FontSize="20"/>
-                    </Grid>
-
-                    <Grid Grid.Column="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="90*"/>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="100*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Accession ID : " Style="{StaticResource Report_TextBlock_01}"/>
-                        <TextBox Grid.Column="2"  Margin="1,1"  HorizontalContentAlignment="Center" FontSize="20"/>
-                    </Grid>
-                </Grid>
-
-                <Grid Grid.Row="3">
-
-
-                    <Grid Grid.Column="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30*"/>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="100*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Barcode ID : " Style="{StaticResource Report_TextBlock_01}"/>
+                        <TextBlock Grid.Column="0" Text="Patient Name : " Style="{StaticResource Report_TextBlock_01}"/>
+                        <TextBox Grid.Column="2"    HorizontalContentAlignment="Center" FontSize="20"/>
+                    </Grid>
 
-                        <Grid  Grid.Column="2">
-                            <TextBox Style="{StaticResource Report_TextBox_01}" Text="{Binding Report_Find_Barcode, UpdateSourceTrigger=PropertyChanged}" />
+                </Grid>
+
+                <Grid Grid.Row="3">
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="30*"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <Grid Grid.Column="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="100*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Barcode ID : " Style="{StaticResource Report_TextBlock_01}"/>
+
+                            <Grid  Grid.Column="2">
+                                <TextBox  HorizontalContentAlignment="Center" FontSize="20" Text="{Binding Report_Find_Barcode, UpdateSourceTrigger=PropertyChanged}" />
+                            </Grid>
                         </Grid>
+
+                        
+                        
+                        
+
                     </Grid>
                 </Grid>
 
                 <Grid Grid.Row="5" x:Name ="myGrid">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="200*"/>
+                        <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="30*"/>
-                        <ColumnDefinition Width="80*"/>
-                        <ColumnDefinition Width="100*"/>
                     </Grid.ColumnDefinitions>
+                    
+                    
                     <Grid Grid.Column="0">
-                        <TextBlock  Text="Model : " Style="{StaticResource Report_TextBlock_01}" />
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="100*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"  Text="Model : " Style="{StaticResource Report_TextBlock_01}" />
+                        <Grid  Grid.Column="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100*"/>
+                                <ColumnDefinition Width="100*"/>
+                                <ColumnDefinition Width="100*"/>
+                            </Grid.ColumnDefinitions>
+                            <RadioButton
+                           x:Name="raws"
+                           Grid.Column="0"
+                           Checked="RadioButton_Model"
+                           Content="raw"
+                           GroupName="Model"
+                           Style="{StaticResource Report_RadioButton_01}"
+                           Tag="0" />
+                            <RadioButton
+                           Grid.Column="1" Grid.ColumnSpan="2"
+                           Checked="RadioButton_Model"
+                           Content="Simple Moving Average"
+                           GroupName="Model"
+                           Style="{StaticResource Report_RadioButton_01}"
+                           Tag="1" />
+
+                        </Grid>
 
                     </Grid>
                  
- <Grid  Grid.Column="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="50*" />
-                            <ColumnDefinition Width="110*" />
-                        </Grid.ColumnDefinitions>
-                        <RadioButton
-                            x:Name="raws"
-                            Grid.Column="0"
-                            Checked="RadioButton_Model"
-                            Content="raw"
-                            GroupName="Model"
-                            Style="{StaticResource Report_RadioButton_01}"
-                            Tag="0" />
-                        <RadioButton
-                            Grid.Column="1"
-                            Checked="RadioButton_Model"
-                            Content="Simple Moving Average"
-                            GroupName="Model"
-                            Style="{StaticResource Report_RadioButton_01}"
-                            Tag="1" />
-
-                    </Grid>
-
+ 
                 </Grid>
 
 
                 <Grid Grid.Row="7">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="90*"/>
-                        <ColumnDefinition Width="100*"/>
-                        <ColumnDefinition Width="100*"/>
-                        <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="200*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="30*"/>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="100*"/>
+                        </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="Average Value : " Style="{StaticResource Report_TextBlock_01}" />
+                        <Grid  Grid.Column="2" >
+                            <TextBox HorizontalContentAlignment="Center" FontSize="20" Text="{Binding Report_AverageValue, UpdateSourceTrigger=PropertyChanged}" />
+                        </Grid>
                     </Grid>
 
-                    <Grid  Grid.Column="1" >
-                        <TextBox Style="{StaticResource Report_TextBox_01}" Text="{Binding Report_AverageValue, UpdateSourceTrigger=PropertyChanged}" />
-                    </Grid>
 
                 </Grid>
 
                 <Grid Grid.Row="9">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="90*"/>
-                        <ColumnDefinition Width="100*"/>
-                        <ColumnDefinition Width="100*"/>
-                        <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="200*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="30*"/>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Information : " Style="{StaticResource Report_TextBlock_01}" />
-                    </Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="100*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Grid  Grid.Column="1">
-                        <RadioButton
-                            x:Name="X1"
-                            Grid.Column="0"
-                            Checked="RadioButton_Model"
-                            Content="Anonymous"
-                            GroupName="Model1"
-                            Style="{StaticResource Report_RadioButton_01}"
-                            Tag="0" />
-                    </Grid>
+                        <TextBlock Grid.Column="0" Text="Information : " Style="{StaticResource Report_TextBlock_01}" />
+
+                        <Grid  Grid.Column="2" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100*"/>
+                                <ColumnDefinition Width="100*"/>
+                                <ColumnDefinition Width="100*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid  Grid.Column="0">
+                                <RadioButton
+           x:Name="X1"
+           Grid.Column="0"
+           Checked="RadioButton_Model"
+           Content="Anonymous"
+           GroupName="Model1"
+           Style="{StaticResource Report_RadioButton_01}"
+           Tag="0" />
+                            </Grid>
 
 
-                    <Grid  Grid.Column="2">
-                        <RadioButton
+
+                            <Grid  Grid.Column="1">
+                                <RadioButton
                             x:Name="X2"
                             Grid.Column="0"
                             Checked="RadioButton_Model"
@@ -176,11 +201,10 @@
                             GroupName="Model1"
                             Style="{StaticResource Report_RadioButton_01}"
                             Tag="0" />
-                    </Grid>
+                            </Grid>
 
-
-                    <Grid  Grid.Column="3">
-                        <RadioButton
+                            <Grid  Grid.Column="2">
+                                <RadioButton
                             x:Name="X3"
                             Grid.Column="0"
                             Checked="RadioButton_Model"
@@ -188,7 +212,13 @@
                             GroupName="Model1"
                             Style="{StaticResource Report_RadioButton_01}"
                             Tag="0" />
+                            </Grid>
+
+                        </Grid>
+
                     </Grid>
+
+                
                 </Grid>
             </Grid>
 

@@ -59,7 +59,7 @@
                                    Grid.Row="1"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Top"
-                                   FontSize="26"
+                                   FontSize="18"
                                    FontWeight="Bold"
                                    Text="{Binding Barcode_BarcodeID}"
                                    TextAlignment="Center">

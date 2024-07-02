@@ -36,11 +36,12 @@ namespace HubCentra_A1
             _viewModel = model;
             DataContext = _viewModel;
             IDX = idx;
+            TimerInitialize();
 
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            TimerInitialize();
+     
         }
 
         #endregion window

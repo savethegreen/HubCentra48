@@ -26,6 +26,25 @@ namespace HubCentra_A1
         }
     }
 
+    public class BooleanToOnOffConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is bool booleanValue)
+            {
+                return booleanValue ? "On" : "Off";
+            }
+            return null;
+        }
 
-    
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is string stringValue)
+            {
+                return stringValue.Equals("On", StringComparison.OrdinalIgnoreCase);
+            }
+            return false;
+        }
+    }
+
 }

@@ -281,14 +281,15 @@ namespace HubCentra_A1
            "Spare2 VARCHAR(255) NULL, " +
            "Spare3 VARCHAR(255) NULL, " +
            "Spare4 VARCHAR(255) NULL, " +
-           "Spare5 VARCHAR(255) NULL)", 
+           "Spare5 VARCHAR(255) NULL, " +
+           "NegativeOnOFF BIT NULL)", 
            connection))
                 {
                     command.ExecuteNonQuery();
                 }
                 using (SqlCommand populateCommand = new SqlCommand(
-                    $"INSERT INTO {tableName} (ID, Temp, doorOpenAlarmTrigger, LoadCellMin, LoadCellMax, MaximumTime,  UseBuzzer, Positive_Wait, Positive_Low, Positive_High, Analysis_Time_Range, Analysis_Intervals, Threshold, BottleExistenceRange, DataStorageSave, TrashCanFillLevel, SYSTEM1, SYSTEM2, SYSTEM3, SYSTEM4, Spare1, Spare2, Spare3, Spare4, Spare5)" +
-                    $" VALUES (@ID, @Temp, @doorOpenAlarmTrigger, @LoadCellMin, @LoadCellMax, @MaximumTime,  @UseBuzzer, @Positive_Wait, @Positive_Low, @Positive_High, @Analysis_Time_Range, @Analysis_Intervals, @Threshold, @BottleExistenceRange, @DataStorageSave, @TrashCanFillLevel, @SYSTEM1, @SYSTEM2, @SYSTEM3, @SYSTEM4, @Spare1, @Spare2, @Spare3, @Spare4, @Spare5)",
+                    $"INSERT INTO {tableName} (ID, Temp, doorOpenAlarmTrigger, LoadCellMin, LoadCellMax, MaximumTime,  UseBuzzer, Positive_Wait, Positive_Low, Positive_High, Analysis_Time_Range, Analysis_Intervals, Threshold, BottleExistenceRange, DataStorageSave, TrashCanFillLevel, SYSTEM1, SYSTEM2, SYSTEM3, SYSTEM4, Spare1, Spare2, Spare3, Spare4, Spare5, NegativeOnOFF)" +
+                    $" VALUES (@ID, @Temp, @doorOpenAlarmTrigger, @LoadCellMin, @LoadCellMax, @MaximumTime,  @UseBuzzer, @Positive_Wait, @Positive_Low, @Positive_High, @Analysis_Time_Range, @Analysis_Intervals, @Threshold, @BottleExistenceRange, @DataStorageSave, @TrashCanFillLevel, @SYSTEM1, @SYSTEM2, @SYSTEM3, @SYSTEM4, @Spare1, @Spare2, @Spare3, @Spare4, @Spare5, @NegativeOnOFF)",
                     connection))
                 {
                     populateCommand.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int));
@@ -316,7 +317,7 @@ namespace HubCentra_A1
                     populateCommand.Parameters.Add(new SqlParameter("@Spare3", SqlDbType.VarChar));
                     populateCommand.Parameters.Add(new SqlParameter("@Spare4", SqlDbType.VarChar));
                     populateCommand.Parameters.Add(new SqlParameter("@Spare5", SqlDbType.VarChar));
-
+                    populateCommand.Parameters.Add(new SqlParameter("@NegativeOnOFF", SqlDbType.Bit));
 
                     int totalCells = 1;
 
@@ -347,6 +348,7 @@ namespace HubCentra_A1
                         populateCommand.Parameters["@Spare3"].Value = "";
                         populateCommand.Parameters["@Spare4"].Value = "";
                         populateCommand.Parameters["@Spare5"].Value = "";
+                        populateCommand.Parameters["@NegativeOnOFF"].Value = 0;
                         populateCommand.ExecuteNonQuery();
                     }
                 }
@@ -1033,8 +1035,8 @@ namespace HubCentra_A1
                                     Spare2 = reader["Spare2"].ToString(),
                                     Spare3 = reader["Spare3"].ToString(),
                                     Spare4 = reader["Spare4"].ToString(),
-                                    Spare5 = reader["Spare5"].ToString()
-
+                                    Spare5 = reader["Spare5"].ToString(),
+                                    NegativeOnOFF = Convert.ToBoolean(reader["NegativeOnOFF"]),
                                 };
 
                                 configurations.Add(data);
@@ -1743,7 +1745,8 @@ namespace HubCentra_A1
                                                             "Spare2 = @Spare2, " +
                                                             "Spare3 = @Spare3, " +
                                                             "Spare4 = @Spare4, " +
-                                                            "Spare5 = @Spare5 " +
+                                                            "Spare5 = @Spare5, " +
+                                                            "NegativeOnOFF = @NegativeOnOFF " +
                                                             "WHERE ID = @ID", connection))
                         {
                             command.Parameters.AddWithValue("@ID", item.ID);
@@ -1771,7 +1774,7 @@ namespace HubCentra_A1
                             command.Parameters.AddWithValue("@Spare3", item.Spare3);
                             command.Parameters.AddWithValue("@Spare4", item.Spare4);
                             command.Parameters.AddWithValue("@Spare5", item.Spare5);
-
+                            command.Parameters.AddWithValue("@NegativeOnOFF", item.NegativeOnOFF);
                             command.ExecuteNonQuery();
                         }
                     }

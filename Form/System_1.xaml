@@ -247,6 +247,25 @@
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="0">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                                                          AutoReverse="True"
+                                                                          RepeatBehavior="Forever"
+                                                                          Storyboard.TargetProperty="Opacity"
+                                                                          From="1"
+                                                                          To="0.2"
+                                                                          Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -363,6 +382,25 @@
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="1">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                  AutoReverse="True"
+                                  RepeatBehavior="Forever"
+                                  Storyboard.TargetProperty="Opacity"
+                                  From="1"
+                                  To="0.2"
+                                  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -482,6 +520,24 @@
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="2">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                  AutoReverse="True"
+                                  RepeatBehavior="Forever"
+                                  Storyboard.TargetProperty="Opacity"
+                                  From="1"
+                                  To="0.2"
+                                  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -596,6 +652,24 @@
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="3">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                  AutoReverse="True"
+                                  RepeatBehavior="Forever"
+                                  Storyboard.TargetProperty="Opacity"
+                                  From="1"
+                                  To="0.2"
+                                  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -714,6 +788,24 @@
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="4">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                  AutoReverse="True"
+                                  RepeatBehavior="Forever"
+                                  Storyboard.TargetProperty="Opacity"
+                                  From="1"
+                                  To="0.2"
+                                  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -828,6 +920,24 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="6">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                  AutoReverse="True"
+                                  RepeatBehavior="Forever"
+                                  Storyboard.TargetProperty="Opacity"
+                                  From="1"
+                                  To="0.2"
+                                  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -946,6 +1056,25 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="6">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                  AutoReverse="True"
+                                  RepeatBehavior="Forever"
+                                  Storyboard.TargetProperty="Opacity"
+                                  From="1"
+                                  To="0.2"
+                                  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -1062,6 +1191,26 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="7">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                  AutoReverse="True"
+                                  RepeatBehavior="Forever"
+                                  Storyboard.TargetProperty="Opacity"
+                                  From="1"
+                                  To="0.2"
+                                  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -1176,6 +1325,27 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="8">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                  AutoReverse="True"
+                                  RepeatBehavior="Forever"
+                                  Storyboard.TargetProperty="Opacity"
+                                  From="1"
+                                  To="0.2"
+                                  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -1294,6 +1464,26 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="9">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                  AutoReverse="True"
+                                  RepeatBehavior="Forever"
+                                  Storyboard.TargetProperty="Opacity"
+                                  From="1"
+                                  To="0.2"
+                                  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -1408,6 +1598,26 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="10">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                  AutoReverse="True"
+                                  RepeatBehavior="Forever"
+                                  Storyboard.TargetProperty="Opacity"
+                                  From="1"
+                                  To="0.2"
+                                  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -1526,6 +1736,26 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="11">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                  AutoReverse="True"
+                                  RepeatBehavior="Forever"
+                                  Storyboard.TargetProperty="Opacity"
+                                  From="1"
+                                  To="0.2"
+                                  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -1640,6 +1870,26 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="12">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                  AutoReverse="True"
+                                  RepeatBehavior="Forever"
+                                  Storyboard.TargetProperty="Opacity"
+                                  From="1"
+                                  To="0.2"
+                                  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -1758,6 +2008,26 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="13">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                  AutoReverse="True"
+                                  RepeatBehavior="Forever"
+                                  Storyboard.TargetProperty="Opacity"
+                                  From="1"
+                                  To="0.2"
+                                  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -1864,6 +2134,26 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="14">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                  AutoReverse="True"
+                                  RepeatBehavior="Forever"
+                                  Storyboard.TargetProperty="Opacity"
+                                  From="1"
+                                  To="0.2"
+                                  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -1980,6 +2270,26 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="15">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                  AutoReverse="True"
+                                  RepeatBehavior="Forever"
+                                  Storyboard.TargetProperty="Opacity"
+                                  From="1"
+                                  To="0.2"
+                                  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -2091,6 +2401,26 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="16">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                  AutoReverse="True"
+                                  RepeatBehavior="Forever"
+                                  Storyboard.TargetProperty="Opacity"
+                                  From="1"
+                                  To="0.2"
+                                  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -2205,6 +2535,25 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="17">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                  AutoReverse="True"
+                                  RepeatBehavior="Forever"
+                                  Storyboard.TargetProperty="Opacity"
+                                  From="1"
+                                  To="0.2"
+                                  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -2316,6 +2665,26 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="18">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                  AutoReverse="True"
+                                  RepeatBehavior="Forever"
+                                  Storyboard.TargetProperty="Opacity"
+                                  From="1"
+                                  To="0.2"
+                                  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -2432,6 +2801,26 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="19">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                  AutoReverse="True"
+                                  RepeatBehavior="Forever"
+                                  Storyboard.TargetProperty="Opacity"
+                                  From="1"
+                                  To="0.2"
+                                  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -2543,6 +2932,26 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="20">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+                                  AutoReverse="True"
+                                  RepeatBehavior="Forever"
+                                  Storyboard.TargetProperty="Opacity"
+                                  From="1"
+                                  To="0.2"
+                                  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -2658,6 +3067,24 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="21">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+  AutoReverse="True"
+  RepeatBehavior="Forever"
+  Storyboard.TargetProperty="Opacity"
+  From="1"
+  To="0.2"
+  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -2769,6 +3196,25 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="22">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+  AutoReverse="True"
+  RepeatBehavior="Forever"
+  Storyboard.TargetProperty="Opacity"
+  From="1"
+  To="0.2"
+  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -2884,6 +3330,25 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="23">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+  AutoReverse="True"
+  RepeatBehavior="Forever"
+  Storyboard.TargetProperty="Opacity"
+  From="1"
+  To="0.2"
+  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -2995,6 +3460,25 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="24">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+  AutoReverse="True"
+  RepeatBehavior="Forever"
+  Storyboard.TargetProperty="Opacity"
+  From="1"
+  To="0.2"
+  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -3110,6 +3594,25 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="25">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+  AutoReverse="True"
+  RepeatBehavior="Forever"
+  Storyboard.TargetProperty="Opacity"
+  From="1"
+  To="0.2"
+  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -3223,6 +3726,25 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="26">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+  AutoReverse="True"
+  RepeatBehavior="Forever"
+  Storyboard.TargetProperty="Opacity"
+  From="1"
+  To="0.2"
+  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -3334,6 +3856,25 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="27">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+  AutoReverse="True"
+  RepeatBehavior="Forever"
+  Storyboard.TargetProperty="Opacity"
+  From="1"
+  To="0.2"
+  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -3518,6 +4059,25 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="28">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+  AutoReverse="True"
+  RepeatBehavior="Forever"
+  Storyboard.TargetProperty="Opacity"
+  From="1"
+  To="0.2"
+  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -3631,6 +4191,25 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="29">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+  AutoReverse="True"
+  RepeatBehavior="Forever"
+  Storyboard.TargetProperty="Opacity"
+  From="1"
+  To="0.2"
+  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -3748,6 +4327,25 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="30">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+  AutoReverse="True"
+  RepeatBehavior="Forever"
+  Storyboard.TargetProperty="Opacity"
+  From="1"
+  To="0.2"
+  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -3861,6 +4459,26 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="31">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+  AutoReverse="True"
+  RepeatBehavior="Forever"
+  Storyboard.TargetProperty="Opacity"
+  From="1"
+  To="0.2"
+  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -3978,6 +4596,26 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="32">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+  AutoReverse="True"
+  RepeatBehavior="Forever"
+  Storyboard.TargetProperty="Opacity"
+  From="1"
+  To="0.2"
+  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -4091,6 +4729,26 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="33">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+  AutoReverse="True"
+  RepeatBehavior="Forever"
+  Storyboard.TargetProperty="Opacity"
+  From="1"
+  To="0.2"
+  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -4208,6 +4866,26 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="34">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+  AutoReverse="True"
+  RepeatBehavior="Forever"
+  Storyboard.TargetProperty="Opacity"
+  From="1"
+  To="0.2"
+  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -4321,6 +4999,26 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="35">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+  AutoReverse="True"
+  RepeatBehavior="Forever"
+  Storyboard.TargetProperty="Opacity"
+  From="1"
+  To="0.2"
+  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -4438,6 +5136,26 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="36">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+  AutoReverse="True"
+  RepeatBehavior="Forever"
+  Storyboard.TargetProperty="Opacity"
+  From="1"
+  To="0.2"
+  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -4551,6 +5269,26 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="37">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+  AutoReverse="True"
+  RepeatBehavior="Forever"
+  Storyboard.TargetProperty="Opacity"
+  From="1"
+  To="0.2"
+  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -4668,6 +5406,26 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="38">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+  AutoReverse="True"
+  RepeatBehavior="Forever"
+  Storyboard.TargetProperty="Opacity"
+  From="1"
+  To="0.2"
+  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -4781,6 +5539,26 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="39">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+  AutoReverse="True"
+  RepeatBehavior="Forever"
+  Storyboard.TargetProperty="Opacity"
+  From="1"
+  To="0.2"
+  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -4898,6 +5676,26 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="40">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+  AutoReverse="True"
+  RepeatBehavior="Forever"
+  Storyboard.TargetProperty="Opacity"
+  From="1"
+  To="0.2"
+  Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -5013,6 +5811,25 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="41">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -5118,6 +5935,25 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="42">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -5233,6 +6069,25 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="43">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -5344,6 +6199,25 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="44">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -5459,6 +6333,25 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="45">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -5570,6 +6463,25 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="46">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -5685,6 +6597,24 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="47">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -5796,6 +6726,24 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="48">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -5911,6 +6859,24 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="49">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -6022,6 +6988,24 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="50">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -6137,6 +7121,25 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="51">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -6248,6 +7251,25 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="52">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -6363,6 +7385,25 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="53">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -6476,6 +7517,25 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="54">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -6587,6 +7647,25 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="55">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -6770,6 +7849,25 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="56">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -6883,6 +7981,25 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="57">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -7000,6 +8117,24 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="58">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -7113,6 +8248,24 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="59">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -7230,6 +8383,25 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="60">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -7343,6 +8515,24 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="61">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -7460,6 +8650,25 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="62">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -7573,6 +8782,24 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="63">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -7690,6 +8917,24 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="64">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -7803,6 +9048,24 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="65">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -7920,6 +9183,24 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="66">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -8033,6 +9314,24 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="67">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -8150,6 +9449,24 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="68">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -8265,6 +9582,24 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="69">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -8370,6 +9705,24 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="70">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -8485,6 +9838,25 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="71">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -8596,6 +9968,25 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="72">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -8711,6 +10102,24 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="73">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -8822,6 +10231,25 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="74">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -8937,6 +10365,24 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="75">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -9048,6 +10494,24 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="76">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -9163,6 +10627,24 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="77">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -9274,6 +10756,24 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="78">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -9389,6 +10889,24 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="79">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -9500,6 +11018,24 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="80">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -9615,6 +11151,24 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="81">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -9728,6 +11282,24 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="82">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
@@ -9839,6 +11411,24 @@ Duration="0:0:0.500" />
                                                         </DataTrigger.EnterActions>
                                                         <DataTrigger.ExitActions>
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="83">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard Name="IncubationFirstint">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation
+AutoReverse="True"
+RepeatBehavior="Forever"
+Storyboard.TargetProperty="Opacity"
+From="1"
+To="0.2"
+Duration="0:0:0.500" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <StopStoryboard BeginStoryboardName="IncubationFirstint" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
                                                 </Style.Triggers>

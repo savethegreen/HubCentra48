@@ -81,11 +81,25 @@
 
 
                         <Grid Grid.Row="4">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50*" />
-                                <ColumnDefinition Width="50*" />
-                            </Grid.ColumnDefinitions>
-
+                   
+                            <Button
+            x:Name="OK"
+            Grid.Column="0"
+            Width="67"
+            Height="35"
+            Margin="0,0,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="#f27200"
+            BorderThickness="0"
+                                Click="OK_Click"
+            Content="확인"
+            FontSize="20"
+            Foreground="White">
+                                <Button.Effect>
+                                    <DropShadowEffect ShadowDepth="2" />
+                                </Button.Effect>
+                            </Button>
                         </Grid>
                     </Grid>
                 </Grid>

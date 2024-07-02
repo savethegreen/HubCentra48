@@ -95,7 +95,7 @@ namespace HubCentra_A1
             MainWindow_searchBarcodeDuplicates=9,
             로딩 =10,
             언로딩 = 11,
-
+            Login = 12,
         }
         #endregion DatabaseManager
 
@@ -128,6 +128,9 @@ namespace HubCentra_A1
             SYSTEM3 = 33,
             SYSTEM4 = 34,
             Calibration_Target = 35,
+
+            Equipment_Change = 36,
+            NegativeOnOFF = 37,
         }
         #endregion Config
 

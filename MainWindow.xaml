@@ -154,7 +154,7 @@
                         CommandParameter="8"
                         Content="Log In">
                             <Button.Style>
-                                <Style BasedOn="{StaticResource MainWindow_Button_02}" TargetType="Button" />
+                                <Style BasedOn="{StaticResource MainWindow_Button_03}" TargetType="Button" />
                             </Button.Style>
                         </Button>
                     </Grid>
@@ -410,7 +410,7 @@
                                         Grid.Row="1"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
-                                        Source="/Image/Report.png"
+                                        Source="/Image/New_Report.png"
                                         Stretch="Uniform" />
                                 <TextBlock
                                         Grid.Row="3"

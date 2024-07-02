@@ -75,7 +75,7 @@
                             Grid.Row="2"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Top"
-                            FontSize="23"
+                            FontSize="18"
                             FontWeight="Bold"
                             Text="{Binding Alarm_Incubation_BarcodeID}"
                             TextAlignment="Center">
@@ -91,7 +91,7 @@
                Grid.Row="3"
                HorizontalAlignment="Center"
                VerticalAlignment="Top"
-               FontSize="23"
+               FontSize="18"
                FontWeight="Bold"
                Text="{Binding Alarm_Incubation_PatientID}"
                TextAlignment="Center">

@@ -86,7 +86,7 @@ namespace HubCentra_A1
                 return;
             }
             _viewModel.ProgramShotdown = true;
-            Thread.Sleep(3000);
+            Thread.Sleep(1000);
             PCB_SerialPortClose();
             System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
@@ -127,6 +127,7 @@ namespace HubCentra_A1
                     break;
                 case Enum_MainWindow_ButtonEvent.Search:
                     _viewModel.MainWindow_ButtonFlag = Enum_MainWindow_ButtonFlag.Search;
+                    select_Equipment_Search();
                     break;
                 case Enum_MainWindow_ButtonEvent.Report:
                     _viewModel.MainWindow_ButtonFlag = Enum_MainWindow_ButtonFlag.Report;
@@ -181,6 +182,10 @@ namespace HubCentra_A1
                 case Enum_Login_ButtonEvent.ADD:
                     Login_Add();
                     UpdateUserLoginStatus();
+                    break;
+
+                case Enum_Login_ButtonEvent.PASSWORD_SAVE:
+
                     break;
                 case Enum_Login_ButtonEvent.ADD_CANCEL:
 
@@ -251,15 +256,55 @@ namespace HubCentra_A1
             switch (DataTransfer)
             {
                 case Enum_Config_ButtonEvent.Temp:
+                    MessageBoxResult Templ_result = System.Windows.MessageBox.Show(
+                        "작업을 실행하시겠습니까?",
+                        "",
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Question);
+
+                    if (Templ_result == MessageBoxResult.No)
+                    {
+                        return;
+                    }
                     UpdateConfig_double(DataTransfer, _viewModel.Config[0].Temp);
                     break;
                 case Enum_Config_ButtonEvent.doorOpenAlarmTrigger:
+                    MessageBoxResult doorOpenAlarmTrigger_result = System.Windows.MessageBox.Show(
+             "작업을 실행하시겠습니까?",
+             "",
+             MessageBoxButton.YesNo,
+             MessageBoxImage.Question);
+
+                    if (doorOpenAlarmTrigger_result == MessageBoxResult.No)
+                    {
+                        return;
+                    }
                     UpdateConfig_int(DataTransfer, _viewModel.Config[0].doorOpenAlarmTrigger);
                     break;
                 case Enum_Config_ButtonEvent.MaximumTime:
+                    MessageBoxResult MaximumTime_result = System.Windows.MessageBox.Show(
+                        "작업을 실행하시겠습니까?",
+                        "",
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Question);
+
+                    if (MaximumTime_result == MessageBoxResult.No)
+                    {
+                        return;
+                    }
                     UpdateConfig_int(DataTransfer, _viewModel.Config[0].MaximumTime);
                     break;
                 case Enum_Config_ButtonEvent.UseBuzzer:
+                    MessageBoxResult UseBuzzer_result = System.Windows.MessageBox.Show(
+                "작업을 실행하시겠습니까?",
+                "",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
+
+                    if (UseBuzzer_result == MessageBoxResult.No)
+                    {
+                        return;
+                    }
                     UpdateConfig_bool(DataTransfer, _viewModel.Config[0].UseBuzzer);
                     break;
                 case Enum_Config_ButtonEvent.Positive_Wait:
@@ -287,10 +332,29 @@ namespace HubCentra_A1
                     UpdateConfig_int(DataTransfer, _viewModel.Config[0].DataStorageSave);
                     break;
                 case Enum_Config_ButtonEvent.Block_OK:
+                    MessageBoxResult Block_OK_result = System.Windows.MessageBox.Show(
+                    "해당 Cell을 Block 하시겠습니까?",
+                    "",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question);
+
+                    if (Block_OK_result == MessageBoxResult.No)
+                    {
+                        return;
+                    }
                     Blcok_OK(_viewModel.Config_Block);
                     break;
                 case Enum_Config_ButtonEvent.Block_Cancel:
+                    MessageBoxResult Block_Cancel_result = System.Windows.MessageBox.Show(
+            "해당 Cell을 UnBlock 하시겠습니까?",
+            "",
+            MessageBoxButton.YesNo,
+            MessageBoxImage.Question);
 
+                    if (Block_Cancel_result == MessageBoxResult.No)
+                    {
+                        return;
+                    }
                     Blcok_Cancel(_viewModel.Config_Block);
                     break;
                 case Enum_Config_ButtonEvent.Block_Data:
@@ -303,6 +367,16 @@ namespace HubCentra_A1
                     UpdateConfig_int(DataTransfer, _viewModel.Calibration_To);
                     break;
                 case Enum_Config_ButtonEvent.Calibration_Start:
+                    MessageBoxResult Calibration_result = System.Windows.MessageBox.Show(
+                            "캘리브레이션을 실행하시겠습니까?",
+                            "",
+                            MessageBoxButton.YesNo,
+                            MessageBoxImage.Question);
+
+                    if (Calibration_result == MessageBoxResult.No)
+                    {
+                        return;
+                    }
                     _viewModel.Calibration_Falg = true;
                     break;
                 case Enum_Config_ButtonEvent.Calibration_Target:
@@ -320,6 +394,25 @@ namespace HubCentra_A1
                 case Enum_Config_ButtonEvent.SYSTEM4:
                     UpdateConfig_bool(DataTransfer, _viewModel.Config[0].SYSTEM4);
                     break;
+
+
+                case Enum_Config_ButtonEvent.Equipment_Change:
+                    MessageBoxResult Equipment_Change_result = System.Windows.MessageBox.Show(
+                     "작업을 실행하시겠습니까?",
+                     "",
+                     MessageBoxButton.YesNo,
+                     MessageBoxImage.Question);
+
+                    if (Equipment_Change_result == MessageBoxResult.No)
+                    {
+                        return;
+                    }
+                    Equipment_Change();
+                    break;
+
+                case Enum_Config_ButtonEvent.NegativeOnOFF:
+                    UpdateConfig_bool(DataTransfer, _viewModel.Config[0].NegativeOnOFF);
+                    break;
                 default:
                     break;
             }
@@ -336,9 +429,13 @@ namespace HubCentra_A1
                     switch (DataTransfer)
                     {
                         case Enum_Config_ButtonEvent.doorOpenAlarmTrigger:
-                            _viewModel.Config[0].doorOpenAlarmTrigger = value;
-                            Door_timer_Stop();
-                            Door_timer_Start();
+                            if (value > 0 && value < 100)
+                            {
+                                _viewModel.Config[0].doorOpenAlarmTrigger = value;
+                                Door_timer_Stop();
+                                Door_timer_Start();
+                            }
+
                             break;
                         case Enum_Config_ButtonEvent.Positive_Wait:
                             _viewModel.Config[0].Positive_Wait = value;
@@ -367,19 +464,31 @@ namespace HubCentra_A1
                             _viewModel.Config[0].TrashCanFillLevel = value;
                             break;
                         case Enum_Config_ButtonEvent.MaximumTime:
-                            _viewModel.Config[0].MaximumTime = value;
+                            if (value > 0 && value < 100)
+                            {
+                                _viewModel.Config[0].MaximumTime = value;
+                            }        
                             break;
                         case Enum_Config_ButtonEvent.Block_Data:
                             _viewModel.Config_Block = value;
                             break;
                         case Enum_Config_ButtonEvent.Calibration_From:
-                            _viewModel.Calibration_From = value;
+                            if (value > 0 && value < 85)
+                            {
+                                _viewModel.Calibration_From = value;
+                            }
                             break;
                         case Enum_Config_ButtonEvent.Calibration_To:
-                            _viewModel.Calibration_To = value;
+                            if (value > 0 && value < 85)
+                            {
+                                _viewModel.Calibration_To = value;
+                            }
                             break;
                         case Enum_Config_ButtonEvent.Calibration_Target:
-                            _viewModel.PCB_targetvalue = value;
+                            if (value > 0 && value < 500)
+                            {
+                                _viewModel.PCB_targetvalue = value;
+                            }
                             break;
 
                             
@@ -405,7 +514,10 @@ namespace HubCentra_A1
                     switch (DataTransfer)
                     {
                         case Enum_Config_ButtonEvent.Temp:
-                            _viewModel.Config[0].Temp = value;
+                            if (value >= 30 && value <= 45)
+                            {
+                                _viewModel.Config[0].Temp = value;
+                            }
                             break;
                         case Enum_Config_ButtonEvent.LoadCellMin:
                             _viewModel.Config[0].LoadCellMin = value;
@@ -445,7 +557,9 @@ namespace HubCentra_A1
                 case Enum_Config_ButtonEvent.SYSTEM4:
                     _viewModel.Config[0].SYSTEM4 = !transferValue;
                     break;
-
+                case Enum_Config_ButtonEvent.NegativeOnOFF:
+                    _viewModel.Config[0].NegativeOnOFF = !transferValue;
+                    break;
             }
             _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].UpdateConfig(_viewModel.Config);
             var select_ConfigInfo = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_UpdateConfig].Select_Config();
@@ -599,7 +713,8 @@ namespace HubCentra_A1
         private DispatcherTimer Buzzer_timer = new DispatcherTimer();
         private DispatcherTimer Alarm_System_timer = new DispatcherTimer();
         private DispatcherTimer FASTECH_Pingcheck = new DispatcherTimer();
-
+        private DispatcherTimer Temperature_timer = new DispatcherTimer();
+        
 
         public async void TimerInitialize()
         {
@@ -632,10 +747,14 @@ namespace HubCentra_A1
             FASTECH_Pingcheck.Interval = TimeSpan.FromMilliseconds(10);
             FASTECH_Pingcheck.Start();
 
+            Temperature_timer.Tick += TimerCallbacks_Temperature_timer;
+            Temperature_timer.Interval = TimeSpan.FromSeconds(1);
+            Temperature_timer.Start();
+
 
             Door_timer.Tick += TimerCallbacks_Door_timer;
 
-            DataStorageSave_timer.Tick += TimerCallback_DataStorageSave_timer;
+
             DataStorageSave_timer_Start();
         }
 
@@ -873,7 +992,7 @@ namespace HubCentra_A1
                     int ID = select_Equipment[i].ID;
                     string QrcodeID = select_Equipment[i].Qrcode;
                     string BarcodeID = select_Equipment[i].Barcode;
-
+                    string Result = select_Equipment[i].Result;
                     double PcbADC = _viewModel.PCB_Data[index].ADC;
                     double PcbLED = _viewModel.PCB_Data[index].LED;
                     if (PcbADC >= _viewModel.Config[0].BottleExistenceRange || PcbADC <= 0)
@@ -898,11 +1017,16 @@ namespace HubCentra_A1
                         };
                     _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_Insert_EquipmentH].UpdateBarcode(updateQuery_Barcode, UpdateEBarcode_parameters);
 
+                    if (Result == "Negative" && !_viewModel.Config[0].NegativeOnOFF )
+                    {
 
-                    List<DatabaseManager_EquipmentH> Equipment = new List<DatabaseManager_EquipmentH>();
-                    Equipment.Add(new DatabaseManager_EquipmentH { ID = ID, Barcode = BarcodeID, Qrcode = QrcodeID, PcbADC = PcbADC, PcbLED = PcbLED, Temperature = Temperature_ProcessValue, CreDate = now });
-                    _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_Insert_EquipmentH].InsertEquipmentH(now, Equipment);
-
+                    }
+                    else
+                    {
+                        List<DatabaseManager_EquipmentH> EquipmentH = new List<DatabaseManager_EquipmentH>();
+                        EquipmentH.Add(new DatabaseManager_EquipmentH { ID = ID, Barcode = BarcodeID, Qrcode = QrcodeID, PcbADC = PcbADC, PcbLED = PcbLED, Temperature = Temperature_ProcessValue, CreDate = now });
+                        _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_Insert_EquipmentH].InsertEquipmentH(now, EquipmentH);
+                    }
                 }
                 _viewModel.Result_Timer = true;
 
@@ -920,14 +1044,40 @@ namespace HubCentra_A1
             try
             {
                 var select_Equipment = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.MainWindow_select_Equipment_Search].Select_Equipment_Search();
-                _viewModel.Search_List = select_Equipment;
 
+                var configurations = new List<DatabaseManager_Equipmentstring>();
+
+                for (int i = 0; i < select_Equipment.Count; i++)
+                {
+                    var equipment = select_Equipment[i];
+                    var data = new DatabaseManager_Equipmentstring
+                    {
+                        ID = equipment.ID,
+                        Cell = equipment.Cell ?? null,
+                        Barcode = equipment.Barcode ?? null,
+                        Qrcode = equipment.Qrcode ?? null,
+                        Loading = equipment.Loading ?? (DateTime?)null,
+                        CreDate = equipment.CreDate ?? (DateTime?)null,
+                        PositiveTime = equipment.PositiveTime ?? (DateTime?)null,
+                        Result = equipment.Result ?? null,
+                        IncubationTime = ConvertSecondsToReadableTime(equipment.IncubationTime),
+                        isEnable = equipment.isEnable,
+                        isActive = equipment.isActive ,
+                    };
+                    configurations.Add(data);
+                }
+                _viewModel.Search_List = configurations;
 
             }
             catch (Exception ex)
             {
 
             }
+        }
+        private string ConvertSecondsToReadableTime(int totalSeconds)
+        {
+            TimeSpan time = TimeSpan.FromSeconds(totalSeconds);
+            return $"{time.Days}일 {time.Hours}시간 {time.Minutes}분";
         }
         #endregion Search
         #endregion DatabaseManager
@@ -953,7 +1103,7 @@ namespace HubCentra_A1
             try
             {
                 var filteredItemsSwitched = _viewModel.EquipmentInfo.Where(e => e.isActive && e.isEnable && e.Switched).ToList();
-                int MaximumTime = _viewModel.Config[0].MaximumTime * _viewModel.Common_Day;
+                int MaximumTime = _viewModel.Config[0].MaximumTime * _viewModel.Common_Minute;
                 int count = filteredItemsSwitched.Count;
                 int lastID = filteredItemsSwitched[count - 1].ID;
                 DateTime now = DateTime.Now;
@@ -1612,6 +1762,7 @@ namespace HubCentra_A1
             {
                 int Interval = _viewModel.Config[0].DataStorageSave;
                 DataStorageSave_timer.Interval = TimeSpan.FromMinutes(Interval);
+                DataStorageSave_timer.Tick += TimerCallback_DataStorageSave_timer;
                 DataStorageSave_timer.Start();
             }
             catch (Exception ex)
@@ -1624,6 +1775,7 @@ namespace HubCentra_A1
         {
             if (DataStorageSave_timer.IsEnabled)
             {
+                DataStorageSave_timer.Tick -= TimerCallback_DataStorageSave_timer;
                 DataStorageSave_timer.Stop();
             }
         }
@@ -1706,6 +1858,37 @@ namespace HubCentra_A1
 
             }
         }
+        Alarm_Equipment Equipment;
+        public void Equipment_Change()
+        {
+            try
+            {
+                if (Equipment != null && Equipment.IsVisible)
+                {
+                    return; // 팝업이 열려 있으면 아무것도 하지 않음
+                }
+
+                Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                {
+                    Equipment = new Alarm_Equipment(_viewModel);
+
+                    if (Application.Current.MainWindow != null && Application.Current.MainWindow != Equipment)
+                    {
+                        Equipment.Owner = Application.Current.MainWindow;
+                    }
+
+                    Equipment.Topmost = true;
+                    Equipment.Show();
+                    Equipment.Activate();
+
+                }));
+            }
+            catch (Exception e)
+            {
+            }
+        }
+
+
         #endregion Config
 
         #region LiveCharts
@@ -2084,7 +2267,7 @@ namespace HubCentra_A1
                 }
                 else
                 {
-                    if (_viewModel.Calibration_Falg )
+                    if (_viewModel.Calibration_Falg || !_viewModel.FASTECH_IO_Connection )
                     {
                         return;
                     }
@@ -2097,6 +2280,11 @@ namespace HubCentra_A1
                         {
                             PCB_Auto_Data(response.ToString());
                         }
+                    }
+                    if(_viewModel.PCB_Status == false)
+                    {
+                        _viewModel.PCB_Status = true;
+
                     }
                 }
             }
@@ -2138,13 +2326,12 @@ namespace HubCentra_A1
                             if (pcbIndex < _viewModel.PCB_Data.Count)
                             {
                                 _viewModel.PCB_Data[pcbIndex].ADC = (int)(averageValue * 1000);
-
                             }
                             _viewModel.PCB_CellReadings[0][lineIndex][i].Clear();
-                            _viewModel.PCB_Status = true;
                         }
                     }
                 }
+
             }
             catch (Exception ex)
             {
@@ -2543,7 +2730,7 @@ namespace HubCentra_A1
                             string item1 = command.Item1;
                             _viewModel.Barcode_BarcodeID = item1;
                             _viewModel.Barcode_Content = "Bottle  " + _viewModel.Barcode_BarcodeID + "  already exists.";
-                            Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+                            Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                             {
                                 Alarm_Barcode alarm_Barcode = new Alarm_Barcode(_viewModel);
                                 alarm_Barcode.ClosedEvent += Alarm_Barcode_Closed;
@@ -2645,13 +2832,13 @@ namespace HubCentra_A1
         {
 
             int sv = (int)(_viewModel.Config[0].Temp * 10);
-            byte[] PV_Temp = new byte[8] { 0x01, 0x04, 0x03, 0xE8, 0x00, 0x01, 0xB1, 0xBA };
 
+            byte[] PV_Temp = { 0x02, 0x04, 0x03, 0xE8, 0x00, 0x01, 0xB1, 0x89 };
+            byte[] SV_Temp = GenerateFrame(sv, 2);
+            byte[] AL_Temp = { 0x02, 0x02, 0x00, 0x04, 0x00, 0x01, 0xF8, 0x38 };
 
-            //byte[] PV_Temp = { 0x02, 0x04, 0x03, 0xE8, 0x00, 0x01, 0xB1, 0x89 };
-            byte[] SV_Temp = GenerateFrame(sv, 1);
             await Temperature_ReadAsync(PV_Temp, SV_Temp, 500, (temp) => _viewModel.Temperature_ProcessValue = temp);
-            //await LoadCell_ReadAsync("R5", 500, (LoadCelldata) => _viewModel.LoadCell_ProcessValue = LoadCelldata);
+            await Temperature_ReadAsyncAL(AL_Temp, 500, (AL) => _viewModel.Temperature_AL_Connection = AL);
 
         }
         public async Task Temperature_ReadAsync(byte[] PV, byte[] SV, double timeout, Action<double> updateTempValue)
@@ -2708,6 +2895,45 @@ namespace HubCentra_A1
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
         }
+
+        public async Task Temperature_ReadAsyncAL(byte[] Data, double timeout, Action<bool> AL)
+        {
+            try
+            {
+                if (!_viewModel.Temperature_SerialPort.IsOpen)
+                    throw new InvalidOperationException("Serial port is not open.");
+
+                _viewModel.Temperature_SerialPort.Write(Data, 0, Data.Length);
+
+
+
+                var stopwatch = Stopwatch.StartNew();
+                while (stopwatch.ElapsedMilliseconds < timeout)
+                {
+                    if (_viewModel.Temperature_SerialPort.BytesToRead > 1)
+                    {
+                        Thread.Sleep(50);
+                        byte[] response = new byte[_viewModel.Temperature_SerialPort.BytesToRead];
+                        _viewModel.Temperature_SerialPort.Read(response, 0, response.Length);
+
+                        if (response.Length == 6 && response[3] == 1 )
+                        {
+                            _viewModel.Temperature_AL_Connection = true;
+                        }
+                        else
+                        {
+                            _viewModel.Temperature_AL_Connection = false;
+                        }
+
+                        break;
+                    }
+                    await Task.Delay(10);
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
         public byte[] GenerateFrame(int temperature, int deviceAddress)
         {
             byte[] frame = new byte[8];
@@ -2753,6 +2979,47 @@ namespace HubCentra_A1
             return crc;
         }
 
+
+        Alarm_Temperature alarm_Temperature;
+        public void Temperature_timer_Stop()
+        {
+            if (Temperature_timer.IsEnabled)
+            {
+                Temperature_timer.Stop();
+            }
+        }
+        public void TimerCallbacks_Temperature_timer(object sender, EventArgs e)
+        {
+            try
+            {
+                if (alarm_Temperature != null && alarm_Temperature.IsVisible)
+                {
+                    return;
+                }
+                if(_viewModel.Temperature_AL_Connection == true)
+                {
+                    Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                    {
+                        alarm_Temperature = new Alarm_Temperature(_viewModel);
+                        if (Application.Current.MainWindow != null && Application.Current.MainWindow != alarm_Temperature)
+                        {
+                            alarm_Temperature.Owner = Application.Current.MainWindow;
+                        }
+
+                        alarm_Temperature.Topmost = true;
+                        alarm_Temperature.Show();
+                        alarm_Temperature.Activate();
+
+                    }));
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
+        }
         #endregion Temperature
 
         #region 로딩언로딩
@@ -2761,10 +3028,7 @@ namespace HubCentra_A1
         {
             try
             {
-                if(!_viewModel.PCB_Status)
-                {
-                    return;
-                }
+
                 var Equipment = _viewModel.EquipmentInfo.Where(equipment => !equipment.isEnable && equipment.isActive && equipment.Result != "Block").ToList();
                 foreach (var equipments in Equipment)
                 {
@@ -2855,10 +3119,11 @@ namespace HubCentra_A1
         {
             try
             {
+
                 // 타이머 콜백이 호출될 때 수행할 작업을 여기에 작성합니다.
                 if (!_viewModel.BottleLoading_isPopupOpen)
                 {
-                    if (_viewModel.Queue_PCB_Manual.Count < 0 || _viewModel.PCB_Status)
+                    if (_viewModel.Queue_PCB_Manual.Count <= 0 )
                     {
                         if (_viewModel.Alarm_BottleLoading.Count > 0)
                         {
@@ -2890,7 +3155,6 @@ namespace HubCentra_A1
                                     sysyem = "4";
                                     cell = ((item1 + 1) - 252).ToString();
                                 }
-
                                 if (_viewModel.EquipmentInfo[item1].isActive && _viewModel.EquipmentInfo[item1].isEnable && _viewModel.EquipmentInfo[item1].Switched)
                                 {
                                     _viewModel.BottleLoading_Title = "Bottle Loading";
@@ -2908,7 +3172,6 @@ namespace HubCentra_A1
                                 }
                                 else
                                 {
-
                                     _viewModel.BottleLoading_Title = "Bottle Loading";
                                     _viewModel.BottleLoading_Content = "바코드 정보가 확인되지 않았습니다." + "\n" + "바코드를 스캔/입력 후 다시 넣어주세요.";
                                     _viewModel.BottleLoading_WhatSystem = "System" + sysyem.ToString();
@@ -2918,7 +3181,7 @@ namespace HubCentra_A1
                                     _viewModel.Barcode_ID_Loading = "";
                                     _viewModel.Patient_ID_Loading = "";
                                 }
-                                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+                                Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                                 {
                                     try
                                     {
@@ -2929,8 +3192,16 @@ namespace HubCentra_A1
                                         }
 
                                         bottleLoading.Topmost = true;
-                                        bottleLoading.Show();
-                                        bottleLoading.Activate();
+
+                                        if (_viewModel.PCB_Status == true)
+                                        {
+                                            bottleLoading.Show();
+                                            bottleLoading.Activate();
+                                        }
+                                        else
+                                        {
+                                        }
+  
 
                                         //Window currentWindow = Window.GetWindow(this);
                                         //if (currentWindow != null && currentWindow != Application.Current.MainWindow)
@@ -2943,10 +3214,11 @@ namespace HubCentra_A1
                                     }
                                     catch (Exception ex)
                                     {
-                                        // Log or handle the exception
-                                        System.Windows.MessageBox.Show($"An error occurred: {ex.Message}");
+
                                     }
                                 }));
+
+                            
                             }
                         }
                     }
@@ -3060,7 +3332,7 @@ namespace HubCentra_A1
                 _viewModel.Alarm_Negative_Unloading_Cell = cellidx(idx);
                 _viewModel.Alarm_Negative_Unloading_BarcodeID = "Bottle  :  " + barcodeID;
                 _viewModel.Alarm_Negative_Unloading_PatientID = "Clinical sample  :  " + patientID;
-                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+                Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                 {
                     Negative_Unloading = new Alarm_Negative(_viewModel, idx);
                     Negative_Unloading.OKClicked += (s, e) => Negative_Unloading_OKClicked(s, e, idx, IncubationTime, ID, barcodeID);
@@ -3160,7 +3432,7 @@ namespace HubCentra_A1
                     _viewModel.Alarm_Positive_Unloading_Warning = "해당 Positive를 먼저 제거하시겠습니까?";
                 }
 
-                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+                Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                 {
                     Positive_Unloading = new Alarm_Positive_Unloading(_viewModel);
                     Positive_Unloading.OKClicked += (s, e) => Positive_Unloading_OKClicked(s, e, idx, IncubationTime, ID, barcodeID);
@@ -3251,8 +3523,9 @@ namespace HubCentra_A1
                 _viewModel.Alarm_Incubation_Cell = cellidx(idx);
                 _viewModel.Alarm_Incubation_BarcodeID = "Bottle : " + barcodeID;
                 _viewModel.Alarm_Incubation_PatientID = "Clinical sample : " + PatientID;
-
-                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+                _viewModel.System_IncubationFirstint = idx;
+  
+                Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                 {
                     Incubation = new Alarm_Incubation(_viewModel, idx);
                     Incubation.OKClicked += (s, e) => Incubation_OKClicked(s, e, idx, IncubationTime, ID, barcodeID);
@@ -3275,32 +3548,37 @@ namespace HubCentra_A1
         }
         private void Incubation_OKClicked(object sender, PopupEventArgs e, int idx, int incubationTime, int id, string barcodeID)
         {
-            int IDX = idx;
-            int IncubationTime = incubationTime;
-            int ID = id;
-            string BarcodeID = barcodeID;
-            DateTime now = DateTime.Now;
-            string FormattedNow = now.ToString("yyyy-MM-dd HH:mm:ss");
+            try
+            {
+                int IDX = idx;
+                int IncubationTime = incubationTime;
+                int ID = id;
+                string BarcodeID = barcodeID;
+                DateTime now = DateTime.Now;
+                string FormattedNow = now.ToString("yyyy-MM-dd HH:mm:ss");
 
-            string UpdateBarcode_Query = "UPDATE Barcode SET " +
-                              "Unloading = @Unloading, IncubationTime = @IncubationTime " +
-                              "WHERE Barcode = @Barcode";
+                string UpdateBarcode_Query = "UPDATE Barcode SET " +
+                                         "Unloading = @Unloading, " +
+                                         "IncubationTime = @IncubationTime, " +
+                                         "Result = @Result " +
+                                         "WHERE Barcode = @Barcode";
 
 
 
-            Dictionary<string, object> UpdateBarcode_parameters = new Dictionary<string, object>
+                Dictionary<string, object> UpdateBarcode_parameters = new Dictionary<string, object>
                         {
 
                             { "@Unloading", now },
                             { "@IncubationTime", IncubationTime },
+                            { "@Result", "Removed" },
                             { "@Barcode", BarcodeID },
                         };
-            _viewModel.databaseManagercs[(int)Enum_DatabaseManager.언로딩].UpdateBarcode(UpdateBarcode_Query, UpdateBarcode_parameters);
+                _viewModel.databaseManagercs[(int)Enum_DatabaseManager.언로딩].UpdateBarcode(UpdateBarcode_Query, UpdateBarcode_parameters);
 
-            string UpdateEquipment_Query = "UPDATE Equipment SET " +
-                                             "Barcode = @Barcode, Qrcode = @Qrcode, Loading = @Loading, CreDate = @CreDate, PositiveTime = @PositiveTime, Result = @Result, IncubationTime = @IncubationTime, switched = @switched, isEnable = @isEnable " +
-                                             "WHERE ID = @ID";
-            Dictionary<string, object> UpdateEquipment_parameters = new Dictionary<string, object>
+                string UpdateEquipment_Query = "UPDATE Equipment SET " +
+                                                 "Barcode = @Barcode, Qrcode = @Qrcode, Loading = @Loading, CreDate = @CreDate, PositiveTime = @PositiveTime, Result = @Result, IncubationTime = @IncubationTime, switched = @switched, isEnable = @isEnable " +
+                                                 "WHERE ID = @ID";
+                Dictionary<string, object> UpdateEquipment_parameters = new Dictionary<string, object>
                         {
                             { "@Barcode", null },
                             { "@Qrcode", null },
@@ -3313,11 +3591,16 @@ namespace HubCentra_A1
                             { "@isEnable", false },
                             { "@ID", ID }  // 
                         };
-            _viewModel.databaseManagercs[(int)Enum_DatabaseManager.언로딩].UpdateEquipment(UpdateEquipment_Query, UpdateEquipment_parameters);
-            _viewModel.PositiveDelay[IDX] = 0;
-            _viewModel.Result_PositiveTime[IDX] = new Queue<(DateTime, double)>();
-            PCB_LED(_viewModel.SystemInfo[0].PCB_ID1, IDX, "Null");
-
+                _viewModel.databaseManagercs[(int)Enum_DatabaseManager.언로딩].UpdateEquipment(UpdateEquipment_Query, UpdateEquipment_parameters);
+                _viewModel.System_IncubationFirstint = -1;
+                _viewModel.PositiveDelay[IDX] = 0;
+                _viewModel.Result_PositiveTime[IDX] = new Queue<(DateTime, double)>();
+                PCB_LED(_viewModel.SystemInfo[0].PCB_ID1, IDX, "Null");
+            }
+            catch (Exception ex)
+            {
+                _viewModel.System_IncubationFirstint = -1;
+            }
         }
 
         private void Incubation_CancelClicked(object sender, PopupEventArgs e, int idx, int IncubationTime, int ID, string barcodeI)
@@ -3527,7 +3810,7 @@ namespace HubCentra_A1
             {
                 _viewModel.Alarm_Door_Buzzer = true; 
                 Door_timer_Stop();
-                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+                Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                 {
                     Alarm_Door alarm_Door = new Alarm_Door(_viewModel);
                     if (Application.Current.MainWindow != null && Application.Current.MainWindow != alarm_Door)
@@ -3562,13 +3845,23 @@ namespace HubCentra_A1
                 bool Indi = _viewModel.Equipment_DataWithDB_presenceArray.Any(data => data.alive == true);
                 if (Indi)
                 {
-                    Lamp_Blinking();
+                    if(_viewModel.Lamp)
+                    {
+                        Lamp_Yellow_On();
+                        _viewModel.Lamp = !_viewModel.Lamp;
+                    }
+                    else
+                    {
+                        Lamp_Yellow_Off();
+                        _viewModel.Lamp = !_viewModel.Lamp;
+                    }
+
                 }
-                else if(hasPositive || Dooropen == false)
+                else if(hasPositive )
                 {
                     Lamp_Red();
                 }
-                else if (hasNegative)
+                else if (hasNegative || Dooropen == false)
                 {
                     Lamp_Yellow();
                 }
@@ -3628,6 +3921,9 @@ namespace HubCentra_A1
         {
             try
             {
+     
+
+
                 _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.RedLamp].Flag = !_viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.RedLamp].Flag;
             }
             catch (Exception ex)
@@ -3635,6 +3931,35 @@ namespace HubCentra_A1
 
             }
         }
+
+        public void Lamp_Yellow_On()
+        {
+            try
+            {
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.GreenLamp].Flag = true;
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.RedLamp].Flag = true;
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.YellowLamp].Flag = false;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public void Lamp_Yellow_Off()
+        {
+            try
+            {
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.GreenLamp].Flag = false;
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.RedLamp].Flag = false;
+                _viewModel.FASTECH_Set_Output[(int)Enum_FASTECH_Output.YellowLamp].Flag = false;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         #endregion Lamp
 
         #region Buzzer
@@ -3739,7 +4064,7 @@ namespace HubCentra_A1
                     _viewModel.Alarm_Positive_Warning = "시간 : " + DateNow + "\n" +
                      "Positive가 감지되었습니다." + "\n" +
                      "해당 cell에 삽입된 bottle을 제거해 주세요." + "\n";
-                    Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+                    Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                     {
                         alarm_positive = new Alarm_Positive(_viewModel);
                         if (Application.Current.MainWindow != null && Application.Current.MainWindow != alarm_positive)
@@ -3774,7 +4099,7 @@ namespace HubCentra_A1
                 {
                     _viewModel.System_Title = "Connect Error";
                     _viewModel.System_Content = "System1 is not Connected.";
-                    Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+                    Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                     {
                         alarm_System = new Alarm_System(_viewModel);
                         if (Application.Current.MainWindow != null && Application.Current.MainWindow != alarm_System)
@@ -3786,9 +4111,6 @@ namespace HubCentra_A1
                         alarm_System.Activate();
                     }));
                 }
-              //  _viewModel.System_WhatSystem = "System" + "1"";
-
-
             }
             catch (Exception ex)
             {

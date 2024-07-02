@@ -673,6 +673,17 @@ namespace HubCentra_A1.Model
                 OnPropertyChanged(nameof(Temperature_Connection));
             }
         }
+        public bool Temperature_AL_Connection
+        {
+            get => _view.Temperature_AL_Connection;
+            set
+            {
+                _view.Temperature_AL_Connection = value;
+                OnPropertyChanged(nameof(Temperature_AL_Connection));
+            }
+        }
+
+        
         #endregion Temperature
 
         #region MainEngine
@@ -1072,7 +1083,7 @@ namespace HubCentra_A1.Model
         #endregion Config
 
         #region Search
-        public List<DatabaseManager_Equipment> Search_List
+        public List<DatabaseManager_Equipmentstring> Search_List
         {
             get => _view.Search_List;
             set
@@ -1397,7 +1408,16 @@ namespace HubCentra_A1.Model
                 OnPropertyChanged(nameof(System_PositiveFirstint));
             }
         }
-
+        public int System_IncubationFirstint
+        {
+            get => _view.System_IncubationFirstint;
+            set
+            {
+                _view.System_IncubationFirstint = value;
+                OnPropertyChanged(nameof(System_IncubationFirstint));
+            }
+        }
+        
         public int System1_Result
         {
             get => _view.System1_Result;
@@ -1997,6 +2017,28 @@ namespace HubCentra_A1.Model
         }
         #endregion Equipment
 
+        #region Temperature
+        public string Alarm_Temperature_Title
+        {
+            get => _view.Alarm_Temperature_Title;
+            set
+            {
+                _view.Alarm_Temperature_Title = value;
+                OnPropertyChanged(nameof(Alarm_Temperature_Title));
+            }
+        }
+
+        public string Alarm_Temperature_Content
+        {
+            get => _view.Alarm_Temperature_Content;
+            set
+            {
+                _view.Alarm_Temperature_Content = value;
+                OnPropertyChanged(nameof(Alarm_Temperature_Content));
+            }
+        }
+        #endregion Temperature
+
         #endregion Alarm
 
         #region Buzzer
@@ -2010,6 +2052,19 @@ namespace HubCentra_A1.Model
             }
         }
         #endregion Buzzer
+
+        #region Lamp
+        public bool Lamp
+        {
+            get => _view.Lamp;
+            set
+            {
+                _view.Lamp = value;
+                OnPropertyChanged(nameof(Lamp));
+            }
+        }
+        #endregion Buzzer
+
 
         #region Door
         public bool Door_previousDoorState

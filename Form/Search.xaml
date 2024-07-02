@@ -73,7 +73,7 @@
                         <GridViewColumn  x:Name="colID">
                             <GridViewColumn.Header >
                                 <GridViewColumnHeader Background="White" Click="GridViewColumnHeader_Click"  Tag="ID">
-                                    <TextBlock Text="ID" VerticalAlignment="Center" Style="{StaticResource Search_TextBlock_01}"></TextBlock>
+                                    <TextBlock Text="Cell" VerticalAlignment="Center" Style="{StaticResource Search_TextBlock_01}"></TextBlock>
                                 </GridViewColumnHeader>
                             </GridViewColumn.Header>
                             <GridViewColumn.CellTemplate>
@@ -87,7 +87,7 @@
                         <GridViewColumn  x:Name="colBarcode"  >
                             <GridViewColumn.Header >
                                 <GridViewColumnHeader Background="White" Click="GridViewColumnHeader_Click" Tag="Barcode">
-                                    <TextBlock Text="Barcode" Style="{StaticResource Search_TextBlock_01}"></TextBlock>
+                                    <TextBlock Text="Bottle" Style="{StaticResource Search_TextBlock_01}"></TextBlock>
                                 </GridViewColumnHeader>
                             </GridViewColumn.Header>
                             <GridViewColumn.CellTemplate>

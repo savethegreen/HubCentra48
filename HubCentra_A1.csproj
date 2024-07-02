@@ -16,6 +16,7 @@
     <None Remove="Image\Hubcentra84.png" />
     <None Remove="Image\loadcell.png" />
     <None Remove="Image\Loding.png" />
+    <None Remove="Image\New_Report.png" />
     <None Remove="Image\Rack.png" />
     <None Remove="Image\Report.png" />
     <None Remove="Image\Search.png" />
@@ -23,6 +24,10 @@
     <None Remove="Image\search4.png" />
     <None Remove="Image\Temp.png" />
     <None Remove="Image\Temp2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Image\New_Report.png" />
   </ItemGroup>
 
   <ItemGroup>

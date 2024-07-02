@@ -140,6 +140,7 @@ namespace HubCentra_A1.Model
         public SerialPort Temperature_SerialPort { get; set; }
         public double Temperature_ProcessValue { get; set; } = 0;
         public bool Temperature_Connection { get; set; } = false;
+        public bool Temperature_AL_Connection { get; set; } = false;
         #endregion Temperature
 
         #region DatabaseManager
@@ -179,7 +180,7 @@ namespace HubCentra_A1.Model
         #endregion Config
 
         #region Search
-        public List<DatabaseManager_Equipment> Search_List { get; set; }
+        public List<DatabaseManager_Equipmentstring> Search_List { get; set; }
         #endregion Search
 
         #region Report
@@ -227,13 +228,17 @@ namespace HubCentra_A1.Model
         #endregion  Calculator
 
         #region System
+        public int System_PositiveFirstint { get; set; } = -1;
+
+        public int System_IncubationFirstint { get; set; } = -1;
+
 
         #region System1
         public List<PositiveFirst_C> System_PositiveFirst { get; set; }
         public bool System1_HasPositive { get; set; } = false;
         public string System1_Positive_Warning { get; set; } = "";
         public string System1_Positive_Cel { get; set; } = "";
-        public int System_PositiveFirstint { get; set; } = -1;
+
 
         public int System1_Result { get; set; } = 0;
         #endregion System1
@@ -256,6 +261,10 @@ namespace HubCentra_A1.Model
         #region Buzzer
         public bool Buzzer { get; set; } = false;
         #endregion Buzzer
+
+        #region Lamp
+        public bool Lamp { get; set; } = false;
+        #endregion Lamp
 
         #region Alarm
         #region System
@@ -334,9 +343,15 @@ namespace HubCentra_A1.Model
         #endregion Door
 
         #region Equipment
-        public string Alarm_Equipment_Title { get; set; } = "Connect Error";
-        public string Alarm_Equipment_Content { get; set; } = "System1 is not Connected.";
+        public string Alarm_Equipment_Title { get; set; } = "Equipment Change";
+        public string Alarm_Equipment_Content { get; set; } = "장비를 교체를 시작합니다.";
         #endregion Equipment
+
+        #region Temerature
+        public string Alarm_Temperature_Title { get; set; } = "Temerature Alarm!!";
+        public string Alarm_Temperature_Content { get; set; } = "온도 컨트롤러가 비정상 입니다. " + "\n" +
+                                              "온도 컨트롤러나 히터 관련 부품을 점검해주세요";
+        #endregion Temperature
 
         public bool PopStatus_Positive_Flag { get; set; } = false;
         public string PopStatus_Positive_Title { get; set; } = "Positive 발생!!";
@@ -1059,6 +1074,176 @@ namespace HubCentra_A1.Model
                 }
             }
             public int IncubationTime
+            {
+                get => _IncubationTime;
+                set
+                {
+                    if (_IncubationTime != value)
+                    {
+                        _IncubationTime = value;
+                        OnPropertyChanged(nameof(IncubationTime));
+                    }
+                }
+            }
+
+
+            public bool Switched
+            {
+                get => _Switched;
+                set
+                {
+                    if (_Switched != value)
+                    {
+                        _Switched = value;
+                        OnPropertyChanged(nameof(Switched));
+                    }
+                }
+            }
+
+            public bool isEnable
+            {
+                get => _isEnable;
+                set
+                {
+                    if (_isEnable != value)
+                    {
+                        _isEnable = value;
+                        OnPropertyChanged(nameof(isEnable));
+                    }
+                }
+            }
+            public bool isActive
+            {
+                get => _isActive;
+                set
+                {
+                    if (_isActive != value)
+                    {
+                        _isActive = value;
+                        OnPropertyChanged(nameof(isActive));
+                    }
+                }
+            }
+        }
+
+        public class DatabaseManager_Equipmentstring : INotifyPropertyChanged
+        {
+            public event PropertyChangedEventHandler PropertyChanged;
+            protected virtual void OnPropertyChanged(string propertyName)
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
+            public int _ID;
+            public string _Cell;
+            public string _Barcode;
+            public string _Qrcode;
+            public DateTime? _Loading;
+            public DateTime? _CreDate;
+            public DateTime? _PositiveTime;
+            public string _Result;
+            public string _IncubationTime;
+            public bool _Switched;
+            public bool _isEnable;
+            public bool _isActive;
+
+            public int ID
+            {
+                get => _ID;
+                set
+                {
+                    if (_ID != value)
+                    {
+                        _ID = value;
+                        OnPropertyChanged(nameof(ID));
+                    }
+                }
+            }
+            public string Cell
+            {
+                get => _Cell;
+                set
+                {
+                    if (_Cell != value)
+                    {
+                        _Cell = value;
+                        OnPropertyChanged(nameof(Cell));
+                    }
+                }
+            }
+            public string Barcode
+            {
+                get => _Barcode;
+                set
+                {
+                    if (_Barcode != value)
+                    {
+                        _Barcode = value;
+                        OnPropertyChanged(nameof(Barcode));
+                    }
+                }
+            }
+            public string Qrcode
+            {
+                get => _Qrcode;
+                set
+                {
+                    if (_Qrcode != value)
+                    {
+                        _Qrcode = value;
+                        OnPropertyChanged(nameof(Qrcode));
+                    }
+                }
+            }
+            public DateTime? Loading
+            {
+                get => _Loading;
+                set
+                {
+                    if (_Loading != value)
+                    {
+                        _Loading = value;
+                        OnPropertyChanged(nameof(Loading));
+                    }
+                }
+            }
+            public DateTime? CreDate
+            {
+                get => _CreDate;
+                set
+                {
+                    if (_CreDate != value)
+                    {
+                        _CreDate = value;
+                        OnPropertyChanged(nameof(CreDate));
+                    }
+                }
+            }
+            public DateTime? PositiveTime
+            {
+                get => _PositiveTime;
+                set
+                {
+                    if (_PositiveTime != value)
+                    {
+                        _PositiveTime = value;
+                        OnPropertyChanged(nameof(PositiveTime));
+                    }
+                }
+            }
+
+            public string Result
+            {
+                get => _Result;
+                set
+                {
+                    if (_Result != value)
+                    {
+                        _Result = value;
+                        OnPropertyChanged(nameof(Result));
+                    }
+                }
+            }
+            public string IncubationTime
             {
                 get => _IncubationTime;
                 set
@@ -2085,7 +2270,7 @@ namespace HubCentra_A1.Model
             public string _Spare3;
             public string _Spare4;
             public string _Spare5;
-
+            public bool _NegativeOnOFF;
             public int ID
             {
                 get => _ID;
@@ -2391,7 +2576,21 @@ namespace HubCentra_A1.Model
                     }
                 }
             }
+            public bool NegativeOnOFF
+            {
+                get => _NegativeOnOFF;
+                set
+                {
+                    if (_NegativeOnOFF != value)
+                    {
+                        _NegativeOnOFF = value;
+                        OnPropertyChanged(nameof(NegativeOnOFF));
+                    }
+                }
+            }
         }
+
+
         #endregion Config
 
         #region System

@@ -277,7 +277,7 @@
                                 <ColumnDefinition Width="10*"/>
                                 <ColumnDefinition Width="100*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="NEW PASSWORD#1: " Style="{StaticResource Login_TextBlock_03}"/>
+                            <TextBlock Grid.Column="0" Text="New Password#1: " Style="{StaticResource Login_TextBlock_03}"/>
                             <PasswordBox Grid.Column="2" x:Name="PasswordChange_NEWPASSWORD1" Margin="3,8"  HorizontalContentAlignment="Center" FontSize="20"/>
                         </Grid>
                         <Grid Grid.Row="4">
@@ -286,7 +286,7 @@
                                 <ColumnDefinition Width="10*"/>
                                 <ColumnDefinition Width="100*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="NEW PASSWORD#2: " Style="{StaticResource Login_TextBlock_03}"/>
+                            <TextBlock Grid.Column="0" Text="Confirm New Password#2: " Style="{StaticResource Login_TextBlock_03}" TextWrapping="Wrap"/>
                             <PasswordBox Grid.Column="2" x:Name="PasswordChange_NEWPASSWORD2" Margin="3,8"  HorizontalContentAlignment="Center" FontSize="20"/>
                         </Grid>
 
@@ -300,16 +300,17 @@
                             </Grid.ColumnDefinitions>
 
                             <Grid  Grid.Column="1">
-                                <Button x:Name="Password_Save"  Content="SAVE"  Margin="2" >
+                                <Button x:Name="Password_Save"  Content="SAVE"  Margin="2" Click="Password_Save_Click">
                                     <Button.Style>
                                         <Style TargetType="Button" BasedOn="{StaticResource LoginButton_01}">
 
                                         </Style>
                                     </Button.Style>
+
                                 </Button>
                             </Grid>
                             <Grid  Grid.Column="3">
-                                <Button x:Name="Password_Cancel"  Content="CENCEL"  Margin="2" >
+                                <Button x:Name="Password_Cancel"  Content="CANCEL"  Margin="2" >
                                     <Button.Style>
                                         <Style TargetType="Button" BasedOn="{StaticResource LoginButton_01}">
 
@@ -430,7 +431,7 @@
                                 </Button>
                             </Grid>
                             <Grid  Grid.Column="3">
-                                <Button x:Name="btn_ADDUSER_Cancel"  Content="CENCEL"  Margin="2" >
+                                <Button x:Name="btn_ADDUSER_Cancel"  Content="CANCEL"  Margin="2" >
                                     <Button.Style>
                                         <Style TargetType="Button" BasedOn="{StaticResource LoginButton_01}">
 
