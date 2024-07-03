@@ -842,8 +842,8 @@ namespace HubCentra_A1
         public void Pingcheck(string ping)
         {
             string host = ping;
-            int timeout = 100;
-            int requiredSuccesses = 3;
+            int timeout = 200;
+            int requiredSuccesses = 5;
             int successCount = 0;
             try
             {
@@ -1119,7 +1119,7 @@ namespace HubCentra_A1
             try
             {
                 var filteredItemsSwitched = _viewModel.EquipmentInfo.Where(e => e.isActive && e.isEnable && e.Switched).ToList();
-                int MaximumTime = _viewModel.Config[0].MaximumTime * _viewModel.Common_Minute;
+                int MaximumTime = _viewModel.Config[0].MaximumTime * _viewModel.Common_Day;
                 int count = filteredItemsSwitched.Count;
                 int lastID = filteredItemsSwitched[count - 1].ID;
                 DateTime now = DateTime.Now;
@@ -2113,6 +2113,95 @@ namespace HubCentra_A1
 
             }
         }
+
+        public void PCBData()
+        {
+            try
+            {
+                var pcb = new List<PCB>();
+                var cell_alive = new List<PCB_cell_alive_C>();
+                var DataWithDB_presenceArray = new List<MatchEquipmentDataWithDB_C>();
+                for (int i = 0; i < _viewModel.Common_TotalSystemCellCount; i++)
+                {
+                    pcb.Add(new PCB { ADC = 0, LED = 0 }); // ADC와 LED 값을 초기화
+                    cell_alive.Add(new PCB_cell_alive_C { alive = 0 }); // ADC와 LED 값을 초기화
+                    DataWithDB_presenceArray.Add(new MatchEquipmentDataWithDB_C { alive = false });
+                    _viewModel.PositiveDelay[i] = 0;
+                }
+
+
+                for (int system = 0; system < 1; system++)
+                {
+                    _viewModel.PCB_CellReadings[system] = new Dictionary<int, List<List<double>>>();
+
+                    for (int line = 0; line < 3; line++)
+                    {
+                        _viewModel.PCB_CellReadings[system][line] = new List<List<double>>();
+                        for (int cell = 0; cell < 28; cell++)
+                        {
+                            _viewModel.PCB_CellReadings[system][line].Add(new List<double>());
+                        }
+                    }
+                }
+
+                _viewModel.PCB_Data = pcb;
+                _viewModel.PCB_cell_alive = cell_alive;
+                _viewModel.Equipment_DataWithDB_presenceArray = DataWithDB_presenceArray;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public void PCBFrame()
+        {
+            bool[] ledidx = new bool[84];
+            string id = _viewModel.SystemInfo[0].PCB_ID1;
+            for (int i = 0; i < 3; i++)
+            {
+                string LAMP = $"{id},LINE{i},LAMP,CHALL,ON";
+                _viewModel.Queue_PCB_Manual.Enqueue(LAMP);
+            }
+
+            Thread.Sleep(500);
+            for (int i = 0; i < 3; i++)
+            {
+
+                string ACD = $"{id},LINE{i},ADCREAD";
+                _viewModel.Queue_PCB_Manual.Enqueue(ACD);
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                string LED = $"{id},LINE{i},TLED,ALL,ON,0,255,0";
+                _viewModel.Queue_PCB_Manual.Enqueue(LED);
+
+                string DIM = $"{id},LINE{i},DIMREAD";
+                _viewModel.Queue_PCB_Manual.Enqueue(DIM);
+            }
+
+            var filteredItems = _viewModel.EquipmentInfo.Where(e => e.isActive && e.isEnable).ToList();
+            foreach (var item in filteredItems)
+            {
+
+                int index = item.ID - 1;
+                string result = item.Result;
+                PCB_LED(id, index, result);
+                ledidx[index] = true;
+            }
+
+            for (int i = 0; i < _viewModel.Common_SystemCellCount; i++)
+            {
+                if (ledidx[i] == false)
+                {
+                    PCB_LED(id, i, "Null");
+                }
+            }
+        }
+
+
+
         public bool PCB_SerialPortOpen(string portName)
         {
             try
@@ -2148,95 +2237,7 @@ namespace HubCentra_A1
             }
         }
 
-        public void PCBData()
-        {
-            try
-            {
-                var pcb = new List<PCB>();
-                var cell_alive = new List<PCB_cell_alive_C>();
-                var DataWithDB_presenceArray = new List<MatchEquipmentDataWithDB_C>();
-                for (int i = 0; i < _viewModel.Common_TotalSystemCellCount; i++)
-                {
-                    pcb.Add(new PCB { ADC = 0, LED = 0 }); // ADC와 LED 값을 초기화
-                    cell_alive.Add(new PCB_cell_alive_C { alive = 0 }); // ADC와 LED 값을 초기화
-                    DataWithDB_presenceArray.Add(new MatchEquipmentDataWithDB_C { alive = false });
-                    _viewModel.PositiveDelay[i] = 0;
-                }
-
-
-                for (int system = 0; system < 1; system++)
-                {
-                    _viewModel.PCB_CellReadings[system] = new Dictionary<int, List<List<double>>>();
-
-                    for (int line = 0; line < 16; line++)
-                    {
-                        _viewModel.PCB_CellReadings[system][line] = new List<List<double>>();
-                        for (int cell = 0; cell < 28; cell++)
-                        {
-                            _viewModel.PCB_CellReadings[system][line].Add(new List<double>());
-                        }
-                    }
-                }
-
-                _viewModel.PCB_Data = pcb;
-                _viewModel.PCB_cell_alive = cell_alive;
-                _viewModel.Equipment_DataWithDB_presenceArray = DataWithDB_presenceArray;
-            }
-            catch (Exception ex)
-            {
-
-            }
-
-        }
-
-
-
-        public void PCBFrame()
-        {
-            bool[] ledidx =  new bool[84];
-            string id = _viewModel.SystemInfo[0].PCB_ID1;
-            for (int i = 0; i < 3; i++)
-            {
-                string LAMP = $"{id},LINE{i},LAMP,CHALL,ON";
-                _viewModel.Queue_PCB_Manual.Enqueue(LAMP);   
-            }
-
-            Thread.Sleep(500);
-            for (int i = 0; i < 3; i++)
-            {
-
-                string ACD = $"{id},LINE{i},ADCREAD";
-                _viewModel.Queue_PCB_Manual.Enqueue(ACD);
-            }
-
-            for (int i = 0; i < 3; i++)
-            {
-                string LED = $"{id},LINE{i},TLED,ALL,ON,0,255,0";
-                _viewModel.Queue_PCB_Manual.Enqueue(LED);
-
-                string DIM = $"{id},LINE{i},DIMREAD";
-                _viewModel.Queue_PCB_Manual.Enqueue(DIM);
-            }
-
-            var filteredItems = _viewModel.EquipmentInfo.Where(e => e.isActive && e.isEnable ).ToList();
-            foreach (var item in filteredItems)
-            {
-
-                int index = item.ID - 1;
-                string result = item.Result;
-                PCB_LED(id, index, result);
-                ledidx[index] = true;
-            }
-
-            for (int i = 0; i < _viewModel.Common_SystemCellCount; i++)
-            {
-                if (ledidx[i] == false)
-                {
-                    PCB_LED(id, i, "Null");
-                }
-            }
-        }
-
+   
         public void PCB_LAMP_ON()
         {
             try
@@ -2848,13 +2849,13 @@ namespace HubCentra_A1
         {
 
             int sv = (int)(_viewModel.Config[0].Temp * 10);
-
-            byte[] PV_Temp = { 0x02, 0x04, 0x03, 0xE8, 0x00, 0x01, 0xB1, 0x89 };
-            byte[] SV_Temp = GenerateFrame(sv, 2);
-            byte[] AL_Temp = { 0x02, 0x02, 0x00, 0x04, 0x00, 0x01, 0xF8, 0x38 };
+            byte[] PV_Temp = new byte[8] { 0x01, 0x04, 0x03, 0xE8, 0x00, 0x01, 0xB1, 0xBA };
+            //byte[] PV_Temp = { 0x02, 0x04, 0x03, 0xE8, 0x00, 0x01, 0xB1, 0x89 };
+            byte[] SV_Temp = GenerateFrame(sv, 1);
+           // byte[] AL_Temp = { 0x02, 0x02, 0x00, 0x04, 0x00, 0x01, 0xF8, 0x38 };
 
             await Temperature_ReadAsync(PV_Temp, SV_Temp, 500, (temp) => _viewModel.Temperature_ProcessValue = temp);
-            await Temperature_ReadAsyncAL(AL_Temp, 500, (AL) => _viewModel.Temperature_AL_Connection = AL);
+            //await Temperature_ReadAsyncAL(AL_Temp, 500, (AL) => _viewModel.Temperature_AL_Connection = AL);
 
         }
         public async Task Temperature_ReadAsync(byte[] PV, byte[] SV, double timeout, Action<double> updateTempValue)

@@ -559,7 +559,7 @@
                     <TextBlock
                         Grid.Column="0"
                         Style="{StaticResource Config_TextBlock_01}"
-                        Text="DataStorageSave" />
+                        Text="Data Storage Save" />
                 </Grid>
                 <Grid Grid.Column="3">
                     <Grid.ColumnDefinitions>
