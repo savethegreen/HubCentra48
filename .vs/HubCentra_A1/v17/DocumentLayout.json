@@ -11,6 +11,10 @@
       "RelativeMoniker": "D:0:0:{09B6EDE8-CE96-4C09-B893-C1B20F4DEDC4}|HubCentra_A1.csproj|solutionrelative:model\\view.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{09B6EDE8-CE96-4C09-B893-C1B20F4DEDC4}|HubCentra_A1.csproj|d:\\hubcentra_a48\\hubcentra_a1\\form\\system_1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{09B6EDE8-CE96-4C09-B893-C1B20F4DEDC4}|HubCentra_A1.csproj|solutionrelative:form\\system_1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{09B6EDE8-CE96-4C09-B893-C1B20F4DEDC4}|HubCentra_A1.csproj|d:\\hubcentra_a48\\hubcentra_a1\\class\\db\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{09B6EDE8-CE96-4C09-B893-C1B20F4DEDC4}|HubCentra_A1.csproj|solutionrelative:class\\db\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -30,11 +34,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "System_1.xaml",
+              "DocumentMoniker": "D:\\HubCentra_A48\\HubCentra_A1\\Form\\System_1.xaml",
+              "RelativeDocumentMoniker": "Form\\System_1.xaml",
+              "ToolTip": "D:\\HubCentra_A48\\HubCentra_A1\\Form\\System_1.xaml",
+              "RelativeToolTip": "Form\\System_1.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-07-03T00:04:11.868Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "DatabaseManager.cs",
               "DocumentMoniker": "D:\\HubCentra_A48\\HubCentra_A1\\Class\\DB\\DatabaseManager.cs",
               "RelativeDocumentMoniker": "Class\\DB\\DatabaseManager.cs",
@@ -53,14 +69,14 @@
               "RelativeDocumentMoniker": "Model\\View.cs",
               "ToolTip": "D:\\HubCentra_A48\\HubCentra_A1\\Model\\View.cs",
               "RelativeToolTip": "Model\\View.cs",
-              "ViewState": "AQIAAAIKAAAAAAAAAAAswBIKAAAYAAAA",
+              "ViewState": "AQIAACgAAAAAAAAAAAAAAIYBAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-02T08:21:01.7Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "EnumManager.cs",
               "DocumentMoniker": "D:\\HubCentra_A48\\HubCentra_A1\\Class\\ETC\\EnumManager.cs",
               "RelativeDocumentMoniker": "Class\\ETC\\EnumManager.cs",
@@ -68,20 +84,18 @@
               "RelativeToolTip": "Class\\ETC\\EnumManager.cs",
               "ViewState": "AQIAAGYAAAAAAAAAAAAxwIQAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-02T08:13:57.408Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-02T08:13:57.408Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Config.xaml",
               "DocumentMoniker": "D:\\HubCentra_A48\\HubCentra_A1\\Form\\Config.xaml",
               "RelativeDocumentMoniker": "Form\\Config.xaml",
               "ToolTip": "D:\\HubCentra_A48\\HubCentra_A1\\Form\\Config.xaml",
               "RelativeToolTip": "Form\\Config.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-07-02T08:11:55.403Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-02T08:11:55.403Z"
             },
             {
               "$type": "Document",
@@ -91,7 +105,7 @@
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
               "ToolTip": "D:\\HubCentra_A48\\HubCentra_A1\\MainWindow.xaml.cs",
               "RelativeToolTip": "MainWindow.xaml.cs",
-              "ViewState": "AQIAAEcEAAAAAAAAAAAAwFAEAABQAAAA",
+              "ViewState": "AQIAAFkDAAAAAAAAAAAcwGsDAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-02T08:09:03.727Z",
               "EditorCaption": ""

@@ -842,8 +842,9 @@ namespace HubCentra_A1
         public void Pingcheck(string ping)
         {
             string host = ping;
-            int timeout = 10;
-
+            int timeout = 100;
+            int requiredSuccesses = 3;
+            int successCount = 0;
             try
             {
                 Ping pingSender = new Ping();
@@ -852,11 +853,24 @@ namespace HubCentra_A1
 
                 string data = "aaaaaaaaaaaaaaaa";
                 byte[] buffer = System.Text.Encoding.ASCII.GetBytes(data);
-                PingReply reply = pingSender.Send(host, timeout, buffer, options);
 
-                if (reply.Status == IPStatus.Success && reply.RoundtripTime <= timeout)
+                for (int i = 0; i < requiredSuccesses; i++)
                 {
+                    PingReply reply = pingSender.Send(host, timeout, buffer, options);
 
+                    if (reply.Status == IPStatus.Success && reply.RoundtripTime <= timeout)
+                    {
+
+                        successCount++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                if (successCount >= 1)
+                {
                     if (!_viewModel.PCB_Restart)
                     {
                         Thread.Sleep(100);
@@ -872,6 +886,8 @@ namespace HubCentra_A1
                     _viewModel.PCB_Restart = false; // 통신이 끊어졌음을 표시
                     _viewModel.PCB_Status = false;
                 }
+
+
             }
             catch (Exception ex)
             {
@@ -3605,7 +3621,7 @@ namespace HubCentra_A1
 
         private void Incubation_CancelClicked(object sender, PopupEventArgs e, int idx, int IncubationTime, int ID, string barcodeI)
         {
-
+            _viewModel.System_IncubationFirstint = -1;
         }
         #endregion Incubation
 
@@ -4145,9 +4161,11 @@ namespace HubCentra_A1
                         string command = $"{commandBase_CH},{k}";
 
                         _viewModel.Queue_PCB_Manual.Enqueue(command);
+                        Thread.Sleep(300);
                         _viewModel.Queue_PCB_Manual.Enqueue(commandBase_ADCREAD);
+                        Thread.Sleep(300);
                         _viewModel.Queue_PCB_Manual.Enqueue(commandBase_DIMREAD);
-                        Thread.Sleep(1000);
+                        Thread.Sleep(300);
 
                         int lints = line * 28;
                         var stopwatch = Stopwatch.StartNew();
