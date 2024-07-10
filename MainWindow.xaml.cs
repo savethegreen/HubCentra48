@@ -819,6 +819,23 @@ namespace HubCentra_A1
                     _viewModel.fastechDeviceManager.ClearLatch(Enum_FASTECH_ID.IO);
                     _viewModel.FASTECH_Input_Latch = 0;
                 }
+                if(GetStatus == null)
+                {
+                    _viewModel.FASTECH_Input_Latch = -1;
+                    _viewModel.FASTECH_IO_Connection = false;
+                    _viewModel.PCB_Restart = false; // 통신이 끊어졌음을 표시
+                    _viewModel.PCB_Status = false;
+                }
+                else
+                {
+                    if (!_viewModel.PCB_Restart)
+                    {
+                        Thread.Sleep(100);
+                        PCBFrame(); // 처음 연결되었을 때만 호출
+                        LEDini();
+                        _viewModel.PCB_Restart = true; // 통신이 연결되었음을 표시
+                    }
+                }
             }
         }
 
@@ -832,7 +849,7 @@ namespace HubCentra_A1
         {
             try
             {
-                Pingcheck(_viewModel.SystemInfo[0].FASTECH_IO_Input_IP);
+                //Pingcheck(_viewModel.SystemInfo[0].FASTECH_IO_Input_IP);
             }
             catch (Exception ex)
             {
@@ -2162,9 +2179,11 @@ namespace HubCentra_A1
             {
                 string LAMP = $"{id},LINE{i},LAMP,CHALL,ON";
                 _viewModel.Queue_PCB_Manual.Enqueue(LAMP);
+                Thread.Sleep(100);
             }
 
-            Thread.Sleep(500);
+            Thread.Sleep(2000);
+
             for (int i = 0; i < 3; i++)
             {
 
@@ -2174,7 +2193,8 @@ namespace HubCentra_A1
 
             for (int i = 0; i < 3; i++)
             {
-                string LED = $"{id},LINE{i},TLED,ALL,ON,0,255,0";
+                //string LED = $"{id},LINE{i},TLED,ALL,ON,0,255,0";
+                string LED = $"{id},LINE{i},TLED,DIM,ALL,200";
                 _viewModel.Queue_PCB_Manual.Enqueue(LED);
 
                 string DIM = $"{id},LINE{i},DIMREAD";
@@ -3099,7 +3119,6 @@ namespace HubCentra_A1
                         }
                         else
                         {
-
                             if (!_viewModel.Alarm_BottleLoading_Set.Contains(i))
                             {
                                 _viewModel.BottleLoading_Result[i] = true;
