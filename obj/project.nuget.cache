@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uYY4Un5fBxY=",
+  "dgSpecHash": "0IGSyeLlQ5w=",
   "success": true,
-  "projectFilePath": "E:\\HubCentra_A48\\HubCentra_A1\\HubCentra_A1.csproj",
+  "projectFilePath": "D:\\HubCentra_A48\\HubCentra_A1\\HubCentra_A1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\covotech\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\covotech\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

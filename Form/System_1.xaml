@@ -922,7 +922,7 @@ Duration="0:0:0.500" />
                                                             <StopStoryboard BeginStoryboardName="PositiveFirst" />
                                                         </DataTrigger.ExitActions>
                                                     </DataTrigger>
-                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="6">
+                                                    <DataTrigger Binding="{Binding System_IncubationFirstint}" Value="5">
                                                         <DataTrigger.EnterActions>
                                                             <BeginStoryboard Name="IncubationFirstint">
                                                                 <Storyboard>

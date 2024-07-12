@@ -819,23 +819,23 @@ namespace HubCentra_A1
                     _viewModel.fastechDeviceManager.ClearLatch(Enum_FASTECH_ID.IO);
                     _viewModel.FASTECH_Input_Latch = 0;
                 }
-                if(GetStatus == null)
-                {
-                    _viewModel.FASTECH_Input_Latch = -1;
-                    _viewModel.FASTECH_IO_Connection = false;
-                    _viewModel.PCB_Restart = false; // 통신이 끊어졌음을 표시
-                    _viewModel.PCB_Status = false;
-                }
-                else
-                {
-                    if (!_viewModel.PCB_Restart)
-                    {
-                        Thread.Sleep(100);
-                        PCBFrame(); // 처음 연결되었을 때만 호출
-                        LEDini();
-                        _viewModel.PCB_Restart = true; // 통신이 연결되었음을 표시
-                    }
-                }
+                //if(GetStatus == null)
+                //{
+                //    _viewModel.FASTECH_Input_Latch = -1;
+                //    _viewModel.FASTECH_IO_Connection = false;
+                //    _viewModel.PCB_Restart = false; // 통신이 끊어졌음을 표시
+                //    _viewModel.PCB_Status = false;
+                //}
+                //else
+                //{
+                //    if (!_viewModel.PCB_Restart)
+                //    {
+                //        Thread.Sleep(100);
+                //        PCBFrame(); // 처음 연결되었을 때만 호출
+                //        LEDini();
+                //        _viewModel.PCB_Restart = true; // 통신이 연결되었음을 표시
+                //    }
+                //}
             }
         }
 
@@ -1901,7 +1901,7 @@ namespace HubCentra_A1
                     return; // 팝업이 열려 있으면 아무것도 하지 않음
                 }
 
-                Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                 {
                     Equipment = new Alarm_Equipment(_viewModel);
 
@@ -2767,7 +2767,7 @@ namespace HubCentra_A1
                             string item1 = command.Item1;
                             _viewModel.Barcode_BarcodeID = item1;
                             _viewModel.Barcode_Content = "Bottle  " + _viewModel.Barcode_BarcodeID + "  already exists.";
-                            Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                            Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                             {
                                 Alarm_Barcode alarm_Barcode = new Alarm_Barcode(_viewModel);
                                 alarm_Barcode.ClosedEvent += Alarm_Barcode_Closed;
@@ -3035,7 +3035,7 @@ namespace HubCentra_A1
                 }
                 if(_viewModel.Temperature_AL_Connection == true)
                 {
-                    Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                    Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                     {
                         alarm_Temperature = new Alarm_Temperature(_viewModel);
                         if (Application.Current.MainWindow != null && Application.Current.MainWindow != alarm_Temperature)
@@ -3217,7 +3217,7 @@ namespace HubCentra_A1
                                     _viewModel.Barcode_ID_Loading = "";
                                     _viewModel.Patient_ID_Loading = "";
                                 }
-                                Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                                 {
                                     try
                                     {
@@ -3368,7 +3368,7 @@ namespace HubCentra_A1
                 _viewModel.Alarm_Negative_Unloading_Cell = cellidx(idx);
                 _viewModel.Alarm_Negative_Unloading_BarcodeID = "Bottle  :  " + barcodeID;
                 _viewModel.Alarm_Negative_Unloading_PatientID = "Clinical sample  :  " + patientID;
-                Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                 {
                     Negative_Unloading = new Alarm_Negative(_viewModel, idx);
                     Negative_Unloading.OKClicked += (s, e) => Negative_Unloading_OKClicked(s, e, idx, IncubationTime, ID, barcodeID);
@@ -3468,7 +3468,7 @@ namespace HubCentra_A1
                     _viewModel.Alarm_Positive_Unloading_Warning = "해당 Positive를 먼저 제거하시겠습니까?";
                 }
 
-                Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                 {
                     Positive_Unloading = new Alarm_Positive_Unloading(_viewModel);
                     Positive_Unloading.OKClicked += (s, e) => Positive_Unloading_OKClicked(s, e, idx, IncubationTime, ID, barcodeID);
@@ -3561,7 +3561,7 @@ namespace HubCentra_A1
                 _viewModel.Alarm_Incubation_PatientID = "Clinical sample : " + PatientID;
                 _viewModel.System_IncubationFirstint = idx;
   
-                Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                 {
                     Incubation = new Alarm_Incubation(_viewModel, idx);
                     Incubation.OKClicked += (s, e) => Incubation_OKClicked(s, e, idx, IncubationTime, ID, barcodeID);
@@ -3846,7 +3846,7 @@ namespace HubCentra_A1
             {
                 _viewModel.Alarm_Door_Buzzer = true; 
                 Door_timer_Stop();
-                Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                 {
                     Alarm_Door alarm_Door = new Alarm_Door(_viewModel);
                     if (Application.Current.MainWindow != null && Application.Current.MainWindow != alarm_Door)
@@ -4100,7 +4100,7 @@ namespace HubCentra_A1
                     _viewModel.Alarm_Positive_Warning = "시간 : " + DateNow + "\n" +
                      "Positive가 감지되었습니다." + "\n" +
                      "해당 cell에 삽입된 bottle을 제거해 주세요." + "\n";
-                    Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                    Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                     {
                         alarm_positive = new Alarm_Positive(_viewModel);
                         if (Application.Current.MainWindow != null && Application.Current.MainWindow != alarm_positive)
@@ -4135,7 +4135,7 @@ namespace HubCentra_A1
                 {
                     _viewModel.System_Title = "Connect Error";
                     _viewModel.System_Content = "System1 is not Connected.";
-                    Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                    Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                     {
                         alarm_System = new Alarm_System(_viewModel);
                         if (Application.Current.MainWindow != null && Application.Current.MainWindow != alarm_System)
