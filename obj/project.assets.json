@@ -2986,11 +2986,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\HubCentra_A48\\HubCentra_A1\\HubCentra_A1.csproj",
+      "projectUniqueName": "D:\\Auto\\버전\\240723 severance HubCentra_A48\\HubCentra_A1\\HubCentra_A1.csproj",
       "projectName": "HubCentra_A1",
-      "projectPath": "D:\\HubCentra_A48\\HubCentra_A1\\HubCentra_A1.csproj",
+      "projectPath": "D:\\Auto\\버전\\240723 severance HubCentra_A48\\HubCentra_A1\\HubCentra_A1.csproj",
       "packagesPath": "C:\\Users\\covotech\\.nuget\\packages\\",
-      "outputPath": "D:\\HubCentra_A48\\HubCentra_A1\\obj\\",
+      "outputPath": "D:\\Auto\\버전\\240723 severance HubCentra_A48\\HubCentra_A1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -74,7 +74,7 @@ namespace HubCentra_A1
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            MessageBoxResult result = System.Windows.MessageBox.Show(
+            MessageBoxResult result = System.Windows.MessageBox.Show(this,
         "Do you really want to exit?",
         "Exit Confirmation",
         MessageBoxButton.YesNo,
@@ -1610,7 +1610,7 @@ namespace HubCentra_A1
         {
             try
             {
-                MessageBoxResult result = System.Windows.MessageBox.Show(
+                MessageBoxResult result = System.Windows.MessageBox.Show(this,
            "Are you sure you want to delete?",
            "Delete Confirmation",
            MessageBoxButton.YesNo,
@@ -3227,10 +3227,10 @@ namespace HubCentra_A1
                                             bottleLoading.Owner = Application.Current.MainWindow;
                                         }
 
-                                        bottleLoading.Topmost = true;
 
                                         if (_viewModel.PCB_Status == true)
                                         {
+                                            bottleLoading.Topmost = true;
                                             bottleLoading.Show();
                                             bottleLoading.Activate();
                                         }
@@ -4108,7 +4108,7 @@ namespace HubCentra_A1
                             alarm_positive.Owner = Application.Current.MainWindow;
                         }
 
-                        alarm_positive.Topmost = true;
+                        //alarm_positive.Topmost = true;
                         alarm_positive.Show();
                         alarm_positive.Activate();
                     }));
