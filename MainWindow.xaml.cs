@@ -2403,7 +2403,8 @@ namespace HubCentra_A1
                         }
                         else if (dataParts[2] == "DIMREAD")
                         {
-                            int reverseIndex = values.Count - 1 - i;
+                            //int reverseIndex = values.Count - 1 - i;
+                            int reverseIndex = i;
                             _viewModel.PCB_Data[pcbIndex].LED = values[reverseIndex];
                         }
                     }
@@ -2664,10 +2665,11 @@ namespace HubCentra_A1
                 var stopwatch = Stopwatch.StartNew();
                 while (stopwatch.ElapsedMilliseconds < timeout)
                 {
-                    if (_viewModel.Barcode_SerialPort.BytesToRead > 10)
+                    if (_viewModel.Barcode_SerialPort.BytesToRead > 3)
                     {
                         Thread.Sleep(50);
                         byte[] response = new byte[_viewModel.Barcode_SerialPort.BytesToRead];
+
                         _viewModel.Barcode_SerialPort.Read(response, 0, response.Length);
                         string asciiResponse = Encoding.ASCII.GetString(response);
                         string[] barcodes = asciiResponse.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
@@ -2675,7 +2677,7 @@ namespace HubCentra_A1
                         foreach (var barcode in barcodes)
                         {
                          
-                            if (barcode.Length > 6) 
+                            if (barcode.Length > 4) 
                             {
                                 if(_viewModel.Equipment_DataWithDB_presenceArray.Any(x => x.alive))
                                 {
@@ -4072,7 +4074,7 @@ namespace HubCentra_A1
         {
             try
             {
-                if (alarm_positive != null && alarm_positive.IsVisible)
+                if (alarm_positive != null && alarm_positive.IsVisible || (Positive_Unloading != null && Positive_Unloading.IsVisible))
                 {
                     return; // 팝업이 열려 있으면 아무것도 하지 않음
                 }
