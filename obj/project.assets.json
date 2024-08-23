@@ -2980,19 +2980,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\user\\.nuget\\packages\\": {}
+    "C:\\Users\\covotech\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\오토\\240726_01 HubCentra_A48\\HubCentra_A1\\HubCentra_A1.csproj",
+      "projectUniqueName": "D:\\Auto\\버전\\240814_01 HubCentra_A48 - hufit\\HubCentra_A1\\HubCentra_A1.csproj",
       "projectName": "HubCentra_A1",
-      "projectPath": "E:\\오토\\240726_01 HubCentra_A48\\HubCentra_A1\\HubCentra_A1.csproj",
-      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "E:\\오토\\240726_01 HubCentra_A48\\HubCentra_A1\\obj\\",
+      "projectPath": "D:\\Auto\\버전\\240814_01 HubCentra_A48 - hufit\\HubCentra_A1\\HubCentra_A1.csproj",
+      "packagesPath": "C:\\Users\\covotech\\.nuget\\packages\\",
+      "outputPath": "D:\\Auto\\버전\\240814_01 HubCentra_A48 - hufit\\HubCentra_A1\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\covotech\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3000,6 +3005,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3059,7 +3065,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

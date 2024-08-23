@@ -10,6 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using static HubCentra_A1.EnumManager;
 using System.Net;
+using LiveChartsCore.SkiaSharpView.Painting;
+using LiveChartsCore.SkiaSharpView.Painting.Effects;
+using SkiaSharp;
 
 namespace HubCentra_A1.Model
 {
@@ -158,6 +161,7 @@ namespace HubCentra_A1.Model
 
         #region  Result
         public Dictionary<int, Queue<(DateTime, double)>> Result_PositiveTime;
+
         public bool Result_Timer{ get; set; } = false;
 
         #endregion Result
@@ -209,6 +213,7 @@ namespace HubCentra_A1.Model
         #region LiveCharts
         public List<DatabaseManager_EquipmentH> LiveCharts_List { get; set; }
         public Dictionary<int, Queue<(DateTime, double)>> LiveCharts_TimeSeries;
+
         public ISeries[] Series { get; set; }
         public RectangularSection[] Sections { get; set; }
         public Axis[] XAxes { get; set; }
@@ -221,6 +226,23 @@ namespace HubCentra_A1.Model
         public string LiveCharts_Result { get; set; } = "";
 
         public string LiveCharts_Positive_Time { get; set; } = "";
+        public int LiveCharts_Time_Range_120 { get; set; } = 120;
+        public int LiveCharts_Time_Range_180 { get; set; } = 180;
+
+        public SolidColorPaint LiveCharts_ColorPaint { get; set; } = new SolidColorPaint
+        {
+            Color = SKColors.Red,
+            StrokeThickness = 2,
+            PathEffect = new DashEffect(new float[] { 6, 6 })
+        };
+
+        public SolidColorPaint LiveCharts_SolidColorPaint { get; set; } = new SolidColorPaint
+        {
+            Color = SKColors.Red,
+            StrokeThickness = 2,
+            PathEffect = new DashEffect(new float[] { 6, 6 })
+        };
+        
         #endregion LiveCharts
 
         #region Calculator
