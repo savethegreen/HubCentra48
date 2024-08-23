@@ -1,6 +1,7 @@
 ﻿using HubCentra_A1.Class.FASTECH;
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore.SkiaSharpView.Painting;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -958,6 +959,8 @@ namespace HubCentra_A1.Model
                 }
             }
         }
+
+
         public bool Result_Timer
         {
             get => _view.Result_Timer;
@@ -1255,6 +1258,8 @@ namespace HubCentra_A1.Model
                 }
             }
         }
+
+    
         public ISeries[] Series
         {
             get => _view.Series;
@@ -1343,6 +1348,17 @@ namespace HubCentra_A1.Model
                 OnPropertyChanged(nameof(LiveCharts_Positive_Time));
             }
         }
+
+        public SolidColorPaint LiveCharts_ColorPaint
+        {
+            get => _view.LiveCharts_ColorPaint;
+            set
+            {
+                _view.LiveCharts_ColorPaint = value;
+                OnPropertyChanged(nameof(LiveCharts_ColorPaint));
+            }
+        }
+
         #endregion LiveCharts
 
         #region Calculator

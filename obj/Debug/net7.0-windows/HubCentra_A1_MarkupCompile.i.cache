@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-E:\오토\240726_01 HubCentra_A48\HubCentra_A1\obj\Debug\net7.0-windows\
+D:\Auto\버전\240823_01 HubCentra_A48 - hufit\HubCentra_A1\obj\Debug\net7.0-windows\
 HubCentra_A1
 none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
-E:\오토\240726_01 HubCentra_A48\HubCentra_A1\App.xaml
+D:\Auto\버전\240823_01 HubCentra_A48 - hufit\HubCentra_A1\App.xaml
 302068952215
 
 37233936801
-2351592980499
+2351151339487
 Form\Alarm_Barcode.xaml;Form\Alarm_Door.xaml;Form\Alarm_Equipment.xaml;Form\Alarm_Incubation.xaml;Form\Alarm_Negative.xaml;Form\Alarm_Positive.xaml;Form\Alarm_Positive_Unloading.xaml;Form\Alarm_System.xaml;Form\Alarm_Temperature.xaml;Form\BottleLoading.xaml;Form\Calculator.xaml;Form\Config.xaml;Form\Home.xaml;Form\LiveCharts.xaml;Form\Loading.xaml;Form\Login.xaml;Form\PopStatus.xaml;Form\Report.xaml;Form\Search.xaml;Form\System_1.xaml;Form\System_2.xaml;Form\System_3.xaml;Form\System_4.xaml;Form\WriteBarcode.xaml;MainWindow.xaml;Style\ButtonStyles.xaml;Style\ColorResourcesStyle.xaml;Style\EtcStyle.xaml;Style\Gradient.xaml;Style\TextBlockStyles.xaml;
 
 False

@@ -145,18 +145,21 @@ namespace HubCentra_A1
         {
             Yi =0,
             Yj = 0 ,
-            Stroke = new SolidColorPaint
-            {
-                Color = SKColors.Red,
-                StrokeThickness = 2,
-                PathEffect = new DashEffect(new float[] { 6, 6 })
-            }
+            //Stroke = new SolidColorPaint
+            //{
+            //    Color = SKColors.Red,
+            //    StrokeThickness = 2,
+            //    PathEffect = new DashEffect(new float[] { 6, 6 })
+            //}
+                Stroke = _viewModel.LiveCharts_ColorPaint,
+
         },
              new RectangularSection
         {
             Xi = _viewModel.LiveCharts_Positive_Start,
             Xj =  _viewModel.LiveCharts_Positive_End,
-            Fill = new SolidColorPaint { Color = SKColors.Red.WithAlpha(255) }
+            //Fill = new SolidColorPaint { Color = SKColors.Red.WithAlpha(255) }
+            Fill = _viewModel.LiveCharts_ColorPaint,
         },
         //               new RectangularSection
         //{
