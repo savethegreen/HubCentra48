@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "clsn/3nUr3k=",
   "success": true,
   "projectFilePath": "D:\\Auto\\버전\\240823_01 HubCentra_A48 - hufit\\HubCentra_A1\\HubCentra_A1.csproj",
+=======
+  "dgSpecHash": "NI6A0ue5RHM=",
+  "success": true,
+  "projectFilePath": "D:\\Auto\\버전\\240814_01 HubCentra_A48 - hufit\\HubCentra_A1\\HubCentra_A1.csproj",
+>>>>>>> 499d608513e1843495adb00cd694c16041388782
   "expectedPackageFiles": [
     "C:\\Users\\covotech\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\covotech\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

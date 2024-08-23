@@ -4,12 +4,20 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 D:\Auto\버전\240823_01 HubCentra_A48 - hufit\HubCentra_A1\obj\Debug\net7.0-windows\
+=======
+D:\Auto\버전\240814_01 HubCentra_A48 - hufit\HubCentra_A1\obj\Debug\net7.0-windows\
+>>>>>>> 499d608513e1843495adb00cd694c16041388782
 HubCentra_A1
 none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
+<<<<<<< HEAD
 D:\Auto\버전\240823_01 HubCentra_A48 - hufit\HubCentra_A1\App.xaml
+=======
+D:\Auto\버전\240814_01 HubCentra_A48 - hufit\HubCentra_A1\App.xaml
+>>>>>>> 499d608513e1843495adb00cd694c16041388782
 302068952215
 
 37233936801

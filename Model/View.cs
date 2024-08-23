@@ -226,7 +226,12 @@ namespace HubCentra_A1.Model
         public string LiveCharts_Result { get; set; } = "";
 
         public string LiveCharts_Positive_Time { get; set; } = "";
+<<<<<<< HEAD
 
+=======
+        public int LiveCharts_Time_Range_120 { get; set; } = 120;
+        public int LiveCharts_Time_Range_180 { get; set; } = 180;
+>>>>>>> 499d608513e1843495adb00cd694c16041388782
 
         public SolidColorPaint LiveCharts_ColorPaint { get; set; } = new SolidColorPaint
         {

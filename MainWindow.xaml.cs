@@ -1108,9 +1108,11 @@ namespace HubCentra_A1
             try
             {
                 _viewModel.Result_PositiveTime = new Dictionary<int, Queue<(DateTime, double)>>();
+
                 for (int i = 0; i < _viewModel.Common_TotalSystemCellCount; i++)
                 {
                     _viewModel.Result_PositiveTime[i] = new Queue<(DateTime, double)>();
+
                 }
             }
             catch(Exception ex)
@@ -1202,6 +1204,7 @@ namespace HubCentra_A1
                 DateTime Date = date;
                 int Positive_Delay = _viewModel.Config[0].Positive_Wait;
                 double IncubationTime = incubationTime;
+<<<<<<< HEAD
                 double ADC = adc;
                 double LED = led;
                 if (ADC <= 0)
@@ -1220,6 +1223,25 @@ namespace HubCentra_A1
                         }
                     }
 
+=======
+                double ADC = _viewModel.PCB_Data[idx].ADC;
+
+                if (ADC <= 0)
+                {
+                    return "";
+                }
+                if (_viewModel.Result_Timer)
+                {
+                    if (IncubationTime >= _viewModel.Common_Hour && ADC < _viewModel.Config[0].BottleExistenceRange)
+                    {
+                        bool result1 = ReceiveNewVoltageValue(idx, ADC, Date);
+ 
+                        if (result1 )
+                        {
+                            return "Positive";
+                        }
+                    }
+>>>>>>> 499d608513e1843495adb00cd694c16041388782
                 }
                 if (_viewModel.PositiveDelay[idx] > Positive_Delay)
                 {
@@ -1303,6 +1325,11 @@ namespace HubCentra_A1
             }
         }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 499d608513e1843495adb00cd694c16041388782
         #endregion  Result
 
         #region Login  
@@ -1828,7 +1855,11 @@ namespace HubCentra_A1
                     {
 
                     }
+<<<<<<< HEAD
                     //LiveCharts_PositiveBounddury();
+=======
+
+>>>>>>> 499d608513e1843495adb00cd694c16041388782
 
                     LiveCharts liveCharts = new LiveCharts(_viewModel);
                     liveCharts.ShowDialog();
@@ -1855,12 +1886,20 @@ namespace HubCentra_A1
 
 
                 _viewModel.LiveCharts_TimeSeries = new Dictionary<int, Queue<(DateTime, double)>>();
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 499d608513e1843495adb00cd694c16041388782
                 if (_viewModel.LiveCharts_TimeSeries.ContainsKey(0))
                 {
                     _viewModel.LiveCharts_TimeSeries[0].Clear();
                 }
+<<<<<<< HEAD
  
+=======
+   
+>>>>>>> 499d608513e1843495adb00cd694c16041388782
                 DateTime startTime = _viewModel.LiveCharts_List[0].CreDate.AddMinutes(60);
                 for (int i = 0; i < _viewModel.LiveCharts_List.Count; i++)
                 {
@@ -1886,7 +1925,11 @@ namespace HubCentra_A1
 
                     }
                     bool shouldStop = LiveCharts_VoltageValue(0, pcbValue, timestamp, Analysis_Time_Range, Number_of_Analysis_Intervals, Voltage_Increase_Threshold);
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> 499d608513e1843495adb00cd694c16041388782
 
                     if (shouldStop )
                     {
@@ -1960,6 +2003,29 @@ namespace HubCentra_A1
 
                 if (allQuartersPositiveIncrease)
                 {
+<<<<<<< HEAD
+=======
+                    for (int i = 0; i < _viewModel.LiveCharts_List.Count; i++)
+                    {
+                        if (_viewModel.LiveCharts_List[i].CreDate == currentTime)
+                        {
+                            _viewModel.LiveCharts_ColorPaint = new SolidColorPaint
+                            {
+                                Color = SKColors.Red,
+                                StrokeThickness = 2,
+                                PathEffect = new DashEffect(new float[] { 6, 6 })
+                            };
+                            _viewModel.LiveCharts_Positive_Start = i;
+                            _viewModel.LiveCharts_Positive_End = i + Math.Max(1, _viewModel.LiveCharts_List.Count / 200);
+                            if (_viewModel.Report_Model == Enum_Report_Model.SMA)
+                            {
+                                _viewModel.LiveCharts_Result = "Positive";
+                                _viewModel.LiveCharts_Positive_Time = _viewModel.LiveCharts_List[i].CreDate.ToString();
+                            }
+                            break;
+                        }
+                    }
+>>>>>>> 499d608513e1843495adb00cd694c16041388782
                     return true;
                 }
 
@@ -1971,7 +2037,11 @@ namespace HubCentra_A1
             }
         }
 
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> 499d608513e1843495adb00cd694c16041388782
         #endregion LiveCharts
 
         #region PCB
@@ -3298,7 +3368,11 @@ namespace HubCentra_A1
                 _viewModel.databaseManagercs[(int)Enum_DatabaseManager.언로딩].UpdateEquipment(UpdateEquipment_Query, UpdateEquipment_parameters);
                 _viewModel.PositiveDelay[IDX] = 0;
                 _viewModel.Result_PositiveTime[IDX] = new Queue<(DateTime, double)>();
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 499d608513e1843495adb00cd694c16041388782
 
                 PCB_LED(_viewModel.SystemInfo[0].PCB_ID1, IDX, "Null");
             }
@@ -3407,6 +3481,10 @@ namespace HubCentra_A1
 
                 _viewModel.PositiveDelay[IDX] = 0;
                 _viewModel.Result_PositiveTime[IDX] = new Queue<(DateTime, double)>();
+<<<<<<< HEAD
+=======
+      
+>>>>>>> 499d608513e1843495adb00cd694c16041388782
                 PCB_LED(_viewModel.SystemInfo[0].PCB_ID1, IDX, "Null");
             }
             catch (Exception ex)
@@ -3506,6 +3584,7 @@ namespace HubCentra_A1
                 _viewModel.System_IncubationFirstint = -1;
                 _viewModel.PositiveDelay[IDX] = 0;
                 _viewModel.Result_PositiveTime[IDX] = new Queue<(DateTime, double)>();
+        
                 PCB_LED(_viewModel.SystemInfo[0].PCB_ID1, IDX, "Null");
             }
             catch (Exception ex)

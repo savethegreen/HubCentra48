@@ -960,7 +960,11 @@ namespace HubCentra_A1.Model
             }
         }
 
+<<<<<<< HEAD
 
+=======
+       
+>>>>>>> 499d608513e1843495adb00cd694c16041388782
         public bool Result_Timer
         {
             get => _view.Result_Timer;
@@ -1259,7 +1263,11 @@ namespace HubCentra_A1.Model
             }
         }
 
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 499d608513e1843495adb00cd694c16041388782
         public ISeries[] Series
         {
             get => _view.Series;
@@ -1348,7 +1356,28 @@ namespace HubCentra_A1.Model
                 OnPropertyChanged(nameof(LiveCharts_Positive_Time));
             }
         }
+<<<<<<< HEAD
 
+=======
+        public int LiveCharts_Time_Range_120
+        {
+            get => _view.LiveCharts_Time_Range_120;
+            set
+            {
+                _view.LiveCharts_Time_Range_120 = value;
+                OnPropertyChanged(nameof(LiveCharts_Time_Range_120));
+            }
+        }
+        public int LiveCharts_Time_Range_180
+        {
+            get => _view.LiveCharts_Time_Range_180;
+            set
+            {
+                _view.LiveCharts_Time_Range_180 = value;
+                OnPropertyChanged(nameof(LiveCharts_Time_Range_180));
+            }
+        }
+>>>>>>> 499d608513e1843495adb00cd694c16041388782
         public SolidColorPaint LiveCharts_ColorPaint
         {
             get => _view.LiveCharts_ColorPaint;

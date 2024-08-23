@@ -1,5 +1,6 @@
 {
   "Version": 1,
+<<<<<<< HEAD
   "WorkspaceRootPath": "D:\\Auto\\\uBC84\uC804\\240823_01 HubCentra_A48 - hufit\\HubCentra_A1\\",
   "Documents": [
     {
@@ -16,6 +17,29 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\covotech\\AppData\\Local\\Temp\\.vsdbgsrc\\524ab7b663c49658cb1aa4c74b6b05b4f0507f26a078e3a2ff139fd80415ebc9\\Dispatcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+  "WorkspaceRootPath": "D:\\Auto\\\uBC84\uC804\\240814_01 HubCentra_A48 - hufit\\HubCentra_A1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{09B6EDE8-CE96-4C09-B893-C1B20F4DEDC4}|HubCentra_A1.csproj|d:\\auto\\\uBC84\uC804\\240814_01 hubcentra_a48 - hufit\\hubcentra_a1\\mainwindow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{09B6EDE8-CE96-4C09-B893-C1B20F4DEDC4}|HubCentra_A1.csproj|solutionrelative:mainwindow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09B6EDE8-CE96-4C09-B893-C1B20F4DEDC4}|HubCentra_A1.csproj|d:\\auto\\\uBC84\uC804\\240814_01 hubcentra_a48 - hufit\\hubcentra_a1\\model\\viewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09B6EDE8-CE96-4C09-B893-C1B20F4DEDC4}|HubCentra_A1.csproj|solutionrelative:model\\viewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09B6EDE8-CE96-4C09-B893-C1B20F4DEDC4}|HubCentra_A1.csproj|d:\\auto\\\uBC84\uC804\\240814_01 hubcentra_a48 - hufit\\hubcentra_a1\\model\\view.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09B6EDE8-CE96-4C09-B893-C1B20F4DEDC4}|HubCentra_A1.csproj|solutionrelative:model\\view.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09B6EDE8-CE96-4C09-B893-C1B20F4DEDC4}|HubCentra_A1.csproj|d:\\auto\\\uBC84\uC804\\240814_01 hubcentra_a48 - hufit\\hubcentra_a1\\class\\etc\\enummanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09B6EDE8-CE96-4C09-B893-C1B20F4DEDC4}|HubCentra_A1.csproj|solutionrelative:class\\etc\\enummanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09B6EDE8-CE96-4C09-B893-C1B20F4DEDC4}|HubCentra_A1.csproj|d:\\auto\\\uBC84\uC804\\240814_01 hubcentra_a48 - hufit\\hubcentra_a1\\form\\livecharts.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{09B6EDE8-CE96-4C09-B893-C1B20F4DEDC4}|HubCentra_A1.csproj|solutionrelative:form\\livecharts.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+>>>>>>> 499d608513e1843495adb00cd694c16041388782
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\8.0.302\\Sdks\\Microsoft.NET.Sdk.WindowsDesktop\\targets\\Microsoft.WinFX.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
@@ -28,11 +52,16 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< HEAD
           "SelectedChildIndex": 3,
+=======
+          "SelectedChildIndex": 1,
+>>>>>>> 499d608513e1843495adb00cd694c16041388782
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 3,
+<<<<<<< HEAD
               "Title": "Dispatcher.cs",
               "DocumentMoniker": "C:\\Users\\covotech\\AppData\\Local\\Temp\\.vsdbgsrc\\524ab7b663c49658cb1aa4c74b6b05b4f0507f26a078e3a2ff139fd80415ebc9\\Dispatcher.cs",
               "ToolTip": "C:\\Users\\covotech\\AppData\\Local\\Temp\\.vsdbgsrc\\524ab7b663c49658cb1aa4c74b6b05b4f0507f26a078e3a2ff139fd80415ebc9\\Dispatcher.cs [\uC77D\uAE30 \uC804\uC6A9]",
@@ -64,29 +93,92 @@
               "ViewState": "AQIAADkFAAAAAAAAAAAUwEYFAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-23T02:10:07.647Z"
+=======
+              "Title": "EnumManager.cs",
+              "DocumentMoniker": "D:\\Auto\\\uBC84\uC804\\240814_01 HubCentra_A48 - hufit\\HubCentra_A1\\Class\\ETC\\EnumManager.cs",
+              "RelativeDocumentMoniker": "Class\\ETC\\EnumManager.cs",
+              "ToolTip": "D:\\Auto\\\uBC84\uC804\\240814_01 HubCentra_A48 - hufit\\HubCentra_A1\\Class\\ETC\\EnumManager.cs",
+              "RelativeToolTip": "Class\\ETC\\EnumManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T01:32:50.018Z"
+>>>>>>> 499d608513e1843495adb00cd694c16041388782
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MainWindow.xaml.cs",
+<<<<<<< HEAD
               "DocumentMoniker": "D:\\Auto\\\uBC84\uC804\\240823_01 HubCentra_A48 - hufit\\HubCentra_A1\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
               "ToolTip": "D:\\Auto\\\uBC84\uC804\\240823_01 HubCentra_A48 - hufit\\HubCentra_A1\\MainWindow.xaml.cs",
               "RelativeToolTip": "MainWindow.xaml.cs",
               "ViewState": "AQIAAF4EAAAAAAAAAAAAwGcEAAAiAAAA",
+=======
+              "DocumentMoniker": "D:\\Auto\\\uBC84\uC804\\240814_01 HubCentra_A48 - hufit\\HubCentra_A1\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "D:\\Auto\\\uBC84\uC804\\240814_01 HubCentra_A48 - hufit\\HubCentra_A1\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AQIAAN4EAAAAAAAAAAAQwFoKAABGAAAA",
+>>>>>>> 499d608513e1843495adb00cd694c16041388782
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-26T08:18:13.681Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 4,
+=======
+              "DocumentIndex": 5,
+>>>>>>> 499d608513e1843495adb00cd694c16041388782
               "Title": "Microsoft.WinFX.targets",
               "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\Sdks\\Microsoft.NET.Sdk.WindowsDesktop\\targets\\Microsoft.WinFX.targets",
               "ToolTip": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\Sdks\\Microsoft.NET.Sdk.WindowsDesktop\\targets\\Microsoft.WinFX.targets",
               "ViewState": "AQIAABsDAAAAAAAAAAAAACMDAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
               "WhenOpened": "2024-08-13T01:34:31.556Z"
+<<<<<<< HEAD
+=======
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LiveCharts.xaml.cs",
+              "DocumentMoniker": "D:\\Auto\\\uBC84\uC804\\240814_01 HubCentra_A48 - hufit\\HubCentra_A1\\Form\\LiveCharts.xaml.cs",
+              "RelativeDocumentMoniker": "Form\\LiveCharts.xaml.cs",
+              "ToolTip": "D:\\Auto\\\uBC84\uC804\\240814_01 HubCentra_A48 - hufit\\HubCentra_A1\\Form\\LiveCharts.xaml.cs",
+              "RelativeToolTip": "Form\\LiveCharts.xaml.cs",
+              "ViewState": "AQIAAIUAAAAAAAAAAAAqwKEAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T00:35:12.401Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "View.cs",
+              "DocumentMoniker": "D:\\Auto\\\uBC84\uC804\\240814_01 HubCentra_A48 - hufit\\HubCentra_A1\\Model\\View.cs",
+              "RelativeDocumentMoniker": "Model\\View.cs",
+              "ToolTip": "D:\\Auto\\\uBC84\uC804\\240814_01 HubCentra_A48 - hufit\\HubCentra_A1\\Model\\View.cs",
+              "RelativeToolTip": "Model\\View.cs",
+              "ViewState": "AQIAABQBAAAAAAAAAAAqwDoBAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-13T00:49:47.4Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ViewModel.cs",
+              "DocumentMoniker": "D:\\Auto\\\uBC84\uC804\\240814_01 HubCentra_A48 - hufit\\HubCentra_A1\\Model\\ViewModel.cs",
+              "RelativeDocumentMoniker": "Model\\ViewModel.cs",
+              "ToolTip": "D:\\Auto\\\uBC84\uC804\\240814_01 HubCentra_A48 - hufit\\HubCentra_A1\\Model\\ViewModel.cs",
+              "RelativeToolTip": "Model\\ViewModel.cs",
+              "ViewState": "AQIAAMEFAAAAAAAAAAAAAM0GAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-13T00:51:56.879Z",
+              "EditorCaption": ""
+>>>>>>> 499d608513e1843495adb00cd694c16041388782
             }
           ]
         }

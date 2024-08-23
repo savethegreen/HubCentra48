@@ -1,19 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
-    "D:\\Auto\\버전\\240823_01 HubCentra_A48 - hufit\\HubCentra_A1\\HubCentra_A1.csproj": {}
-  },
-  "projects": {
-    "D:\\Auto\\버전\\240823_01 HubCentra_A48 - hufit\\HubCentra_A1\\HubCentra_A1.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\Auto\\버전\\240823_01 HubCentra_A48 - hufit\\HubCentra_A1\\HubCentra_A1.csproj",
-        "projectName": "HubCentra_A1",
-        "projectPath": "D:\\Auto\\버전\\240823_01 HubCentra_A48 - hufit\\HubCentra_A1\\HubCentra_A1.csproj",
-        "packagesPath": "C:\\Users\\covotech\\.nuget\\packages\\",
-        "outputPath": "D:\\Auto\\버전\\240823_01 HubCentra_A48 - hufit\\HubCentra_A1\\obj\\",
-=======
     "D:\\Auto\\버전\\240814_01 HubCentra_A48 - hufit\\HubCentra_A1\\HubCentra_A1.csproj": {}
   },
   "projects": {
@@ -25,7 +12,6 @@
         "projectPath": "D:\\Auto\\버전\\240814_01 HubCentra_A48 - hufit\\HubCentra_A1\\HubCentra_A1.csproj",
         "packagesPath": "C:\\Users\\covotech\\.nuget\\packages\\",
         "outputPath": "D:\\Auto\\버전\\240814_01 HubCentra_A48 - hufit\\HubCentra_A1\\obj\\",
->>>>>>> 499d608513e1843495adb00cd694c16041388782
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
