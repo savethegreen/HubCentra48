@@ -264,8 +264,20 @@ namespace HubCentra_A1.Model
                 OnPropertyChanged(nameof(ProgramShotdown));
             }
         }
-        
+
         #endregion MainWindow
+
+        #region SYSTEM
+        public bool SYSTEM2_ENABLE
+        {
+            get => _view.SYSTEM2_ENABLE;
+            set
+            {
+                _view.SYSTEM2_ENABLE = value;
+                OnPropertyChanged(nameof(SYSTEM2_ENABLE));
+            }
+        }
+        #endregion SYSTEM
 
         #region Loading
         #region variable
@@ -336,27 +348,24 @@ namespace HubCentra_A1.Model
         #region FASTECH
         #region Connection
 
-        public string FASTECH_IO_IP
+
+
+        public bool FASTECH_IO_Connection_system1
         {
-            get => _view.FASTECH_IO_IP;
+            get => _view.FASTECH_IO_Connection_system1;
             set
             {
-                if (_view.FASTECH_IO_IP != value)
-                {
-                    _view.FASTECH_IO_IP = value;
-                    OnPropertyChanged(nameof(FASTECH_IO_IP));
-                }
+                _view.FASTECH_IO_Connection_system1 = value;
+                OnPropertyChanged(nameof(FASTECH_IO_Connection_system1));
             }
         }
-
-
-        public bool FASTECH_IO_Connection
+        public bool FASTECH_IO_Connection_system2
         {
-            get => _view.FASTECH_IO_Connection;
+            get => _view.FASTECH_IO_Connection_system2;
             set
             {
-                _view.FASTECH_IO_Connection = value;
-                OnPropertyChanged(nameof(FASTECH_IO_Connection));
+                _view.FASTECH_IO_Connection_system2 = value;
+                OnPropertyChanged(nameof(FASTECH_IO_Connection_system2));
             }
         }
 
@@ -365,96 +374,183 @@ namespace HubCentra_A1.Model
 
 
         #region IO
-        public List<Class_FASTECH_Input> FASTECH_Input
+        public int FASTECH_Input_Latch_system1
         {
-            get => _view.FASTECH_Input;
+            get => _view.FASTECH_Input_Latch_system1;
             set
             {
-                if (_view.FASTECH_Input != value)
+                if (_view.FASTECH_Input_Latch_system1 != value)
                 {
-                    _view.FASTECH_Input = value;
-                    OnPropertyChanged(nameof(FASTECH_Input));
+                    _view.FASTECH_Input_Latch_system1 = value;
+                    OnPropertyChanged(nameof(FASTECH_Input_Latch_system1));
                 }
             }
         }
-        public List<Class_FASTECH_Output> FASTECH_Output
+        public int FASTECH_Input_Latch_system2
         {
-            get => _view.FASTECH_Output;
+            get => _view.FASTECH_Input_Latch_system2;
             set
             {
-                if (_view.FASTECH_Output != value)
+                if (_view.FASTECH_Input_Latch_system2 != value)
                 {
-                    _view.FASTECH_Output = value;
-                    OnPropertyChanged(nameof(FASTECH_Output));
-                }
-            }
-        }
-
-        public List<Class_FASTECH_Output> FASTECH_Set_Output
-        {
-            get => _view.FASTECH_Set_Output;
-            set
-            {
-                if (_view.FASTECH_Set_Output != value)
-                {
-                    _view.FASTECH_Set_Output = value;
-                    OnPropertyChanged(nameof(FASTECH_Set_Output));
+                    _view.FASTECH_Input_Latch_system2 = value;
+                    OnPropertyChanged(nameof(FASTECH_Input_Latch_system2));
                 }
             }
         }
 
-        public int FASTECH_Input_Latch
+        public List<Class_FASTECH_Input> FASTECH_Input_system1
         {
-            get => _view.FASTECH_Input_Latch;
+            get => _view.FASTECH_Input_system1;
             set
             {
-                if (_view.FASTECH_Input_Latch != value)
+                if (_view.FASTECH_Input_system1 != value)
                 {
-                    _view.FASTECH_Input_Latch = value;
-                    OnPropertyChanged(nameof(FASTECH_Input_Latch));
+                    _view.FASTECH_Input_system1 = value;
+                    OnPropertyChanged(nameof(FASTECH_Input_system1));
                 }
             }
         }
+        public List<Class_FASTECH_Input> FASTECH_Input_system2
+        {
+            get => _view.FASTECH_Input_system2;
+            set
+            {
+                if (_view.FASTECH_Input_system2 != value)
+                {
+                    _view.FASTECH_Input_system2 = value;
+                    OnPropertyChanged(nameof(FASTECH_Input_system2));
+                }
+            }
+        }
+        public List<Class_FASTECH_Output> FASTECH_Output_system1
+        {
+            get => _view.FASTECH_Output_system1;
+            set
+            {
+                if (_view.FASTECH_Output_system1 != value)
+                {
+                    _view.FASTECH_Output_system1 = value;
+                    OnPropertyChanged(nameof(FASTECH_Output_system1));
+                }
+            }
+        }
+        public List<Class_FASTECH_Output> FASTECH_Output_system2
+        {
+            get => _view.FASTECH_Output_system2;
+            set
+            {
+                if (_view.FASTECH_Output_system2 != value)
+                {
+                    _view.FASTECH_Output_system2 = value;
+                    OnPropertyChanged(nameof(FASTECH_Output_system2));
+                }
+            }
+        }
+
+        public List<Class_FASTECH_Output> FASTECH_Set_Output_system1
+        {
+            get => _view.FASTECH_Set_Output_system1;
+            set
+            {
+                if (_view.FASTECH_Set_Output_system1 != value)
+                {
+                    _view.FASTECH_Set_Output_system1 = value;
+                    OnPropertyChanged(nameof(FASTECH_Set_Output_system1));
+                }
+            }
+        }
+        public List<Class_FASTECH_Output> FASTECH_Set_Output_system2
+        {
+            get => _view.FASTECH_Set_Output_system2;
+            set
+            {
+                if (_view.FASTECH_Set_Output_system2 != value)
+                {
+                    _view.FASTECH_Set_Output_system2 = value;
+                    OnPropertyChanged(nameof(FASTECH_Set_Output_system2));
+                }
+            }
+        }
+
         #endregion IO
         #endregion FASTECH
 
         #region PCB
-        public SerialPort PCB_SerialPort
+        public SerialPort PCB1_SerialPort
         {
-            get => _view.PCB_SerialPort;
+            get => _view.PCB1_SerialPort;
             set
             {
-                _view.PCB_SerialPort = value;
-                OnPropertyChanged(nameof(PCB_SerialPort));
+                _view.PCB1_SerialPort = value;
+                OnPropertyChanged(nameof(PCB1_SerialPort));
             }
         }
-        public bool PCB_Connection
+        public bool PCB1_Connection
         {
-            get => _view.PCB_Connection;
+            get => _view.PCB1_Connection;
             set
             {
-                _view.PCB_Connection = value;
-                OnPropertyChanged(nameof(PCB_Connection));
-            }
-        }
-
-        public bool PCB_Status
-        {
-            get => _view.PCB_Status;
-            set
-            {
-                _view.PCB_Status = value;
-                OnPropertyChanged(nameof(PCB_Status));
+                _view.PCB1_Connection = value;
+                OnPropertyChanged(nameof(PCB1_Connection));
             }
         }
 
-        public bool PCB_Restart
+        public bool PCB1_Status
         {
-            get => _view.PCB_Restart;
+            get => _view.PCB1_Status;
             set
             {
-                _view.PCB_Restart = value;
-                OnPropertyChanged(nameof(PCB_Restart));
+                _view.PCB1_Status = value;
+                OnPropertyChanged(nameof(PCB1_Status));
+            }
+        }
+
+        public SerialPort PCB2_SerialPort
+        {
+            get => _view.PCB2_SerialPort;
+            set
+            {
+                _view.PCB2_SerialPort = value;
+                OnPropertyChanged(nameof(PCB2_SerialPort));
+            }
+        }
+        public bool PCB2_Connection
+        {
+            get => _view.PCB2_Connection;
+            set
+            {
+                _view.PCB2_Connection = value;
+                OnPropertyChanged(nameof(PCB2_Connection));
+            }
+        }
+
+        public bool PCB2_Status
+        {
+            get => _view.PCB2_Status;
+            set
+            {
+                _view.PCB2_Status = value;
+                OnPropertyChanged(nameof(PCB2_Status));
+            }
+        }
+
+        public bool PCB_Restart_system1
+        {
+            get => _view.PCB_Restart_system1;
+            set
+            {
+                _view.PCB_Restart_system1 = value;
+                OnPropertyChanged(nameof(PCB_Restart_system1));
+            }
+        }
+        public bool PCB_Restart_system2
+        {
+            get => _view.PCB_Restart_system2;
+            set
+            {
+                _view.PCB_Restart_system2 = value;
+                OnPropertyChanged(nameof(PCB_Restart_system2));
             }
         }
 
@@ -580,6 +676,50 @@ namespace HubCentra_A1.Model
             }
         }
 
+        public int PCB1_StartCell
+        {
+            get => _view.PCB1_StartCell;
+            set
+            {
+                _view.PCB1_StartCell = value;
+                OnPropertyChanged(nameof(PCB1_StartCell));
+
+            }
+        }
+
+        public int PCB1_EndCell
+        {
+            get => _view.PCB1_EndCell;
+            set
+            {
+                _view.PCB1_EndCell = value;
+                OnPropertyChanged(nameof(PCB1_EndCell));
+
+            }
+        }
+
+
+        public int PCB2_StartCell
+        {
+            get => _view.PCB2_StartCell;
+            set
+            {
+                _view.PCB2_StartCell = value;
+                OnPropertyChanged(nameof(PCB2_StartCell));
+
+            }
+        }
+
+        public int PCB2_EndCell
+        {
+            get => _view.PCB2_EndCell;
+            set
+            {
+                _view.PCB2_EndCell = value;
+                OnPropertyChanged(nameof(PCB2_EndCell));
+
+            }
+        }
         public PCB CurrentPCB => PCB_Data.Count > testint ? PCB_Data[testint] : null;
         #endregion PCB
 
@@ -646,33 +786,63 @@ namespace HubCentra_A1.Model
         #endregion Barcode
 
         #region Temperature
-        public SerialPort Temperature_SerialPort
+        public SerialPort Temperature1_SerialPort
         {
-            get => _view.Temperature_SerialPort;
+            get => _view.Temperature1_SerialPort;
             set
             {
-                _view.Temperature_SerialPort = value;
-                OnPropertyChanged(nameof(Temperature_SerialPort));
+                _view.Temperature1_SerialPort = value;
+                OnPropertyChanged(nameof(Temperature1_SerialPort));
             }
         }
-        public double Temperature_ProcessValue
+        public bool Temperature1_Connection
         {
-            get => _view.Temperature_ProcessValue;
+            get => _view.Temperature1_Connection;
             set
             {
-                _view.Temperature_ProcessValue = value;
-                OnPropertyChanged(nameof(Temperature_ProcessValue));
+                _view.Temperature1_Connection = value;
+                OnPropertyChanged(nameof(Temperature1_Connection));
             }
         }
-        public bool Temperature_Connection
+
+        public SerialPort Temperature2_SerialPort
         {
-            get => _view.Temperature_Connection;
+            get => _view.Temperature2_SerialPort;
             set
             {
-                _view.Temperature_Connection = value;
-                OnPropertyChanged(nameof(Temperature_Connection));
+                _view.Temperature2_SerialPort = value;
+                OnPropertyChanged(nameof(Temperature2_SerialPort));
             }
         }
+        public bool Temperature2_Connection
+        {
+            get => _view.Temperature2_Connection;
+            set
+            {
+                _view.Temperature2_Connection = value;
+                OnPropertyChanged(nameof(Temperature2_Connection));
+            }
+        }
+
+        public double Temperature_ProcessValue_system1
+        {
+            get => _view.Temperature_ProcessValue_system1;
+            set
+            {
+                _view.Temperature_ProcessValue_system1 = value;
+                OnPropertyChanged(nameof(Temperature_ProcessValue_system1));
+            }
+        }
+        public double Temperature_ProcessValue_system2
+        {
+            get => _view.Temperature_ProcessValue_system2;
+            set
+            {
+                _view.Temperature_ProcessValue_system2 = value;
+                OnPropertyChanged(nameof(Temperature_ProcessValue_system2));
+            }
+        }
+
         public bool Temperature_AL_Connection
         {
             get => _view.Temperature_AL_Connection;
@@ -683,7 +853,6 @@ namespace HubCentra_A1.Model
             }
         }
 
-        
         #endregion Temperature
 
         #region MainEngine
@@ -1110,7 +1279,7 @@ namespace HubCentra_A1.Model
                 }
             }
         }
-        public List<DatabaseManager_EquipmentH> CSV_List
+        public List<DatabaseManager_CSV> CSV_List
         {
             get => _view.CSV_List;
             set
@@ -1418,13 +1587,23 @@ namespace HubCentra_A1.Model
             }
         }
         
-        public int System1_Result
+        public bool System1_Result
         {
             get => _view.System1_Result;
             set
             {
                 _view.System1_Result = value;
                 OnPropertyChanged(nameof(System1_Result));
+            }
+        }
+
+        public bool System2_Result
+        {
+            get => _view.System2_Result;
+            set
+            {
+                _view.System2_Result = value;
+                OnPropertyChanged(nameof(System2_Result));
             }
         }
         #endregion System1
@@ -2039,50 +2218,165 @@ namespace HubCentra_A1.Model
         }
         #endregion Temperature
 
+        #region PCB_Error
+        public string PCB_Error_Title
+        {
+            get => _view.PCB_Error_Title;
+            set
+            {
+                _view.PCB_Error_Title = value;
+                OnPropertyChanged(nameof(PCB_Error_Title));
+            }
+        }
+        public string PCB_Error_WhatPCB_Error
+        {
+            get => _view.PCB_Error_WhatPCB_Error;
+            set
+            {
+                _view.PCB_Error_WhatPCB_Error = value;
+                OnPropertyChanged(nameof(PCB_Error_WhatPCB_Error));
+            }
+        }
+        public string PCB_Error_Content
+        {
+            get => _view.PCB_Error_Content;
+            set
+            {
+                _view.PCB_Error_Content = value;
+                OnPropertyChanged(nameof(PCB_Error_Content));
+            }
+        }
+
+        public bool PCB_Error_System1
+        {
+            get => _view.PCB_Error_System1;
+            set
+            {
+                _view.PCB_Error_System1 = value;
+                OnPropertyChanged(nameof(PCB_Error_System1));
+            }
+        }
+
+        public bool PCB_Error_System2
+        {
+            get => _view.PCB_Error_System2;
+            set
+            {
+                _view.PCB_Error_System2 = value;
+                OnPropertyChanged(nameof(PCB_Error_System2));
+            }
+        }
+        public int CheckDurationSeconds
+        {
+            get => _view.CheckDurationSeconds;
+            set
+            {
+                _view.CheckDurationSeconds = value;
+                OnPropertyChanged(nameof(CheckDurationSeconds));
+            }
+        }
+        public DateTime[] lastChangedTime
+        {
+            get => _view.lastChangedTime;
+            set
+            {
+                _view.lastChangedTime = value;
+                OnPropertyChanged(nameof(lastChangedTime));
+            }
+        }
+        public double[] lastData
+        {
+            get => _view.lastData;
+            set
+            {
+                _view.lastData = value;
+                OnPropertyChanged(nameof(lastData));
+            }
+        }
+        #endregion PCB_Error
+
         #endregion Alarm
 
         #region Buzzer
-        public bool Buzzer
+        public bool Buzzer_system1
         {
-            get => _view.Buzzer;
+            get => _view.Buzzer_system1;
             set
             {
-                _view.Buzzer = value;
-                OnPropertyChanged(nameof(Buzzer));
+                _view.Buzzer_system1 = value;
+                OnPropertyChanged(nameof(Buzzer_system1));
+            }
+        }
+
+        public bool Buzzer_system2
+        {
+            get => _view.Buzzer_system2;
+            set
+            {
+                _view.Buzzer_system2 = value;
+                OnPropertyChanged(nameof(Buzzer_system2));
             }
         }
         #endregion Buzzer
 
         #region Lamp
-        public bool Lamp
+        public bool Lamp_system1
         {
-            get => _view.Lamp;
+            get => _view.Lamp_system1;
             set
             {
-                _view.Lamp = value;
-                OnPropertyChanged(nameof(Lamp));
+                _view.Lamp_system1 = value;
+                OnPropertyChanged(nameof(Lamp_system1));
             }
         }
+        public bool Lamp_system2
+        {
+            get => _view.Lamp_system2;
+            set
+            {
+                _view.Lamp_system2 = value;
+                OnPropertyChanged(nameof(Lamp_system2));
+            }
+        }
+
         #endregion Buzzer
 
-
         #region Door
-        public bool Door_previousDoorState
+        public bool Door_previousDoorState_system1
         {
-            get => _view.Door_previousDoorState;
+            get => _view.Door_previousDoorState_system1;
             set
             {
-                _view.Door_previousDoorState = value;
-                OnPropertyChanged(nameof(Door_previousDoorState));
+                _view.Door_previousDoorState_system1 = value;
+                OnPropertyChanged(nameof(Door_previousDoorState_system1));
             }
         }
-        public bool Alarm_Door_Buzzer
+        public bool Door_previousDoorState_system2
         {
-            get => _view.Alarm_Door_Buzzer;
+            get => _view.Door_previousDoorState_system2;
             set
             {
-                _view.Alarm_Door_Buzzer = value;
-                OnPropertyChanged(nameof(Alarm_Door_Buzzer));
+                _view.Door_previousDoorState_system2 = value;
+                OnPropertyChanged(nameof(Door_previousDoorState_system2));
+            }
+        }
+
+        public bool Alarm_Door_Buzzer_system1
+        {
+            get => _view.Alarm_Door_Buzzer_system1;
+            set
+            {
+                _view.Alarm_Door_Buzzer_system1 = value;
+                OnPropertyChanged(nameof(Alarm_Door_Buzzer_system1));
+            }
+        }
+        public bool Alarm_Door_Buzzer_system2
+        {
+            get => _view.Alarm_Door_Buzzer_system2;
+            set
+            {
+                _view.Alarm_Door_Buzzer_system2 = value;
+                OnPropertyChanged(nameof(Alarm_Door_Buzzer_system2));
             }
         }
 
@@ -2143,7 +2437,7 @@ namespace HubCentra_A1.Model
 
         #region Class
         public DatabaseManager[] databaseManagercs = new DatabaseManager[20];
-        public FastechDeviceManager fastechDeviceManager = new FastechDeviceManager();
+        public FastechDeviceManager[] fastechDeviceManager = new FastechDeviceManager[2];
 
         #region For
         public void ClassIni()
@@ -2151,6 +2445,10 @@ namespace HubCentra_A1.Model
             for (int i = 0; i < 20; i++)
             {
                 databaseManagercs[i] = new DatabaseManager();
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                fastechDeviceManager[i] = new FastechDeviceManager();
             }
         }
         #endregion For

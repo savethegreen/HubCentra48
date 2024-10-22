@@ -74,7 +74,7 @@
                          TextAlignment="Center">
                             <TextBlock.Style>
                                 <Style TargetType="TextBlock">
-                        
+
                                 </Style>
                             </TextBlock.Style>
                         </TextBlock>
@@ -90,7 +90,7 @@
                          TextAlignment="Center">
                             <TextBlock.Style>
                                 <Style TargetType="TextBlock">
-                          
+
                                 </Style>
                             </TextBlock.Style>
                         </TextBlock>
@@ -282,7 +282,7 @@
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -294,7 +294,7 @@
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -419,7 +419,7 @@
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -431,7 +431,7 @@
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -554,7 +554,7 @@
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -566,7 +566,7 @@
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -688,7 +688,7 @@
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -700,7 +700,7 @@
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -822,7 +822,7 @@
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -834,7 +834,7 @@
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -956,7 +956,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -968,7 +968,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -1091,7 +1091,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -1103,7 +1103,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -1228,7 +1228,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -1240,7 +1240,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -1365,7 +1365,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -1377,7 +1377,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -1501,7 +1501,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -1513,7 +1513,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -1637,7 +1637,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -1649,7 +1649,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -1773,7 +1773,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -1785,7 +1785,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -1909,7 +1909,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -1921,7 +1921,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -2045,7 +2045,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -2057,7 +2057,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -2173,7 +2173,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -2185,7 +2185,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -2306,7 +2306,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -2318,7 +2318,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -2439,7 +2439,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -2451,7 +2451,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -2570,7 +2570,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -2582,7 +2582,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -2703,7 +2703,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -2715,14 +2715,14 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
                                                 </Style>
                                             </Grid.Style>
                                             <TextBlock Style="{StaticResource SystemManager_TextBlock_02}" Text="{Binding PCB_Data[18].LED, StringFormat='L : {0:F0}'}" />
-                                       
+
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -2837,7 +2837,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -2849,7 +2849,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -2970,7 +2970,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -2982,7 +2982,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -3101,7 +3101,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -3113,7 +3113,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -3233,7 +3233,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -3245,7 +3245,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -3365,7 +3365,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -3377,7 +3377,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -3497,7 +3497,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -3509,7 +3509,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -3629,7 +3629,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -3641,7 +3641,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -3761,7 +3761,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -3773,7 +3773,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -3893,7 +3893,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -3905,7 +3905,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -4094,7 +4094,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -4106,7 +4106,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -4228,7 +4228,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -4240,7 +4240,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -4362,7 +4362,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -4374,7 +4374,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -4497,7 +4497,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -4509,7 +4509,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -4632,7 +4632,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -4644,7 +4644,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -4767,7 +4767,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -4779,7 +4779,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -4902,7 +4902,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -4914,7 +4914,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -5037,7 +5037,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -5049,7 +5049,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -5172,7 +5172,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -5184,7 +5184,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -5307,7 +5307,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -5319,7 +5319,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -5442,7 +5442,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -5454,7 +5454,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -5577,7 +5577,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -5589,7 +5589,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -5712,7 +5712,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -5724,7 +5724,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -5846,7 +5846,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -5858,7 +5858,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -5972,7 +5972,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -5984,7 +5984,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -6104,7 +6104,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -6116,7 +6116,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -6236,7 +6236,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -6248,7 +6248,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -6368,7 +6368,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -6380,7 +6380,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -6500,7 +6500,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -6512,7 +6512,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -6631,7 +6631,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -6643,7 +6643,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -6762,7 +6762,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -6774,7 +6774,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -6893,7 +6893,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -6905,7 +6905,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -7024,7 +7024,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -7036,7 +7036,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -7156,7 +7156,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -7168,7 +7168,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -7288,7 +7288,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -7300,7 +7300,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -7420,7 +7420,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -7432,7 +7432,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -7552,7 +7552,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -7564,7 +7564,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -7684,7 +7684,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -7696,7 +7696,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -7884,7 +7884,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -7896,7 +7896,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -8018,7 +8018,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -8030,7 +8030,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -8151,7 +8151,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -8163,7 +8163,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -8284,7 +8284,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -8296,7 +8296,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -8418,7 +8418,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -8430,7 +8430,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -8551,7 +8551,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -8563,7 +8563,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -8685,7 +8685,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -8697,7 +8697,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -8818,7 +8818,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -8830,7 +8830,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -8951,7 +8951,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -8963,7 +8963,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -9084,7 +9084,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -9096,7 +9096,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -9217,7 +9217,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -9229,7 +9229,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -9350,7 +9350,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -9362,7 +9362,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -9483,7 +9483,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -9495,7 +9495,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -9616,7 +9616,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -9628,7 +9628,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -9741,7 +9741,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -9753,7 +9753,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -9873,7 +9873,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -9885,7 +9885,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -10005,7 +10005,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -10017,7 +10017,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -10136,7 +10136,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -10148,7 +10148,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -10268,7 +10268,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -10280,7 +10280,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -10399,7 +10399,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -10411,7 +10411,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -10530,7 +10530,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -10542,7 +10542,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -10661,7 +10661,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -10673,7 +10673,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -10792,7 +10792,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -10804,7 +10804,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -10923,7 +10923,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -10935,7 +10935,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -11054,7 +11054,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -11066,7 +11066,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -11185,7 +11185,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -11197,7 +11197,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -11316,7 +11316,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -11328,7 +11328,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -11447,7 +11447,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -11459,7 +11459,7 @@ Duration="0:0:0.500" />
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                                             <Setter Property="Visibility" Value="Collapsed"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>

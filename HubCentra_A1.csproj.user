@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Form\Alarm_PCB_Error.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Form\Alarm_Temperature.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -81,6 +84,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Form\Alarm_PCB_Error.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Form\Alarm_Temperature.xaml">
       <SubType>Designer</SubType>
     </Page>

@@ -96,9 +96,9 @@ namespace HubCentra_A1
         {
             try
             {
-                if (_viewModel.FASTECH_Input[(int)Enum_FASTECH_Input.Door].Flag == true)
+                if (_viewModel.FASTECH_Input_system1[(int)Enum_FASTECH_Input.Door].Flag == true)
                 {
-                    _viewModel.Alarm_Door_Buzzer = false;
+                    _viewModel.Alarm_Door_Buzzer_system1 = false;
                     Timer_Stop();
                     this.Close();
                 }

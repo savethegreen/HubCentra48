@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HubCentra_A1.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,46 @@ namespace HubCentra_A1
     /// </summary>
     public partial class System_2 : UserControl
     {
+
+
+        #region window
         public System_2()
         {
             InitializeComponent();
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            Initialize();
+        }
+        #endregion window
+
+        #region Initialize
+        public void Initialize()
+        {
+            ViewModel();
+
+        }
+
+        public void ViewModel()
+        {
+        }
+        #endregion Initialize
+
+        #region Model
+        private ViewModel _viewModel;
+
+        public void ViewModel(ViewModel model)
+        {
+            if (model == null)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
+            _viewModel = model;
+            DataContext = _viewModel;
+
+        }
+
+        #endregion Model
     }
 }

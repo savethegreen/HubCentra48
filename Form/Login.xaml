@@ -352,12 +352,12 @@
                             </Grid.ColumnDefinitions>
 
                             <Grid  Grid.Column="1">
-                                <Button x:Name="btn_ADDUSER_OPERATOR"  Content="OPERATOR"  Margin="2" >
+                                <Button x:Name="btn_ADDUSER_OPERATOR"  Content="USER"  Margin="2" >
                                     <Button.Style>
                                         <Style TargetType="Button" BasedOn="{StaticResource LoginButton_01}">
                                             <Style.Triggers>
                                                 <!-- Change the style based on the value of Login_ID -->
-                                                <DataTrigger Binding="{Binding Login_LevelC}" Value="OPERATOR">
+                                                <DataTrigger Binding="{Binding Login_LevelC}" Value="USER">
                                                     <Setter Property="Background" Value="#45a049"/>
                                                 </DataTrigger>
                                             </Style.Triggers>

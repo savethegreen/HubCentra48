@@ -89,6 +89,17 @@ namespace HubCentra_A1
         {
             this.Close();
         }
+        public void formclose()
+        {
+            try
+            {
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+            }
+
+        }
 
 
 
@@ -107,31 +118,31 @@ namespace HubCentra_A1
 
         private void Password_Save_Click(object sender, RoutedEventArgs e)
         {
-            if (lbList.SelectedItem is DatabaseManager_Login selectedItem) // Replace 'YourItemType' with the actual type of the items
+            if (lbList.SelectedItem is DatabaseManager_Login selectedItem) 
             {
-                string selectedUserId = selectedItem.User_Id; // Replace 'user_id' with the actual property name
+                string selectedUserId = selectedItem.User_Id; 
                 ValidateAndAssignUsers(selectedUserId);
             }
             else
             {
-                // Handle the case where no item is selected
+             
             }
         }
 
         public void ValidateAndAssignUsers(string selectedUserId)
         {
-            string str_PasswordChange_OLDPASSWORD = PasswordChange_OLDPASSWORD.Password; // Get the entered password
-            string str_PasswordChange_NEWPASSWORD1 = PasswordChange_NEWPASSWORD1.Password; // Get the entered password
-            string str_PasswordChange_NEWPASSWORD2 = PasswordChange_NEWPASSWORD2.Password; // Get the entered password
+            string str_PasswordChange_OLDPASSWORD = PasswordChange_OLDPASSWORD.Password;
+            string str_PasswordChange_NEWPASSWORD1 = PasswordChange_NEWPASSWORD1.Password; 
+            string str_PasswordChange_NEWPASSWORD2 = PasswordChange_NEWPASSWORD2.Password; 
 
 
 
-            var usersList = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.Login].Select_LoginInfo(); // Load users from DB. Replace 'YourTableName' with the actual table name.
+            var usersList = _viewModel.databaseManagercs[(int)Enum_DatabaseManager.Login].Select_LoginInfo(); 
 
-            var user = usersList.FirstOrDefault(u => u.User_Id == selectedUserId); // Find the user with the selected user ID.
+            var user = usersList.FirstOrDefault(u => u.User_Id == selectedUserId); 
 
 
-            if (user != null && CheckPassword(user, str_PasswordChange_OLDPASSWORD)) // Check if user exists and password matches. You need to implement the CheckPassword method.
+            if (user != null && CheckPassword(user, str_PasswordChange_OLDPASSWORD)) 
             {
 
                 if (str_PasswordChange_NEWPASSWORD1 == str_PasswordChange_NEWPASSWORD2)
@@ -145,9 +156,6 @@ namespace HubCentra_A1
 
                                     };
                     _viewModel.databaseManagercs[(int)Enum_DatabaseManager.Login].UpdateLogin(updateRestQuery, restParameters);
-
-
-                    // Optionally, you can immediately execute the queued update
                     MessageBox.Show("새 비밀번호가 변경 되엇습니다..");
                 }
                 else
@@ -158,16 +166,14 @@ namespace HubCentra_A1
             else
             {
                 MessageBox.Show("암호가 옳바르지 않습니다");
-                // Handle the case where the password does not match or user is not found
             }
         }
         private bool CheckPassword(DatabaseManager_Login user, string password)
         {
-            // return password == user.user_Password; // Directly comparing plain text passwords
             string hashedInputPassword = ComputeSha256Hash(password);
             string hashedOutputPassword = ComputeSha256Hash(user.User_Password);
 
-            return hashedInputPassword == hashedOutputPassword; // Comparing hashed values
+            return hashedInputPassword == hashedOutputPassword;
         }
         private string ComputeSha256Hash(string rawData)
         {

@@ -99,10 +99,21 @@ namespace HubCentra_A1
         {
             try
             {
-                if (_viewModel.FASTECH_IO_Connection && _viewModel.PCB_Connection)
+                if(_viewModel.Config[0].SYSTEM2)
                 {
-                    Timer_Stop();
-                    this.Close();
+                    if (_viewModel.FASTECH_IO_Connection_system1 && _viewModel.FASTECH_IO_Connection_system2)
+                    {
+                        Timer_Stop();
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    if (_viewModel.FASTECH_IO_Connection_system1)
+                    {
+                        Timer_Stop();
+                        this.Close();
+                    }
                 }
             }
             catch (Exception ex)

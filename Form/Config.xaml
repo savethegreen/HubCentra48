@@ -325,7 +325,7 @@
                 <Grid.Style>
                     <Style TargetType="Grid">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                            <DataTrigger Binding="{Binding Login}" Value="USER">
                                 <Setter Property="Visibility" Value="Collapsed" />
                             </DataTrigger>
                         </Style.Triggers>
@@ -372,7 +372,7 @@
                 <Grid.Style>
                     <Style TargetType="Grid">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                            <DataTrigger Binding="{Binding Login}" Value="USER">
                                 <Setter Property="Visibility" Value="Collapsed" />
                             </DataTrigger>
                         </Style.Triggers>
@@ -428,7 +428,7 @@
                 <Grid.Style>
                     <Style TargetType="Grid">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                            <DataTrigger Binding="{Binding Login}" Value="USER">
                                 <Setter Property="Visibility" Value="Collapsed" />
                             </DataTrigger>
                         </Style.Triggers>
@@ -497,7 +497,7 @@
                 <Grid.Style>
                     <Style TargetType="Grid">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                            <DataTrigger Binding="{Binding Login}" Value="USER">
                                 <Setter Property="Visibility" Value="Collapsed" />
                             </DataTrigger>
                         </Style.Triggers>
@@ -543,7 +543,7 @@
                 <Grid.Style>
                     <Style TargetType="Grid">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                            <DataTrigger Binding="{Binding Login}" Value="USER">
                                 <Setter Property="Visibility" Value="Collapsed" />
                             </DataTrigger>
                         </Style.Triggers>
@@ -589,7 +589,7 @@
                 <Grid.Style>
                     <Style TargetType="Grid">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                            <DataTrigger Binding="{Binding Login}" Value="USER">
                                 <Setter Property="Visibility" Value="Collapsed" />
                             </DataTrigger>
                         </Style.Triggers>
@@ -615,7 +615,7 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
+                    <Grid Grid.Column="0" IsEnabled="False">
                         <Grid.InputBindings>
                             <MouseBinding
                                 Command="{Binding ICommand_Config}"
@@ -624,8 +624,7 @@
                         </Grid.InputBindings>
                         <CheckBox
                             Content="SYSTEM 1"
-                            IsChecked="{Binding Config[0].SYSTEM1, Mode=OneWay}"
-                            IsEnabled="False"
+                            IsChecked="{Binding Config[0].SYSTEM1, Mode=OneWay}"                  
                             Style="{StaticResource System_CheckBoxStyle_01}" />
                     </Grid>
                     <Grid Grid.Column="1">
@@ -638,10 +637,11 @@
                         <CheckBox
                             Content="SYSTEM 2"
                             IsChecked="{Binding Config[0].SYSTEM2, Mode=OneWay}"
-                            IsEnabled="False"
+                           
+                              IsEnabled="False"
                             Style="{StaticResource System_CheckBoxStyle_01}" />
                     </Grid>
-                    <Grid Grid.Column="2">
+                    <Grid Grid.Column="2" IsEnabled="False">
                         <Grid.InputBindings>
                             <MouseBinding
                                 Command="{Binding ICommand_Config}"
@@ -651,10 +651,10 @@
                         <CheckBox
                             Content="SYSTEM 3"
                             IsChecked="{Binding Config[0].SYSTEM3, Mode=OneWay}"
-                            IsEnabled="False"
+                                  IsEnabled="False"
                             Style="{StaticResource System_CheckBoxStyle_01}" />
                     </Grid>
-                    <Grid Grid.Column="3">
+                    <Grid Grid.Column="3" >
                         <Grid.InputBindings>
                             <MouseBinding
                                 Command="{Binding ICommand_Config}"
@@ -676,7 +676,7 @@
                 <Grid.Style>
                     <Style TargetType="Grid">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                            <DataTrigger Binding="{Binding Login}" Value="USER">
                                 <Setter Property="Visibility" Value="Collapsed" />
                             </DataTrigger>
                         </Style.Triggers>
@@ -750,7 +750,7 @@
                 <Grid.Style>
                     <Style TargetType="Grid">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                            <DataTrigger Binding="{Binding Login}" Value="USER">
                                 <Setter Property="Visibility" Value="Collapsed" />
                             </DataTrigger>
                         </Style.Triggers>
@@ -870,7 +870,7 @@
                 <Grid.Style>
                     <Style TargetType="Grid">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                            <DataTrigger Binding="{Binding Login}" Value="USER">
                                 <Setter Property="Visibility" Value="Collapsed" />
                             </DataTrigger>
                         </Style.Triggers>
@@ -928,7 +928,7 @@
                 <Grid.Style>
                     <Style TargetType="Grid">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                            <DataTrigger Binding="{Binding Login}" Value="USER">
                                 <Setter Property="Visibility" Value="Collapsed" />
                             </DataTrigger>
                         </Style.Triggers>

@@ -5,6 +5,7 @@
     <TargetFramework>net7.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Image\Blood culture.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,6 +25,10 @@
     <None Remove="Image\search4.png" />
     <None Remove="Image\Temp.png" />
     <None Remove="Image\Temp2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Image\Blood culture.ico" />
   </ItemGroup>
 
   <ItemGroup>

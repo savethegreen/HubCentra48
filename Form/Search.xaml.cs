@@ -53,7 +53,6 @@ namespace HubCentra_A1
             {
                 var totalAvailableWidth = lv.ActualWidth - SystemParameters.VerticalScrollBarWidth;
 
-                // Set proportional widths
                 colID.Width = totalAvailableWidth * 0.1; //
                 colPatient.Width = totalAvailableWidth * 0.2; //
 

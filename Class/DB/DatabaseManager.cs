@@ -30,12 +30,10 @@ namespace HubCentra_A1
         {
             if (string.IsNullOrEmpty(dbName))
             {
-                // Connect without specifying a database
                 connectionString = baseConnectionString;
             }
             else
             {
-                // Connect to the specified database
                 connectionString = $"{baseConnectionString}; Database={dbName};";
             }
         }
@@ -46,7 +44,7 @@ namespace HubCentra_A1
         public void CreateDatabase(string databaseName)
         {
             string checkDatabaseExistsQuery = $"SELECT database_id FROM sys.databases WHERE Name = @databaseName";
-            SetConnectionString(""); // Connect without specifying a database
+            SetConnectionString("");
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -68,11 +66,10 @@ namespace HubCentra_A1
                         }
                     }
                 }
-                SetConnectionString(databaseName); // Reset connection string to connect to the specific database
+                SetConnectionString(databaseName);
             }
             catch (Exception ex)
             {
-                // Handle or log the exception as needed
                 Console.WriteLine($"Error creating database: {ex.Message}");
             }
         }
@@ -191,13 +188,11 @@ namespace HubCentra_A1
            "Barcode_Serial VARCHAR(255) NULL, " +
            "Loadcell_Serial VARCHAR(255) NULL, " +
            "Spare1 VARCHAR(255) NULL, " +
-           "Spare2 VARCHAR(255) NULL)", // Change data type to BIT for isActive
+           "Spare2 VARCHAR(255) NULL)",
            connection))
                 {
                     command.ExecuteNonQuery();
                 }
-
-                // Populate the 'id' column with values from 1 to 84
                 using (SqlCommand populateCommand = new SqlCommand(
                     $"INSERT INTO {tableName} (FASTECH_Servo_IP, FASTECH_IO_Input_IP, FASTECH_IO_Output_IP, Schneider_Robot_IP, Schneider_Robot_Port, PCB_ID1, PCB_ID2, PCB_ID3, PCB_ID4, PCB_Serial, Temperature_Serial, Barcode_Serial, Loadcell_Serial, Spare1, Spare2)" +
                     $" VALUES (@FASTECH_Servo_IP, @FASTECH_IO_Input_IP, @FASTECH_IO_Output_IP, @Schneider_Robot_IP, @Schneider_Robot_Port, @PCB_ID1, @PCB_ID2, @PCB_ID3, @PCB_ID4, @PCB_Serial, @Temperature_Serial, @Barcode_Serial, @Loadcell_Serial, @Spare1, @Spare2)",
@@ -386,13 +381,11 @@ namespace HubCentra_A1
            "Spare2 VARCHAR(255) NULL, " +
            "Spare3 VARCHAR(255) NULL, " +
            "Spare4 VARCHAR(255) NULL, " +
-           "Spare5 VARCHAR(255) NULL)", // Change data type to BIT for isActive
+           "Spare5 VARCHAR(255) NULL)", 
            connection))
                 {
                     command.ExecuteNonQuery();
                 }
-
-                // Populate the 'id' column with values from 1 to 84
                 using (SqlCommand populateCommand = new SqlCommand(
                     $"INSERT INTO {tableName} (ID, Axis_Acc_Time, Axis_Dec_Time, Axis_Speed, Jog_Speed_Low, Jog_Speed_Middle, Jog_Speed_High, Jog_Acc_Dec_Time, Org_Speed, Org_Search_Speed, Org_Acc_Dec_Time, Org_Dethod, Org_Dir,Org_Offset, Motion_Dir, Spare1, Spare2, Spare3, Spare4, Spare5)" +
                     $" VALUES (@ID, @Axis_Acc_Time, @Axis_Dec_Time, @Axis_Speed, @Jog_Speed_Low, @Jog_Speed_Middle, @Jog_Speed_High, @Jog_Acc_Dec_Time, @Org_Speed, @Org_Search_Speed, @Org_Acc_Dec_Time, @Org_Dethod, @Org_Dir, @Org_Offset, @Motion_Dir, @Spare1, @Spare2, @Spare3, @Spare4, @Spare5)",
@@ -561,8 +554,6 @@ namespace HubCentra_A1
                 {
                     command.ExecuteNonQuery();
                 }
-
-                // Populate the 'id' column with values from 1 to 84
                 using (SqlCommand populateCommand = new SqlCommand(
                     $"INSERT INTO {tableName} (User_Id, User_Level, User_Password, User_Enable)" +
                     $" VALUES (@User_Id, @User_Level, @User_Password, @User_Enable)",
@@ -588,8 +579,8 @@ namespace HubCentra_A1
                         populateCommand.Parameters["@User_Password"].Value = "1234";
                         populateCommand.Parameters["@User_Enable"].Value = false;
                         populateCommand.ExecuteNonQuery();
-                        populateCommand.Parameters["@User_Id"].Value = "UserOPERATOR";
-                        populateCommand.Parameters["@User_Level"].Value = "OPERATOR";
+                        populateCommand.Parameters["@User_Id"].Value = "UserUSER";
+                        populateCommand.Parameters["@User_Level"].Value = "USER";
                         populateCommand.Parameters["@User_Password"].Value = "1234";
                         populateCommand.Parameters["@User_Enable"].Value = true;
                         populateCommand.ExecuteNonQuery();
@@ -663,13 +654,11 @@ namespace HubCentra_A1
            "Rack14 FLOAT NULL, " +
            "Rack15 FLOAT NULL, " +
            "Rack16 FLOAT NULL, " +
-           "Spare VARCHAR(255) NULL)", // Change data type to BIT for isActive
+           "Spare VARCHAR(255) NULL)", 
            connection))
                 {
                     command.ExecuteNonQuery();
                 }
-
-                // Populate the 'id' column with values from 1 to 84
                 using (SqlCommand populateCommand = new SqlCommand(
                     $"INSERT INTO {tableName} (ID, Standby, Loading, LoadCell,  Barcode, UnLoading, Positive, Error,Rack1, Rack2, Rack3, Rack4, Rack5, Rack6, Rack7, Rack8, Rack9, Rack10, Rack11, Rack12, Rack13, Rack14, Rack15, Rack16, Spare)" +
                     $" VALUES (@ID, @Standby, @Loading, @LoadCell, @Barcode, @UnLoading, @Positive, @Error,  @Rack1, @Rack2, @Rack3, @Rack4, @Rack5, @Rack6, @Rack7, @Rack8, @Rack9, @Rack10, @Rack11, @Rack12, @Rack13, @Rack14, @Rack15, @Rack16, @Spare)",
@@ -749,13 +738,11 @@ namespace HubCentra_A1
            $"CREATE TABLE {tableName} (" +
            "ID INT PRIMARY KEY, " +
            "TrashCanProductCount INT NULL, " +
-           "Spare VARCHAR(255) NULL)", // Change data type to BIT for isActive
+           "Spare VARCHAR(255) NULL)",
            connection))
                 {
                     command.ExecuteNonQuery();
                 }
-
-                // Populate the 'id' column with values from 1 to 84
                 using (SqlCommand populateCommand = new SqlCommand(
                     $"INSERT INTO {tableName} (ID, TrashCanProductCount, Spare)" +
                     $" VALUES (@ID, @TrashCanProductCount,  @Spare)",
@@ -819,7 +806,6 @@ namespace HubCentra_A1
             }
             catch (Exception ex)
             {
-                // 오류 처리
                 Console.WriteLine(ex.Message);
             }
         }
@@ -861,7 +847,6 @@ namespace HubCentra_A1
             }
             catch (Exception ex)
             {
-                // 오류 처리
                 Console.WriteLine(ex.Message);
             }
         }
@@ -897,7 +882,6 @@ namespace HubCentra_A1
             }
             catch (Exception ex)
             {
-                // 오류 처리
                 Console.WriteLine(ex.Message);
             }
         }
@@ -1041,6 +1025,7 @@ namespace HubCentra_A1
 
                                 configurations.Add(data);
                             }
+                            
                         }
                     }
                 }
@@ -1321,7 +1306,6 @@ namespace HubCentra_A1
             }
             catch (Exception ex)
             {
-                // 에러 처리 로직 추가 (예: 로깅)
                 Console.WriteLine("Error in Select_Equipment_Search: " + ex.Message);
             }
 
@@ -1340,7 +1324,6 @@ namespace HubCentra_A1
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    // Prepare to iterate from startDate's month to endDate's month
                     DateTime currentMonth = new DateTime(startDate.Year, startDate.Month, 1);
 
                     while (currentMonth <= endDate)
@@ -1348,7 +1331,6 @@ namespace HubCentra_A1
                         string tableName = $"H_{currentMonth:yy_MM}";
                         if (TableExists(connection, tableName))
                         {
-                            // Correct the boundaries for the start and end dates within the current month
                             DateTime validStartDate = currentMonth > startDate ? currentMonth : startDate;
                             DateTime validEndDate = currentMonth.AddMonths(1).AddSeconds(-1) < endDate ? currentMonth.AddMonths(1).AddSeconds(-1) : endDate;
 
@@ -1386,7 +1368,6 @@ namespace HubCentra_A1
                         {
                             Console.WriteLine($"Table {tableName} does not exist.");
                         }
-                        // Move to the first day of the next month
                         currentMonth = currentMonth.AddMonths(1);
                     }
                 }
@@ -1435,7 +1416,7 @@ namespace HubCentra_A1
                             {
                                 var data = new DatabaseManager_BarcodeList
                                 {
-                                    ID = Convert.ToInt32(reader["ID"]),
+                                    ID = ConvertID(Convert.ToInt32(reader["ID"])),
                                     Barcode = reader.IsDBNull(reader.GetOrdinal("Barcode")) ? null : reader.GetString(reader.GetOrdinal("Barcode")),
                                     Qrcode = reader.IsDBNull(reader.GetOrdinal("Qrcode")) ? null : reader.GetString(reader.GetOrdinal("Qrcode")),
                                     LoadCell = reader["LoadCell"] != DBNull.Value ? Convert.ToDouble(reader["LoadCell"]) : 0,
@@ -1525,7 +1506,7 @@ namespace HubCentra_A1
                             {
                                 var data = new DatabaseManager_BarcodeList
                                 {
-                                    ID = Convert.ToInt32(reader["ID"]),
+                                    ID = ConvertID(Convert.ToInt32(reader["ID"])),
                                     Barcode = reader.IsDBNull(reader.GetOrdinal("Barcode")) ? null : reader.GetString(reader.GetOrdinal("Barcode")),
                                     Qrcode = reader.IsDBNull(reader.GetOrdinal("Qrcode")) ? null : reader.GetString(reader.GetOrdinal("Qrcode")),
                                     LoadCell = reader["LoadCell"] != DBNull.Value ? Convert.ToDouble(reader["LoadCell"]) : 0,
@@ -1544,7 +1525,6 @@ namespace HubCentra_A1
             }
             catch (Exception ex)
             {
-                // 로그 또는 예외 처리
             }
             return configurations;
         }
@@ -1566,7 +1546,6 @@ namespace HubCentra_A1
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        // Add parameters to the command
                         foreach (var param in parameters)
                         {
                             object value = param.Value ?? DBNull.Value;
@@ -1594,7 +1573,6 @@ namespace HubCentra_A1
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        // Add parameters to the command
                         foreach (var param in parameters)
                         {
                             object value = param.Value ?? DBNull.Value;
@@ -1621,7 +1599,6 @@ namespace HubCentra_A1
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        // Add parameters to the command
                         foreach (var param in parameters)
                         {
                             object value = param.Value ?? DBNull.Value;
@@ -1701,7 +1678,6 @@ namespace HubCentra_A1
             }
             catch (Exception ex)
             {
-                // 오류 처리
                 Console.WriteLine(ex.Message);
             }
         }
@@ -1782,7 +1758,6 @@ namespace HubCentra_A1
             }
             catch (Exception ex)
             {
-                // 오류 처리
                 Console.WriteLine(ex.Message);
             }
         }
@@ -1799,7 +1774,6 @@ namespace HubCentra_A1
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        // Add parameters to the command
                         foreach (var param in parameters)
                         {
                             object value = param.Value ?? DBNull.Value;
@@ -1899,5 +1873,31 @@ namespace HubCentra_A1
             }
         }
         #endregion Delete
+
+        #region Function
+        private string ConvertID(int id)
+        {
+            try
+            {
+                if (id >= 1 && id <= 84)
+                {
+                    return $"1-{id}";
+                }
+                else if (id >= 85 && id <= 198)
+                {
+                    return $"2-{id - 84}";
+                }
+                else
+                {
+                    return id.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                return "";
+            }
+
+        }
+        #endregion Function
     }
 }

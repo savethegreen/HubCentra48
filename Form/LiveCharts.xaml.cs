@@ -101,7 +101,7 @@ namespace HubCentra_A1
                 NamePaint = new SolidColorPaint(SKColors.Black),
                 LabelsPaint = new SolidColorPaint(SKColors.Blue),
                 TextSize = 10,
-                MinStep = 15, // Set directly for testing
+                MinStep = 15,
                 SeparatorsPaint = new SolidColorPaint(SKColors.LightSlateGray) { StrokeThickness = 2 },
                 ShowSeparatorLines = true,
                 }
@@ -122,8 +122,8 @@ namespace HubCentra_A1
                     {
                          new Axis
                          {
-                            MinLimit = 0, // Set your minimum value here
-                            MaxLimit = 1000, // Set your maximum value here
+                            MinLimit = 0,
+                            MaxLimit = 1000, 
                             MinStep = 100
                          }
                         };

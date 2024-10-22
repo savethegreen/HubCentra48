@@ -43,7 +43,9 @@ namespace HubCentra_A1
             PCB = 2,
             select_Equipment = 3,
             Insert_EquipmentH = 4,
-            FASTECH = 5,
+            FASTECH_system1 = 5,
+            FASTECH_system2 = 6,
+   
             ModbusTCP = 8,
             Barcode = 10,
             Temperature = 11,
@@ -54,8 +56,9 @@ namespace HubCentra_A1
             언로딩 = 16,
             PositiveDelay = 17,
             Lamp =18,
-            Tilting = 19,
             Calibration = 20,
+            Tilting_system1 = 21,
+            Tilting_system2 = 22,
         }
         #endregion Threads
 
@@ -64,7 +67,7 @@ namespace HubCentra_A1
         {
             MASTER,
             ENGINEER,
-            OPERATOR,
+            USER,
 
         }
         public enum Enum_Login_ButtonEvent
@@ -180,7 +183,8 @@ namespace HubCentra_A1
         #region FASTECH
         public enum Enum_FASTECH_ID
         {
-            IO = 1,
+            system1 = 1,
+            system2 = 2,
         }
         public enum Enum_FASTECH_Input
         {
@@ -215,5 +219,15 @@ namespace HubCentra_A1
             TLED = 1,
         }
         #endregion LOG
+
+        #region SYSTEM
+        public enum Enum_SYSTEM
+        {
+            SYSTEM1 = 0,
+            SYSTEM2 = 1,
+            SYSTEM3 = 2,
+            SYSTEM4 = 3,
+        }
+        #endregion SYSTEM
     }
 }

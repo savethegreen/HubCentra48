@@ -1,12 +1,84 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\\uC624\uD1A0\\240726_01 HubCentra_A48\\HubCentra_A1\\",
-  "Documents": [],
+  "WorkspaceRootPath": "D:\\Auto\\\uBC84\uC804\\2410011_01 HubCentra84 - hufit Gwangju \uB2E4\uC774\uB809\uD2B8\\HubCentra_A1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{09B6EDE8-CE96-4C09-B893-C1B20F4DEDC4}|HubCentra_A1.csproj|d:\\auto\\\uBC84\uC804\\2410011_01 hubcentra84 - hufit gwangju \uB2E4\uC774\uB809\uD2B8\\hubcentra_a1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09B6EDE8-CE96-4C09-B893-C1B20F4DEDC4}|HubCentra_A1.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09B6EDE8-CE96-4C09-B893-C1B20F4DEDC4}|HubCentra_A1.csproj|d:\\auto\\\uBC84\uC804\\2410011_01 hubcentra84 - hufit gwangju \uB2E4\uC774\uB809\uD2B8\\hubcentra_a1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{09B6EDE8-CE96-4C09-B893-C1B20F4DEDC4}|HubCentra_A1.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09B6EDE8-CE96-4C09-B893-C1B20F4DEDC4}|HubCentra_A1.csproj|d:\\auto\\\uBC84\uC804\\2410011_01 hubcentra84 - hufit gwangju \uB2E4\uC774\uB809\uD2B8\\hubcentra_a1\\class\\db\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09B6EDE8-CE96-4C09-B893-C1B20F4DEDC4}|HubCentra_A1.csproj|solutionrelative:class\\db\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09B6EDE8-CE96-4C09-B893-C1B20F4DEDC4}|HubCentra_A1.csproj|d:\\auto\\\uBC84\uC804\\2410011_01 hubcentra84 - hufit gwangju \uB2E4\uC774\uB809\uD2B8\\hubcentra_a1\\form\\system_1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{09B6EDE8-CE96-4C09-B893-C1B20F4DEDC4}|HubCentra_A1.csproj|solutionrelative:form\\system_1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "System_1.xaml",
+              "DocumentMoniker": "D:\\Auto\\\uBC84\uC804\\2410011_01 HubCentra84 - hufit Gwangju \uB2E4\uC774\uB809\uD2B8\\HubCentra_A1\\Form\\System_1.xaml",
+              "RelativeDocumentMoniker": "Form\\System_1.xaml",
+              "ToolTip": "D:\\Auto\\\uBC84\uC804\\2410011_01 HubCentra84 - hufit Gwangju \uB2E4\uC774\uB809\uD2B8\\HubCentra_A1\\Form\\System_1.xaml",
+              "RelativeToolTip": "Form\\System_1.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-10T02:49:10.784Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DatabaseManager.cs",
+              "DocumentMoniker": "D:\\Auto\\\uBC84\uC804\\2410011_01 HubCentra84 - hufit Gwangju \uB2E4\uC774\uB809\uD2B8\\HubCentra_A1\\Class\\DB\\DatabaseManager.cs",
+              "RelativeDocumentMoniker": "Class\\DB\\DatabaseManager.cs",
+              "ToolTip": "D:\\Auto\\\uBC84\uC804\\2410011_01 HubCentra84 - hufit Gwangju \uB2E4\uC774\uB809\uD2B8\\HubCentra_A1\\Class\\DB\\DatabaseManager.cs",
+              "RelativeToolTip": "Class\\DB\\DatabaseManager.cs",
+              "ViewState": "AQIAAP8FAAAAAAAAAAAewCkGAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T02:23:22.163Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\Auto\\\uBC84\uC804\\2410011_01 HubCentra84 - hufit Gwangju \uB2E4\uC774\uB809\uD2B8\\HubCentra_A1\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "D:\\Auto\\\uBC84\uC804\\2410011_01 HubCentra84 - hufit Gwangju \uB2E4\uC774\uB809\uD2B8\\HubCentra_A1\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-07T05:48:29.065Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Auto\\\uBC84\uC804\\2410011_01 HubCentra84 - hufit Gwangju \uB2E4\uC774\uB809\uD2B8\\HubCentra_A1\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "D:\\Auto\\\uBC84\uC804\\2410011_01 HubCentra84 - hufit Gwangju \uB2E4\uC774\uB809\uD2B8\\HubCentra_A1\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AQIAALwEAAAAAAAAAAAIwL8EAABYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T04:13:04.623Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -70,8 +70,12 @@ namespace HubCentra_A1.Model
         public double MainEngine_LoadCell_Value { get; set; } = 0; //로드셀 값
         #endregion MainEngine
 
+        #region SYSTEM
+        public bool SYSTEM2_ENABLE { get; set; } = false;
+        #endregion SYSTEM
+
         #region Login
-        public Enum_Login Login { get; set; } = Enum_Login.OPERATOR;
+        public Enum_Login Login { get; set; } = Enum_Login.USER;
         public string LoginID { get; set; } = "";
         public string Password { get; set; } = "";
 
@@ -80,28 +84,36 @@ namespace HubCentra_A1.Model
 
         #region FASTECH
         #region Connection
-        public string FASTECH_IO_IP { get; set; } = "192.160.0.1";
+
         //public IPAddress FASTECH_IO_IP { get; set; } = new IPAddress(new byte[] { 192, 168, 0, 1 });
-        public bool FASTECH_IO_Connection { get; set; } = false;
+        public bool FASTECH_IO_Connection_system1 { get; set; } = false;
+        public bool FASTECH_IO_Connection_system2 { get; set; } = false;
         #endregion Connection
 
 
         #region IO
-        public List<Class_FASTECH_Input> FASTECH_Input { get; set; }
-
-        public int FASTECH_Input_Latch =-1;
-        public List<Class_FASTECH_Output> FASTECH_Output { get; set; }
-
-        public List<Class_FASTECH_Output> FASTECH_Set_Output { get; set; }
+        public int FASTECH_Input_Latch_system1 = -1;
+        public int FASTECH_Input_Latch_system2 = -1;
+        public List<Class_FASTECH_Input> FASTECH_Input_system1 { get; set; }
+        public List<Class_FASTECH_Input> FASTECH_Input_system2 { get; set; }
+        public List<Class_FASTECH_Output> FASTECH_Output_system1 { get; set; }
+        public List<Class_FASTECH_Output> FASTECH_Output_system2 { get; set; }
+        public List<Class_FASTECH_Output> FASTECH_Set_Output_system1 { get; set; }
+        public List<Class_FASTECH_Output> FASTECH_Set_Output_system2 { get; set; }
         #endregion IO
         #endregion  FASTECH
 
         #region PCB
-        public SerialPort PCB_SerialPort { get; set; }
-        public bool PCB_Connection { get; set; } = false;
-        public bool PCB_Status { get; set; } = false;
+        public SerialPort PCB1_SerialPort { get; set; }
+        public bool PCB1_Connection { get; set; } = false;
+        public bool PCB1_Status { get; set; } = false;
 
-        public bool PCB_Restart { get; set; } = true;
+        public SerialPort PCB2_SerialPort { get; set; }
+        public bool PCB2_Connection { get; set; } = false;
+        public bool PCB2_Status { get; set; } = false;
+
+        public bool PCB_Restart_system1 { get; set; } = true;
+        public bool PCB_Restart_system2 { get; set; } = true;
         public string PCB_ID { get; set; } = "$ID1";
 
         public List<PCB> PCB_Data { get; set; }
@@ -122,6 +134,12 @@ namespace HubCentra_A1.Model
         public bool PCB1_targetvalue_test { get; set; } = false;
         public double PCB_targetvalue { get; set; } = 200;
 
+
+        public int PCB1_StartCell { get; set; } = 0;
+        public int PCB1_EndCell { get; set; } = 83;
+
+        public int PCB2_StartCell { get; set; } = 84;
+        public int PCB2_EndCell { get; set; } = 167;
         #endregion PCB
 
         #region Barcode
@@ -137,10 +155,15 @@ namespace HubCentra_A1.Model
         #endregion Barcode
 
         #region Temperature
-        public SerialPort Temperature_SerialPort { get; set; }
-        public double Temperature_ProcessValue { get; set; } = 0;
-        public bool Temperature_Connection { get; set; } = false;
+        public SerialPort Temperature1_SerialPort { get; set; }
+        public double Temperature_ProcessValue_system1 { get; set; } = 0;
+        public double Temperature_ProcessValue_system2 { get; set; } = 0;
+
+        public bool Temperature1_Connection { get; set; } = false;
         public bool Temperature_AL_Connection { get; set; } = false;
+
+        public SerialPort Temperature2_SerialPort { get; set; }
+        public bool Temperature2_Connection { get; set; } = false;
         #endregion Temperature
 
         #region DatabaseManager
@@ -185,7 +208,7 @@ namespace HubCentra_A1.Model
 
         #region Report
         public List<DatabaseManager_BarcodeList> Report_List { get; set; }
-        public List<DatabaseManager_EquipmentH> CSV_List { get; set; }
+        public List<DatabaseManager_CSV> CSV_List { get; set; }
 
         public Enum_Report_Model Report_Model { get; set; } = Enum_Report_Model.raw;
 
@@ -240,7 +263,8 @@ namespace HubCentra_A1.Model
         public string System1_Positive_Cel { get; set; } = "";
 
 
-        public int System1_Result { get; set; } = 0;
+        public bool System1_Result { get; set; } = false;
+        public bool System2_Result { get; set; } = false;
         #endregion System1
 
         #region System2
@@ -259,11 +283,14 @@ namespace HubCentra_A1.Model
         #endregion WriteBarcode
 
         #region Buzzer
-        public bool Buzzer { get; set; } = false;
+        public bool Buzzer_system1 { get; set; } = false;
+        public bool Buzzer_system2 { get; set; } = false;
         #endregion Buzzer
 
         #region Lamp
-        public bool Lamp { get; set; } = false;
+        public bool Lamp_system1 { get; set; } = false;
+        public bool Lamp_system2 { get; set; } = false;
+
         #endregion Lamp
 
         #region Alarm
@@ -339,7 +366,8 @@ namespace HubCentra_A1.Model
         public string Alarm_Door_Content { get; set; } = "문이 오랫동안 열려 있습니다." + "\n" +
                                               "문을 닫아 주세요!!!";
 
-        public bool Alarm_Door_Buzzer { get; set; } = false;
+        public bool Alarm_Door_Buzzer_system1 { get; set; } = false;
+        public bool Alarm_Door_Buzzer_system2 { get; set; } = false;
         #endregion Door
 
         #region Equipment
@@ -352,6 +380,18 @@ namespace HubCentra_A1.Model
         public string Alarm_Temperature_Content { get; set; } = "온도 컨트롤러가 비정상 입니다. " + "\n" +
                                               "온도 컨트롤러나 히터 관련 부품을 점검해주세요";
         #endregion Temperature
+
+        #region PCB_Error
+        public string PCB_Error_Title { get; set; } = "";
+        public string PCB_Error_WhatPCB_Error { get; set; } = "";
+        public string PCB_Error_Content { get; set; } = "";
+        public bool PCB_Error_System1 { get; set; } = false;
+        public bool PCB_Error_System2 { get; set; } = false;
+
+        public  int CheckDurationSeconds { get; set; } = 120;
+        public  DateTime[] lastChangedTime { get; set; } = new DateTime[336];
+        public double[] lastData { get; set; } = new double[336];
+        #endregion PCB_Error
 
         public bool PopStatus_Positive_Flag { get; set; } = false;
         public string PopStatus_Positive_Title { get; set; } = "Positive 발생!!";
@@ -374,7 +414,8 @@ namespace HubCentra_A1.Model
         #endregion Alarm
 
         #region Door
-        public bool Door_previousDoorState { get; set; } = false;
+        public bool Door_previousDoorState_system1 { get; set; } = false;
+        public bool Door_previousDoorState_system2 { get; set; } = false;
         #endregion Door
 
         #region Calibration
@@ -1133,7 +1174,7 @@ namespace HubCentra_A1.Model
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
-            public int _ID;
+            public string _ID;
             public string _Cell;
             public string _Barcode;
             public string _Qrcode;
@@ -1146,7 +1187,7 @@ namespace HubCentra_A1.Model
             public bool _isEnable;
             public bool _isActive;
 
-            public int ID
+            public string ID
             {
                 get => _ID;
                 set
@@ -1543,7 +1584,7 @@ namespace HubCentra_A1.Model
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
-            public int _ID;
+            public string _ID;
             public string _Barcode;
             public string _Qrcode;
             public double _LoadCell;
@@ -1553,7 +1594,7 @@ namespace HubCentra_A1.Model
             public string _Result;
             public DateTime? _PositiveTime;
 
-            public int ID
+            public string ID
             {
                 get => _ID;
                 set
@@ -1666,6 +1707,115 @@ namespace HubCentra_A1.Model
 
         }
         #endregion Barcode
+
+        #region CSV
+        public class DatabaseManager_CSV : INotifyPropertyChanged
+        {
+            public event PropertyChangedEventHandler PropertyChanged;
+            protected virtual void OnPropertyChanged(string propertyName)
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
+            public string _ID;
+            public string _Barcode;
+            public string _Qrcode;
+            public DateTime _CreDate;
+            public double _PcbADC;
+            public double _PcbLED;
+            public double _Temperature;
+
+            public string ID
+            {
+                get => _ID;
+                set
+                {
+                    if (_ID != value)
+                    {
+                        _ID = value;
+                        OnPropertyChanged(nameof(ID));
+                    }
+                }
+            }
+
+            public string Barcode
+            {
+                get => _Barcode;
+                set
+                {
+                    if (_Barcode != value)
+                    {
+                        _Barcode = value;
+                        OnPropertyChanged(nameof(Barcode));
+                    }
+                }
+            }
+            public string Qrcode
+            {
+                get => _Qrcode;
+                set
+                {
+                    if (_Qrcode != value)
+                    {
+                        _Qrcode = value;
+                        OnPropertyChanged(nameof(Qrcode));
+                    }
+                }
+            }
+
+
+            public DateTime CreDate
+            {
+                get => _CreDate;
+                set
+                {
+                    if (_CreDate != value)
+                    {
+                        _CreDate = value;
+                        OnPropertyChanged(nameof(CreDate));
+                    }
+                }
+            }
+            public double PcbADC
+            {
+                get => _PcbADC;
+                set
+                {
+                    if (_PcbADC != value)
+                    {
+                        _PcbADC = value;
+                        OnPropertyChanged(nameof(PcbADC));
+                    }
+                }
+            }
+            public double PcbLED
+            {
+                get => _PcbLED;
+                set
+                {
+                    if (_PcbLED != value)
+                    {
+                        _PcbLED = value;
+                        OnPropertyChanged(nameof(PcbLED));
+                    }
+                }
+            }
+            public double Temperature
+            {
+                get => _Temperature;
+                set
+                {
+                    if (_Temperature != value)
+                    {
+                        _Temperature = value;
+                        OnPropertyChanged(nameof(Temperature));
+                    }
+                }
+            }
+
+
+        }
+
+        #endregion CSV
 
         #endregion DatabaseManager_Equipment
 

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HubCentra_A1"
         mc:Ignorable="d"  
-        Title="BloodCulture v2.0.14"
+        Title="BloodCulture v1.0.2"
         Width="1280"
         Height="1024"
         WindowStartupLocation="CenterScreen"
@@ -58,18 +58,7 @@
                         <RowDefinition Height="100*" />
                         <RowDefinition Height="100*" />
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" Visibility="Hidden">
-                        <Button  Click="Button_Click"></Button>
-                    </Grid>
-                    <Grid Grid.Row="1" Visibility="Hidden">
-                        <Button Click="Button_Click_1"></Button>
-                    </Grid>
-                    <Grid Grid.Row="2" Visibility="Hidden">
-                        <Button Click="Button_Click_2"></Button>
-                    </Grid>
-                    <Grid Grid.Row="3" Visibility="Hidden">
-                        <Button Click="Button_Click_3"></Button>
-                    </Grid>
+
                 </Grid>
 
                 <Grid Grid.Column="2">
@@ -266,6 +255,19 @@
                                 </Style>
                             </local:System_1.Style>
                         </local:System_1>
+
+                        <local:System_2 x:Name="System_2F">
+                            <local:System_2.Style>
+                                <Style TargetType="local:System_2">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding MainWindow_ButtonFlag}" Value="5">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </local:System_2.Style>
+                        </local:System_2>
                     </Grid>
 
                     <Grid Grid.Column="3">
@@ -371,10 +373,10 @@
                                 <Style TargetType="Grid">
                                     <Setter Property="Opacity" Value="1" />
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                             <Setter Property="IsEnabled" Value="False"/>
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding Login}" Value="OPERATOR">
+                                        <DataTrigger Binding="{Binding Login}" Value="USER">
                                             <Setter Property="Opacity" Value="0.5" />
                                         </DataTrigger>
                                     </Style.Triggers>
@@ -473,7 +475,7 @@
                                 <ColumnDefinition Width="2*" />
                             </Grid.ColumnDefinitions>
 
-                            <Grid Grid.Row="0" Grid.Column="0">
+                            <Grid Grid.Row="2" Grid.Column="0">
                                 <Grid.Style>
                                     <Style TargetType="Grid">
                                         <Setter Property="Opacity" Value="1" />
@@ -501,7 +503,7 @@
                                                 <DataTrigger Binding="{Binding MainWindow_ButtonFlag}" Value="4">
                                                     <Setter Property="Fill" Value="{StaticResource MainWindow_LinearGradientBrush_03}" />
                                                 </DataTrigger>
-                                                <DataTrigger Binding="{Binding  System1_Result}" Value="1">
+                                                <DataTrigger Binding="{Binding  System1_Result}" Value="True">
                                                     <Setter Property="Fill" Value="Red" />
                                                 </DataTrigger>
                                             </Style.Triggers>
@@ -528,7 +530,7 @@
                                 </Grid>
                             </Grid>
 
-                            <Grid Grid.Row="0" Grid.Column="2">
+                            <Grid Grid.Row="0" Grid.Column="0">
                                 <Grid.Style>
                                     <Style TargetType="Grid">
                                         <Setter Property="Opacity" Value="1" />
@@ -556,7 +558,7 @@
                                                 <DataTrigger Binding="{Binding MainWindow_ButtonFlag}" Value="5">
                                                     <Setter Property="Fill" Value="{StaticResource MainWindow_LinearGradientBrush_03}" />
                                                 </DataTrigger>
-                                                <DataTrigger Binding="{Binding HasPositiveCell}" Value="True">
+                                                <DataTrigger Binding="{Binding System2_Result}" Value="True">
                                                     <Setter Property="Fill" Value="Red" />
                                                 </DataTrigger>
                                             </Style.Triggers>
@@ -583,7 +585,7 @@
                                 </Grid>
                             </Grid>
 
-                            <Grid Grid.Row="2" Grid.Column="0">
+                            <Grid Grid.Row="2" Grid.Column="2">
                                 <Grid.Style>
                                     <Style TargetType="Grid">
                                         <Setter Property="Opacity" Value="1" />
@@ -638,7 +640,7 @@
                                 </Grid>
                             </Grid>
 
-                            <Grid Grid.Row="2" Grid.Column="2">
+                            <Grid Grid.Row="0" Grid.Column="2">
                                 <Grid.Style>
                                     <Style TargetType="Grid">
                                         <Setter Property="Opacity" Value="1" />
@@ -752,7 +754,7 @@
                                     <TextBlock
                                 VerticalAlignment="Center"
                                 Style="{StaticResource MainWindow_TextBlock_06}"
-                                Text="{Binding Temperature_ProcessValue, StringFormat='{}{0} °C'}" />
+                                Text="{Binding Temperature_ProcessValue_system1, StringFormat='{}{0} °C'}" />
 
                                 </Grid>
                             </Grid>
@@ -763,6 +765,57 @@
                             VerticalAlignment="Top"
                             Style="{StaticResource MainWindow_TextBlock_07}"
                             Text="SYSTEM1" />
+
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.Column="2" >
+                            <Grid.Style>
+                                <Style TargetType="Grid">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SYSTEM2_ENABLE}" Value="True">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Grid.Style>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100*" />
+                                <RowDefinition Height="5*" />
+                                <RowDefinition Height="40*" />
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100*" />
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="100*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Image
+                         Margin="3,3"
+                         HorizontalAlignment="Right"
+                         VerticalAlignment="Center"
+                         Source="/Image/Temp2.png"
+                         Stretch="Uniform" />
+
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <TextBlock
+                         VerticalAlignment="Center"
+                         Style="{StaticResource MainWindow_TextBlock_06}"
+                         Text="{Binding Temperature_ProcessValue_system2, StringFormat='{}{0} °C'}" />
+
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <TextBlock
+                     Margin="36,-8,0,0"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Top"
+                     Style="{StaticResource MainWindow_TextBlock_07}"
+                     Text="SYSTEM2" />
 
                             </Grid>
                         </Grid>
@@ -831,7 +884,7 @@
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Bottom"
                                 Style="{StaticResource  MainWindow_TextBlock_07}"
-                                Text="Ver.1.0.1" />
+                                Text="Ver.1.0.2" />
                         </Grid>
                     </Grid>
                 </Grid>
